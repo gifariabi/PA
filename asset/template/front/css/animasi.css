@@ -1,0 +1,28 @@
+.area-padding .animasiAbout {
+    opacity: 0;
+    transition: .5s;
+}
+
+
+.area-padding .animasiAbout.muncul {
+    opacity: 1;
+}
+
+.kegiatan .animasiKegiatan {
+    opacity: 0;
+    transition: .5s;
+}
+
+
+.kegiatan .animasiKegiatan.muncul {
+    opacity: 1;
+}
+
+.artikel .animasiArtikel {
+    opacity: 0;
+    transition: .5s;
+}
+
+.artikel .animasiArtikel.muncul {
+    opacity: 1;
+}
