@@ -409,8 +409,8 @@
               <td><?php echo $key->jumlah; ?></td>
               <td><?php echo $key->metode_pembayaran;?></td>
               <td>
-              <a href="<?php echo site_url('tiket/edit/'.$key->no_tiket); ?>" class="btn btn-primary">Edit</a>
-              <a href="<?php echo site_url('tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-primary">Hapus</a>    
+              <a href="<?php echo site_url('tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
+              <a href="<?php echo site_url('tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
                 
               </td>
           </tr>

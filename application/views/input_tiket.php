@@ -417,7 +417,7 @@
 						<option value="Cash">Cash</option>
 					</select>
     </div>
-        <input type="submit" name="submit" value="Input" class="btn btn-google btn-user btn-block" placeholder="input">
+        <input type="submit" name="submit" value="Input" class="btn  btn-user btn-block btn-success" placeholder="input">
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
     <!-- <font color="red">
