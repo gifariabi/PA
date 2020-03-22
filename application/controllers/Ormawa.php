@@ -267,4 +267,40 @@ class Ormawa extends CI_Controller {
         $this->model_ormawa->hapus_pengurus($where,'pengurus');
         redirect('Ormawa/tampil_pengurus');
     }
+
+    //Anggota
+    public function tampil_anggota(){
+        $data['data'] = $this->model_ormawa->getAnggota();
+        $this->load->view('v_anggota', $data);
+    }
+
+    public function editAnggota($nim){
+    $where = array('nim' => $nim);
+    $data['data'] = $this->model_ormawa->edit_anggota($where,'anggota')->result();
+    $this->load->view('v_edit_anggota',$data);
+    }
+
+    public function update_anggota(){
+        $nim = $this->input->post('nim');
+        $nama = $this->input->post('nama');
+        $jabatan = $this->input->post('jabatan');
+ 
+        $data = array(
+        'nama' => $nama,
+        'jabatan' => $jabatan
+        );
+ 
+        $where = array(
+        'nim' => $nim
+        );
+ 
+        $this->model_ormawa->update_anggota($where,$data,'anggota');
+        redirect('Ormawa/tampil_anggota');
+    }
+
+    public function hapus_anggota($nim){
+        $where = array('nim' => $nim);
+        $this->model_ormawa->hapus_anggota($where,'anggota');
+        redirect('Ormawa/tampil_anggota');
+    }
 }

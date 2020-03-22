@@ -47,6 +47,27 @@ class model_ormawa extends CI_Model{
 
         public function hapus_pengurus($where,$table){
         $this->db->delete($table,$where);
+        }
+
+        public function getAnggota(){
+            $this->db->select('nim, nama, jabatan');
+            $this->db->from('anggota');
+        
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        public function edit_anggota($where,$table){      
+            return $this->db->get_where($table,$where);
+        }
+
+        public function update_anggota($where,$data,$table){
+            $this->db->where($where);
+            $this->db->update($table,$data);
+        }
+
+        public function hapus_anggota($where,$table){
+        $this->db->delete($table,$where);
     }
     }
 ?>
