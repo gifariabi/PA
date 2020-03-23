@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Mar 2020 pada 12.33
+-- Waktu pembuatan: 23 Mar 2020 pada 20.51
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -59,8 +59,8 @@ CREATE TABLE `anggota` (
 --
 
 INSERT INTO `anggota` (`nim`, `username`, `password`, `nama`, `jabatan`, `noWA`, `noHP`, `idLine`, `foto`, `prodi`, `nim_pengurus`) VALUES
-(670117403, 'gifariabi', 'gifariabi', 'gifari abi waqqash', '', '085868442225', '085868442226', 'gifarifr', '', 'D3 Sistem Informasi', 0),
-(670117410, 'Luqman', 'luqman', 'Muhammad Luqman', 'Sekertaris', '080808099', '080808089', 'luqmaneuy', '', 'D3 Sistem Informasi', 1);
+(670117403, 'gifariabi', 'gifariabi', 'gifari abi waqqash', 'Anggota Devisi Olahraga', '085868442225', '085868442226', 'gifarifr', '', 'D3 Sistem Informasi', 0),
+(670117410, 'Luqman', 'luqman123', 'Muhammad Luqman', 'Sekertaris', '080808099', '080808089', 'luqmaneuy', '', 'D3 Sistem Informasi', 1);
 
 -- --------------------------------------------------------
 
@@ -92,9 +92,6 @@ CREATE TABLE `datauser` (
   `nim` varchar(10) NOT NULL,
   `jenisKelamin` varchar(15) DEFAULT NULL,
   `prodi` varchar(20) DEFAULT NULL,
-  `kelas` varchar(20) DEFAULT NULL,
-  `departemen` varchar(20) DEFAULT NULL,
-  `jabatan` varchar(20) DEFAULT NULL,
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL,
   `foto` varchar(20) DEFAULT NULL
@@ -104,11 +101,11 @@ CREATE TABLE `datauser` (
 -- Dumping data untuk tabel `datauser`
 --
 
-INSERT INTO `datauser` (`namaLengkap`, `nim`, `jenisKelamin`, `prodi`, `kelas`, `departemen`, `jabatan`, `username`, `password`, `foto`) VALUES
-('yusril wahyuda', '6701174001', 'Laki-laki', 'D3SI', '03', 'Ekonomi Kreatif', 'Kepala Departemen', 'yusril', 'yusril', NULL),
-('Muhammad luqman', '6701174014', 'Laki-laki', 'D3 Sistem Informasi', 'D3 SI 41-03', 'Dalam Negri', 'Staff', 'admin', 'admin', 'admin.jpg'),
-('Gifari Abi Waqqash', '6701174033', 'Laki-laki', 'D3SI', '03', 'Sekretaris', 'Kepala Departemen', 'gifariabi', 'gifariabi', NULL),
-('Eko adinata', '6701174556', 'Laki-laki', 'D3SI', '03', 'Bendahara', 'Kepala Departemen', 'eko', 'eko', NULL);
+INSERT INTO `datauser` (`namaLengkap`, `nim`, `jenisKelamin`, `prodi`, `username`, `password`, `foto`) VALUES
+('yusril wahyuda', '6701174001', 'Laki-laki', 'D3SI', 'yusril', 'yusril', NULL),
+('Muhammad luqman', '6701174014', 'Laki-laki', 'D3 Sistem Informasi', 'admin', 'admin', 'admin.jpg'),
+('Gifari Abi Waqqash', '6701174033', 'Laki-laki', 'D3SI', 'gifariabi', 'gifariabi', NULL),
+('Eko adinata', '6701174556', 'Laki-laki', 'D3SI', 'eko', 'eko', NULL);
 
 -- --------------------------------------------------------
 
@@ -139,24 +136,20 @@ CREATE TABLE `kas` (
   `id_kas` int(5) NOT NULL,
   `pemasukan_kas` int(255) NOT NULL,
   `pengeluaran_kas` int(255) NOT NULL,
-  `tanggal` date NOT NULL
+  `keterangan` varchar(255) NOT NULL,
+  `tanggal` date NOT NULL,
+  `idOrganisasi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
 --
 -- Dumping data untuk tabel `kas`
 --
 
-INSERT INTO `kas` (`id_kas`, `pemasukan_kas`, `pengeluaran_kas`, `tanggal`) VALUES
-(1, 2500, 0, '2019-12-14'),
-(2, 1000, 0, '0000-00-00'),
-(3, 1000, 0, '2019-12-12'),
-(4, 0, 1000, '2019-12-12'),
-(5, 1000, 0, '0000-00-00'),
-(6, 1500000, 0, '2019-12-13'),
-(7, 1000, 0, '2019-12-14'),
-(8, 0, 5000, '2019-12-15'),
-(9, 1000, 0, '2019-12-16'),
-(10, 0, 1000, '2019-12-10');
+INSERT INTO `kas` (`id_kas`, `pemasukan_kas`, `pengeluaran_kas`, `keterangan`, `tanggal`, `idOrganisasi`) VALUES
+(12, 1400000, 0, '', '2020-03-24', 1),
+(13, 0, 12000, 'Print Proposal', '2020-03-24', 1),
+(14, 0, 50000, 'Beli Kain Hitam', '2020-03-25', 1),
+(15, 0, 500, 'Print Proposal', '2020-03-25', 1);
 
 -- --------------------------------------------------------
 
@@ -169,9 +162,15 @@ CREATE TABLE `kegiatan` (
   `nama_kegiatan` varchar(255) COLLATE utf8_bin NOT NULL,
   `waktu` varchar(255) COLLATE utf8_bin NOT NULL,
   `tempat` varchar(255) COLLATE utf8_bin NOT NULL,
-  `id_programkerja` int(10) NOT NULL,
-  `id_lpj` int(5) NOT NULL
+  `id_programkerja` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data untuk tabel `kegiatan`
+--
+
+INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `id_programkerja`) VALUES
+(3, 'MANIAC 2020', '2020-10-09', 'Gallery dan Batununggal Sport Center', 2);
 
 -- --------------------------------------------------------
 
@@ -198,7 +197,8 @@ INSERT INTO `konten` (`deskripsi`) VALUES
 
 CREATE TABLE `lpj` (
   `id_lpj` int(5) NOT NULL,
-  `file` varchar(255) COLLATE utf8_bin NOT NULL
+  `file` varchar(255) COLLATE utf8_bin NOT NULL,
+  `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -212,17 +212,18 @@ CREATE TABLE `organisasi` (
   `namaOrganisasi` varchar(255) NOT NULL,
   `deskripsi` text NOT NULL,
   `logo` text NOT NULL,
-  `ketua` varchar(255) NOT NULL,
-  `id_thnAjaran` int(5) NOT NULL,
-  `id_kas` int(5) NOT NULL
+  `ketua` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
 --
 -- Dumping data untuk tabel `organisasi`
 --
 
-INSERT INTO `organisasi` (`idOrganisasi`, `namaOrganisasi`, `deskripsi`, `logo`, `ketua`, `id_thnAjaran`, `id_kas`) VALUES
-(1, 'HMDSI', 'HMDSI adalah', '5d458932f2c4f50297475fe9aa1c2d36.png', 'kelvin', 1, 1);
+INSERT INTO `organisasi` (`idOrganisasi`, `namaOrganisasi`, `deskripsi`, `logo`, `ketua`) VALUES
+(1, 'HMDSI', 'HMDSI adalah', '5d458932f2c4f50297475fe9aa1c2d36.png', 'kelvin'),
+(2, 'SAMALOWA', 'UKM Lombok Sumbawa', '0b9b5daa9df9de0b50cef003221ffb5b.jpg', 'Esa'),
+(4, 'PERMALA', 'Mahasiswa Lampung', '811539bf69c57ce8660fce77201a6a31.jpg', 'Deva'),
+(5, 'SEARCH', 'Lomba dll', '201a283dc472a6733bc943460775c71f.jpg', 'riko');
 
 -- --------------------------------------------------------
 
@@ -238,15 +239,17 @@ CREATE TABLE `pengurus` (
   `noHP` varchar(255) NOT NULL,
   `idLine` varchar(255) NOT NULL,
   `foto` varchar(255) NOT NULL,
-  `idDept` int(5) NOT NULL
+  `idDept` int(5) NOT NULL,
+  `id_thnAjaran` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
 --
 -- Dumping data untuk tabel `pengurus`
 --
 
-INSERT INTO `pengurus` (`nim_pengurus`, `nama`, `jabatan`, `noWA`, `noHP`, `idLine`, `foto`, `idDept`) VALUES
-(4101, 'Yusril', 'Kepala Devisi Olahraga', '08080808', '08080808', 'yusrilw29', '', 1);
+INSERT INTO `pengurus` (`nim_pengurus`, `nama`, `jabatan`, `noWA`, `noHP`, `idLine`, `foto`, `idDept`, `id_thnAjaran`) VALUES
+(777, 'Deni', 'Wakadep Olahraga', '09090909', '09090909', 'deniyy', '', 1, 1),
+(4101, 'Yuda', 'Departemen Olahraga', '08080808', '08080808', 'yuyda', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -274,6 +277,13 @@ CREATE TABLE `programkerja` (
   `departemen` varchar(255) COLLATE utf8_bin NOT NULL,
   `idOrganisasi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data untuk tabel `programkerja`
+--
+
+INSERT INTO `programkerja` (`id_programkerja`, `nama_programkerja`, `waktu_pelaksanaan`, `departemen`, `idOrganisasi`) VALUES
+(2, 'Olahraga Sehat sehat', '2020-08-09', 'Olahraga dan Sosial', 1);
 
 -- --------------------------------------------------------
 
@@ -320,7 +330,9 @@ CREATE TABLE `tahun_ajaran` (
 --
 
 INSERT INTO `tahun_ajaran` (`id_thnAjaran`, `tahunAjaran`) VALUES
-(1, '2019-2020');
+(1, '2019-2020'),
+(2, '2020-2021'),
+(3, '2021-2022');
 
 -- --------------------------------------------------------
 
@@ -338,6 +350,13 @@ CREATE TABLE `tiket` (
   `metode_pembayaran` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data untuk tabel `tiket`
+--
+
+INSERT INTO `tiket` (`no_tiket`, `nama`, `nim`, `jurusan`, `email`, `jumlah`, `metode_pembayaran`, `id_kegiatan`) VALUES
+(1, 'Yusril Wahyuda', '6701174101', 'D3 Sistem Informasi', 'wahyudayusril29@gmail.com', '1', 'Transfer', 3);
 
 -- --------------------------------------------------------
 
@@ -393,36 +412,36 @@ ALTER TABLE `departemen`
 -- Indeks untuk tabel `kas`
 --
 ALTER TABLE `kas`
-  ADD PRIMARY KEY (`id_kas`);
+  ADD PRIMARY KEY (`id_kas`),
+  ADD KEY `fk_idOrganisasii` (`idOrganisasi`);
 
 --
 -- Indeks untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
   ADD PRIMARY KEY (`id_kegiatan`),
-  ADD UNIQUE KEY `id_lpj` (`id_lpj`),
   ADD KEY `id_programkerja` (`id_programkerja`);
 
 --
 -- Indeks untuk tabel `lpj`
 --
 ALTER TABLE `lpj`
-  ADD PRIMARY KEY (`id_lpj`);
+  ADD PRIMARY KEY (`id_lpj`),
+  ADD UNIQUE KEY `id_kegiatan` (`id_kegiatan`);
 
 --
 -- Indeks untuk tabel `organisasi`
 --
 ALTER TABLE `organisasi`
-  ADD PRIMARY KEY (`idOrganisasi`),
-  ADD UNIQUE KEY `id_thnAjaran` (`id_thnAjaran`),
-  ADD UNIQUE KEY `id_kas` (`id_kas`);
+  ADD PRIMARY KEY (`idOrganisasi`);
 
 --
 -- Indeks untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
   ADD PRIMARY KEY (`nim_pengurus`),
-  ADD UNIQUE KEY `idDept` (`idDept`);
+  ADD KEY `id_thnAjaran` (`id_thnAjaran`) USING BTREE,
+  ADD KEY `idDept` (`idDept`) USING BTREE;
 
 --
 -- Indeks untuk tabel `presensi`
@@ -480,13 +499,13 @@ ALTER TABLE `departemen`
 -- AUTO_INCREMENT untuk tabel `kas`
 --
 ALTER TABLE `kas`
-  MODIFY `id_kas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_kas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `lpj`
@@ -498,7 +517,7 @@ ALTER TABLE `lpj`
 -- AUTO_INCREMENT untuk tabel `organisasi`
 --
 ALTER TABLE `organisasi`
-  MODIFY `idOrganisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idOrganisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `presensi`
@@ -510,7 +529,7 @@ ALTER TABLE `presensi`
 -- AUTO_INCREMENT untuk tabel `programkerja`
 --
 ALTER TABLE `programkerja`
-  MODIFY `id_programkerja` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_programkerja` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `rapat`
@@ -528,13 +547,13 @@ ALTER TABLE `suratkeluar`
 -- AUTO_INCREMENT untuk tabel `tahun_ajaran`
 --
 ALTER TABLE `tahun_ajaran`
-  MODIFY `id_thnAjaran` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_thnAjaran` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -554,23 +573,28 @@ ALTER TABLE `departemen`
   ADD CONSTRAINT `departemen_ibfk_1` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Ketidakleluasaan untuk tabel `kas`
+--
+ALTER TABLE `kas`
+  ADD CONSTRAINT `fk_idOrganisasii` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Ketidakleluasaan untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  ADD CONSTRAINT `kegiatan_ibfk_1` FOREIGN KEY (`id_programkerja`) REFERENCES `programkerja` (`id_programkerja`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `kegiatan_ibfk_2` FOREIGN KEY (`id_lpj`) REFERENCES `lpj` (`id_lpj`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `kegiatan_ibfk_1` FOREIGN KEY (`id_programkerja`) REFERENCES `programkerja` (`id_programkerja`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `organisasi`
+-- Ketidakleluasaan untuk tabel `lpj`
 --
-ALTER TABLE `organisasi`
-  ADD CONSTRAINT `organisasi_ibfk_1` FOREIGN KEY (`id_thnAjaran`) REFERENCES `tahun_ajaran` (`id_thnAjaran`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `organisasi_ibfk_2` FOREIGN KEY (`id_kas`) REFERENCES `kas` (`id_kas`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `lpj`
+  ADD CONSTRAINT `lpj_ibfk_1` FOREIGN KEY (`id_kegiatan`) REFERENCES `kegiatan` (`id_kegiatan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
+  ADD CONSTRAINT `fk_thnAjaran` FOREIGN KEY (`id_thnAjaran`) REFERENCES `tahun_ajaran` (`id_thnAjaran`),
   ADD CONSTRAINT `pengurus_ibfk_1` FOREIGN KEY (`idDept`) REFERENCES `departemen` (`idDept`);
 
 --
