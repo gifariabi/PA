@@ -44,7 +44,8 @@ class Ormawa extends CI_Controller {
                         $ketua = $this->input->post('ketua');
                         $this->model_ormawa->simpan($namaOrganisasi,$deskripsi,$logo,$ketua);
                        
-                        redirect('Organisasi/tampilDaftar');
+                        redirect('Organisasi/buat_organisasi');
+                        echo "Berhasil Menambahkan Organisasi";
                     }else{
                         redirect('Organisasi/tampilDaftar');
                         }
@@ -77,7 +78,8 @@ class Ormawa extends CI_Controller {
     public function simpan_kas_masuk(){
         $pemasukan_kas = $this->input->post('pemasukan_kas');
         $tanggal = $this->input->post('tanggal');
-        $this->model_kas->kas_masuk($pemasukan_kas,$tanggal);
+        $idOrganisasi = $this->input->post('idOrganisasi');
+        $this->model_kas->kas_masuk($pemasukan_kas,$tanggal,$idOrganisasi);
                        
         redirect('Ormawa/tampil_kas');
     }
@@ -86,7 +88,8 @@ class Ormawa extends CI_Controller {
         $pengeluaran_kas = $this->input->post('pengeluaran_kas');
         $keterangan = $this->input->post('keterangan');
         $tanggal = $this->input->post('tanggal');
-        $this->model_kas->kas_keluar($pengeluaran_kas,$keterangan,$tanggal);
+        $idOrganisasi = $this->input->post('idOrganisasi');
+        $this->model_kas->kas_keluar($pengeluaran_kas,$keterangan,$tanggal,$idOrganisasi);
                        
         redirect('Ormawa/tampil_kas');
     }
@@ -220,12 +223,8 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_pengeluaranKas',$data);
     } 
 
-    public function cetak_laporan(){
-        //$where = array('pemasukan_kas' => $pemasukan_kas);
+    public function cetak_laporan(){        
         $data['total_laporan1'] = $this->model_kas->getlaporan()->result();
-        //$this->load->library('pdf');
-        //$this->load->view('surat',$data);
-            //$data['total_laporan1'] = $this->model_kas->getlaporan()->result();
         $mpdf = new \Mpdf\Mpdf();
         $data = $this->load->view('laporan_kass',$data, TRUE);
         $mpdf->WriteHTML($data);

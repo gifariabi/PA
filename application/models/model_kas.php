@@ -1,13 +1,13 @@
 <?php
 class model_kas extends CI_Model{
 
-	public function kas_masuk($pemasukan_kas,$tanggal){
-      	$query = "INSERT INTO kas VALUES('','$pemasukan_kas','','$tanggal')";
+	public function kas_masuk($pemasukan_kas,$tanggal,$idOrganisasi){
+      	$query = "INSERT INTO kas VALUES('','$pemasukan_kas','','','$tanggal','1')";
         $this->db->query($query);
     }
 
-    public function kas_keluar($pengeluaran_kas,$keterangan,$tanggal){
-      	$query = "INSERT INTO kas VALUES('','','$pengeluaran_kas','$keterangan',$tanggal')";
+    public function kas_keluar($pengeluaran_kas,$keterangan,$tanggal,$idOrganisasi){
+      	$query = "INSERT INTO kas VALUES('','','$pengeluaran_kas','$keterangan','$tanggal','1')";
         $this->db->query($query);
     }
 
