@@ -373,6 +373,13 @@
 <hr>
 <?php //foreach ($data as $data) { ?>
 <table>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td><img src="<?php echo base_url('asset/images/foto/'.$foto)?>"></td>
+        </tr>
+
         <tr>
             <td>Username</td>
             <td>:</td>
@@ -413,7 +420,9 @@
             <td>:</td>
             <td><?= $prodi ?></td>
         </tr>
-            <td><a href="<?= base_url().'/Organisasi/edit_akun/'.$nim;?>" class="btn btn-primary">Edit</a>
+            <td></td><td></td>
+            <td><a href="<?= base_url().'/Organisasi/edit_akun/'.$nim;?>" class="btn btn-primary">Edit Data</a>
+            <a href="<?= base_url().'/Edit_foto/editf/'.$nim;?>" class="btn btn-primary">Edit Foto</a>
             <a href="<?= base_url().'/Organisasi/hapus_akun/'.$nim;?>" onclick="return confirm('Anda Yakin Menghapus Akun ?')"  class="btn btn-danger">Hapus</a></td>
         </tr>
         

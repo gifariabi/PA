@@ -61,6 +61,7 @@ class Organisasi extends CI_Controller {
             'password' => $user->password,
             'nama'  => $user->nama,
             'noWA'  => $user->noWA,
+            'foto'  => $user->foto,
             'noHP'  => $user->noHP,
             'idLine' => $user->idLine,
             'jabatan' => $user->jabatan,

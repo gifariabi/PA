@@ -22,7 +22,7 @@
   <div class="container">
 
     <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
+  <header class="jumbotron my-4">
 <?php //foreach($data as $u){ ?>
 <center><h1>Edit Akun</h1>
 </center>
