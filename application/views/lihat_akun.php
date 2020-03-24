@@ -335,7 +335,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->nama ?></span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img class="img-profile rounded-circle" src="<?php echo base_url('asset/images/foto/'.$this->session->userdata('foto')); ?>">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -372,14 +372,15 @@
 <hr>
 <hr>
 <?php //foreach ($data as $data) { ?>
-<table>
+<table >
 
         <tr>
-            <td></td>
-            <td></td>
-            <td><img src="<?php echo base_url('asset/images/foto/'.$foto)?>"></td>
+           
+            
+            <td><img src="<?php echo base_url('asset/images/foto/'.$foto)?>" width="200" height="300"></td>
         </tr>
-
+</table>
+<table>
         <tr>
             <td>Username</td>
             <td>:</td>
@@ -419,14 +420,16 @@
             <td>Prodi</td>
             <td>:</td>
             <td><?= $prodi ?></td>
-        </tr>
-            <td></td><td></td>
-            <td><a href="<?= base_url().'/Organisasi/edit_akun/'.$nim;?>" class="btn btn-primary">Edit Data</a>
-            <a href="<?= base_url().'/Edit_foto/editf/'.$nim;?>" class="btn btn-primary">Edit Foto</a>
-            <a href="<?= base_url().'/Organisasi/hapus_akun/'.$nim;?>" onclick="return confirm('Anda Yakin Menghapus Akun ?')"  class="btn btn-danger">Hapus</a></td>
+        </tr> 
+  </table>
+  <table>
+        <tr>
+            <td><a href="<?= base_url().'/Organisasi/edit_akun/'.$nim;?>" class="btn btn-primary btn-block">Edit Data</a></td>
+            <td><a href="<?= base_url().'/Edit_foto/editf/'.$nim;?>" class="btn btn-success btn-user btn-block">Edit Foto</a></td>
+            <td><a href="<?= base_url().'/Organisasi/hapus_akun/'.$nim;?>" onclick="return confirm('Anda Yakin Menghapus Akun ?')"  class="btn btn-danger btn-block">Hapus</a></td>
         </tr>
         
-    </table>
+</table>
     <?php //} ?>
 
     <footer class="sticky-footer bg-white">

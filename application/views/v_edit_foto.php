@@ -51,16 +51,21 @@
 	<h1>Tambah Foto</h1>
 	<hr>
 	<hr>
+	<?php foreach ($data as $get) { ?>
 	<form action="<?= base_url() ?>index.php/Edit_foto/updatef" method="POST" enctype="multipart/form-data">
 	<table>
+	<tr> <td></td>
+		<td><img src="<?php echo base_url('asset/images/foto/'.$get->foto)?>" width="300" height="300"></td>
+	</tr>
 	<tr>
-		<td>Foto</td>
-		<td><input type="file" name="foto"></td>
+		<td></td>
+		<td><input type="hidden" name="nim" value="<?php echo $get->nim ?>">
+		<input type="file" name="foto"></td>
 	</tr>
 	
 	<tr><td></td>
 		<td align="center">
-			<input type="submit" name="submit" class="btn btn-success btn-user btn-block" value="Tambahkan Foto">
+			<input type="submit" name="submit" class="btn btn-success btn-user btn-block" value="Ganti Foto">
 		</td>
 	</tr>	
 	</table>
@@ -71,6 +76,7 @@
     </div>
     <!-- /.container -->
   </footer>
+  <?php  } ?>
 
   <!-- Bootstrap core JavaScript -->
   <script src="<?php echo base_url().'asset/vendor/jquery/jquery.min.js'?>"></script>
