@@ -33,7 +33,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">ISOMA<sup></sup></div>
+        <div class="sidebar-brand-text mx-3">HMDSI<sup>2019</sup></div>
       </a>
 
       <!-- Divider -->
@@ -41,7 +41,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url().'index.php/sekertaris'?>">
+        <a class="nav-link" href="http://localhost/ci2/index.php/inventaris/dashboar">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -161,7 +161,18 @@
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
-      
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAkun" aria-expanded="true" aria-controls="collapseUtilities">
+          <span>Akun</span>
+        </a>
+        <div id="collapseAkun" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="http://localhost/ci2/index.php/admin/login" style="text-decoration: none">Login</a>
+            <a class="collapse-item" href="http://localhost/ci2/index.php/admin/register" style="text-decoration: none">Registrasi</a>
+          </div>
+        </div>
+      </li> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -369,55 +380,29 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head> -->
+
 <body>
-<center>
-<h3>Jadwal Kegiatan</h3>
-    <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
-    <div class="card-body">
-      <div class="table-responsive">
-        <a href="<?php echo site_url('tiket/displaydata'); ?>">Keranjang</a>
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <tr>
-              <th>No</th>
-              <th>Nama Kegiatan</th>
-              <th>Waktu Pelaksanaan</th>
-              <th>Tempat Pelaksanaan</th>
-              <th>Aksi</th>
-          </tr>
-          <?php
-              $i=1;
-              foreach ($data as $key) {
-          ?>
-          <tr>
-              <td><?php echo $i; ?></td>
-              <td><?php echo $key->nama_kegiatan; ?></td>
-              <td><?php echo $key->waktu; ?></td>
-              <td><?php echo $key->tempat; ?></td>
-              <td>
-              <!-- <a href="<?php echo site_url('kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary">Edit</a>
-              <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" class="btn btn-primary">Hapus</a> -->
-              <a href="<?php echo site_url('tiket/simpan/'.$key->id_kegiatan); ?>" class="btn btn-primary">Book</a>    
-                
-              </td>
-          </tr>
-          <?php $i++; }?>
-        </table>
-      </div>  
-    </div>    
-    <!-- <a href="<?php echo base_url().'index.php/inventaris/index';?>">Tambah Data</a> -->
-    <!-- <a href="<?= base_url(); ?>index.php/inventaris/index">Kembali ke Menu</a> -->
+
+<form class="user" action="<?php echo base_url().'index.php/lpj/upload/'?>" method="post">
+    <center>
+    <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
+    <!-- <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Book Tiket</h1>
+        <a href="<?php echo site_url('tiket/displaydata'); ?>">History Pesanan</a>
+    </div> -->
+    <div class="form-group">
+      <input type="file" name="lpj" class="form-control form-control-sm" placeholder="LPJ" size="50">
+    </div>
+        <input type="submit" name="submit" value="Input" class="btn  btn-user btn-block btn-success" placeholder="input">
+    <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
-</center>
+    <!-- <font color="red">
+        <?php if ($this->session->flashdata('error')) {
+		    echo $this->session->flashdata('error');
+	    } ?>
+    </font> -->
+    </center>
+</form>
 <!-- Footer -->
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -474,5 +459,4 @@
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url().'assets/js/demo/chart-area-demo.js'?>"></script>
   <script src="<?php echo base_url().'assets/js/demo/chart-pie-demo.js'?>"></script>
-</body>
-</html>
+  </body>

@@ -26,5 +26,15 @@
             $this->db->where($where);
             $this->db->update($table,$data);
         }
+        function update_status($id){
+            $query = $this->db->query("UPDATE tiket SET status='Accept'");
+            $this->db->where('no_tiket',$id);
+            //return $query->result();
+        }
+        function tampil_req_admin(){
+            $query = $this->db->query("SELECT * FROM tiket");
+            //$this->db->where('namaLengkap',$nama);
+            return $query->result();
+        }
     }
 ?>

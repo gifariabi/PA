@@ -385,6 +385,8 @@
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
     <div class="card-body">
       <div class="table-responsive">
+        <?php if ($this->session->userdata('jabatan') != 'Sekertaris') { 
+          ?>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <tr>
               <th>No</th>
@@ -394,7 +396,8 @@
               <th>Email</th>
               <th>Jumlah</th>
               <th>Metode Pembayaran</th>
-              <th>Aksi</th>
+              <th>Status</th>
+      
           </tr>
           <?php
               $i=1;
@@ -408,14 +411,61 @@
               <td><?php echo $key->email; ?></td>
               <td><?php echo $key->jumlah; ?></td>
               <td><?php echo $key->metode_pembayaran;?></td>
+              <td><?php echo $key->status; ?></td>
               <td>
-              <a href="<?php echo site_url('tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
+              <!-- <a href="<?php echo site_url('tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
               <a href="<?php echo site_url('tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
-                
+                 -->
+              <?php if ($key->status =='Accepted') { ?>
+                <td><a href="<?php echo base_url().'index.php/tiket/cetak_tiket/'.$data->no_tiket;?>">Cetak Tiket</a></td>
+              <?php
+              } else {?>
+              <td><a href="#">Cetak Tiket</a></td>
+              <?php }?>
               </td>
           </tr>
           <?php $i++; }?>
         </table>
+        <?php 
+        }else{ 
+        ?>
+        <form action="<?php echo base_url().'index.php/tiket/update_status_admin';?>" method="post"></form>
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>NIM</th>
+              <th>Jurusan</th>
+              <th>Email</th>
+              <th>Jumlah</th>
+              <th>Metode Pembayaran</th>
+              <th>Status</th>
+              <th>Konfirmasi</th>
+      
+          </tr>
+          <?php
+              $i=1;
+              foreach ($data as $key) {
+          ?>
+          <tr>
+              <td><?php echo $i; ?></td>
+              <td><?php echo $key->nama; ?></td>
+              <td><?php echo $key->nim; ?></td>
+              <td><?php echo $key->jurusan; ?></td>
+              <td><?php echo $key->email; ?></td>
+              <td><?php echo $key->jumlah; ?></td>
+              <td><?php echo $key->metode_pembayaran;?></td>
+              <td><?php echo $key->status; ?></td>
+              <td><input type="submit" name="accept" value="Accept"></td>
+              <td>
+              <!-- <a href="<?php echo site_url('tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
+              <a href="<?php echo site_url('tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
+                 -->
+              </td>
+          </tr>
+          <?php $i++; }?>
+        </table>
+              <?php }?>
       </div>  
     </div>    
     <!-- <a href="<?php echo base_url().'index.php/inventaris/index';?>">Tambah Data</a> -->
