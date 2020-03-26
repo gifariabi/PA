@@ -81,7 +81,7 @@ class Ormawa extends CI_Controller {
         $idOrganisasi = $this->input->post('idOrganisasi');
         $this->model_kas->kas_masuk($pemasukan_kas,$tanggal,$idOrganisasi);
                        
-        redirect('Ormawa/tampil_kas');
+        redirect('Ormawa/tampil_kas/'.$idOrganisasi);
     }
 
     public function simpan_kas_keluar(){
@@ -91,11 +91,16 @@ class Ormawa extends CI_Controller {
         $idOrganisasi = $this->input->post('idOrganisasi');
         $this->model_kas->kas_keluar($pengeluaran_kas,$keterangan,$tanggal,$idOrganisasi);
                        
-        redirect('Ormawa/tampil_kas');
+        redirect('Ormawa/tampil_kas/'.$idOrganisasi);
     }
 
     public function tampil_kas(){
-        $data['data'] = $this->model_kas->getKas();
+        redirect('Ormawa/kass/'.$idOrganisasi);
+    }
+
+    public function kass($idOrganisasi){
+        $idOrganisasi=$where;
+        $data['data'] = $this->model_kas->getKas($where)->result();
         $this->load->view('v_kas', $data);
     }
 

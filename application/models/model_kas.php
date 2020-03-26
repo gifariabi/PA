@@ -11,14 +11,19 @@ class model_kas extends CI_Model{
         $this->db->query($query);
     }
 
-    public function getKas(){
+    public function getKas($where){
     	$this->db->select('*');
         $this->db->from('kas');
-        //$this->db->where('MONTH(tanggal)', $tanggal);
-        $this->db->order_by('id_kas', 'ASC');
+        $this->db->where('idOrganisasi', $where);
         
-		$query = $this->db->get();
-		return $query->result();
+        $this->db->order_by('id_kas', 'ASC');
+        $query = $this->db->get();
+        if($query->num_rows() > 0) {
+            return $query;
+        }
+        
+		//$query = $this->db->get();
+		//return $query->result();
    	}
 
    	public function edit_kas($where,$table){      
