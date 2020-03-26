@@ -98,7 +98,7 @@ class Ormawa extends CI_Controller {
         redirect('Ormawa/kass/'.$idOrganisasi);
     }
 
-    public function kass($idOrganisasi){
+    public function kass($where){
         $idOrganisasi=$where;
         $data['data'] = $this->model_kas->getKas($where)->result();
         $this->load->view('v_kas', $data);
