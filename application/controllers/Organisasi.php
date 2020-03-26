@@ -64,7 +64,6 @@ class Organisasi extends CI_Controller {
             'foto'  => $user->foto,
             'noHP'  => $user->noHP,
             'idLine' => $user->idLine,
-            'idOrganisasi' => $user->idOrganisasi,
             'jabatan' => $user->jabatan,
             'prodi' => $user->prodi
             );
