@@ -62,7 +62,11 @@
         </a>
         <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< HEAD
           <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
+=======
+            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
+>>>>>>> f75224cbcedfeb07a74c44376e1cb0fe498f3876
             <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_total_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Total Kas</a>
           </div>
         </div>
@@ -398,9 +402,9 @@
    Lihat Kas
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/tampil_kas';?>">Semua</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasMasuk';?>">Lihat Kas Masuk</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasKeluar';?>">Lihat Kas Keluar</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/tampil_kas/'.$this->session->idOrganisasi;?>">Semua</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasMasuk/'.$this->session->idOrganisasi;?>">Lihat Kas Masuk</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasKeluar/'.$this->session->idOrganisasi;?>">Lihat Kas Keluar</a>
     </div>
     </div>
     </div>

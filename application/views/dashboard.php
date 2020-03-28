@@ -59,7 +59,11 @@
         </a>
         <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< HEAD
           <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
+=======
+            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
+>>>>>>> f75224cbcedfeb07a74c44376e1cb0fe498f3876
             <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_total_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Total Kas</a>
           </div>
         </div>
@@ -72,8 +76,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#" style="text-decoration: none">Kelola Pengurus</a>
-            <a class="collapse-item" href="#" style="text-decoration: none">Kelola Anggota</a>
+            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_pengurus" style="text-decoration: none">Kelola Pengurus</a>
+            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_anggota" style="text-decoration: none">Kelola Anggota</a>
           </div>
         </div>
       </li>
@@ -86,7 +90,6 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="#" style="text-decoration: none">Cek Presensi</a>
-            <a class="collapse-item" href="#" style="text-decoration: none">Cek Status Presensi</a>
           </div>
         </div>
       </li>
