@@ -66,9 +66,8 @@ class Ormawa extends CI_Controller {
     }
     
     public function inputan(){
-    	
-    	$this->load->view('tampil_ormawa',$data);
         $data['data']=$this->model_ormawa->tampil_ormawa();
+    	$this->load->view('tampil_ormawa',$data);
     }
 
     public function input_ormawa(){
