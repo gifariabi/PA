@@ -30,7 +30,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3"><?= $this->session->namaOrganisasi ?><sup>2019</sup></div>
+        <div class="sidebar-brand-text mx-3"><?= $this->session->namaOrganisasi; ?><sup>2019</sup></div>
       </a>
 
       <!-- Divider -->
