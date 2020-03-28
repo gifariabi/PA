@@ -368,7 +368,7 @@
         <div class="container-fluid">
 
 <center>
-<h1><b>Data Anggota</b></h1>
+<h1><b>Mahasiswa</b></h1>
 <hr>
 <hr>
     <br>
@@ -378,8 +378,7 @@
             <th>No</th>
             <th>Nim</th>
             <th>Nama</th>
-            <th>Jabatan</th>
-            <th colspan="2">Kelola</th>
+            <th>Kelola</th>
         </tr>
         <?php
             $i=1;
@@ -389,10 +388,8 @@
         <tr>
             <td><?php echo $i; ?></td>
             <td><?php echo $data->nim; ?></td>
-            <td><?php echo $data->nama; ?></td>
-            <td><?php echo $data->jabatan; ?></td>
-            <td><a href="<?= base_url().'/Ormawa/editAnggota/'.$data->nim;?>" class="btn btn-primary">Edit</a></td>
-            <td><a href="<?= base_url().'/Ormawa/hapus_anggota/'.$data->nim;?>" class="btn btn-danger">Hapus</a></td>
+            <td><?php echo $data->namaLengkap; ?></td>
+            <td><a href="<?= base_url().'/Ormawa/add_anggota/'.$data->nim;?>" class="btn btn-primary">Tambah</a></td>
         </tr>
         <?php $i++; }?>
     </table>

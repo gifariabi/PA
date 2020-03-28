@@ -1,4 +1,4 @@
-<?php
+s<?php
 class model_kas extends CI_Model{
 
 	public function kas_masuk($pemasukan_kas,$tanggal,$idOrganisasi){

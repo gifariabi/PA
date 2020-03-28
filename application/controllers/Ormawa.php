@@ -8,6 +8,7 @@ class Ormawa extends CI_Controller {
 		$this->load->helper(array('form', 'url','file'));
 		$this->load->model('model_ormawa');
         $this->load->model('model_kas');
+        $this->load->model('model_daftar');
         $this->load->library('form_validation');
         $this->load->library('upload');
         $this->load->library('image_lib');
@@ -305,5 +306,30 @@ class Ormawa extends CI_Controller {
         $where = array('nim' => $nim);
         $this->model_ormawa->hapus_anggota($where,'anggota');
         redirect('Ormawa/tampil_anggota');
+    }
+
+    public function tambah_anggota(){
+        $data['data'] = $this->model_ormawa->getAnggotabaru();
+        $this->load->view('v_anggotabaru', $data);
+    }
+
+    public function add_anggota(){
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $nim = $this->input->post('nim');
+        $nama = $this->input->post('nama');
+        $prodi = $this->input->post('prodi');
+        $idOrganisasi = $this->input->post('idOrganisasi');
+
+        $data=array('nim'=>$nim,
+                    'idOrganisasi'=>$idOrganisasi
+            );
+
+        $cek=$this->model_daftar->lihat_akun($nim)->num_rows();
+        if ($cek==0) {
+            $this->model_daftar->simpan($nim,$username,$password,$nama,$prodi);   
+        }
+        $this->model_daftar->insert($data,"ang_organisasi");
+        $this->load->view('v_anggota');
     }
 }

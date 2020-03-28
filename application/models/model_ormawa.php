@@ -97,5 +97,13 @@ class model_ormawa extends CI_Model{
             $this->db->update($table,$data);
         }
 
+        public function getAnggotabaru(){
+            $this->db->select('*');
+            $this->db->from('datauser');
+            
+            $query = $this->db->get();
+            return $query->result();
+        }
+
     }
 ?>
