@@ -65,7 +65,7 @@
             <p class="card-text"><?= $key->deskripsi ?></p>
           </div>
           <div class="card-footer">
-            <a href="<?= base_url() ?>Organisasi/dashboard?>">Masuk</a>
+            <a href="<?= base_url() ?>Organisasi/dashboard/<?= $key->idOrganisasi?>?>">Masuk</a>
           </div>
         </div>
       </div>
