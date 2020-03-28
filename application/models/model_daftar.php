@@ -5,6 +5,11 @@ class model_daftar extends CI_Model{
         $this->db->query($query);
     }
 
+    public function insertbaru($data,$table)
+    {
+        $this->db->insert($table,$data);
+    }
+
     public function edit_data($nim){      
         return $this->db->get_where('anggota',array('nim'=>$nim),1);
     }

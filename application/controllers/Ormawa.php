@@ -313,23 +313,26 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_anggotabaru', $data);
     }
 
-    public function add_anggota(){
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        $nim = $this->input->post('nim');
-        $nama = $this->input->post('nama');
-        $prodi = $this->input->post('prodi');
-        $idOrganisasi = $this->input->post('idOrganisasi');
+    public function add_anggota($nim){
+        $cek    = $this->model_daftar->view_where('datauser',array('nim'=>$nim))->result_array();
+        //$cek    = $this->model_daftar->view_where('datauser',array('nim' => $nim)->result_array());
+        $data   = array('nim' => $cek[0]['nim'],
+                    'username' => $cek[0]['username'],
+                    'nama' => $cek[0]['nama'],
+                    'prodi' => $cek[0]['prodi'],
+                    'password' => $cek[0]['password']
+                    );
 
-        $data=array('nim'=>$nim,
-                    'idOrganisasi'=>$idOrganisasi
-            );
+        $data2   = array('nim' => $cek[0]['nim'],
+                    'idOrganisasi' => $this->session->userdata('idOrganisasi')
+                    );
 
-        $cek=$this->model_daftar->lihat_akun($nim)->num_rows();
-        if ($cek==0) {
-            $this->model_daftar->simpan($nim,$username,$password,$nama,$prodi);   
+            $cek1=$this->model_daftar->lihat_akun($nim)->num_rows();
+        if ($cek1==0) {
+            $this->model_daftar->insertbaru($data, "anggota");   
         }
-        $this->model_daftar->insert($data,"ang_organisasi");
-        $this->load->view('v_anggota');
-    }
+            $this->model_daftar->insert($data2,"ang_organisasi");
+            redirect('Ormawa/tampil_anggota');
+        }
+
 }
