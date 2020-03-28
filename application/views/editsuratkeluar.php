@@ -59,6 +59,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
 =======
             <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
@@ -66,6 +67,9 @@
 =======
             <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
 >>>>>>> c66486732bdbc7c70c7f177f7d38735763a287b1
+=======
+            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
+>>>>>>> origin/master
             <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_total_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Total Kas</a>
           </div>
         </div>
