@@ -227,8 +227,14 @@ class Organisasi extends CI_Controller {
     }
 
     public function dashboard($idOrganisasi){
+<<<<<<< HEAD
         $this->session->set_userdata('idOrganisasi',$idOrganisasi);
     	redirect('Organisasi/show/'.$this->session->nim.'/'.$this->session->namaOrganisasi.'/'.$this->session->idOrganisasi);
+=======
+        //$this->session->set_userdata('namaOrganisasi',$namaOrganisasi);
+        $this->session->set_userdata('idOrganisasi',$idOrganisasi);
+    	redirect('Organisasi/show/'.$this->session->nim.'/'.$this->session->idOrganisasi);
+>>>>>>> c66486732bdbc7c70c7f177f7d38735763a287b1
     }
 
     public function show(){
