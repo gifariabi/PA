@@ -100,9 +100,20 @@ class model_ormawa extends CI_Model{
         public function getAnggotabaru(){
             $this->db->select('*');
             $this->db->from('datauser');
-            
+
             $query = $this->db->get();
             return $query->result();
+        }
+        public function deskripsi($where){
+            $this->db->SELECT('*');
+            $this->db->from('organisasi');
+            $this->db->where('idOrganisasi',$where);
+
+            $query = $this->db->get();
+            if($query->num_rows() > 0) {
+            return $query;
+        }
+
         }
 
     }

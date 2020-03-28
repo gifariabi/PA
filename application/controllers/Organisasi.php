@@ -29,30 +29,11 @@ class Organisasi extends CI_Controller {
 		$this->load->view('buat_organisasi');
 	}
 
-	public function halaman_daftar($idOrganisasi,$logo){
-		$data = array('id'=>$idOrganisasi,'logo'=>$logo);
+	public function halaman_daftar($where){
+        $data['data'] = $this->model_ormawa->deskripsi($where)->result();
+		//$data = array('id'=>$idOrganisasi,'logo'=>$logo,'deskripsi'=>$deskripsi);
 		$this->load->view('halaman_daftar',$data);
 	}
-
-	public function simpan_daftar(){
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        $nim = $this->input->post('nim');
-        $nama = $this->input->post('nama');
-        $prodi = $this->input->post('prodi');
-       	$idOrganisasi = $this->input->post('idOrganisasi');
-
-       	$data=array('nim'=>$nim,
-       				'idOrganisasi'=>$idOrganisasi
-       		);
-
-        $cek=$this->model_daftar->lihat_akun($nim)->num_rows();
-        if ($cek==0) {
-            $this->model_daftar->simpan($nim,$username,$password,$nama,$prodi);   
-        }
-        $this->model_daftar->insert($data,"ang_organisasi");
-        redirect('Organisasi/tampilan_awal/'.$nim);
-    }
 
     public function lihat_akun(){ 
         $user = $this->model_daftar->ambil_akun($this->session->nim)->row();

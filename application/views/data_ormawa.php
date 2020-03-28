@@ -35,9 +35,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="<?= site_url('Login/logout') ?>">Logout</a>
           </li>
         </ul>
@@ -70,8 +67,7 @@
             <p class="card-text"><?= $data->deskripsi ?></p>
           </div>
           <div class="card-footer">
-            <a href="<?= base_url() ?>Organisasi/halaman_daftar/<?= $data->idOrganisasi;?>/<?=$data->logo;?>" class="btn btn-primary">Daftar</a>
-            <a href="#" class="btn btn-primary">Tentang</a>
+            <a href="<?= base_url() ?>Organisasi/halaman_daftar/<?= $data->idOrganisasi;?>" class="btn btn-primary">Tentang</a>
           </div>
         </div>
       </div>
