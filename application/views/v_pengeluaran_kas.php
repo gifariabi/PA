@@ -385,6 +385,10 @@
 		<td>Tanggal</td>
 		<td><input type="date" name="tanggal" style="width: 100%"></td>
 	</tr>
+   <tr>
+    
+    <td><input type="hidden" name="idOrganisasi"></td>
+  </tr>
 	<tr>
 		<td></td>
 		<td align="center">

@@ -16,14 +16,20 @@ class Login extends CI_Controller{
 		redirect('Organisasi/tampilan_awal/'.$this->session->nim);
 	}
 
-
 	public function login(){
 		$this->load->view('login_sso');
 	}
 
 	public function aksi_login(){
-		if ($this->session->username) {
-			redirect('Organisasi/tampilan_awal/'.$this->session->nim);
+		if ($this->session->username == 'bk' && $this->session->password == 'bk' ) {
+				redirect('Organisasi/buat_organisasi');
+			}
+
+		else {
+			if ($this->session->username) {
+				redirect('Organisasi/tampilan_awal/'.$this->session->nim);
+			}
+			
 		}
 
 		if ($this->input->method(TRUE) == 'GET') {
@@ -46,7 +52,8 @@ class Login extends CI_Controller{
 						'namaOrganisasi'=> $user[0]->namaOrganisasi,
 						'password'		=> $user[0]->password));
 				redirect('/Login');
-			} else {
+			} 
+			 else {
 				$this->session->set_flashdata(
 					'pesan', 'Username atau Password salah.');
 				$this->load->view('login_sso');
