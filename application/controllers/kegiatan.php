@@ -33,16 +33,39 @@
                 $this->load->view('input_kegiatan');
             }
             else {
+                $id = $this->input->post('id_kegiatan');
                 $nama = $this->input->post('nama_kegiatan');
                 $waktu = $this->input->post('waktu');
                 $tempat = $this->input->post('tempat');
                 $id_programkerja = $this->input->post('id_programkerja');
+
+                $this->load->library('ciqrcode');
+                $config['cacheable'] = true;
+                $config['cachedir'] = './assets/';
+                $config['errorlog'] = './assets/';
+                $config['imagedir'] = './assets/images/';
+                $config['quality'] = true;
+                $config['size'] = '1024';
+                $config['black'] = array(224,255,255);
+                $config['white'] = array(70,130,180);
+                
+                $this->ciqrcode->initialize($config);
+                
+                $image_name = $nama.'.png';
+
+                $params['data'] = $id;
+                $params['level'] = 'H';
+                $params['size'] = '10';
+                $params['savename'] = FCPATH.$config['imagedir'].$image_name;
+                $this->ciqrcode->generate($params);
                 
                 $data = array(
+                    'id_kegiatan' => $id,
                     'nama_kegiatan' => $nama, 
                     'waktu' => $waktu,
                     'tempat' => $tempat,
                     'id_programkerja' => $id_programkerja,
+                    'qr_code' => $image_name
                 );
                 $this->kegiatan_model->data($data,'kegiatan');
                 redirect('kegiatan/displaydata');

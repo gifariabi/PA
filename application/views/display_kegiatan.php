@@ -43,23 +43,11 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
-         <span>Kas</span>
+          <span>Kas</span>
         </a>
         <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
           <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
-=======
-            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
->>>>>>> f75224cbcedfeb07a74c44376e1cb0fe498f3876
-=======
-            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
->>>>>>> c66486732bdbc7c70c7f177f7d38735763a287b1
-=======
-            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
->>>>>>> origin/master
             <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_total_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Total Kas</a>
           </div>
         </div>
@@ -388,6 +376,7 @@
               <th>Nama Kegiatan</th>
               <th>Waktu Pelaksanaan</th>
               <th>Tempat Pelaksanaan</th>
+              <th>QRCODE</th>
               <th>Aksi</th>
           </tr>
           <?php
@@ -399,6 +388,7 @@
               <td><?php echo $key->nama_kegiatan; ?></td>
               <td><?php echo $key->waktu; ?></td>
               <td><?php echo $key->tempat; ?></td>
+              <td><img src="<?php echo base_url().'assets/images/'.$key->qr_code; ?>" style="width: 100px" alt=""></td>
               <td>
               <a href="<?php echo site_url('kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary">Edit</a>
               <!-- <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a>     -->
