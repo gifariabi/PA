@@ -16,8 +16,14 @@
             $config['max_size']         = '6000';
 
             $this->load->library('upload',$config);
-            if (! $this->upload->do_upload('userfile')) {
-                // $error = array('error' =>);
+            if ($this->upload->do_upload('file')) {
+                $error = array('error' => $this->upload->display_errors());
+                $this->load->view('input_lpj',$error);
+            }else {
+                $data = array(
+                        'file' => $this->upload->data()['file_name']);
+                        $this->model_lpj->input_data('lpj',$data)->result();
+
             }
         }
     }

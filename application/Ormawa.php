@@ -66,9 +66,9 @@ class Ormawa extends CI_Controller {
     }
     
     public function inputan(){
-    	
-    	$this->load->view('tampil_ormawa',$data);
         $data['data']=$this->model_ormawa->tampil_ormawa();
+        $this->load->view('tampil_ormawa',$data);
+        
     }
 
     public function input_ormawa(){
@@ -79,8 +79,6 @@ class Ormawa extends CI_Controller {
         $pemasukan_kas = $this->input->post('pemasukan_kas');
         $tanggal = $this->input->post('tanggal');
         $idOrganisasi = $this->input->post('idOrganisasi');
-
-        $data = array('idOrganisasi'=> $idOrganisasi);
         $this->model_kas->kas_masuk($pemasukan_kas,$tanggal,$idOrganisasi);
                        
         redirect('Ormawa/tampil_kas/'.$idOrganisasi);
@@ -91,10 +89,8 @@ class Ormawa extends CI_Controller {
         $keterangan = $this->input->post('keterangan');
         $tanggal = $this->input->post('tanggal');
         $idOrganisasi = $this->input->post('idOrganisasi');
-
-        //$data = array('idOrganisasi'=> $idOrganisasi);
         $this->model_kas->kas_keluar($pengeluaran_kas,$keterangan,$tanggal,$idOrganisasi);
-        //echo $idOrganisasi;
+                       
         redirect('Ormawa/tampil_kas/'.$idOrganisasi);
     }
 
@@ -103,6 +99,7 @@ class Ormawa extends CI_Controller {
         $data['data'] = $this->model_kas->getKas($where)->result();
         $this->load->view('v_kas', $data);
     }
+
 
     public function tampil_total_kas(){
         $total_kas['total_kas'] = $this->model_kas->getTotalKas()->result();

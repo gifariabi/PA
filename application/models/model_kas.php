@@ -14,7 +14,7 @@ class model_kas extends CI_Model{
     public function getKas($where){
     	$this->db->select('*');
         $this->db->from('kas');
-        $this->db->where('idOrganisasi', $where);
+        $this->db->where('idOrganisasi',$where);
         
         $this->db->order_by('id_kas', 'ASC');
         $query = $this->db->get();

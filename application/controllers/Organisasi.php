@@ -64,7 +64,6 @@ class Organisasi extends CI_Controller {
             'foto'  => $user->foto,
             'noHP'  => $user->noHP,
             'idLine' => $user->idLine,
-            'idOrganisasi' => $user->idOrganisasi,
             'jabatan' => $user->jabatan,
             'prodi' => $user->prodi
             );
@@ -77,8 +76,10 @@ class Organisasi extends CI_Controller {
 		$this->load->view('halaman_awal', $data);
     }
 
-    public function dashboard(){
-    	redirect('Organisasi/show/'.$this->session->nim.'/'.$this->session->namaOrganisasi);
+    public function dashboard($idOrganisasi){
+        //$this->session->set_userdata('namaOrganisasi',$namaOrganisasi);
+        $this->session->set_userdata('idOrganisasi',$idOrganisasi);
+    	redirect('Organisasi/show/'.$this->session->nim.'/'.$this->session->idOrganisasi);
     }
 
     public function show(){
