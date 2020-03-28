@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Mar 2020 pada 20.51
+-- Waktu pembuatan: 28 Mar 2020 pada 12.53
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -162,6 +162,7 @@ CREATE TABLE `kegiatan` (
   `nama_kegiatan` varchar(255) COLLATE utf8_bin NOT NULL,
   `waktu` varchar(255) COLLATE utf8_bin NOT NULL,
   `tempat` varchar(255) COLLATE utf8_bin NOT NULL,
+  `qr_code` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_programkerja` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -169,8 +170,9 @@ CREATE TABLE `kegiatan` (
 -- Dumping data untuk tabel `kegiatan`
 --
 
-INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `id_programkerja`) VALUES
-(3, 'MANIAC 2020', '2020-10-09', 'Gallery dan Batununggal Sport Center', 2);
+INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `qr_code`, `id_programkerja`) VALUES
+(3, 'MANIAC 2020', '2020-10-09', 'Gallery dan Batununggal Sport Center', '', 2),
+(5, 'Seminar Android', '2020-01-01', 'Aula Fakultas Ilmu Terapan', 'Seminar Android.png', 2);
 
 -- --------------------------------------------------------
 
@@ -348,6 +350,7 @@ CREATE TABLE `tiket` (
   `email` varchar(255) COLLATE utf8_bin NOT NULL,
   `jumlah` varchar(255) COLLATE utf8_bin NOT NULL,
   `metode_pembayaran` varchar(255) COLLATE utf8_bin NOT NULL,
+  `status` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -355,8 +358,9 @@ CREATE TABLE `tiket` (
 -- Dumping data untuk tabel `tiket`
 --
 
-INSERT INTO `tiket` (`no_tiket`, `nama`, `nim`, `jurusan`, `email`, `jumlah`, `metode_pembayaran`, `id_kegiatan`) VALUES
-(1, 'Yusril Wahyuda', '6701174101', 'D3 Sistem Informasi', 'wahyudayusril29@gmail.com', '1', 'Transfer', 3);
+INSERT INTO `tiket` (`no_tiket`, `nama`, `nim`, `jurusan`, `email`, `jumlah`, `metode_pembayaran`, `status`, `id_kegiatan`) VALUES
+(1, 'Yusril Wahyuda', '6701174101', 'D3 Sistem Informasi', 'wahyudayusril29@gmail.com', '1', 'Transfer', '', 3),
+(2, 'GIfari Abi Waqqash', '6701174033', 'D3 Sistem Informasi', 'gifariabi75@gmail.com', '1', 'Cash', '', 3);
 
 -- --------------------------------------------------------
 
@@ -505,7 +509,7 @@ ALTER TABLE `kas`
 -- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `lpj`
@@ -553,7 +557,7 @@ ALTER TABLE `tahun_ajaran`
 -- AUTO_INCREMENT untuk tabel `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
