@@ -69,6 +69,7 @@ class model_ormawa extends CI_Model{
         public function getAnggota(){
             $this->db->select('nim, nama, jabatan');
             $this->db->from('anggota');
+            $this->db->where('nim != 0');
         
             $query = $this->db->get();
             return $query->result();
