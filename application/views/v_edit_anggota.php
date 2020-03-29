@@ -370,7 +370,7 @@
 <?php foreach($data as $u){ ?>
 <center><h1>Edit Anggota</h1>
 </center>
-	<form action="<?= base_url() ?>index.php/Ormawa/update_anggota" method="POST">
+	<form action="<?= base_url() ?>index.php/Ormawa/update_anggota/<?=$this->session->userdata('idOrganisasi')?>" method="POST">
 	<table style="margin: 20px auto;">
 		<body>
 			<tr>

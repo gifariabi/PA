@@ -273,8 +273,8 @@ class Ormawa extends CI_Controller {
     }
 
     //Anggota
-    public function tampil_anggota(){
-        $data['data'] = $this->model_ormawa->getAnggota();
+    public function tampil_anggota($where){
+        $data['data'] = $this->model_ormawa->getAnggota($where);
         $this->load->view('v_anggota', $data);
     }
 
@@ -299,7 +299,8 @@ class Ormawa extends CI_Controller {
         );
  
         $this->model_ormawa->update_anggota($where,$data,'anggota');
-        redirect('Ormawa/tampil_anggota');
+        redirect('Ormawa/tampil_anggota/'.$this->session->set_userdata('idOrganisasi'));
+        //echo "Berhasil Diubah";
     }
 
     public function hapus_anggota($nim){

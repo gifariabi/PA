@@ -89,7 +89,6 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="#" style="text-decoration: none">Cek Presensi</a>
-            <a class="collapse-item" href="#" style="text-decoration: none">Cek Status Presensi</a>
           </div>
         </div>
       </li>

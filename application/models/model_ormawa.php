@@ -66,13 +66,24 @@ class model_ormawa extends CI_Model{
         $this->db->delete($table,$where);
         }
 
-        public function getAnggota(){
-            $this->db->select('nim, nama, jabatan');
+        public function getAnggota($where){
+            /*$this->db->select('nim, nama, jabatan');
             $this->db->from('anggota');
             $this->db->where('nim != 0');
         
             $query = $this->db->get();
-            return $query->result();
+            return $query->result();*/
+
+            $this->db->select('*');
+            $this->db->from('organisasi o');
+            $this->db->join('ang_organisasi an','o.idOrganisasi =  an.idOrganisasi');
+            $this->db->join('anggota a','an.nim =  a.nim');
+            $this->db->where('o.idOrganisasi', $where);
+
+            $query = $this->db->get();
+            if($query->num_rows() > 0) {
+                return $query->result();
+            }
         }
 
         public function edit_anggota($where,$table){      
