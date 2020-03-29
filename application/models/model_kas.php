@@ -1,16 +1,6 @@
 s<?php
 class model_kas extends CI_Model{
 
-	public function kas_masuk($pemasukan_kas,$tanggal,$idOrganisasi){
-      	$query = "INSERT INTO kas VALUES('','$pemasukan_kas','','','$tanggal','1')";
-        $this->db->query($query);
-    }
-
-    public function kas_keluar($pengeluaran_kas,$keterangan,$tanggal,$idOrganisasi){
-      	$query = "INSERT INTO kas VALUES('','','$pengeluaran_kas','$keterangan','$tanggal','1')";
-        $this->db->query($query);
-    }
-
     public function getKas($where){
     	$this->db->select('*');
         $this->db->from('kas');
@@ -18,12 +8,9 @@ class model_kas extends CI_Model{
         
         $this->db->order_by('id_kas', 'ASC');
         $query = $this->db->get();
-        if($query->num_rows() > 0) {
+        //if($query->num_rows() > 0) {
             return $query;
-        }
-        
-		//$query = $this->db->get();
-		//return $query->result();
+        //}
    	}
 
    	public function edit_kas($where,$table){      
@@ -174,19 +161,25 @@ class model_kas extends CI_Model{
         return $query;
     }
 
-    public function get_kasMasuk(){
+    public function get_kasMasuk($where){
         $this->db->SELECT("*");
         $this->db->from("kas");
         $this->db->where("pemasukan_kas > 0 ");
+        $this->db->where('idOrganisasi', $where);
         $query = $this->db->get();
         return $query;
     }
 
-    public function get_kasKeluar(){
+    public function get_kasKeluar($where){
         $this->db->SELECT("*");
         $this->db->from("kas");
         $this->db->where("pengeluaran_kas > 0 ");
+        $this->db->where('idOrganisasi', $where);
         $query = $this->db->get();
         return $query;
+    }
+
+    public function insert($data,$table){
+        $this->db->insert($table,$data);
     }
 }

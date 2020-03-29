@@ -375,10 +375,10 @@
     <table border="1">
    
   <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
    Bulan
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_januari';?>">Januari</a>
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_februari';?>">Februari</a>
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_maret';?>">Maret</a>
@@ -399,8 +399,8 @@
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/tampil_kas/'.$this->session->userdata('idOrganisasi');?>">Semua</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasMasuk';?>">Lihat Kas Masuk</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasKeluar';?>">Lihat Kas Keluar</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasMasuk/'.$this->session->userdata('idOrganisasi');?>">Lihat Kas Masuk</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasKeluar/'.$this->session->userdata('idOrganisasi');?>">Lihat Kas Keluar</a>
     </div>
     </div>
     </div>
@@ -430,7 +430,7 @@
         <br/>
         <a href="<?php echo base_url().'index.php/Ormawa/v_pemasukan_kas';?>" class="btn btn-success">Catat Kas Masuk</a>
         <a href="<?php echo base_url().'index.php/Ormawa/v_pengeluaran_kas';?>" class="btn btn-danger">Catat Kas Keluar</a>
-        <a href="<?php echo base_url().'index.php/Ormawa/tampil_total_laporan';?>" class="btn btn-primary">Laporan Kas</a>
+        <a href="<?php echo base_url().'index.php/Ormawa/tampil_total_laporan/'.$this->session->userdata('idOrganisasi');?>" class="btn btn-primary">Laporan Kas</a>
 
 </center>
 

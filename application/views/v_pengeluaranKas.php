@@ -398,9 +398,9 @@
    Lihat Kas
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/tampil_kas';?>">Semua</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasMasuk';?>">Lihat Kas Masuk</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasKeluar';?>">Lihat Kas Keluar</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/tampil_kas/'.$this->session->userdata('idOrganisasi');?>">Semua</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasMasuk/'.$this->session->userdata('idOrganisasi');?>">Lihat Kas Masuk</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasKeluar/'.$this->session->userdata('idOrganisasi');?>">Lihat Kas Keluar</a>
     </div>
     </div>
     </div>

@@ -78,12 +78,14 @@ class Ormawa extends CI_Controller {
     public function simpan_kas_masuk(){
         $pemasukan_kas = $this->input->post('pemasukan_kas');
         $tanggal = $this->input->post('tanggal');
-        $idOrganisasi = $this->input->post('idOrganisasi');
-
-        $data = array('idOrganisasi'=> $idOrganisasi);
-        $this->model_kas->kas_masuk($pemasukan_kas,$tanggal,$idOrganisasi);
+        
+        $data   = array('pemasukan_kas' => $pemasukan_kas,
+                    'tanggal' => $tanggal,
+                    'idOrganisasi' => $this->session->userdata('idOrganisasi')
+                    );
+        $this->model_kas->insert($data,"kas");
                        
-        redirect('Ormawa/tampil_kas/'.$idOrganisasi);
+        redirect('Ormawa/tampil_kas/'.$this->session->userdata('idOrganisasi'));
     }
 
     public function simpan_kas_keluar(){
@@ -92,10 +94,14 @@ class Ormawa extends CI_Controller {
         $tanggal = $this->input->post('tanggal');
         $idOrganisasi = $this->input->post('idOrganisasi');
 
-        //$data = array('idOrganisasi'=> $idOrganisasi);
-        $this->model_kas->kas_keluar($pengeluaran_kas,$keterangan,$tanggal,$idOrganisasi);
-        //echo $idOrganisasi;
-        redirect('Ormawa/tampil_kas/'.$idOrganisasi);
+        $data   = array('pengeluaran_kas' => $pengeluaran_kas,
+                    'keterangan' => $keterangan,
+                    'tanggal' => $tanggal,
+                    'idOrganisasi' => $this->session->userdata('idOrganisasi')
+                    );
+
+        $this->model_kas->insert($data,"kas");
+        redirect('Ormawa/tampil_kas/'.$this->session->userdata('idOrganisasi'));
     }
 
     public function tampil_kas($where){
@@ -141,7 +147,7 @@ class Ormawa extends CI_Controller {
         );
  
         $this->model_kas->update_kas($where,$data,'kas');
-        redirect('Ormawa/tampil_kas');
+        redirect('Ormawa/tampil_kas/'.$this->session->userdata('idOrganisasi'));
     }
 
     public function v_pemasukan_kas(){
@@ -155,7 +161,7 @@ class Ormawa extends CI_Controller {
     public function hapus_kas($id_kas){
         $where = array('id_kas' => $id_kas);
         $this->model_kas->hapus_kas($where,'kas');
-        redirect('Ormawa/tampil_kas');
+        redirect('Ormawa/tampil_kas/'.$this->session->userdata('idOrganisasi'));
     }
 //Bulan
     public function v_januari(){
@@ -218,13 +224,13 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_kas',$data);
     }
 
-    public function v_kasMasuk(){
-        $data['data'] = $this->model_kas->get_kasMasuk()->result();
+    public function v_kasMasuk($where){
+        $data['data'] = $this->model_kas->get_kasMasuk($where)->result();
         $this->load->view('v_kas',$data);
     }  
 
-    public function v_kasKeluar(){
-        $data['data'] = $this->model_kas->get_kasKeluar()->result();
+    public function v_kasKeluar($where){
+        $data['data'] = $this->model_kas->get_kasKeluar($where)->result();
         $this->load->view('v_pengeluaranKas',$data);
     } 
 
@@ -297,15 +303,14 @@ class Ormawa extends CI_Controller {
         );
  
         $this->model_ormawa->update_anggota($where,$data,'ang_organisasi');
-        //redirect('Ormawa/tampil_anggota/'.$this->session->set_userdata('idOrganisasi'));
-        echo "Berhasil Diubah";
+        redirect('Ormawa/tampil_anggota/'.$this->session->userdata('idOrganisasi'));
+        //echo "Berhasil Diubah";
     }
 
     public function hapus_anggota($nim){
         $where = array('nim' => $nim);
         $this->model_ormawa->hapus_anggota($where,'ang_organisasi');
-        //redirect('Ormawa/tampil_anggota');
-        echo "Berhasil Dihapus";
+        redirect('Ormawa/tampil_anggota/'.$this->session->userdata('idOrganisasi'));
     }
 
     public function tambah_anggota(){
@@ -324,6 +329,7 @@ class Ormawa extends CI_Controller {
                     );
 
         $data2   = array('nim' => $cek[0]['nim'],
+                        'nama' => $cek[0]['nama'],
                     'idOrganisasi' => $this->session->userdata('idOrganisasi')
                     );
 
@@ -332,7 +338,7 @@ class Ormawa extends CI_Controller {
             $this->model_daftar->insertbaru($data, "anggota");   
         }
             $this->model_daftar->insert($data2,"ang_organisasi");
-            redirect('Ormawa/tampil_anggota');
+            redirect('Ormawa/tampil_anggota/'.$this->session->userdata('idOrganisasi'));
         }
 
 }
