@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Mar 2020 pada 12.53
+-- Waktu pembuatan: 29 Mar 2020 pada 19.45
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -59,8 +59,11 @@ CREATE TABLE `anggota` (
 --
 
 INSERT INTO `anggota` (`nim`, `username`, `password`, `nama`, `jabatan`, `noWA`, `noHP`, `idLine`, `foto`, `prodi`, `nim_pengurus`) VALUES
-(670117403, 'gifariabi', 'gifariabi', 'gifari abi waqqash', 'Anggota Devisi Olahraga', '085868442225', '085868442226', 'gifarifr', '', 'D3 Sistem Informasi', 0),
-(670117410, 'Luqman', 'luqman123', 'Muhammad Luqman', 'Sekertaris', '080808099', '080808089', 'luqmaneuy', '', 'D3 Sistem Informasi', 1);
+(0, 'bk', 'bk', '', '', '', '', '', '', '', 999),
+(670117400, 'yusril', 'yusril123', 'Yusril Wahyuda', 'Anggota Devisi Olahraga', '', '', '', 'b60e2ca62d0a36db693c98d0191a9586.jpg', 'D3SI', 0),
+(670117403, 'gifariabi', 'gifariabi', 'Gifari Abi Waqqash', 'Anggota Devisi Olahraga', '085868442225', '085868442226', 'gifarifr', '217af0b91e134c93fe445afec6e3c284.jpg', 'D3 Sistem Informasi', 0),
+(670117410, 'Luqman', 'luqman123', 'Muhammad Luqman', 'Sekertaris', '080808099', '080808089', 'luqmaneuy', 'bb88473976953ee93c979a286cdd6ccf.jpg', 'D3 Sistem Informasi', 1),
+(670117455, 'eko', 'eko', 'Eko Adinata', 'Anggota Devisi Olahraga', '', '', '', '', 'D3SI', 0);
 
 -- --------------------------------------------------------
 
@@ -70,16 +73,20 @@ INSERT INTO `anggota` (`nim`, `username`, `password`, `nama`, `jabatan`, `noWA`,
 
 CREATE TABLE `ang_organisasi` (
   `nim` int(11) NOT NULL,
-  `idOrganisasi` int(11) NOT NULL
+  `nama` varchar(255) NOT NULL,
+  `idOrganisasi` int(11) NOT NULL,
+  `jabatan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
 --
 -- Dumping data untuk tabel `ang_organisasi`
 --
 
-INSERT INTO `ang_organisasi` (`nim`, `idOrganisasi`) VALUES
-(670117403, 1),
-(670117410, 1);
+INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
+(670117403, '', 1, 'Anggota Devisi Olahraga'),
+(670117410, 'Muhammad Luqman', 1, 'Sekertaris'),
+(670117400, '', 1, 'Anggota Devisi Olahraga'),
+(670117410, 'Muhammad Luqman', 5, 'Sekertaris');
 
 -- --------------------------------------------------------
 
@@ -88,7 +95,7 @@ INSERT INTO `ang_organisasi` (`nim`, `idOrganisasi`) VALUES
 --
 
 CREATE TABLE `datauser` (
-  `namaLengkap` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
   `nim` varchar(10) NOT NULL,
   `jenisKelamin` varchar(15) DEFAULT NULL,
   `prodi` varchar(20) DEFAULT NULL,
@@ -101,11 +108,9 @@ CREATE TABLE `datauser` (
 -- Dumping data untuk tabel `datauser`
 --
 
-INSERT INTO `datauser` (`namaLengkap`, `nim`, `jenisKelamin`, `prodi`, `username`, `password`, `foto`) VALUES
-('yusril wahyuda', '6701174001', 'Laki-laki', 'D3SI', 'yusril', 'yusril', NULL),
-('Muhammad luqman', '6701174014', 'Laki-laki', 'D3 Sistem Informasi', 'admin', 'admin', 'admin.jpg'),
-('Gifari Abi Waqqash', '6701174033', 'Laki-laki', 'D3SI', 'gifariabi', 'gifariabi', NULL),
-('Eko adinata', '6701174556', 'Laki-laki', 'D3SI', 'eko', 'eko', NULL);
+INSERT INTO `datauser` (`nama`, `nim`, `jenisKelamin`, `prodi`, `username`, `password`, `foto`) VALUES
+('yusril wahyuda', '670117400', 'Laki-laki', 'D3SI', 'yusril', 'yusril', NULL),
+('Eko adinata', '670117455', 'Laki-laki', 'D3SI', 'eko', 'eko', NULL);
 
 -- --------------------------------------------------------
 
@@ -172,7 +177,8 @@ CREATE TABLE `kegiatan` (
 
 INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `qr_code`, `id_programkerja`) VALUES
 (3, 'MANIAC 2020', '2020-10-09', 'Gallery dan Batununggal Sport Center', '', 2),
-(5, 'Seminar Android', '2020-01-01', 'Aula Fakultas Ilmu Terapan', 'Seminar Android.png', 2);
+(5, 'Seminar Android', '2020-01-01', 'Aula Fakultas Ilmu Terapan', 'Seminar Android.png', 2),
+(6, 'Bangkit yok', '2020-03-30', 'Gallery dan Batununggal Sport Center', 'Bangkit yok.png', 2);
 
 -- --------------------------------------------------------
 
@@ -509,7 +515,7 @@ ALTER TABLE `kas`
 -- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `lpj`

@@ -74,7 +74,7 @@ class model_ormawa extends CI_Model{
             $query = $this->db->get();
             return $query->result();*/
 
-            $this->db->select('*');
+            $this->db->select('a.nama, an.nim, an.jabatan, o.idOrganisasi');
             $this->db->from('organisasi o');
             $this->db->join('ang_organisasi an','o.idOrganisasi =  an.idOrganisasi');
             $this->db->join('anggota a','an.nim =  a.nim');

@@ -280,17 +280,15 @@ class Ormawa extends CI_Controller {
 
     public function editAnggota($nim){
     $where = array('nim' => $nim);
-    $data['data'] = $this->model_ormawa->edit_anggota($where,'anggota')->result();
+    $data['data'] = $this->model_ormawa->edit_anggota($where,'ang_organisasi')->result();
     $this->load->view('v_edit_anggota',$data);
     }
 
     public function update_anggota(){
         $nim = $this->input->post('nim');
-        $nama = $this->input->post('nama');
         $jabatan = $this->input->post('jabatan');
  
         $data = array(
-        'nama' => $nama,
         'jabatan' => $jabatan
         );
  
@@ -298,15 +296,16 @@ class Ormawa extends CI_Controller {
         'nim' => $nim
         );
  
-        $this->model_ormawa->update_anggota($where,$data,'anggota');
-        redirect('Ormawa/tampil_anggota/'.$this->session->set_userdata('idOrganisasi'));
-        //echo "Berhasil Diubah";
+        $this->model_ormawa->update_anggota($where,$data,'ang_organisasi');
+        //redirect('Ormawa/tampil_anggota/'.$this->session->set_userdata('idOrganisasi'));
+        echo "Berhasil Diubah";
     }
 
     public function hapus_anggota($nim){
         $where = array('nim' => $nim);
-        $this->model_ormawa->hapus_anggota($where,'anggota');
-        redirect('Ormawa/tampil_anggota');
+        $this->model_ormawa->hapus_anggota($where,'ang_organisasi');
+        //redirect('Ormawa/tampil_anggota');
+        echo "Berhasil Dihapus";
     }
 
     public function tambah_anggota(){
