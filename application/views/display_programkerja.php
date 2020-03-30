@@ -394,21 +394,22 @@
               <th>Aksi</th>
           </tr>
           <?php
+          if(is_array($data) || is_object($data)){
               $i=1;
-              foreach ($data as $key) {
+              foreach ($data as $data) {
           ?>
           <tr>
               <td><?php echo $i; ?></td>
-              <td><?php echo $key->nama_programkerja; ?></td>
-              <td><?php echo $key->waktu_pelaksanaan; ?></td>
-              <td><?php echo $key->departemen; ?></td>
+              <td><?php echo $data->nama_programkerja; ?></td>
+              <td><?php echo $data->waktu_pelaksanaan; ?></td>
+              <td><?php echo $data->departemen; ?></td>
               <td>
-              <a href="<?php echo site_url('programkerja/edit/'.$key->id_programkerja); ?>" class="btn btn-primary">Edit</a>
-              <a href="<?php echo site_url('programkerja/hapus/'.$key->id_programkerja); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a>    
+              <a href="<?php echo base_url(); ?>programkerja/edit/<?php $data->id_programkerja; ?>" class="btn btn-primary">Edit</a>
+              <a href="<?php echo base_url(); ?>kegiatan/save/<?php $data->id_programkerja; ?>" class="btn btn-danger">Input Kegiatan</a>    
                 
               </td>
           </tr>
-          <?php $i++; }?>
+          <?php $i++; }}?>
         </table>
       </div>  
     </div>    

@@ -45,13 +45,13 @@
                 redirect('programkerja/displaydata');
             }
         }
-        public function displaydata(){
+        public function displaydata($where){
             $newdata = $this->session->userdata('jabatan');
             if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('programkerja');
             }else{
-                $data['data']=$this->proker_model->tampil()->result();
+                $data['data']=$this->proker_model->tampil($where);
                 $this->load->view('display_programkerja',$data);
             }
         }

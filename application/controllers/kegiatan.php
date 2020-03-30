@@ -20,6 +20,22 @@
                 $this->load->view('input_kegiatan');
             }
         }
+
+        public function save2($id){
+            $this->session->set_userdata('id_programkerja',$id);
+    	    redirect('kegiatan/show/'.$this->session->id_programkerja);
+        }
+
+        public function show(){
+            $this->load->view('input_kegiatan');
+        }
+
+        public function save($id_programkerja){
+            $where = array('id_programkerja'=>$id_programkerja);
+            $data['data'] = $this->kegiatan_model->getId($where,'kegiatan')->result();
+            $this->load->view('input_kegiatan');
+        }
+
         public function simpan(){
             // $this->form_validation->set_rules('fieldname', 'fieldlabel', 'trim|required|min_length[5]|max_length[12]');
             
@@ -37,7 +53,7 @@
                 $nama = $this->input->post('nama_kegiatan');
                 $waktu = $this->input->post('waktu');
                 $tempat = $this->input->post('tempat');
-                $id_programkerja = $this->input->post('id_programkerja');
+                // $id_programkerja = $this->input->post('id_programkerja');
 
                 $this->load->library('ciqrcode');
                 $config['cacheable'] = true;
@@ -64,11 +80,11 @@
                     'nama_kegiatan' => $nama, 
                     'waktu' => $waktu,
                     'tempat' => $tempat,
-                    'id_programkerja' => $id_programkerja,
-                    'qr_code' => $image_name
+                    'qr_code' => $image_name,
+                    'id_programkerja' => $this->session->userdata('id_programkerja')
                 );
                 $this->kegiatan_model->data($data,'kegiatan');
-                redirect('kegiatan/displaydata');
+                redirect('kegiatan/displaydata/'.$this->session->userdata('id_programkerja'));
             }
         }
         public function displaydata(){
@@ -81,13 +97,13 @@
                 $this->load->view('display_kegiatan',$data);
             }
         }
-        public function displaykegiatan(){
+        public function displaykegiatan($where){
             $newdata = $this->session->userdata('jabatan');
             if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('kegiatan');
             }else{
-                $data['data']=$this->kegiatan_model->tampil()->result();
+                $data['data']=$this->kegiatan_model->tampil($where)->result();
                 // print_r($data);
                 $this->load->view('display_kegiatan2',$data);
             }
