@@ -401,7 +401,7 @@
               <td><?php echo $data->departemen; ?></td>
               <td>
               <a href="<?php echo base_url(); ?>programkerja/edit/<?php $data->id_programkerja; ?>" class="btn btn-primary">Edit</a>
-              <a href="<?php echo base_url(); ?>kegiatan/save/<?php $data->id_programkerja; ?>" class="btn btn-danger">Input Kegiatan</a>    
+              <a href="<?php echo base_url(); ?>kegiatan/kegiatan/" class="btn btn-danger">Input Kegiatan</a>    
                 
               </td>
           </tr>

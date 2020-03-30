@@ -84,7 +84,7 @@
                     'id_programkerja' => $this->session->userdata('id_programkerja')
                 );
                 $this->kegiatan_model->data($data,'kegiatan');
-                redirect('kegiatan/displaydata/'.$this->session->userdata('id_programkerja'));
+                redirect('kegiatan/displaydata/'.$this->session->userdata('idOrganisasi'));
             }
         }
         public function displaydata(){
