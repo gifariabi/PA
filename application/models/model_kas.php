@@ -22,8 +22,9 @@ class model_kas extends CI_Model{
         $this->db->update($table,$data);
     } 
 
-    public function getTotalKas(){
+    public function getTotalKas($where){
     	$this->db->select("FORMAT((SUM(pemasukan_kas)-SUM(pengeluaran_kas)),0) as total_kas");
+        $this->db->where('idOrganisasi',$where);
     	$this->db->from('kas');
     	$query = $this->db->get();
     	return $query;

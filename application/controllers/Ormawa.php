@@ -110,8 +110,8 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_kas', $data);
     }
 
-    public function tampil_total_kas(){
-        $total_kas['total_kas'] = $this->model_kas->getTotalKas()->result();
+    public function tampil_total_kas($where){
+        $total_kas['total_kas'] = $this->model_kas->getTotalKas($where)->result();
         $this->load->view('total_kas',$total_kas);
     }
 
