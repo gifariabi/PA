@@ -1,6 +1,9 @@
+    <!DOCTYPE html>
+<html>
 <head>
-
-  <meta charset="utf-8">
+</head>
+<body>
+<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -30,7 +33,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3"><?= $this->session->namaOrganisasi ?><sup>2019</sup></div>
+        <div class="sidebar-brand-text mx-3">2019</sup></div>
       </a>
 
       <!-- Divider -->
@@ -52,7 +55,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+            <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
@@ -86,6 +89,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="#" style="text-decoration: none">Cek Presensi</a>
+           
           </div>
         </div>
       </li>
@@ -104,7 +108,7 @@
         <div id="collapseSeven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Event:</h6>
-            <a class="collapse-item" href="<?php echo base_url(); ?>index.php/kegiatan/displaykegiatan/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Jadwal Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaykegiatan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Kegiatan</a>
             </a>
           </div>
         </div>
@@ -118,10 +122,10 @@
         <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Administrasi:</h6>
-            <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar'); ?>" style="text-decoration: none">Buat Surat</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/rapat'); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/simpan'); ?>" style="text-decoration: none">Pengajuan Kegiatan</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/simpan'); ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Surat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/rapat/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
             </a>
           </div>
         </div>
@@ -136,9 +140,9 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Kelola</h6>
             <!-- <a class="collapse-item" href="<?php echo base_url()."index.php/sekertaris2/inputan/" ;?>" style="text-decoration: none">Cek Permintaan Surat</a> -->
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaydata'); ?>" style="text-decoration: none">Kelola Jadwal Kegiatan</a>
-            <a class="collapse-item" href="<?php echo base_url(); ?>index.php/programkerja/displaydata/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Program Kerja</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displaydata'); ?>" style="text-decoration: none">Kelola Rapat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Jadwal Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Program Kerja</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Rapat</a>
           </div>
         </div>
       </li>
@@ -155,10 +159,6 @@
           </div>
         </div>
       </li>
-
-      <?php
-        echo $this->session->flashdata('pesann');
-      ?>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -238,6 +238,28 @@
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
+                    <div class="icon-circle bg-primary">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 12, 2019</div>
+                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-success">
+                      <i class="fas fa-donate text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">December 7, 2019</div>
+                    $290.29 has been deposited into your account!
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="mr-3">
                     <div class="icon-circle bg-warning">
                       <i class="fas fa-exclamation-triangle text-white"></i>
                     </div>
@@ -265,6 +287,36 @@
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold">
+                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                    <div class="status-indicator"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                    <div class="small text-gray-500">Jae Chun · 1d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                    <div class="status-indicator bg-warning"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
                     <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
                     <div class="status-indicator bg-success"></div>
                   </div>
@@ -282,7 +334,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <?= $this->session->nama ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->nama ?></span>
                 <img class="img-profile rounded-circle" src="<?php echo base_url('asset/images/foto/'.$this->session->userdata('foto')); ?>">
               </a>
               <!-- Dropdown - User Information -->
@@ -300,7 +352,7 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?= site_url('Admin/logout') ?>" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -311,7 +363,6 @@
 
         </nav>
         <!-- End of Topbar -->
-
         <!-- Begin Page Content -->
         <div class="container-fluid">
 

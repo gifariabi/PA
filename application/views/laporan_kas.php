@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
 </head>
@@ -89,7 +89,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="#" style="text-decoration: none">Cek Presensi</a>
-          
+           
           </div>
         </div>
       </li>
@@ -108,7 +108,7 @@
         <div id="collapseSeven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Event:</h6>
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaykegiatan'); ?>" style="text-decoration: none">Jadwal Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaykegiatan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Kegiatan</a>
             </a>
           </div>
         </div>
@@ -122,7 +122,10 @@
         <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Administrasi:</h6>
-            <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar'); ?>" style="text-decoration: none">Buat Surat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Surat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/rapat/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
             </a>
           </div>
         </div>
@@ -137,9 +140,9 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Kelola</h6>
             <!-- <a class="collapse-item" href="<?php echo base_url()."index.php/sekertaris2/inputan/" ;?>" style="text-decoration: none">Cek Permintaan Surat</a> -->
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaydata'); ?>" style="text-decoration: none">Kelola Jadwal Kegiatan</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/displaydata'); ?>" style="text-decoration: none">Kelola Program Kerja</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displaydata'); ?>" style="text-decoration: none">Kelola Rapat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Jadwal Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Program Kerja</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Rapat</a>
           </div>
         </div>
       </li>

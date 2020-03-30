@@ -33,7 +33,7 @@
         public function save($id_programkerja){
             $where = array('id_programkerja'=>$id_programkerja);
             $data['data'] = $this->kegiatan_model->getId($where,'kegiatan')->result();
-            $this->load->view('input_kegiatan');
+            $this->load->view('input_kegiatan',$data);
         }
 
         public function simpan(){

@@ -6,10 +6,10 @@
             // $this->db->query($query);
             return $this->db->insert($table,$data);
         }
-        // function getId($where,$table){
-        //     $this->db->where($where);
-        //     $this->db->insert($table,$data);
-        // }
+        function getId($where,$table){
+             $this->db->where($where);
+             $this->db->insert($table,$data);
+        }
         //mengambil database
         function tampil(){
             // $query = $this->db->query("SELECT * FROM kelas");

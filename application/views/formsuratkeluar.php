@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
 </head>
@@ -9,14 +9,14 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>ISOMA</title>
+  <title></title>
 
   <!-- Custom fonts for this template-->
-  <link href="<?php echo base_url().'assets/vendor/fontawesome-free/css/all.min.css'?>" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url().'asset/masuk/vendor/fontawesome-free/css/all.min.css'?>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="<?php echo base_url().'assets/css/sb-admin-2.min.css" rel="stylesheet'?>">
+  <link href="<?php echo base_url().'asset/masuk/css/sb-admin-2.min.css" rel="stylesheet'?>">
 
 </head>
 
@@ -29,11 +29,11 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('index.php/Admin/index') ?>">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">ISOMA<sup>2019</sup></div>
+        <div class="sidebar-brand-text mx-3">2019</sup></div>
       </a>
 
       <!-- Divider -->
@@ -41,7 +41,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="http://localhost/ci2/index.php/inventaris/dashboar">
+        <a class="nav-link" href="<?php echo base_url().'index.php/Organisasi'?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -55,7 +55,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+            <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
@@ -89,7 +89,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="#" style="text-decoration: none">Cek Presensi</a>
-            
+           
           </div>
         </div>
       </li>
@@ -108,7 +108,7 @@
         <div id="collapseSeven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Event:</h6>
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaykegiatan'); ?>" style="text-decoration: none">Jadwal Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaykegiatan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Kegiatan</a>
             </a>
           </div>
         </div>
@@ -122,10 +122,10 @@
         <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Administrasi:</h6>
-            <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar'); ?>" style="text-decoration: none">Buat Surat</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/rapat'); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/simpan'); ?>" style="text-decoration: none">Pengajuan Kegiatan</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/simpan'); ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Surat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/rapat/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
             </a>
           </div>
         </div>
@@ -140,9 +140,9 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Kelola</h6>
             <!-- <a class="collapse-item" href="<?php echo base_url()."index.php/sekertaris2/inputan/" ;?>" style="text-decoration: none">Cek Permintaan Surat</a> -->
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaydata'); ?>" style="text-decoration: none">Kelola Jadwal Kegiatan</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/displaydata'); ?>" style="text-decoration: none">Kelola Program Kerja</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displaydata'); ?>" style="text-decoration: none">Kelola Rapat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Jadwal Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Program Kerja</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Rapat</a>
           </div>
         </div>
       </li>
@@ -159,20 +159,6 @@
           </div>
         </div>
       </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAkun" aria-expanded="true" aria-controls="collapseUtilities">
-          <span>Akun</span>
-        </a>
-        <div id="collapseAkun" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="http://localhost/ci2/index.php/admin/login" style="text-decoration: none">Login</a>
-            <a class="collapse-item" href="http://localhost/ci2/index.php/admin/register" style="text-decoration: none">Registrasi</a>
-          </div>
-        </div>
-      </li> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -202,7 +188,6 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-
 
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -349,7 +334,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->namaLengkap ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->nama ?></span>
                 <img class="img-profile rounded-circle" src="<?php echo base_url('asset/images/foto/'.$this->session->userdata('foto')); ?>">
               </a>
               <!-- Dropdown - User Information -->
@@ -482,7 +467,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="<?= site_url('Admin/logout') ?>">Logout</a>
+          <a class="btn btn-primary" href="<?= site_url('Login/logout') ?>">Logout</a>
         </div>
       </div>
     </div>
