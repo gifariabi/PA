@@ -32,10 +32,12 @@ class model_daftar extends CI_Model{
 	{
 		return $this->db->get($table);
 	}
+
 	public function view_where($table,$where)
 	{
 		return $this->db->get_where($table,$where);
 	}
+    
 	public function insert($data,$table)
 	{
 		$this->db->insert($table,$data);
@@ -53,9 +55,9 @@ class model_daftar extends CI_Model{
         $this->db->where('a.nim', $where);
 
         $query = $this->db->get();
-       	if($query->num_rows() > 0) {
+       	//if($query->num_rows() > 0) {
         	return $query;
-    	}
+    	//}
 	}
 
     public function ambil_akun($nim){

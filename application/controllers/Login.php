@@ -21,14 +21,9 @@ class Login extends CI_Controller{
 	}
 
 	public function aksi_login(){
-		if ($this->session->username == 'bk' && $this->session->password == 'bk' ) {
-				redirect('Organisasi/buat_organisasi');
-			}
-
-		else {
-			if ($this->session->username) {
-				redirect('Organisasi/tampilan_awal/'.$this->session->nim);
-			}
+		
+		if ($this->session->username) {
+			redirect('Organisasi/tampilan_awal/'.$this->session->nim);	
 			
 		}
 

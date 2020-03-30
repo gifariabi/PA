@@ -28,9 +28,15 @@
 <center><h1>Organisasi</h1>
 <img src="<?php echo base_url('asset/images/ormawa/'.$key->logo)?>" width="300" height="300">
 <center>
-	<?php echo $key->deskripsi; ?>
-</center>
+<?php echo $key->deskripsi; ?>
+<br>
+<?php if ($this->session->nim == 0) { ?>
+  <a href="<?php echo base_url('Ormawa/tampil_anggota/'.$key->idOrganisasi)?>">Lihat Anggota</a>
 <?php } ?>
+</center>
+
+<?php } ?>
+
   <!-- Bootstrap core JavaScript -->
   <script src="<?php echo base_url().'asset/jquery/jquery.min.js'?>"></script>
   <script src="<?php echo base_url().'asset/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>

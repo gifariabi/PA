@@ -37,8 +37,9 @@ class model_ormawa extends CI_Model{
         }
 
         function getOrganisasi(){
+            $this->db->SELECT('*');
             $this->db->from('organisasi');
-            $this->db->order_by('idOrganisasi', 'DESC');
+            $this->db->order_by('namaOrganisasi', 'ASC');
 		  $query = $this->db->get();
 		  return $query->result();
     	}
@@ -74,7 +75,7 @@ class model_ormawa extends CI_Model{
             $query = $this->db->get();
             return $query->result();*/
 
-            $this->db->select('a.nama, an.nim, an.jabatan, o.idOrganisasi');
+            $this->db->select('a.nim, an.nama, an.jabatan, o.idOrganisasi');
             $this->db->from('organisasi o');
             $this->db->join('ang_organisasi an','o.idOrganisasi =  an.idOrganisasi');
             $this->db->join('anggota a','an.nim =  a.nim');

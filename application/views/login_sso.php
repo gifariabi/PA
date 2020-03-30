@@ -37,7 +37,7 @@
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
 				<form class="login100-form validate-form" action="<?= base_url() ?>index.php/Login/aksi_login" method="POST">
 					<span class="login100-form-title p-b-33">
-						Login SSO
+						Login
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Username is required">
