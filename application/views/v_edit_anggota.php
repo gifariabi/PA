@@ -374,10 +374,11 @@
 	<table style="margin: 20px auto;">
 		<body>
 			<tr>
-				<td>NIM</td>
+				<td>Nama</td>
 				<td>
 				<input type="hidden" name="nim" value="<?php echo $u->nim?>">
-				<?php echo $u->nim?>
+        <input type="hidden" name="idOrganisasi" value="<?php echo $u->idOrganisasi?>">
+				<?php echo $u->nama?>
 				</td>
 			</tr>
 			<tr>

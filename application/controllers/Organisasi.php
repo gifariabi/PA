@@ -31,7 +31,7 @@ class Organisasi extends CI_Controller {
 
 	public function halaman_daftar($where){
         $data['data'] = $this->model_ormawa->deskripsi($where)->result();
-		//$data = array('id'=>$idOrganisasi,'logo'=>$logo,'deskripsi'=>$deskripsi);
+        //$this->session->set_userdata('idOrganisasi',$idOrganisasi);
 		$this->load->view('halaman_daftar',$data);
 	}
 
