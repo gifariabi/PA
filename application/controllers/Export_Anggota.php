@@ -20,8 +20,8 @@ class Export_Anggota extends CI_Controller {
           $this->load->view('v_anggota', $data);
      }
 
-     public function export(){
-          $pengurus = $this->model_ormawa->getAnggota();
+     public function export($where){
+          $pengurus = $this->model_ormawa->getAnggota($where);
 
           $spreadsheet = new Spreadsheet;
 

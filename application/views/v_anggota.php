@@ -397,7 +397,7 @@
         <?php $i++; }?>
     </table>
         <br/>
-        <a href="<?= base_url().'/Export_Anggota/export/'?>" class="btn btn-success">Export Data Anggota</a>
+        <a href="<?= base_url().'/Export_Anggota/export/'.$this->session->userdata('idOrganisasi')?>" class="btn btn-success">Export Data Anggota</a>
          <a href="<?= base_url().'/Ormawa/tambah_anggota/'?>" class="btn btn-success">Tambah Anggota</a>
 
 
