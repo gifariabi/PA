@@ -124,7 +124,7 @@
             <h6 class="collapse-header">Administrasi:</h6>
             <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Surat</a>
             <a class="collapse-item" href="<?php echo base_url('index.php/rapat/rapat/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/simpan/'.$this->session->id_programkerja); ?>" style="text-decoration: none">Pengajuan Kegiatan</a>
             <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
             </a>
           </div>

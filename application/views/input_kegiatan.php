@@ -368,8 +368,10 @@
         <div class="container-fluid">
 
 <body>
+<?php foreach ($data as $data) { ?>
   
-<form class="user" action="<?php echo base_url().'index.php/kegiatan/simpan';?>" method="post">
+
+<form class="user" action="<?php echo base_url().'index.php/kegiatan/simpan/';?>" method="post">
     <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <div class="text-center">
@@ -387,12 +389,12 @@
       <input type="text" name="tempat" class="form-control form-control-user" placeholder="Tempat Pelaksanaan"></td>
     </div>
     <div class="form-group">
-      <input type="hidden" name="id_programkerja" class="form-control form-control-user" placeholder="ID Program Kerja">
+      <input type="hidden" name="id_programkerja" class="form-control form-control-user" value="<?= $data->id_programkerja ?>">
     </div>  
         <input type="submit" name="submit" value="Input" class="btn btn-success btn-user btn-block" placeholder="input">
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
-  
+  <?php } ?>
     <font color="red">
         <?php if ($this->session->flashdata('error')) {
 		    echo $this->session->flashdata('error');

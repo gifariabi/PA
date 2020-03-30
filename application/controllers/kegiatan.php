@@ -4,6 +4,8 @@
             parent::__construct();
             $this->load->helper('url','form','file');
             $this->load->model('kegiatan_model');
+            $this->load->model('model_daftar');
+            $this->load->model('proker_model');
             $this->load->library('form_validation','session');
         }
 
@@ -11,13 +13,17 @@
             $this->load->view('home');
         }
 
-        public function kegiatan(){
+        public function kegiatan($id_programkerja){
             $newdata = $this->session->userdata('jabatan');
             if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
+                //$this->session->set_userdata('id_programkerja',$id_programkerja);
+               
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('kegiatan');
             }else{
-                $this->load->view('input_kegiatan');
+                $where = array('id_programkerja'=>$id_programkerja);
+                $data['data'] = $this->proker_model->edit_data($where, 'programkerja')->result();
+                $this->load->view('input_kegiatan',$data);
             }
         }
 
@@ -49,11 +55,11 @@
                 $this->load->view('input_kegiatan');
             }
             else {
-                $id = $this->input->post('id_kegiatan');
-                $nama = $this->input->post('nama_kegiatan');
+                $id_kegiatan = $this->input->post('id_kegiatan');
+                $nama_kegiatan = $this->input->post('nama_kegiatan');
                 $waktu = $this->input->post('waktu');
                 $tempat = $this->input->post('tempat');
-                // $id_programkerja = $this->input->post('id_programkerja');
+                $id_programkerja = $this->input->post('id_programkerja');
 
                 $this->load->library('ciqrcode');
                 $config['cacheable'] = true;
@@ -67,21 +73,22 @@
                 
                 $this->ciqrcode->initialize($config);
                 
-                $image_name = $nama.'.png';
+                $image_name = $nama_kegiatan.'.png';
 
-                $params['data'] = $id;
+                $params['data'] = $id_kegiatan;
                 $params['level'] = 'H';
                 $params['size'] = '10';
                 $params['savename'] = FCPATH.$config['imagedir'].$image_name;
                 $this->ciqrcode->generate($params);
+                //$cek    = $this->model_daftar->view_where('programkerja',array('id_programkerja'=>$id_programkerja))->result();
                 
                 $data = array(
-                    'id_kegiatan' => $id,
-                    'nama_kegiatan' => $nama, 
+                    'id_kegiatan' => $id_kegiatan,
+                    'nama_kegiatan' => $nama_kegiatan, 
                     'waktu' => $waktu,
                     'tempat' => $tempat,
                     'qr_code' => $image_name,
-                    'id_programkerja' => $this->session->userdata('id_programkerja')
+                    'id_programkerja' => $id_programkerja
                 );
                 $this->kegiatan_model->data($data,'kegiatan');
                 redirect('kegiatan/displaydata/'.$this->session->userdata('idOrganisasi'));
