@@ -11,13 +11,15 @@
             $this->load->view('home');
         }
 
-        public function kegiatan(){
+        public function proker($idOrganisasi){
             $newdata = $this->session->userdata('jabatan');
             if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('proker');
             }else{
-                $this->load->view('input_proker');
+                $where = array('idOrganisasi'=>$idOrganisasi);
+                $data['data'] = $this->proker_model->edit_data($where, 'programkerja')->result();
+                $this->load->view('input_proker',$data);
             }
         }
         public function simpan(){
@@ -35,6 +37,7 @@
                 $waktu = $this->input->post('waktupelaksanaan');
                 $tempat = $this->input->post('departemen');
                 $idOrganisasi = $this->input->post('idOrganisasi');
+
                 $data = array(
                     'nama_programkerja' => $nama, 
                     'waktu_pelaksanaan' => $waktu,

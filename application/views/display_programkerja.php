@@ -377,7 +377,7 @@
 <h3>Program Kerja</h3>
 </center>
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
-    <a class="btn btn-success" href="<?php echo base_url('index.php/programkerja/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
+    <a class="btn btn-success" href="<?php echo base_url('index.php/programkerja/proker/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover table-condensed" id="dataTable" width="100%" cellspacing="0">

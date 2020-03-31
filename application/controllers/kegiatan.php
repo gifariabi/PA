@@ -23,7 +23,7 @@
             }else{
                 $where = array('id_programkerja'=>$id_programkerja);
                 $data['data'] = $this->proker_model->edit_data($where, 'programkerja')->result();
-                $this->load->view('input_kegiatan',$data);
+                $this->load->view('input_kegiatan',$data);      
             }
         }
 
