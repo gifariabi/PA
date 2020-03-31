@@ -123,9 +123,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Administrasi:</h6>
             <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Surat</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/rapat/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Kegiatan</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
             </a>
           </div>
         </div>
@@ -368,7 +365,10 @@
         <div class="container-fluid">
 
 <body>
-<?php foreach ($data as $data) { ?>
+
+<?php 
+if(is_array($data) || is_object($data)){
+  foreach ($data as $data) { ?>
   
 
 <form class="user" action="<?php echo base_url().'index.php/kegiatan/simpan/';?>" method="post">
@@ -377,6 +377,7 @@
     <div class="text-center">
         <h1 class="h4 text-gray-900 mb-4">Pengajuan Kegiatan</h1>
     </div>
+    </center>
     <!-- <input type="hidden" name="id_programkerja" value=""> -->
     <div class="form-group">
       <input type="text" name="nama_kegiatan" class="form-control form-control-user" placeholder="Nama Kegiatan">
@@ -394,7 +395,7 @@
         <input type="submit" name="submit" value="Input" class="btn btn-success btn-user btn-block" placeholder="input">
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
-  <?php } ?>
+    <?php } } ?>
     <font color="red">
         <?php if ($this->session->flashdata('error')) {
 		    echo $this->session->flashdata('error');

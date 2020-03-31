@@ -123,9 +123,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Administrasi:</h6>
             <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Surat</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/rapat/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Kegiatan</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
             </a>
           </div>
         </div>
@@ -378,10 +375,12 @@
 <body>
 <center>
 <h3>Program Kerja</h3>
+</center>
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
+    <a class="btn btn-success" href="<?php echo base_url('index.php/programkerja/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-striped table-bordered table-hover table-condensed" id="dataTable" width="100%" cellspacing="0">
           <tr>
               <th>No</th>
               <th>Nama Program Kerja</th>
@@ -400,7 +399,7 @@
               <td><?php echo $data->waktu_pelaksanaan; ?></td>
               <td><?php echo $data->departemen; ?></td>
               <td>
-              <a href="<?= base_url().'/programkerja/edit/'.$data->id_programkerja;?>" class="btn btn-primary">Edit</a>  
+              <a href="<?= base_url().'/programkerja/edit/'.$data->id_programkerja;?>" class="btn btn-success">Edit</a>  
               <a href="<?= base_url().'/kegiatan/kegiatan/'.$data->id_programkerja;?>" class="btn btn-primary">Input Kegiatan</a>   
                 
               </td>
