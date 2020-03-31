@@ -30,8 +30,9 @@ class model_kas extends CI_Model{
     	return $query;
     }
 
-    public function getlaporan(){
-        $this->db->select("SUM(pemasukan_kas) as total_masuk, SUM(pengeluaran_kas) AS total_keluar,FORMAT((SUM(pemasukan_kas)-SUM(pengeluaran_kas)),0) as total_kas");
+    public function getlaporan($where){
+        $this->db->select("SUM(pemasukan_kas) as total_masuk, SUM(pengeluaran_kas) AS total_keluar,FORMAT((SUM(pemasukan_kas)-SUM(pengeluaran_kas)),0) as total_kas ,idOrganisasi");
+        $this->db->where('idOrganisasi', $where);
         $this->db->from('kas');
         $query = $this->db->get();
         return $query;

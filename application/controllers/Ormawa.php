@@ -115,8 +115,8 @@ class Ormawa extends CI_Controller {
         $this->load->view('total_kas',$total_kas);
     }
 
-    public function tampil_total_laporan(){
-        $total_laporan1['total_laporan1'] = $this->model_kas->getlaporan()->result();
+    public function tampil_total_laporan($where){
+        $total_laporan1['total_laporan1'] = $this->model_kas->getlaporan($where)->result();
         $this->load->view('laporan_kas',$total_laporan1);
         //redirect('ormawa/tampil_chart', $total_laporan1);
         
@@ -234,8 +234,8 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_pengeluaranKas',$data);
     } 
 
-    public function cetak_laporan(){        
-        $data['total_laporan1'] = $this->model_kas->getlaporan()->result();
+    public function cetak_laporan($where){        
+        $data['total_laporan1'] = $this->model_kas->getlaporan($where)->result();
         $mpdf = new \Mpdf\Mpdf();
         $data = $this->load->view('laporan_kass',$data, TRUE);
         $mpdf->WriteHTML($data);

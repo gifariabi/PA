@@ -449,15 +449,15 @@ function drawChart() {
   chart.draw(data, options);
 }
 </script>
- <?php } ?>
+ 
 
-
+<a href="<?php echo base_url().'index.php/Ormawa/cetak_laporan/'.$key->idOrganisasi;?>" class="btn btn-success">Cetak Laporan</a>
 <body>
  
 <div id="container"></div>
 
-<a href="<?php echo base_url().'index.php/Ormawa/cetak_laporan';?>" class="btn btn-success">Cetak Laporan</a>
-	
+
+	<?php } ?>
 <!--===============================================================================================-->
 	<script src="<?php echo base_url().'asset/login/vendor/jquery/jquery-3.2.1.min.js'?>"></script>
 <!--===============================================================================================-->
