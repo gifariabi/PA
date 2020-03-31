@@ -71,7 +71,7 @@
             <p class="card-text"><?= $data->deskripsi ?></p>
           </div>
           <div class="card-footer">
-            <a href="<?= base_url() ?>Organisasi/halaman_daftar/<?=$this->session->idOrganisasi;?>" class="btn btn-primary">Tentang</a>
+            <a href="<?= base_url() ?>Organisasi/halaman_daftar/<?=$data->idOrganisasi;?>" class="btn btn-primary">Tentang</a>
           </div>
         </div>
       </div>

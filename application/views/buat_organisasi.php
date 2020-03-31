@@ -45,22 +45,30 @@
 	<hr>
 	<form action="<?= base_url() ?>index.php/Ormawa/simpan_ormawa" method="POST" enctype="multipart/form-data">
 	<table>
+  <div class="form-group">
 	<tr>
 		<td>Nama Organisasi</td>
-		<td><input type="text" name="namaOrganisasi"></td>
+		<td><input type="text" name="namaOrganisasi" class="form-control form-control-user"></td>
 	</tr>
+  </div>
+  <div class="form-group">
 	<tr>
 		<td>Deskripsi</td> 
-		<td><textarea name="deskripsi" cols="40" rows="10"></textarea></td>
+		<td><textarea name="deskripsi" cols="40" rows="10" class="form-control form-control-user"></textarea></td>
 	</tr>
+  </div>
+  <div class="form-group">
 	<tr>
 		<td>Logo</td>
-		<td><input type="file" name="logo"></td>
+		<td><input type="file" name="logo" class="form-control form-control-user"></td>
 	</tr>
+  </div>
+  <div class="form-group">
 	<tr>
 		<td>Ketua Organisasi</td>
-		<td><input type="text" name="ketua"></td>
+		<td><input type="text" name="ketua" class="form-control form-control-user"></td>
 	</tr>
+  </div>
 	<tr><td></td>
 		<td align="center">
 			<input type="submit" name="submit" class="btn btn-success btn-user btn-block" value="Buat">
