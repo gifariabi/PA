@@ -365,8 +365,10 @@
         <div class="container-fluid">
 
 <body>
+  
 <form class="user" action="<?php echo base_url().'index.php/programkerja/simpan';?>" method="post">
-    <center>
+
+<center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <div class="text-center">
         <h1 class="h4 text-gray-900 mb-4">Pengajuan Program Kerja</h1>
@@ -382,19 +384,28 @@
       <input type="text" name="departemen" class="form-control form-control-user" placeholder="Departemen"></td>
     </div>
     <div class=form-group>
-      <input type="text" name="idOrganisasi" class="form-control form-control-user" placeholder="idOrganisasi">
+    <?php 
+    $i=1;
+    foreach($data as $key){
+?>
+      <input type="hidden" name="idOrganisasi" class="form-control form-control-user" value="<?= $key->idOrganisasi; ?>">
+      <?php $i++; } ?>
     </div>
         
-        <input type="submit" name="submit" value="" class="btn btn-success btn-user btn-block" placeholder="input">
+        <input type="submit" name="submit" value="Input" class="btn btn-success btn-user btn-block" placeholder="input">
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
     <!-- <font color="red">
+
         <?php if ($this->session->flashdata('error')) {
 		    echo $this->session->flashdata('error');
 	    } ?>
     </font> -->
-    </center>
+    
+  </center>
+  
 </form>
+    
 <!-- Footer -->
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">

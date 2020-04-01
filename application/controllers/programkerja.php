@@ -11,14 +11,19 @@
             $this->load->view('home');
         }
 
-        public function kegiatan(){
+        public function kegiatan($idOrganisasi){
             $newdata = $this->session->userdata('jabatan');
             if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('proker');
             }else{
-                $this->load->view('input_proker');
+                $where = array('idOrganisasi'=>$idOrganisasi);
+                $data['data'] = $this->proker_model->edit_data($where, 'programkerja')->result();
+                $this->load->view('input_proker',$data);
             }
+        }
+        public function v_input(){
+            $this->load->view('input_proker');
         }
         public function simpan(){
             $this->form_validation->set_rules('namaproker','NamaProker','required');
@@ -42,7 +47,7 @@
                     'idOrganisasi' => $idOrganisasi,
                 );
                 $this->proker_model->data($data,'programkerja');
-                redirect('programkerja/displaydata');
+                redirect('programkerja/displaydata/'.$this->session->userdata('idOrganisasi'));
             }
         }
         public function displaydata($where){

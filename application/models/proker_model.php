@@ -11,7 +11,7 @@
             // $query = $this->db->query("SELECT * FROM kelas");
             // return $query->result();
             // return $this->db->get('programkerja');
-            $this->db->select('p.id_programkerja,p.nama_programkerja, p.waktu_pelaksanaan, p.departemen, p.id_programkerja');
+            $this->db->select('p.id_programkerja,p.nama_programkerja, p.waktu_pelaksanaan, p.departemen, p.id_programkerja, p.idOrganisasi');
             $this->db->from('programkerja p');
             $this->db->join('organisasi o','p.idOrganisasi = o.idOrganisasi');
             // $this->db->join('anggota a','an.nim =  a.nim');
