@@ -1,8 +1,7 @@
 <?php 
     class model_suratkeluar extends CI_Model{
-        public function data($no_suratkeluar,$penerima,$tanggalkeluar,$perihal,$nim_pengurus){
-            $query = "INSERT INTO suratkeluar VALUES('','$no_suratkeluar','$penerima','$tanggalkeluar','$perihal','$nim_pengurus')";
-            $this->db->query($query);
+        public function data($data,$table){
+            $this->db->insert($table, $data);
         }
         function tampil(){
             $query = $this->db->query("SELECT no_suratkeluar,penerima,tanggalkeluar as 'tanggalkeluar', perihal FROM suratkeluar ORDER BY no_suratkeluar ASC");

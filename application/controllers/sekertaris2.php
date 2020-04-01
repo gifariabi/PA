@@ -45,9 +45,17 @@ class sekertaris2 extends CI_Controller{
         $tanggalkeluar = $this->input->post('tanggalkeluar');
         $perihal = $this->input->post('perihal');
         $nim_pengurus = $this->input->post('nim_pengurus');
+
+        $data = array(
+            'no_suratkeluar' = $no_suratkeluar,
+            'penerima' = $penerima,
+            'tanggalkeluar' = $tanggalkeluar,
+            'perihal' = $perihal,
+            'nim_pengurus' = $nim_pengurus
+        );
             
-        $this->model_suratkeluar->data($no_suratkeluar,$penerima,$tanggalkeluar,$perihal,$nim_pengurus);
-        redirect('sekertaris2/inputan');
+        $this->model_suratkeluar->data($data,'suratkeluar');
+        redirect('sekertaris2/inputan/'.$this->session->userdata('idOrganisasi'));
         }
     }
     public function inputan(){
