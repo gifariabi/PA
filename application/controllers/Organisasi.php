@@ -115,7 +115,7 @@ class Organisasi extends CI_Controller {
     public function hapus_akun($nim){
         $where = array('nim' => $nim);
         $this->model_daftar->hapus_akun($where,'ang_organisasi');
-        redirect('Organisasi/show_hapus_akun');
+        redirect('Organisasi/tampilan_awal/'.$this->session->nim);
     } 
 
     public function show_hapus_akun(){
