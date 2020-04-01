@@ -322,26 +322,25 @@ class Ormawa extends CI_Controller {
     }
 
     public function add_anggota($nim){
-        $cek    = $this->model_daftar->view_where('datauser',array('nim'=>$nim))->result_array();
+        $cek    = $this->model_daftar->view_where('mahasiswa',array('nim'=>$nim))->result_array();
         //$cek    = $this->model_daftar->view_where('datauser',array('nim' => $nim)->result_array());
-        $data   = array('nim' => $cek[0]['nim'],
+        /*$data   = array('nim' => $cek[0]['nim'],
                     'username' => $cek[0]['username'],
                     'nama' => $cek[0]['nama'],
                     'prodi' => $cek[0]['prodi'],
                     'password' => $cek[0]['password']
-                    );
+                    );*/
 
         $data2   = array('nim' => $cek[0]['nim'],
                         'nama' => $cek[0]['nama'],
                         'idOrganisasi' => $this->session->userdata('idOrganisasi')
                     );
 
-            $cek1=$this->model_daftar->lihat_akun($nim)->num_rows();
-        if ($cek1==0) {
-            $this->model_daftar->insertbaru($data, "anggota");   
-        }
+            //$cek1=$this->model_daftar->lihat_akun($nim)->num_rows();
+        //if ($cek1==0) {
             $this->model_daftar->insert($data2,"ang_organisasi");
             redirect('Ormawa/tampil_anggota/'.$this->session->userdata('idOrganisasi'));
-        }
+       // }
+    }
 
 }

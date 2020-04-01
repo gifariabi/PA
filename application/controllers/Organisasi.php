@@ -46,7 +46,6 @@ class Organisasi extends CI_Controller {
             'foto'  => $user->foto,
             'noHP'  => $user->noHP,
             'idLine' => $user->idLine,
-            'jabatan' => $user->jabatan,
             'prodi' => $user->prodi
             );
         $this->load->view('lihat_akun', $data);
@@ -109,7 +108,7 @@ class Organisasi extends CI_Controller {
         'nim' => $nim
         );
  
-        $this->model_daftar->update_data($where,$data,'anggota');
+        $this->model_daftar->update_data($where,$data,'mahasiswa');
         redirect('Organisasi/lihat_akun');
     }
 

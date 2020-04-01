@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Mar 2020 pada 19.45
+-- Waktu pembuatan: 01 Apr 2020 pada 19.45
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -37,37 +37,6 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `anggota`
---
-
-CREATE TABLE `anggota` (
-  `nim` int(10) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `jabatan` varchar(255) NOT NULL,
-  `noWA` varchar(255) NOT NULL,
-  `noHP` varchar(255) NOT NULL,
-  `idLine` varchar(255) NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  `prodi` varchar(255) NOT NULL,
-  `nim_pengurus` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
-
---
--- Dumping data untuk tabel `anggota`
---
-
-INSERT INTO `anggota` (`nim`, `username`, `password`, `nama`, `jabatan`, `noWA`, `noHP`, `idLine`, `foto`, `prodi`, `nim_pengurus`) VALUES
-(0, 'bk', 'bk', '', '', '', '', '', '', '', 999),
-(670117400, 'yusril', 'yusril123', 'Yusril Wahyuda', 'Anggota Devisi Olahraga', '', '', '', 'b60e2ca62d0a36db693c98d0191a9586.jpg', 'D3SI', 0),
-(670117403, 'gifariabi', 'gifariabi', 'Gifari Abi Waqqash', 'Anggota Devisi Olahraga', '085868442225', '085868442226', 'gifarifr', '217af0b91e134c93fe445afec6e3c284.jpg', 'D3 Sistem Informasi', 0),
-(670117410, 'Luqman', 'luqman123', 'Muhammad Luqman', 'Sekertaris', '080808099', '080808089', 'luqmaneuy', 'bb88473976953ee93c979a286cdd6ccf.jpg', 'D3 Sistem Informasi', 1),
-(670117455, 'eko', 'eko', 'Eko Adinata', 'Anggota Devisi Olahraga', '', '', '', '', 'D3SI', 0);
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `ang_organisasi`
 --
 
@@ -83,10 +52,14 @@ CREATE TABLE `ang_organisasi` (
 --
 
 INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
-(670117403, '', 1, 'Anggota Devisi Olahraga'),
+(670117403, 'Gifari Abi Waqqash', 1, 'Anggota Divisi '),
 (670117410, 'Muhammad Luqman', 1, 'Sekertaris'),
-(670117400, '', 1, 'Anggota Devisi Olahraga'),
-(670117410, 'Muhammad Luqman', 5, 'Sekertaris');
+(670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Dalam Negeri'),
+(670117410, 'Muhammad Luqman', 5, 'Anggota Divisi Dalam Negeri'),
+(670117455, 'Eko adinata', 5, 'Anggota Divisi Luar Negeri'),
+(670117455, 'Eko adinata', 1, 'Anggota Devisi Olahraga'),
+(670117400, 'yusril wahyuda', 1, ''),
+(670606006, 'Ade Pangestu', 1, '');
 
 -- --------------------------------------------------------
 
@@ -151,10 +124,14 @@ CREATE TABLE `kas` (
 --
 
 INSERT INTO `kas` (`id_kas`, `pemasukan_kas`, `pengeluaran_kas`, `keterangan`, `tanggal`, `idOrganisasi`) VALUES
-(12, 1400000, 0, '', '2020-03-24', 1),
-(13, 0, 12000, 'Print Proposal', '2020-03-24', 1),
+(12, 1200000, 0, '', '2020-03-24', 1),
 (14, 0, 50000, 'Beli Kain Hitam', '2020-03-25', 1),
-(15, 0, 500, 'Print Proposal', '2020-03-25', 1);
+(15, 0, 500, 'Print Proposal', '2020-03-25', 1),
+(17, 0, 500, 'Beli Pulpen', '2020-03-30', 1),
+(18, 0, 10000, 'Print Proposal', '2020-03-30', 5),
+(20, 100000, 0, '', '2020-03-30', 5),
+(21, 0, 50000, 'Sewa Kain Hitam', '2020-03-30', 5),
+(24, 1500000, 0, '', '2020-04-14', 1);
 
 -- --------------------------------------------------------
 
@@ -178,7 +155,9 @@ CREATE TABLE `kegiatan` (
 INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `qr_code`, `id_programkerja`) VALUES
 (3, 'MANIAC 2020', '2020-10-09', 'Gallery dan Batununggal Sport Center', '', 2),
 (5, 'Seminar Android', '2020-01-01', 'Aula Fakultas Ilmu Terapan', 'Seminar Android.png', 2),
-(6, 'Bangkit yok', '2020-03-30', 'Gallery dan Batununggal Sport Center', 'Bangkit yok.png', 2);
+(6, 'Bangkit yok', '2020-03-30', 'Gallery dan Batununggal Sport Center', 'Bangkit yok.png', 2),
+(7, 'MANIAC 2021', '2020-04-02', 'Gallery dan Batununggal Sport Center', 'MANIAC 2021.png', 2),
+(8, 'MANIAC 2022', '2020-04-04', 'Gallery dan Batununggal Sport Center', 'MANIAC 2022.png', 2);
 
 -- --------------------------------------------------------
 
@@ -208,6 +187,37 @@ CREATE TABLE `lpj` (
   `file` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mahasiswa`
+--
+
+CREATE TABLE `mahasiswa` (
+  `nim` int(10) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `noWA` varchar(255) NOT NULL,
+  `noHP` varchar(255) NOT NULL,
+  `idLine` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `prodi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
+
+--
+-- Dumping data untuk tabel `mahasiswa`
+--
+
+INSERT INTO `mahasiswa` (`nim`, `username`, `password`, `nama`, `noWA`, `noHP`, `idLine`, `foto`, `prodi`) VALUES
+(0, 'bk', 'bk', '', '', '', '', '', ''),
+(670117400, 'yusril', 'yusril123', 'Yusril Wahyuda', '', '', '', 'b60e2ca62d0a36db693c98d0191a9586.jpg', 'D3SI'),
+(670117403, 'gifariabi', 'gifariabi', 'Gifari Abi Waqqash', '085868442225', '085868442226', 'gifarifr', '217af0b91e134c93fe445afec6e3c284.jpg', 'D3 Sistem Informasi'),
+(670117406, 'sherli', 'sherli', 'Sherli Yualinda', '', '', '', '', ''),
+(670117410, 'Luqman', 'luqman123', 'Muhammad Luqman', '080808099', '080808089', 'luqmaneuy', '2323ec9a9fc0bb6dfd56ddb9a37f8402.jpg', 'D3 Sistem Informasi'),
+(670117455, 'eko', 'eko', 'Eko Adinata', '', '', '', '', 'D3SI'),
+(670606006, 'ade', 'ade123', 'Ade Pangestu', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -291,7 +301,8 @@ CREATE TABLE `programkerja` (
 --
 
 INSERT INTO `programkerja` (`id_programkerja`, `nama_programkerja`, `waktu_pelaksanaan`, `departemen`, `idOrganisasi`) VALUES
-(2, 'Olahraga Sehat sehat', '2020-08-09', 'Olahraga dan Sosial', 1);
+(2, 'Olahraga Sehat sehat', '2020-08-09', 'Olahraga dan Sosial', 1),
+(4, 'Basket', '2020-04-03', 'Olahraga', 1);
 
 -- --------------------------------------------------------
 
@@ -392,13 +403,6 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 
 --
--- Indeks untuk tabel `anggota`
---
-ALTER TABLE `anggota`
-  ADD PRIMARY KEY (`nim`),
-  ADD KEY `nim_pengurus` (`nim_pengurus`) USING BTREE;
-
---
 -- Indeks untuk tabel `ang_organisasi`
 --
 ALTER TABLE `ang_organisasi`
@@ -440,6 +444,12 @@ ALTER TABLE `lpj`
   ADD UNIQUE KEY `id_kegiatan` (`id_kegiatan`);
 
 --
+-- Indeks untuk tabel `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  ADD PRIMARY KEY (`nim`);
+
+--
 -- Indeks untuk tabel `organisasi`
 --
 ALTER TABLE `organisasi`
@@ -466,7 +476,7 @@ ALTER TABLE `presensi`
 --
 ALTER TABLE `programkerja`
   ADD PRIMARY KEY (`id_programkerja`),
-  ADD UNIQUE KEY `idOrganisasi` (`idOrganisasi`);
+  ADD KEY `idOrganisasi` (`idOrganisasi`) USING BTREE;
 
 --
 -- Indeks untuk tabel `rapat`
@@ -509,13 +519,13 @@ ALTER TABLE `departemen`
 -- AUTO_INCREMENT untuk tabel `kas`
 --
 ALTER TABLE `kas`
-  MODIFY `id_kas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_kas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `lpj`
@@ -527,7 +537,7 @@ ALTER TABLE `lpj`
 -- AUTO_INCREMENT untuk tabel `organisasi`
 --
 ALTER TABLE `organisasi`
-  MODIFY `idOrganisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idOrganisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `presensi`
@@ -539,7 +549,7 @@ ALTER TABLE `presensi`
 -- AUTO_INCREMENT untuk tabel `programkerja`
 --
 ALTER TABLE `programkerja`
-  MODIFY `id_programkerja` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_programkerja` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `rapat`
@@ -574,7 +584,7 @@ ALTER TABLE `tiket`
 --
 ALTER TABLE `ang_organisasi`
   ADD CONSTRAINT `fk_idOrganisasi` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
-  ADD CONSTRAINT `fk_nim_anggota` FOREIGN KEY (`nim`) REFERENCES `anggota` (`nim`);
+  ADD CONSTRAINT `fk_nim_anggota` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`);
 
 --
 -- Ketidakleluasaan untuk tabel `departemen`

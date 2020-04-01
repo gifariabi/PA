@@ -23,7 +23,7 @@ class model_ormawa extends CI_Model{
                 'nim' => $nim
             );
        
-            $this->db->insert('anggota',$where, $data);
+            $this->db->insert('mahasiswa',$where, $data);
         }
 
         public function simpan2($namaOrganisasi,$deskripsi,$logo,$ketua){
@@ -78,7 +78,7 @@ class model_ormawa extends CI_Model{
             $this->db->select('a.nim, an.nama, an.jabatan, o.idOrganisasi');
             $this->db->from('organisasi o');
             $this->db->join('ang_organisasi an','o.idOrganisasi =  an.idOrganisasi');
-            $this->db->join('anggota a','an.nim =  a.nim');
+            $this->db->join('mahasiswa a','an.nim =  a.nim');
             $this->db->where('o.idOrganisasi', $where);
 
             $query = $this->db->get();
@@ -111,7 +111,7 @@ class model_ormawa extends CI_Model{
 
         public function getAnggotabaru(){
             $this->db->select('*');
-            $this->db->from('datauser');
+            $this->db->from('mahasiswa');
 
             $query = $this->db->get();
             return $query->result();

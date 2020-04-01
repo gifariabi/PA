@@ -408,11 +408,6 @@
             <td>:</td>
             <td><?= $idLine ?></td>
         </tr>
-         <tr>
-            <td>Jabatan</td>
-            <td>:</td>
-            <td><?= $jabatan ?></td>
-        </tr>
         <tr>
             <td>Prodi</td>
             <td>:</td>

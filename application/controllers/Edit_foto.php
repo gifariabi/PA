@@ -61,7 +61,7 @@ class Edit_Foto extends CI_Controller{
 
     public function editf($nim){
     $where = array('nim' => $nim);
-    $data['data'] = $this->model_ormawa->edit_foto($where,'anggota')->result();
+    $data['data'] = $this->model_ormawa->edit_foto($where,'mahasiswa')->result();
     $this->load->view('v_edit_foto',$data);
     }
 
@@ -98,7 +98,7 @@ class Edit_Foto extends CI_Controller{
         				'nim' => $nim
         				);
  
-       	 				$this->model_ormawa->update_foto($where,$data,'anggota');
+       	 				$this->model_ormawa->update_foto($where,$data,'mahasiswa');
         				redirect('Organisasi/lihat_akun');
         				//$foto = $this->input->post('foto');
                         //$this->model_ormawa->simpanfoto($foto);

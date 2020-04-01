@@ -11,7 +11,7 @@ class login_model extends CI_Model
 
 	// Mengambil data akun sesuai username dan password
 	public function ambil_akun($username, $password){
-		$query = $this->db->get_where('anggota',
+		$query = $this->db->get_where('mahasiswa',
 			array(
 				'username' => $username,
 				'password' => $password),

@@ -1,7 +1,7 @@
 <?php
 class model_daftar extends CI_Model{
 	public function simpan($nim,$username,$password,$nama,$prodi){
-      	$query = "INSERT INTO anggota VALUES('$nim','$username','$password','$nama','','','','','$prodi','')";
+      	$query = "INSERT INTO mahasiswa VALUES('$nim','$username','$password','$nama','','','','','$prodi','')";
         $this->db->query($query);
     }
 
@@ -11,7 +11,7 @@ class model_daftar extends CI_Model{
     }
 
     public function edit_data($nim){      
-        return $this->db->get_where('anggota',array('nim'=>$nim),1);
+        return $this->db->get_where('mahasiswa',array('nim'=>$nim),1);
     }
     public function update_data($where,$data,$table){
         $this->db->where($where);
@@ -21,7 +21,7 @@ class model_daftar extends CI_Model{
     public function lihat_akun($where){
     	$nim = array('nim'=>$where);
     	$this->db->select('*');
-    	$this->db->from('anggota');
+    	$this->db->from('mahasiswa');
     	$this->db->where($nim);
 
     	$query = $this->db->get();
@@ -51,7 +51,7 @@ class model_daftar extends CI_Model{
 		$this->db->select('*');
         $this->db->from('organisasi o');
         $this->db->join('ang_organisasi an','o.idOrganisasi =  an.idOrganisasi');
-        $this->db->join('anggota a','an.nim =  a.nim');
+        $this->db->join('mahasiswa a','an.nim =  a.nim');
         $this->db->where('a.nim', $where);
 
         $query = $this->db->get();
@@ -61,7 +61,7 @@ class model_daftar extends CI_Model{
 	}
 
     public function ambil_akun($nim){
-        return $this->db->get_where('anggota',array('nim'=>$nim),1);
+        return $this->db->get_where('mahasiswa',array('nim'=>$nim),1);
     }
 
     function search($keyword){

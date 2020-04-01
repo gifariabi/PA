@@ -366,11 +366,6 @@
 
 <body>
 
-<?php 
-if(is_array($data) || is_object($data)){
-  foreach ($data as $data) { ?>
-  
-
 <form class="user" action="<?php echo base_url().'index.php/kegiatan/simpan/';?>" method="post">
     <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
@@ -390,8 +385,12 @@ if(is_array($data) || is_object($data)){
       <input type="text" name="tempat" class="form-control form-control-user" placeholder="Tempat Pelaksanaan"></td>
     </div>
     <div class="form-group">
+    <?php 
+if(is_array($data) || is_object($data)){
+  foreach ($data as $data) { ?>
       <input type="hidden" name="id_programkerja" class="form-control form-control-user" value="<?= $data->id_programkerja ?>">
     </div>  
+
         <input type="submit" name="submit" value="Input" class="btn btn-success btn-user btn-block" placeholder="input">
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
