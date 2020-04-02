@@ -9,6 +9,7 @@ class Organisasi extends CI_Controller {
 		$this->load->helper(array('form', 'url','file'));
 		$this->load->model('model_daftar');
 		$this->load->model('model_ormawa');
+        $this->load->model('login_model');
         $this->load->library('form_validation');
 	}
 
@@ -58,13 +59,16 @@ class Organisasi extends CI_Controller {
     }
 
     public function dashboard($idOrganisasi){
-        //$this->session->set_userdata('namaOrganisasi',$namaOrganisasi);
+        $where=array('nim'=>$this->session->userdata('nim'),'idOrganisasi'=>$idOrganisasi);
+        $org=$this->login_model->view_where('ang_organisasi',$where)->result();
+        $this->session->set_userdata('jabatan',$org[0]->jabatan);
         $this->session->set_userdata('idOrganisasi',$idOrganisasi);
-    	redirect('Organisasi/show/'.$this->session->nim.'/'.$this->session->idOrganisasi);
+    	redirect('Organisasi/show/'.$this->session->jabatan.'/'.$this->session->idOrganisasi);
     }
 
-    public function show(){
-        $this->load->view('dashboard');
+    public function show($jabatan){
+        $this->session->set_userdata('jabatan',$jabatan);
+        $this->load->view('dashboard'.$this->session->$jabatan);
     }
 
     public function tampilan_organisasi(){

@@ -40,11 +40,9 @@ class Login extends CI_Controller{
 						'username'		=> $user[0]->username,
 						'nama'			=> $user[0]->nama,
 						'nim'			=> $user[0]->nim,
-						'jabatan'		=> $user[0]->jabatan,
 						'id_kas'		=> $user[0]->id_kas,
 						'foto'			=> $user[0]->foto,
 						'idOrganisasi'  => $user[0]->idOrganisasi,
-						'namaOrganisasi'=> $user[0]->namaOrganisasi,
 						'password'		=> $user[0]->password));
 				redirect('/Login');
 			} 

@@ -371,9 +371,7 @@
 <?php //foreach ($data as $data) { ?>
 <table >
 
-        <tr>
-           
-            
+        <tr> 
             <td><img src="<?php echo base_url('asset/images/foto/'.$foto)?>" width="250" height="300"></td>
         </tr>
 </table>

@@ -19,6 +19,10 @@ class login_model extends CI_Model
 		return $query->result();
 	}
 
+	public function view_where($table,$where){
+  		return $this->db->get_where($table,$where);
+ 	}
+
 
 	// Input data ke database
 	
