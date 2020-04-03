@@ -6,6 +6,7 @@
             $this->load->model('kegiatan_model');
             $this->load->model('model_daftar');
             $this->load->model('proker_model');
+            $this->load->model('model_presensi');
             $this->load->library('form_validation','session');
         }
 
@@ -115,6 +116,18 @@
                 $this->load->view('display_kegiatan2',$data);
             }
         }
+
+        public function displaykegiatan2($where){
+            $newdata = $this->session->userdata('jabatan');
+            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
+                $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
+                redirect('kegiatan');
+            }else{
+                $data['data']=$this->kegiatan_model->tampil($where)->result();
+                // print_r($data);
+                $this->load->view('v_presensikegiatan',$data);
+            }
+        }
         public function hapus($id){
             $where = array('id_kegiatan'=>$id);
             $this->kegiatan_model->hapus_data($where,'kegiatan');
@@ -141,6 +154,11 @@
             );
             $this->kegiatan_model->update_data($where,$data,'kegiatan');
             redirect('kegiatan/displaydata');
+        }
+
+        public function presensi($where){
+            $data['data'] = $this->model_presensi->tampilPresensi($where);
+            $this->load->view('v_kehadiran',$data); 
         }
 
     }

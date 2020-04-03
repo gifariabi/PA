@@ -363,37 +363,53 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head> -->
+<body>
 <center>
-	<h1>Tambah Foto</h1>
-	<hr>
-	<hr>
-	<?php foreach ($data as $get) { ?>
-	<form action="<?= base_url() ?>index.php/Edit_foto/updatef" method="POST" enctype="multipart/form-data">
-	<table>
-	<tr> <td></td>
-		<td><img src="<?php echo base_url('asset/images/foto/'.$get->foto)?>" width="300" height="300"></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td><input type="hidden" name="nim" value="<?php echo $get->nim ?>">
-		<input type="file" name="foto"></td>
-	</tr>
-	
-	<tr><td></td>
-		<td align="center">
-			<input type="submit" name="submit" class="btn btn-success btn-user btn-block" value="Ganti Foto">
-		</td>
-	</tr>	
-	</table>
-
-	 
-  <?php  } ?>
-
- <footer class="sticky-footer bg-white">
+<h3>Jadwal Kegiatan</h3>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>NIM</th>
+              <th>Nama Kegiatan</th>
+              <th>Waktu Pelaksanaan</th>
+              <th>Tempat Pelaksanaan</th>
+              <th>status</th>
+          </tr>
+          <?php
+              $i=1;
+              foreach ($data as $key) {
+          ?>
+          <tr>
+              <td><?php echo $i; ?></td>
+              <td><?php echo $key->nama; ?></td>
+              <td><?php echo $key->nim; ?></td>
+              <td><?php echo $key->nama_kegiatan; ?></td>
+              <td><?php echo $key->waktu; ?></td>
+              <td><?php echo $key->tempat; ?></td>
+              <td><?php echo $key->status; ?></td>
+          </tr>
+          <?php $i++; }?>
+        </table>
+      </div>  
+    </div>    
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy;</span>
+            <span>Copyright &copy; HMDSI 2019</span>
           </div>
         </div>
       </footer>
@@ -430,25 +446,20 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url().'asset/masuk/vendor/jquery/jquery.min.js'?>"></script>
-  <script src="<?php echo base_url().'asset/masuk/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/vendor/jquery/jquery.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url().'asset/masuk/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url().'asset/masuk/js/sb-admin-2.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/js/sb-admin-2.min.js'?>"></script>
 
   <!-- Page level plugins -->
-  <script src="<?php echo base_url().'asset/masuk/vendor/chart.js/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/vendor/chart.js/Chart.min.js'?>"></script>
 
   <!-- Page level custom scripts -->
-  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-area-demo.js'?>"></script>
-  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-pie-demo.js'?>"></script>
+  <script src="<?php echo base_url().'assets/js/demo/chart-area-demo.js'?>"></script>
+  <script src="<?php echo base_url().'assets/js/demo/chart-pie-demo.js'?>"></script>
 </body>
-</html>
-
-
-</body>
-
 </html>

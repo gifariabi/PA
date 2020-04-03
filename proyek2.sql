@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Apr 2020 pada 19.45
+-- Waktu pembuatan: 03 Apr 2020 pada 16.40
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -52,14 +52,12 @@ CREATE TABLE `ang_organisasi` (
 --
 
 INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
-(670117403, 'Gifari Abi Waqqash', 1, 'Anggota Divisi '),
+(670117403, 'Gifari Abi Waqqash', 1, 'Anggota Divisi Olahraga'),
 (670117410, 'Muhammad Luqman', 1, 'Sekertaris'),
-(670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Dalam Negeri'),
 (670117410, 'Muhammad Luqman', 5, 'Anggota Divisi Dalam Negeri'),
 (670117455, 'Eko adinata', 5, 'Anggota Divisi Luar Negeri'),
-(670117455, 'Eko adinata', 1, 'Anggota Devisi Olahraga'),
-(670117400, 'yusril wahyuda', 1, ''),
-(670606006, 'Ade Pangestu', 1, '');
+(670117455, 'Eko adinata', 1, 'Kewirausahaan'),
+(670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Olahraga');
 
 -- --------------------------------------------------------
 
@@ -130,8 +128,7 @@ INSERT INTO `kas` (`id_kas`, `pemasukan_kas`, `pengeluaran_kas`, `keterangan`, `
 (17, 0, 500, 'Beli Pulpen', '2020-03-30', 1),
 (18, 0, 10000, 'Print Proposal', '2020-03-30', 5),
 (20, 100000, 0, '', '2020-03-30', 5),
-(21, 0, 50000, 'Sewa Kain Hitam', '2020-03-30', 5),
-(24, 1500000, 0, '', '2020-04-14', 1);
+(21, 0, 50000, 'Sewa Kain Hitam', '2020-03-30', 5);
 
 -- --------------------------------------------------------
 
@@ -278,9 +275,21 @@ INSERT INTO `pengurus` (`nim_pengurus`, `nama`, `jabatan`, `noWA`, `noHP`, `idLi
 CREATE TABLE `presensi` (
   `id_presensi` int(5) NOT NULL,
   `waktu_submit` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `nim_pengurus` int(10) NOT NULL,
+  `status` varchar(255) COLLATE utf8_bin NOT NULL,
+  `nim` int(10) NOT NULL,
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data untuk tabel `presensi`
+--
+
+INSERT INTO `presensi` (`id_presensi`, `waktu_submit`, `status`, `nim`, `id_kegiatan`) VALUES
+(1, '2020-04-03 13:46:16', 'Hadir', 670117400, 5),
+(4, '2020-04-03 14:30:36', 'Hadir', 670117410, 5),
+(5, '2020-04-03 14:30:36', 'Hadir', 670117403, 5),
+(6, '2020-04-03 14:31:17', 'Hadir', 670117400, 3),
+(7, '2020-04-03 14:31:17', 'Hadir', 670117406, 6);
 
 -- --------------------------------------------------------
 
@@ -468,8 +477,8 @@ ALTER TABLE `pengurus`
 --
 ALTER TABLE `presensi`
   ADD PRIMARY KEY (`id_presensi`),
-  ADD UNIQUE KEY `nim` (`nim_pengurus`),
-  ADD UNIQUE KEY `id_kegiatan` (`id_kegiatan`);
+  ADD KEY `nim` (`nim`) USING BTREE,
+  ADD KEY `id_kegiatan` (`id_kegiatan`) USING BTREE;
 
 --
 -- Indeks untuk tabel `programkerja`
@@ -519,7 +528,7 @@ ALTER TABLE `departemen`
 -- AUTO_INCREMENT untuk tabel `kas`
 --
 ALTER TABLE `kas`
-  MODIFY `id_kas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_kas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `kegiatan`
@@ -537,13 +546,13 @@ ALTER TABLE `lpj`
 -- AUTO_INCREMENT untuk tabel `organisasi`
 --
 ALTER TABLE `organisasi`
-  MODIFY `idOrganisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idOrganisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id_presensi` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_presensi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `programkerja`
@@ -621,7 +630,7 @@ ALTER TABLE `pengurus`
 -- Ketidakleluasaan untuk tabel `presensi`
 --
 ALTER TABLE `presensi`
-  ADD CONSTRAINT `presensi_ibfk_1` FOREIGN KEY (`nim_pengurus`) REFERENCES `pengurus` (`nim_pengurus`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_mahasiswa` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`),
   ADD CONSTRAINT `presensi_ibfk_2` FOREIGN KEY (`id_kegiatan`) REFERENCES `kegiatan` (`id_kegiatan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
