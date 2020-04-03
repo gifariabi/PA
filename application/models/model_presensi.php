@@ -4,7 +4,7 @@ class model_presensi extends CI_Model{
 		
 	function tampilPresensi($where){
         $this->db->distinct();
-		$this->db->select('nama, m.nim, nama_kegiatan, waktu, status, tempat');
+		$this->db->select('nama, m.nim, nama_kegiatan, waktu, status, tempat, waktu_submit, prodi');
         $this->db->from('kegiatan k');
         $this->db->join('presensi p','k.id_kegiatan =  p.id_kegiatan');
         $this->db->join('mahasiswa m','p.nim =  m.nim');
