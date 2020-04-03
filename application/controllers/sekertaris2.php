@@ -47,11 +47,11 @@ class sekertaris2 extends CI_Controller{
         $nim_pengurus = $this->input->post('nim_pengurus');
 
         $data = array(
-            'no_suratkeluar' = $no_suratkeluar,
-            'penerima' = $penerima,
-            'tanggalkeluar' = $tanggalkeluar,
-            'perihal' = $perihal,
-            'nim_pengurus' = $nim_pengurus
+            'no_suratkeluar' => $no_suratkeluar,
+            'penerima' => $penerima,
+            'tanggalkeluar' => $tanggalkeluar,
+            'perihal' => $perihal,
+            'nim_pengurus' => $nim_pengurus
         );
             
         $this->model_suratkeluar->data($data,'suratkeluar');

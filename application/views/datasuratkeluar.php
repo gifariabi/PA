@@ -413,7 +413,7 @@
             echo $this->pagination->create_links();
         ?>
         <br/>
-        <a href="<?php echo base_url().'index.php/sekertaris/suratkeluar';?>">Input Surat</a><br>
+        <a href="<?php echo base_url().'index.php/sekertaris/suratkeluar/'.$this->session->userdata('idOrganisasi');?>">Input Surat</a><br>
         <a href="<?php echo base_url().'index.php/sekertaris/index';?>">Home</a>
 </center>
 	<br>

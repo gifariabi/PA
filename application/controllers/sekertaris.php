@@ -39,7 +39,7 @@ class sekertaris extends CI_Controller{
         }
             $where = array('nim_pengurus'=>$nim_pengurus);
             $data['data'] = $this->modelnya->edit_data($where, 'suratkeluar')->result();
-		    $this->load->view('formsuratkeluar');
+		    $this->load->view('formsuratkeluar',$data);
 	}
 
     function req_Surat(){
