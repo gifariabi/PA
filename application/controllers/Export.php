@@ -20,8 +20,8 @@ class Export extends CI_Controller {
           $this->load->view('v_pengurus', $data);
      }
 
-     public function export(){
-          $pengurus = $this->model_ormawa->getPengurus();
+     public function export($where){
+          $pengurus = $this->model_ormawa->getPengurus($where);
 
           $spreadsheet = new Spreadsheet;
 
@@ -37,7 +37,7 @@ class Export extends CI_Controller {
 
                $spreadsheet->setActiveSheetIndex(0)
                            ->setCellValue('A' . $kolom, $nomor)
-                           ->setCellValue('B' . $kolom, $get->nim_pengurus)
+                           ->setCellValue('B' . $kolom, $get->nim)
                            ->setCellValue('C' . $kolom, $get->nama)
                            ->setCellValue('D' . $kolom, $get->jabatan);
                $kolom++;

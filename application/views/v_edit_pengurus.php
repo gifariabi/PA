@@ -75,7 +75,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_pengurus" style="text-decoration: none">Kelola Pengurus</a>
+            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_pengurus/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Pengurus</a>
             <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_anggota/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Anggota</a>
           </div>
         </div>
@@ -372,7 +372,7 @@
 			<tr>
 				<td>Nama</td>
 				<td>
-				<input type="hidden" name="nim_pengurus" value="<?php echo $u->nim_pengurus ?>">
+				<input type="hidden" name="nim" value="<?php echo $u->nim ?>">
 				<input type="text" name="nama" value="<?php echo $u->nama ?>">
 				</td>
 			</tr>

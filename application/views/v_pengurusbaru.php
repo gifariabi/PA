@@ -386,11 +386,11 @@
             <td><?php echo $i; ?></td>
             <td><?php echo $data->nim; ?></td>
             <td><?php echo $data->nama; ?></td>
-            <td><a href="<?= base_url().'/Ormawa/add_anggota/'.$data->nim;?>" class="btn btn-primary">Tambah</a></td>
+            <td><a href="<?= base_url().'/Ormawa/add_pengurus/'.$data->nim;?>" class="btn btn-primary">Tambah</a></td>
         </tr>
         <?php $i++; }?>
     </table>
-        <br/>
+         
 
 
 </center>

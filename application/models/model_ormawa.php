@@ -44,9 +44,10 @@ class model_ormawa extends CI_Model{
 		  return $query->result();
     	}
 
-        public function getPengurus(){
-            $this->db->select('nim_pengurus, nama, jabatan');
+        public function getPengurus($where){
+            $this->db->select('nim, nama, jabatan');
             $this->db->from('pengurus');
+            $this->db->where('idOrganisasi',$where);
         //$this->db->where('MONTH(tanggal)', $tanggal);
         //$this->db->order_by('id_kas', 'ASC');
         
@@ -126,6 +127,14 @@ class model_ormawa extends CI_Model{
             return $query;
         }
 
+        }
+
+         public function getPengurusbaru(){
+            $this->db->select('*');
+            $this->db->from('mahasiswa');
+
+            $query = $this->db->get();
+            return $query->result();
         }
 
     }
