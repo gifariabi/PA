@@ -376,7 +376,7 @@
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><input type="text" name="password" value="<?= $password ?>"></td>
+				<td><input type="password" name="password" value="<?= $password ?>"></td>
 			</tr>
 			<tr>
 				<td>Nama Lengkap</td>

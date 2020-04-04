@@ -367,7 +367,6 @@
 <center>
 <h1><b>Data Pengurus</b></h1>
 <hr>
-<hr>
     <div class="card mb-4">
     <div class="card-header"></div>
     <div class="table-responsive">
