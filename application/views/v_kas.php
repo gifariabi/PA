@@ -427,7 +427,7 @@
             <td>Rp <?php echo $data->pengeluaran_kas; ?></td>
             <td><?php echo $data->tanggal; ?></td>
             <td><a href="<?= base_url().'/Ormawa/editKas/'.$data->id_kas;?>" class="btn btn-primary">Edit</a></td>
-            <td><a href="<?= base_url().'/Ormawa/hapus_kas/'.$data->id_kas;?>" class="btn btn-danger">Hapus</a></td>
+            <td><a href="<?= base_url().'/Ormawa/hapus_kas/'.$data->id_kas;?>" onclick="return confirm('Anda Yakin Menghapus Kas ?')" class="btn btn-danger">Hapus</a></td>
         </tr>
         <?php $i++; }?>
     </table>

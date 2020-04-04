@@ -405,6 +405,7 @@
               <td><?php echo $key->tempat; ?></td>
               <td><?php echo $key->status; ?></td>
           </tr>
+          
           <?php $i++; }?>
         </table>
       </div>  

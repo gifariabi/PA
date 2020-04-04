@@ -370,11 +370,12 @@
 <hr>
     <br>
     <table border="1">
-
+  <form>
         <tr>
             <th>No</th>
             <th>Nim</th>
             <th>Nama</th>
+            <th>Tahun Ajaran</th>
             <th>Kelola</th>
         </tr>
         <?php
@@ -386,13 +387,20 @@
             <td><?php echo $i; ?></td>
             <td><?php echo $data->nim; ?></td>
             <td><?php echo $data->nama; ?></td>
-            <td><a href="<?= base_url().'/Ormawa/add_pengurus/'.$data->nim;?>" class="btn btn-primary">Tambah</a></td>
+            <td><div class=form-group>
+                <select name="id_thnAjaran" class="form-control form-control-sm">
+                <option value="0">-</option>
+                <option value="1">2019-2020</option>
+                <option value="2">2020-2021</option>
+                <option value="3">2021-2022</option>
+                </select>
+                </div>
+            </td>
+            <td><a href="<?= base_url().'/Ormawa/add_pengurus/'.$data->nim;?>" onclick="return confirm('Anda Yakin Menambah Pengurus ?')" class="btn btn-primary">Tambah</a></td>
         </tr>
         <?php $i++; }?>
     </table>
-         
-
-
+    </form>
 </center>
 
 <footer class="sticky-footer bg-white">

@@ -403,7 +403,7 @@
               <a href="<?php echo site_url('kegiatan/Presensi/'.$key->id_kegiatan); ?>" class="btn btn-primary">Lihat Kehadiran</a>    
                 
               </td>
-          </tr>
+          </tr> 
           <?php $i++; }?>
         </table>
       </div>  
