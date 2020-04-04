@@ -21,6 +21,19 @@
         function edit_data($where,$table){
             return $this->db->get_where($table,$where);
         }
+        function tampil_data($where){
+            $this->db->select('p.nim , o.idOrganisasi');
+            $this->db->from('rapat r');
+            $this->db->join('pengurus p','r.nim = p.nim');
+            $this->db->join('organisasi o','p.idOrganisasi = o.idOrganisasi');
+            // $this->db->join('anggota a','an.nim =  a.nim');
+            $this->db->where('o.idOrganisasi', $where);
+
+            $query = $this->db->get();
+            // if($query->num_rows() > 0) {
+                return $query;
+            // }
+        }
         // update data
         function update_data($where,$data,$table){
             $this->db->where($where);

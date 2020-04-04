@@ -378,7 +378,7 @@
 <h3>Rapat</h3>
 </center>
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
-    <a class="btn btn-success" href="<?php echo base_url('index.php/rapat/rapat/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
+    <a class="btn btn-success" href="<?php echo base_url('index.php/rapat/rapat/'.$this->session->idOrganisasi.'/'.$this->session->nim); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

@@ -138,7 +138,7 @@
             <!-- <a class="collapse-item" href="<?php echo base_url()."index.php/sekertaris2/inputan/" ;?>" style="text-decoration: none">Cek Permintaan Surat</a> -->
             <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Jadwal Kegiatan</a>
             <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Program Kerja</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Rapat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displaydata/'.$this->session->idOrganisasi.'/'.$this->session->nim); ?>" style="text-decoration: none">Kelola Rapat</a>
           </div>
         </div>
       </li>

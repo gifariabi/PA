@@ -10,13 +10,15 @@
             $this->load->view('home');
         }
 
-        public function rapat(){
+        public function rapat($nim){
             $newdata = $this->session->userdata('jabatan');
             if($this->session->userdata('jabatan') != 'Sekertaris'){
                 $this->session->set_flashdata('pesan', ' hanya dapat diakses sekretaris');
                 redirect('rapat');
             }else{
-                $this->load->view('input_rapat');
+                $where = array('nim' => $nim);
+                $data['data'] = $this->rapat_model->edit_data($where, 'pengurus')->result();
+                $this->load->view('input_rapat',$data);
             }
         }
 
@@ -34,14 +36,16 @@
                 $keperluan = $this->input->post('keperluan');
                 $tempat = $this->input->post('tempat');
                 $tanggal = $this->input->post('tanggal');
+                $nim = $this->input->post('nim');
                 
                 $data = array(
                     'perihal' => $keperluan, 
                     'tempat' => $tempat,
-                    'tanggal' => $tanggal
+                    'tanggal' => $tanggal,
+                    'nim' => $nim
                 );
                 $this->rapat_model->data($data,'rapat');
-                redirect('rapat/displaydata');
+                redirect('rapat/displaydata'.$this->session->idOrganisasi);
             }
         }
         public function displaydata(){
