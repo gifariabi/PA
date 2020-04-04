@@ -411,11 +411,9 @@
 		<td><input type="text" name="perihal" class="form-control form-control-user"></td>
 	</tr>
   <tr>
-    <!-- <td>NIM</td>  -->
-    <!-- <td>:</td> -->
-    <?php foreach($data as $key){ ?>
-    <td><input type="hidden" name="nim_pengurus" class="form-control form-control-user" value="<?= $key->nim_pengurus; ?>"></td>
-    <?php } ?>
+    <td>NIM</td> 
+    <td>:</td>
+    <td><input type="text" name="nim" class="form-control form-control-user" ></td>
   </tr>
 	<tr>
 		<td></td><td></td>

@@ -63,7 +63,7 @@
         public function hapus($id){
             $where = array('id_programkerja'=>$id);
             $this->proker_model->hapus_data($where,'programkerja');
-            redirect('programkerja/displaydata');
+            redirect('programkerja/displaydata/'.$this->session->userdata('idOrganisasi'));
         }
         public function edit($id){
             $where = array('id_programkerja'=>$id);

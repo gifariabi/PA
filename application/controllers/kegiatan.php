@@ -27,6 +27,7 @@
                 $this->load->view('input_kegiatan',$data);      
             }
         }
+        
 
         public function save2($id){
             $this->session->set_userdata('id_programkerja',$id);

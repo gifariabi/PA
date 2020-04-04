@@ -384,6 +384,7 @@
       <input type="text" name="departemen" class="form-control form-control-user" placeholder="Departemen" value="<?php echo $key->departemen; ?>"></td>
     </div>  
         <input type="submit" name="submit" value="Input" class="btn btn-success btn-block" placeholder="input">
+        <a href="<?= base_url().'/programkerja/hapus/'.$key->id_programkerja;?>" class="btn btn-block btn-danger">Hapus</a>
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
     <!-- <font color="red">

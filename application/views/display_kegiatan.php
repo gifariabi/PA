@@ -405,7 +405,7 @@
               <td>
               <a href="<?php echo site_url('kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary">Edit</a>
               <!-- <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a>     -->
-              <a href="<?php  ?>" class="btn btn-success">LPJ</a>  
+              <a href="<?php echo site_url('lpj/lpj/'.$key->id_kegiatan); ?>" class="btn btn-success">LPJ</a>  
               </td>
           </tr>
           <?php $i++; }?>

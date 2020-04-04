@@ -5,6 +5,7 @@ class sekertaris extends CI_Controller{
 		parent::__construct();
 		$this->load->helper(array('form', 'url','file'));
         $this->load->model('modelnya');
+        $this->load->model('model_suratkeluar');
         $this->load->library('form_validation','pdf','session');
 	}
 
@@ -31,14 +32,14 @@ class sekertaris extends CI_Controller{
             $this->load->view('suratmasuk');
 	}
 
-	function suratkeluar($nim_pengurus){
+	function suratkeluar($where){
         $newdata = $this->session->userdata('jabatan');
         if ($this->session->userdata('jabatan') != 'Sekertaris'){
             $this->session->set_flashdata('pesann','<font color=red>Hanya Sekertaris yang dapat mengakses fitur tersebut</font>');
             redirect('sekertaris');
         }
-            $where = array('nim_pengurus'=>$nim_pengurus);
-            $data['data'] = $this->modelnya->edit_data($where, 'suratkeluar')->result();
+            // $where = array('nim'=>$nim);
+            $data['data'] = $this->model_suratkeluar->tampil_nim($where)->result();
 		    $this->load->view('formsuratkeluar',$data);
 	}
 
