@@ -48,6 +48,7 @@ class model_ormawa extends CI_Model{
             $this->db->select('nim, nama, jabatan');
             $this->db->from('pengurus');
             $this->db->where('idOrganisasi',$where);
+            $this->db->where('id_thnAjaran',1);
         //$this->db->where('MONTH(tanggal)', $tanggal);
         //$this->db->order_by('id_kas', 'ASC');
         

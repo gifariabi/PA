@@ -48,7 +48,7 @@ class Export_Anggota extends CI_Controller {
           $writer = new Xlsx($spreadsheet);
 
     header('Content-Type: application/vnd.ms-excel');
-	  header('Content-Disposition: attachment;filename="Data.Xlsx"');
+	  header('Content-Disposition: attachment;filename="Data Anggota.Xlsx"');
 	  header('Cache-Control: max-age=0');
 
 	  $writer->save('php://output');

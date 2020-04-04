@@ -368,8 +368,10 @@
 <h1><b>Data Anggota</b></h1>
 <hr>
 <hr>
-    <br>
-    <table border="1">
+    <div class="card mb-4">
+    <div class="card-header"></div>
+    <div class="table-responsive">
+    <table class="table table-bordered" width="100%" >
 
         <tr>
             <th>No</th>
@@ -396,9 +398,8 @@
         <br/>
         <a href="<?= base_url().'/Export_Anggota/export/'.$this->session->userdata('idOrganisasi')?>" class="btn btn-success">Export Data Anggota</a>
          <a href="<?= base_url().'/Ormawa/tambah_anggota/'?>" class="btn btn-success">Tambah Anggota</a>
-
-
 </center>
+<br>
 
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">

@@ -369,7 +369,8 @@
 <hr>
 <hr>
     <br>
-    <table border="1">
+    <div class="table-responsive">
+    <table class="table table-bordered" >
 
         <tr>
             <th>No</th>

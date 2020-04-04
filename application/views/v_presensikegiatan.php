@@ -375,7 +375,9 @@
 </head> -->
 <body>
 <center>
-<h3>Jadwal Kegiatan</h3>
+<h1>Jadwal Kegiatan</h1>
+<hr>
+<hr>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

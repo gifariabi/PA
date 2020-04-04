@@ -368,8 +368,10 @@
 <h1><b>Data Pengurus</b></h1>
 <hr>
 <hr>
-    <br>
-    <table border="1">
+    <div class="card mb-4">
+    <div class="card-header"></div>
+    <div class="table-responsive">
+    <table class="table table-bordered" width="100%" >
 
         <tr>
             <th>No</th>
@@ -394,9 +396,10 @@
         <?php $i++; }?>
     </table>
         <br/>
-        <a href="<?= base_url().'/Export/export/'.$this->session->userdata('idOrganisasi')?>" class="btn btn-success">Export Data Pengurus</a>
+        <a href="<?= base_url().'/Export/export/'.$this->session->userdata('idOrganisasi')?>" class="btn btn-success" >Export Data Pengurus</a>
         <a href="<?= base_url().'/Ormawa/tambah_pengurus/'?>" class="btn btn-success">Tambah Pengurus</a>
-
+        <br>
+        <br>
 </center>
 
 <footer class="sticky-footer bg-white">

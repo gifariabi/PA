@@ -48,7 +48,7 @@ class Export extends CI_Controller {
           $writer = new Xlsx($spreadsheet);
 
     header('Content-Type: application/vnd.ms-excel');
-	  header('Content-Disposition: attachment;filename="Data.Xlsx"');
+	  header('Content-Disposition: attachment;filename="Data Pengurus.Xlsx"');
 	  header('Cache-Control: max-age=0');
 
 	  $writer->save('php://output');

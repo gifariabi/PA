@@ -31,7 +31,8 @@
 <?php echo $key->deskripsi; ?>
 <br>
 <?php if ($this->session->nim == 0) { ?>
-  <a href="<?php echo base_url('Ormawa/tampil_anggota/'.$key->idOrganisasi)?>">Lihat Anggota</a>
+  <a href="<?php echo base_url('Ormawa/tampil_anggota/'.$key->idOrganisasi)?> " class="btn btn-success">Lihat Anggota</a>
+  <a href="<?php echo base_url('Ormawa/tampil_pengurus/'.$key->idOrganisasi)?>" class="btn btn-success">Lihat Pengurus</a>
 <?php } ?>
 </center>
 
