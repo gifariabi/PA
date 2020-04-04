@@ -377,14 +377,6 @@
 </table>
 <table>
         <tr>
-            <td>Username</td>
-            <td>:</td>
-            <td><?= $username ?></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td>:</td>
-            <td><?= $password ?></td>
         </tr>
         <tr>
             <td>Nama Lengkap</td>
