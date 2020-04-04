@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Apr 2020 pada 10.29
+-- Waktu pembuatan: 04 Apr 2020 pada 15.26
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -150,11 +150,7 @@ CREATE TABLE `kegiatan` (
 --
 
 INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `qr_code`, `id_programkerja`) VALUES
-(3, 'MANIAC 2020', '2020-10-09', 'Gallery dan Batununggal Sport Center', '', 2),
-(5, 'Seminar Android', '2020-01-01', 'Aula Fakultas Ilmu Terapan', 'Seminar Android.png', 2),
-(6, 'Bangkit yok', '2020-03-30', 'Gallery dan Batununggal Sport Center', 'Bangkit yok.png', 2),
-(7, 'MANIAC 2021', '2020-04-02', 'Gallery dan Batununggal Sport Center', 'MANIAC 2021.png', 2),
-(8, 'MANIAC 2022', '2020-04-04', 'Gallery dan Batununggal Sport Center', 'MANIAC 2022.png', 2);
+(9, 'MANIAC 2021', '2021-11-08', 'Batununggal Sport Center', 'MANIAC 2021.png', 7);
 
 -- --------------------------------------------------------
 
@@ -276,17 +272,6 @@ CREATE TABLE `presensi` (
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dumping data untuk tabel `presensi`
---
-
-INSERT INTO `presensi` (`id_presensi`, `waktu_submit`, `status`, `nim`, `id_kegiatan`) VALUES
-(1, '2020-04-03 13:46:16', 'Hadir', 670117400, 5),
-(4, '2020-04-03 14:30:36', 'Hadir', 670117410, 5),
-(5, '2020-04-03 14:30:36', 'Hadir', 670117403, 5),
-(6, '2020-04-03 14:31:17', 'Hadir', 670117400, 3),
-(7, '2020-04-03 14:31:17', 'Hadir', 670117406, 6);
-
 -- --------------------------------------------------------
 
 --
@@ -306,8 +291,9 @@ CREATE TABLE `programkerja` (
 --
 
 INSERT INTO `programkerja` (`id_programkerja`, `nama_programkerja`, `waktu_pelaksanaan`, `departemen`, `idOrganisasi`) VALUES
-(2, 'Olahraga Sehat sehat', '2020-08-09', 'Olahraga dan Sosial', 1),
-(4, 'Basket', '2020-04-03', 'Olahraga', 1);
+(5, 'Kerja Bakti Membangun Kampus', '2020-01-02', 'Sosial', 1),
+(7, 'Olahraga Sehat', '2020-12-03', 'Olahraga', 1),
+(8, 'Indonesia Maju', '2020-02-03', 'Ekonomi Kreatif', 1);
 
 -- --------------------------------------------------------
 
@@ -320,7 +306,7 @@ CREATE TABLE `rapat` (
   `perihal` varchar(255) COLLATE utf8_bin NOT NULL,
   `tempat` varchar(255) COLLATE utf8_bin NOT NULL,
   `tanggal` varchar(255) COLLATE utf8_bin NOT NULL,
-  `nim_pengurus` int(10) NOT NULL
+  `nim` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -335,7 +321,7 @@ CREATE TABLE `suratkeluar` (
   `penerima` varchar(255) COLLATE utf8_bin NOT NULL,
   `tanggalkeluar` varchar(255) COLLATE utf8_bin NOT NULL,
   `perihal` varchar(255) COLLATE utf8_bin NOT NULL,
-  `nim_pengurus` int(10) NOT NULL
+  `nim` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -375,14 +361,6 @@ CREATE TABLE `tiket` (
   `status` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data untuk tabel `tiket`
---
-
-INSERT INTO `tiket` (`no_tiket`, `nama`, `nim`, `jurusan`, `email`, `jumlah`, `metode_pembayaran`, `status`, `id_kegiatan`) VALUES
-(1, 'Yusril Wahyuda', '6701174101', 'D3 Sistem Informasi', 'wahyudayusril29@gmail.com', '1', 'Transfer', '', 3),
-(2, 'GIfari Abi Waqqash', '6701174033', 'D3 Sistem Informasi', 'gifariabi75@gmail.com', '1', 'Cash', '', 3);
 
 -- --------------------------------------------------------
 
@@ -488,14 +466,14 @@ ALTER TABLE `programkerja`
 --
 ALTER TABLE `rapat`
   ADD PRIMARY KEY (`id_rapat`),
-  ADD KEY `nim` (`nim_pengurus`);
+  ADD KEY `nim` (`nim`);
 
 --
 -- Indeks untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `nim_pengurus` (`nim_pengurus`);
+  ADD KEY `nim_pengurus` (`nim`);
 
 --
 -- Indeks untuk tabel `tahun_ajaran`
@@ -530,7 +508,7 @@ ALTER TABLE `kas`
 -- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `lpj`
@@ -554,7 +532,7 @@ ALTER TABLE `presensi`
 -- AUTO_INCREMENT untuk tabel `programkerja`
 --
 ALTER TABLE `programkerja`
-  MODIFY `id_programkerja` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_programkerja` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `rapat`
@@ -639,13 +617,13 @@ ALTER TABLE `programkerja`
 -- Ketidakleluasaan untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim_pengurus`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
-  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim_pengurus`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tiket`
