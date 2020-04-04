@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Apr 2020 pada 16.40
+-- Waktu pembuatan: 04 Apr 2020 pada 10.29
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -247,14 +247,10 @@ INSERT INTO `organisasi` (`idOrganisasi`, `namaOrganisasi`, `deskripsi`, `logo`,
 --
 
 CREATE TABLE `pengurus` (
-  `nim_pengurus` int(10) NOT NULL,
+  `nim` int(10) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `jabatan` varchar(255) NOT NULL,
-  `noWA` varchar(255) NOT NULL,
-  `noHP` varchar(255) NOT NULL,
-  `idLine` varchar(255) NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  `idDept` int(5) NOT NULL,
+  `idOrganisasi` int(11) NOT NULL,
   `id_thnAjaran` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
@@ -262,9 +258,9 @@ CREATE TABLE `pengurus` (
 -- Dumping data untuk tabel `pengurus`
 --
 
-INSERT INTO `pengurus` (`nim_pengurus`, `nama`, `jabatan`, `noWA`, `noHP`, `idLine`, `foto`, `idDept`, `id_thnAjaran`) VALUES
-(777, 'Deni', 'Wakadep Olahraga', '09090909', '09090909', 'deniyy', '', 1, 1),
-(4101, 'Yuda', 'Departemen Olahraga', '08080808', '08080808', 'yuyda', '', 1, 1);
+INSERT INTO `pengurus` (`nim`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`) VALUES
+(670117400, 'Yusril Wahyuda', 'Ketua', 1, 1),
+(670117406, 'Sherli Yualinda', 'Bendahara', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -468,9 +464,9 @@ ALTER TABLE `organisasi`
 -- Indeks untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
-  ADD PRIMARY KEY (`nim_pengurus`),
+  ADD PRIMARY KEY (`nim`),
   ADD KEY `id_thnAjaran` (`id_thnAjaran`) USING BTREE,
-  ADD KEY `idDept` (`idDept`) USING BTREE;
+  ADD KEY `fk_organisasi` (`idOrganisasi`);
 
 --
 -- Indeks untuk tabel `presensi`
@@ -623,8 +619,8 @@ ALTER TABLE `lpj`
 -- Ketidakleluasaan untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
-  ADD CONSTRAINT `fk_thnAjaran` FOREIGN KEY (`id_thnAjaran`) REFERENCES `tahun_ajaran` (`id_thnAjaran`),
-  ADD CONSTRAINT `pengurus_ibfk_1` FOREIGN KEY (`idDept`) REFERENCES `departemen` (`idDept`);
+  ADD CONSTRAINT `fk_organisasi` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
+  ADD CONSTRAINT `fk_thnAjaran` FOREIGN KEY (`id_thnAjaran`) REFERENCES `tahun_ajaran` (`id_thnAjaran`);
 
 --
 -- Ketidakleluasaan untuk tabel `presensi`
@@ -643,13 +639,13 @@ ALTER TABLE `programkerja`
 -- Ketidakleluasaan untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim_pengurus`) REFERENCES `pengurus` (`nim_pengurus`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim_pengurus`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
-  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim_pengurus`) REFERENCES `pengurus` (`nim_pengurus`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim_pengurus`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tiket`
