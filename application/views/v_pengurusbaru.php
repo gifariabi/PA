@@ -28,12 +28,11 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Sidebar - Brand -->
+        <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+        <div>
+        <img src="<?php echo base_url('asset/images/ormawa/'.$this->session->userdata('logo'))?>" width="65" height="65">
         </div>
-        <div class="sidebar-brand-text mx-3">2019</sup></div>
       </a>
 
       <!-- Divider -->
@@ -369,8 +368,7 @@
 <hr>
 <hr>
     <br>
-    <table border="1">
-  <form>
+  <table border="1">
         <tr>
             <th>No</th>
             <th>Nim</th>
@@ -387,16 +385,16 @@
             <td><?php echo $i; ?></td>
             <td><?php echo $data->nim; ?></td>
             <td><?php echo $data->nama; ?></td>
+            <form class="user" method="post" action="<?= base_url().'/Ormawa/add_pengurus/'.$data->nim;?>">
             <td><div class=form-group>
                 <select name="id_thnAjaran" class="form-control form-control-sm">
-                <option value="0">-</option>
                 <option value="1">2019-2020</option>
                 <option value="2">2020-2021</option>
                 <option value="3">2021-2022</option>
                 </select>
                 </div>
             </td>
-            <td><a href="<?= base_url().'/Ormawa/add_pengurus/'.$data->nim;?>" onclick="return confirm('Anda Yakin Menambah Pengurus ?')" class="btn btn-primary">Tambah</a></td>
+            <td><input type="submit" name="submit" value="Tambah" class="btn  btn-user btn-block btn-success" placeholder="input"></td>
         </tr>
         <?php $i++; }?>
     </table>

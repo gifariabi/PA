@@ -351,7 +351,7 @@ class Ormawa extends CI_Controller {
         //if ($cek1==0) {
             $this->model_daftar->insert($data2,"pengurus");
             redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
-            //echo $id_thnAjaran;
+            //echo $cek[0]['nama'];
        // }
     }
 

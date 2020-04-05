@@ -59,11 +59,15 @@ class Organisasi extends CI_Controller {
     }
 
     public function dashboard($idOrganisasi){
+        $where2 = array('idOrganisasi'=>$idOrganisasi);
         $where=array('nim'=>$this->session->userdata('nim'),'idOrganisasi'=>$idOrganisasi);
         $org=$this->login_model->view_where('ang_organisasi',$where)->result();
+        $org2 = $this->login_model->view_where('organisasi',$where2)->result();
         $this->session->set_userdata('jabatan',$org[0]->jabatan);
+        $this->session->set_userdata('logo',$org2[0]->logo);
         $this->session->set_userdata('idOrganisasi',$idOrganisasi);
     	redirect('Organisasi/show/'.$this->session->jabatan.'/'.$this->session->idOrganisasi);
+        //echo $org2[0]->logo;
     }
 
     public function show($jabatan){
