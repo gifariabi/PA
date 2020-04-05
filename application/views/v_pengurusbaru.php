@@ -397,10 +397,9 @@
                 </div>
             </td>
             <td><input type="submit" name="submit" value="Tambah" class="btn  btn-user btn-block btn-success" placeholder="input"></td>
-        </tr>
+        </tr></form>
         <?php $i++; }?>
     </table>
-    </form>
 </center>
 
 <footer class="sticky-footer bg-white">

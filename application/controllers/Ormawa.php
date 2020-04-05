@@ -338,11 +338,11 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_pengurusbaru', $data);
     }
 
-    public function add_pengurus($nim){ 
+    public function add_pengurus(){ 
         $id_thnAjaran = $this->input->post('id_thnAjaran');
         $nim = $this->input->post('nim');
         $nama = $this->input->post('nama');
-        $cek    = $this->model_daftar->view_where('mahasiswa',array('nim'=>$nim))->result_array();
+        //$cek    = $this->model_daftar->view_where('mahasiswa',array('nim'=>$nim))->result_array();
 
         $data2   = array('nim' => $nim,
                         'nama' => $nama,
