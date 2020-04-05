@@ -374,7 +374,7 @@
 </head> -->
 <body>
 <center>
-<h1>Jadwal Kegiatan</h1>
+<h1>Kegiatan</h1>
 <hr>
 <hr>
     <div class="card-body">
