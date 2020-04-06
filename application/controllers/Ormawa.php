@@ -357,4 +357,17 @@ class Ormawa extends CI_Controller {
        // }
     }
 
+    public function search(){
+        $search = $this->input->post('search');
+        $data['data'] = $this->model_daftar->searchPengurus($search);
+        $this->load->view('v_pengurusbaru',$data);
+    }
+
+    public function searchAnggota(){
+        $search = $this->input->post('search');
+        $data['data'] = $this->model_daftar->searchAnggota($search);
+        $this->load->view('v_anggotabaru',$data);
+    }
+
+
 }
