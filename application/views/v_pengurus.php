@@ -369,7 +369,19 @@
     <div class="card mb-4">
     <div class="card-header"></div>
     <div class="table-responsive">
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Tahun Ajaran
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/ajaran1/'.$this->session->userdata('idOrganisasi');?>">2019/2020</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/ajaran2/'.$this->session->userdata('idOrganisasi');?>">2020/2021</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/ajaran3/'.$this->session->userdata('idOrganisasi');?>">2021/2022</a>
+     </th>
+    </div>
+    </div>
     <table class="table table-bordered" width="100%" >
+
 
         <tr>
             <th>No</th>

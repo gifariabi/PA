@@ -16,7 +16,7 @@ class Export extends CI_Controller {
 
      public function index()
      {
-          $data['pengurus'] = $this->model_ormawa->getPengurus()->result();
+          $data['pengurus'] = $this->model_ormawa->getPengurus($where)->result();
           $this->load->view('v_pengurus', $data);
      }
 

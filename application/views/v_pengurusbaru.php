@@ -390,9 +390,9 @@
                 <input type="hidden" name="nim" value="<?= $data->nim;?>">
                 <input type="hidden" name="nama" value="<?= $data->nama;?>">
                 <select name="id_thnAjaran" class="form-control form-control-sm">
-                <option value="1">2019-2020</option>
-                <option value="2">2020-2021</option>
-                <option value="3">2021-2022</option>
+                <option value="1">2019/2020</option>
+                <option value="2">2020/2021</option>
+                <option value="3">2021/2022</option>
                 </select>
                 </div>
             </td>

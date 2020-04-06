@@ -45,12 +45,40 @@ class model_ormawa extends CI_Model{
     	}
 
         public function getPengurus($where){
-            $this->db->select('nim, nama, jabatan');
+            $this->db->select('nim, nama, jabatan,id_thnAjaran');
+            $this->db->from('pengurus');
+            $this->db->where('id_thnAjaran',$where);
+            $this->db->where('idOrganisasi',$where);
+        
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        public function getPengurus1($where){
+            $this->db->select('nim, nama, jabatan,id_thnAjaran');
             $this->db->from('pengurus');
             $this->db->where('idOrganisasi',$where);
             $this->db->where('id_thnAjaran',1);
-        //$this->db->where('MONTH(tanggal)', $tanggal);
-        //$this->db->order_by('id_kas', 'ASC');
+        
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        public function getPengurus2($where){
+            $this->db->select('nim, nama, jabatan,id_thnAjaran');
+            $this->db->from('pengurus');
+            $this->db->where('idOrganisasi',$where);
+            $this->db->where('id_thnAjaran',2);
+        
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        public function getPengurus3($where){
+            $this->db->select('nim, nama, jabatan,id_thnAjaran');
+            $this->db->from('pengurus');
+            $this->db->where('idOrganisasi',$where);
+            $this->db->where('id_thnAjaran',3);
         
             $query = $this->db->get();
             return $query->result();

@@ -357,6 +357,21 @@ class Ormawa extends CI_Controller {
        // }
     }
 
+    public function ajaran1($where){
+        $data['data'] = $this->model_ormawa->getPengurus1($where);
+        $this->load->view('v_pengurus', $data);
+    }
+
+    public function ajaran2($where){
+        $data['data'] = $this->model_ormawa->getPengurus2($where);
+        $this->load->view('v_pengurus', $data);
+    }
+
+    public function ajaran3($where){
+        $data['data'] = $this->model_ormawa->getPengurus3($where);
+        $this->load->view('v_pengurus', $data);
+    }
+
     public function search(){
         $search = $this->input->post('search');
         $data['data'] = $this->model_daftar->searchPengurus($search);
