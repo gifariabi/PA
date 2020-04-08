@@ -398,8 +398,8 @@
               <td><?php echo $key->tempat; ?></td>
               <td><?php echo $key->tanggal; ?></td>
               <td>
-              <a href="<?php echo site_url('programkerja/edit/'.$key->id_rapat); ?>" class="btn btn-primary">Edit</a>
-              <a href="<?php echo site_url('programkerja/hapus/'.$key->id_rapat); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a>    
+              <a href="<?php echo site_url('rapat/edit/'.$key->id_rapat); ?>" class="btn btn-primary">Edit</a>
+              <a href="<?php echo site_url('rapat/hapus/'.$key->id_rapat); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a>    
                 
               </td>
           </tr>

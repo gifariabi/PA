@@ -42,10 +42,10 @@
                     'perihal' => $keperluan, 
                     'tempat' => $tempat,
                     'tanggal' => $tanggal,
-                    'nim' => $nim
+                    'nim' => $this->session->userdata('nim')
                 );
                 $this->rapat_model->data($data,'rapat');
-                redirect('rapat/displaydata'.$this->session->idOrganisasi);
+                redirect('rapat/displaydata/'.$this->session->idOrganisasi);
             }
         }
         public function displaydata(){
@@ -57,6 +57,16 @@
                 $data['data']=$this->rapat_model->tampil()->result();
                 $this->load->view('display_rapat',$data);
             }
+        }
+        public function hapus($id){
+            $where = array('id_rapat'=>$id);
+            $this->rapat_model->hapus_data($where,'rapat');
+            redirect('rapat/displaydata/'.$this->session->userdata('idOrganisasi'));
+        }
+        public function edit($id){
+            $where = array('rapat'=>$id);
+            $data['data'] = $this->rapat_model->edit_data($where,'rapat')->result();
+            $this->load->view('edit_rapat',$data);
         }
     }
     

@@ -383,8 +383,8 @@
             <td>Tanggal</td>
             <td>:</td>
             <td><input type="date" name="tanggal" class="form-control form-control-user">
-            <?php foreach($data as $key){ ?>   
-            <input type="hidden" name="nim" value="<?php echo $key->nim; ?>"></td>
+            <?php foreach($data as $data){ ?>   
+            <input type="hidden" name="nim" value="<?php echo $data->nim; ?>"></td>
             <?php } ?>
         </tr>
         <tr>
