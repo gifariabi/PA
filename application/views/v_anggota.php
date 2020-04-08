@@ -395,9 +395,11 @@
     </table>
         <br/>
         <a href="<?= base_url().'/Export_Anggota/export/'.$this->session->userdata('idOrganisasi')?>" class="btn btn-success">Export Data Anggota</a>
-         <a href="<?= base_url().'/Ormawa/tambah_anggota/'?>" class="btn btn-success">Tambah Anggota</a>
+        <a href="<?= base_url().'/Ormawa/tambah_anggota/'?>" class="btn btn-success">Tambah Anggota</a>
+        <br>
+        <br>
 </center>
-<br>
+
 
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">

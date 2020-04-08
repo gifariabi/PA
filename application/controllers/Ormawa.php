@@ -248,24 +248,25 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_pengurus', $data);
     }
 
-    public function editPengurus($nim){
-    $where = array('nim' => $nim);
+    public function editPengurus($nim,$idOrganisasi){
+    $where = array('nim' => $nim ,'idOrganisasi' => $idOrganisasi);
     $data['data'] = $this->model_ormawa->edit_pengurus($where,'pengurus')->result();
     $this->load->view('v_edit_pengurus',$data);
     }
 
     public function update_pengurus(){
         $nim = $this->input->post('nim');
-        $nama = $this->input->post('nama');
+        $idOrganisasi = $this->input->post('idOrganisasi');
         $jabatan = $this->input->post('jabatan');
  
         $data = array(
-        'nama' => $nama,
+        'idOrganisasi' => $idOrganisasi,
         'jabatan' => $jabatan
         );
  
         $where = array(
-        'nim' => $nim
+        'nim' => $nim,
+        'idOrganisasi' => $idOrganisasi
         );
  
         $this->model_ormawa->update_pengurus($where,$data,'pengurus');

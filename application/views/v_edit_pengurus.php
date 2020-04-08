@@ -365,14 +365,15 @@
 <?php foreach($data as $u){ ?>
 <center><h1>Edit Pengurus</h1>
 </center>
-	<form action="<?= base_url() ?>index.php/Ormawa/update_pengurus" method="POST">
+	<form action="<?= base_url() ?>index.php/Ormawa/update_pengurus/<?=$this->session->userdata('idOrganisasi')?>" method="POST">
 	<table style="margin: 20px auto;">
 		<body>
 			<tr>
 				<td>Nama</td>
 				<td>
 				<input type="hidden" name="nim" value="<?php echo $u->nim ?>">
-				<input type="text" name="nama" value="<?php echo $u->nama ?>">
+        <input type="hidden" name="idOrganisasi" value="<?php echo $u->idOrganisasi?>">
+				<?php echo $u->nama ?>
 				</td>
 			</tr>
 			<tr>

@@ -45,10 +45,12 @@ class model_ormawa extends CI_Model{
     	}
 
         public function getPengurus($where){
-            $this->db->select('nim, nama, jabatan,id_thnAjaran');
-            $this->db->from('pengurus');
-            $this->db->where('id_thnAjaran',$where);
-            $this->db->where('idOrganisasi',$where);
+            $this->db->select('p.nim, p.nama, p.jabatan, o.idOrganisasi, id_thnAjaran');
+            $this->db->from('organisasi o');
+            $this->db->join('pengurus p','o.idOrganisasi =  p.idOrganisasi');
+            $this->db->join('mahasiswa a','p.nim =  a.nim');
+            $this->db->where('p.id_thnAjaran', 1);
+            $this->db->where('o.idOrganisasi', $where);
         
             $query = $this->db->get();
             return $query->result();
@@ -98,12 +100,6 @@ class model_ormawa extends CI_Model{
         }
 
         public function getAnggota($where){
-            /*$this->db->select('nim, nama, jabatan');
-            $this->db->from('anggota');
-            $this->db->where('nim != 0');
-        
-            $query = $this->db->get();
-            return $query->result();*/
 
             $this->db->select('a.nim, an.nama, an.jabatan, o.idOrganisasi');
             $this->db->from('organisasi o');
@@ -112,9 +108,9 @@ class model_ormawa extends CI_Model{
             $this->db->where('o.idOrganisasi', $where);
 
             $query = $this->db->get();
-            if($query->num_rows() > 0) {
+            //if($query->num_rows() > 0) {
                 return $query->result();
-            }
+            //}
         }
 
         public function edit_anggota($where,$table){      

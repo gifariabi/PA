@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Apr 2020 pada 15.26
+-- Waktu pembuatan: 08 Apr 2020 pada 19.18
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -55,9 +55,8 @@ INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
 (670117403, 'Gifari Abi Waqqash', 1, 'Anggota Divisi Olahraga'),
 (670117410, 'Muhammad Luqman', 1, 'Sekertaris'),
 (670117410, 'Muhammad Luqman', 5, 'Anggota Divisi Dalam Negeri'),
-(670117455, 'Eko adinata', 5, 'Anggota Divisi Luar Negeri'),
-(670117455, 'Eko adinata', 1, 'Kewirausahaan'),
-(670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Olahraga');
+(670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Olahraga'),
+(670117400, 'Yusril Wahyuda', 5, 'Sekertaris');
 
 -- --------------------------------------------------------
 
@@ -207,10 +206,10 @@ INSERT INTO `mahasiswa` (`nim`, `username`, `password`, `nama`, `noWA`, `noHP`, 
 (0, 'bk', 'bk', '', '', '', '', '', ''),
 (670117400, 'yusril', 'yusril123', 'Yusril Wahyuda', '', '', '', 'b60e2ca62d0a36db693c98d0191a9586.jpg', 'D3SI'),
 (670117403, 'gifariabi', 'gifariabi', 'Gifari Abi Waqqash', '085868442225', '085868442226', 'gifarifr', '217af0b91e134c93fe445afec6e3c284.jpg', 'D3 Sistem Informasi'),
-(670117406, 'sherli', 'sherli', 'Sherli Yualinda', '', '', '', '', ''),
+(670117406, 'sherli', 'sherli', 'Sherli Yualinda', '', '', '', '', 'D3 Sistem Informasi'),
 (670117410, 'Luqman', 'luqman123', 'Muhammad Luqman', '080808099', '080808089', 'luqmaneuy', '2323ec9a9fc0bb6dfd56ddb9a37f8402.jpg', 'D3 Sistem Informasi'),
 (670117455, 'eko', 'eko', 'Eko Adinata', '', '', '', '', 'D3SI'),
-(670606006, 'ade', 'ade123', 'Ade Pangestu', '', '', '', '', '');
+(670606006, 'ade', 'ade123', 'Ade Pangestu', '', '', '', '', 'D3 Sistem Informasi\r\n');
 
 -- --------------------------------------------------------
 
@@ -231,7 +230,7 @@ CREATE TABLE `organisasi` (
 --
 
 INSERT INTO `organisasi` (`idOrganisasi`, `namaOrganisasi`, `deskripsi`, `logo`, `ketua`) VALUES
-(1, 'HMDSI', 'HMDSI adalah', '5d458932f2c4f50297475fe9aa1c2d36.png', 'kelvin'),
+(1, 'HMDSI', 'HMDSI adalah Himpunan Mahasiswa D3 Sistem Informasi', '5d458932f2c4f50297475fe9aa1c2d36.png', 'kelvin'),
 (2, 'SAMALOWA', 'UKM Lombok Sumbawa', '0b9b5daa9df9de0b50cef003221ffb5b.jpg', 'Esa'),
 (4, 'PERMALA', 'Mahasiswa Lampung', '811539bf69c57ce8660fce77201a6a31.jpg', 'Deva'),
 (5, 'SEARCH', 'Lomba dll', '201a283dc472a6733bc943460775c71f.jpg', 'riko');
@@ -255,8 +254,10 @@ CREATE TABLE `pengurus` (
 --
 
 INSERT INTO `pengurus` (`nim`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`) VALUES
-(670117400, 'Yusril Wahyuda', 'Ketua', 1, 1),
-(670117406, 'Sherli Yualinda', 'Bendahara', 1, 1);
+(670117403, 'Gifari Abi Waqqash', 'Kepala Divisi Luar Negeri', 5, 1),
+(670117455, 'Eko Adinata', 'Sekertaris', 5, 1),
+(670117410, 'Muhammad Luqman', 'Sekertaris', 1, 1),
+(670117410, 'Muhammad Luqman', 'Kepala Divisi Dalam Negeri', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -271,6 +272,14 @@ CREATE TABLE `presensi` (
   `nim` int(10) NOT NULL,
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data untuk tabel `presensi`
+--
+
+INSERT INTO `presensi` (`id_presensi`, `waktu_submit`, `status`, `nim`, `id_kegiatan`) VALUES
+(8, '2020-04-04 18:13:30', 'Hadir', 670117455, 9),
+(9, '2020-04-04 18:13:46', 'Hadir', 670117406, 9);
 
 -- --------------------------------------------------------
 
@@ -308,6 +317,13 @@ CREATE TABLE `rapat` (
   `tanggal` varchar(255) COLLATE utf8_bin NOT NULL,
   `nim` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data untuk tabel `rapat`
+--
+
+INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `nim`) VALUES
+(5, 'Progres Maniac 2020', 'Ruang A1', '2020-04-11', 670117410);
 
 -- --------------------------------------------------------
 
@@ -442,9 +458,9 @@ ALTER TABLE `organisasi`
 -- Indeks untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
-  ADD PRIMARY KEY (`nim`),
   ADD KEY `id_thnAjaran` (`id_thnAjaran`) USING BTREE,
-  ADD KEY `fk_organisasi` (`idOrganisasi`);
+  ADD KEY `fk_organisasi` (`idOrganisasi`),
+  ADD KEY `nim` (`nim`);
 
 --
 -- Indeks untuk tabel `presensi`
@@ -526,7 +542,7 @@ ALTER TABLE `organisasi`
 -- AUTO_INCREMENT untuk tabel `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id_presensi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_presensi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `programkerja`
@@ -538,7 +554,7 @@ ALTER TABLE `programkerja`
 -- AUTO_INCREMENT untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `suratkeluar`
@@ -556,7 +572,7 @@ ALTER TABLE `tahun_ajaran`
 -- AUTO_INCREMENT untuk tabel `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -598,7 +614,8 @@ ALTER TABLE `lpj`
 --
 ALTER TABLE `pengurus`
   ADD CONSTRAINT `fk_organisasi` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
-  ADD CONSTRAINT `fk_thnAjaran` FOREIGN KEY (`id_thnAjaran`) REFERENCES `tahun_ajaran` (`id_thnAjaran`);
+  ADD CONSTRAINT `fk_thnAjaran` FOREIGN KEY (`id_thnAjaran`) REFERENCES `tahun_ajaran` (`id_thnAjaran`),
+  ADD CONSTRAINT `pengurus_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`);
 
 --
 -- Ketidakleluasaan untuk tabel `presensi`
@@ -617,13 +634,13 @@ ALTER TABLE `programkerja`
 -- Ketidakleluasaan untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`);
 
 --
 -- Ketidakleluasaan untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
-  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`);
 
 --
 -- Ketidakleluasaan untuk tabel `tiket`
