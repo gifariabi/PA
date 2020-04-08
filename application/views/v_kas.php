@@ -376,18 +376,18 @@
   </button>
   
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_januari';?>">Januari</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_februari';?>">Februari</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_maret';?>">Maret</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_april';?>">April</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_mei';?>">Mei</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_juni';?>">Juni</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_juli';?>">Juli</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_agustus';?>">Agustus</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_september';?>">September</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_oktober';?>">Oktober</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_november';?>">November</a>
-    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_desember';?>">Desember</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_januari/'.$this->session->userdata('idOrganisasi');?>">Januari</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_februari/'.$this->session->userdata('idOrganisasi');?>">Februari</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_maret/'.$this->session->userdata('idOrganisasi');?>">Maret</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_april/'.$this->session->userdata('idOrganisasi');?>">April</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_mei/'.$this->session->userdata('idOrganisasi');?>">Mei</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_juni/'.$this->session->userdata('idOrganisasi');?>">Juni</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_juli/'.$this->session->userdata('idOrganisasi');?>">Juli</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_agustus/'.$this->session->userdata('idOrganisasi');?>">Agustus</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_september/'.$this->session->userdata('idOrganisasi');?>">September</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_oktober/'.$this->session->userdata('idOrganisasi');?>">Oktober</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_november/'.$this->session->userdata('idOrganisasi');?>">November</a>
+    <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_desember/'.$this->session->userdata('idOrganisasi');?>">Desember</a>
   </div> 
   </th>
   <th>

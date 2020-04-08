@@ -43,122 +43,134 @@ class model_kas extends CI_Model{
         $this->db->delete($table,$where);
     }
 //Bulan Untuk Kas
-    public function get_januari(){
+    public function get_januari($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 01');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }
 
-        public function get_februari(){
+        public function get_februari($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 02');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }
 
-        public function get_maret(){
+        public function get_maret($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 03');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }
 
-        public function get_april(){
+        public function get_april($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 04');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }
 
-         public function get_mei(){
+         public function get_mei($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 05');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }
 
-        public function get_juni(){
+        public function get_juni($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 06');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }
 
-        public function get_juli(){
+        public function get_juli($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 07');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }
 
-    public function get_agustus(){
+    public function get_agustus($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 08');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }
 
-     public function get_september(){
+     public function get_september($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 09');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }
 
-        public function get_oktober(){
+        public function get_oktober($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 10');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }
 
-        public function get_november(){
+        public function get_november($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 11');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }
 
-        public function get_desember(){
+        public function get_desember($where){
        //$query = "SELECT * FROM kas WHERE month(tanggal) = 10";
        //$this->db->query($query);
         $this->db->select("*");
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 12');
+        $this->db->WHERE('idOrganisasi',$where);
         $query = $this->db->get();
         return $query;
     }

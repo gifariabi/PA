@@ -164,63 +164,63 @@ class Ormawa extends CI_Controller {
         redirect('Ormawa/tampil_kas/'.$this->session->userdata('idOrganisasi'));
     }
 //Bulan
-    public function v_januari(){
-        $data['data'] = $this->model_kas->get_januari()->result();
+    public function v_januari($where){
+        $data['data'] = $this->model_kas->get_januari($where)->result();
         $this->load->view('v_kas',$data);
     }
 
-    public function v_februari(){
-        $data['data'] = $this->model_kas->get_februari()->result();
+    public function v_februari($where){
+        $data['data'] = $this->model_kas->get_februari($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
-    public function v_maret(){
-        $data['data'] = $this->model_kas->get_maret()->result();
+    public function v_maret($where){
+        $data['data'] = $this->model_kas->get_maret($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
-    public function v_april(){
-        $data['data'] = $this->model_kas->get_april()->result();
+    public function v_april($where){
+        $data['data'] = $this->model_kas->get_april($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
-    public function v_mei(){
-        $data['data'] = $this->model_kas->get_mei()->result();
+    public function v_mei($where){
+        $data['data'] = $this->model_kas->get_mei($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
-    public function v_juni(){
-        $data['data'] = $this->model_kas->get_juni()->result();
+    public function v_juni($where){
+        $data['data'] = $this->model_kas->get_juni($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
-    public function v_juli(){
-        $data['data'] = $this->model_kas->get_juli()->result();
+    public function v_juli($where){
+        $data['data'] = $this->model_kas->get_juli($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
-    public function v_agustus(){
-        $data['data'] = $this->model_kas->get_agustus()->result();
+    public function v_agustus($where){
+        $data['data'] = $this->model_kas->get_agustus($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
-    public function v_september(){
-        $data['data'] = $this->model_kas->get_september()->result();
+    public function v_september($where){
+        $data['data'] = $this->model_kas->get_september($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
-    public function v_oktober(){
-        $data['data'] = $this->model_kas->get_oktober()->result();
+    public function v_oktober($where){
+        $data['data'] = $this->model_kas->get_oktober($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
-    public function v_november(){
-        $data['data'] = $this->model_kas->get_november()->result();
+    public function v_november($where){
+        $data['data'] = $this->model_kas->get_november($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
-    public function v_desember(){
-        $data['data'] = $this->model_kas->get_desember()->result();
+    public function v_desember($where){
+        $data['data'] = $this->model_kas->get_desember($where)->result();
         $this->load->view('v_kas',$data);
     }
 
