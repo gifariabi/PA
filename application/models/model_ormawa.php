@@ -149,10 +149,8 @@ class model_ormawa extends CI_Model{
             $this->db->where('idOrganisasi',$where);
 
             $query = $this->db->get();
-            if($query->num_rows() > 0) {
+            //if($query->num_rows() > 0) {
             return $query;
-        }
-
         }
 
         public function getPengurusbaru(){
