@@ -24,140 +24,9 @@
 
   <!-- Page Wrapper -->
   <div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-        <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div>
-        <img src="<?php echo base_url('asset/images/ormawa/'.$this->session->userdata('logo'))?>" width="65" height="65">
-        </div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url().'index.php/Organisasi'?>">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
+     
         <!-- Interface -->
       </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
-         
-          <span>Kas</span>
-        </a>
-        <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
-            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_total_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Total Kas</a>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapsee">
-         
-          <span>Keanggotaan</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_pengurus/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Pengurus</a>
-            <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_anggota/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Anggota</a>
-          </div>
-        </div>
-      </li>
-
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapse">
-         
-          <span>Presensi</span>
-        </a>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaykegiatan2/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Cek Presensi</a>
-           
-          </div>
-        </div>
-      </li>
-
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-
-        <!----AKUN -->
-       
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseTwo">
-         
-          <span>Event</span>
-        </a>
-        <div id="collapseSeven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Event:</h6>
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaykegiatan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Kegiatan</a>
-            </a>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseTwo">
-         
-          <span>Administrasi</span>
-        </a>
-        <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Administrasi:</h6>
-            <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Surat</a>
-            </a>
-          </div>
-        </div>
-      </li>
-
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapse">
-         
-          <span>Kelola</span>
-        </a>
-        <div id="collapseSix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Kelola</h6>
-            <!-- <a class="collapse-item" href="<?php echo base_url()."index.php/sekertaris2/inputan/" ;?>" style="text-decoration: none">Cek Permintaan Surat</a> -->
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Jadwal Kegiatan</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/programkerja/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Program Kerja</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Kelola Rapat</a>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapse-item">
-         
-          <span>Akun</span>
-        </a>
-        <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="http://localhost/PA/index.php/Organisasi/tampilan_organisasi" style="text-decoration: none">Organisasi</a>
-            <a class="collapse-item" href="<?= base_url() ?>index.php/Organisasi/lihat_akun" style="text-decoration: none">Lihat Akun</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
 
       <!-- Heading -->
 
@@ -186,7 +55,7 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="<?php echo site_url('Ormawa/search');?>" method="post">
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="<?php echo site_url('Ormawa/searchKetua');?>" method="post">
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search" aria-label="search" aria-describedby="basic-addon2" name="search">
               <div class="input-group-append">

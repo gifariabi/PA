@@ -397,6 +397,12 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_pengurusbaru',$data);
     }
 
+    public function searchKetua(){
+        $search = $this->input->post('search');
+        $data['data'] = $this->model_daftar->searchPengurus($search);
+        $this->load->view('v_tambahketua',$data);
+    }
+
     public function searchAnggota(){
         $search = $this->input->post('search');
         $data['data'] = $this->model_daftar->searchAnggota($search);
