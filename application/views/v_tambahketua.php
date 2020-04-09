@@ -254,11 +254,11 @@
             <td><?php echo $i; ?></td>
             <td><?php echo $data->nim; ?></td>
             <td><?php echo $data->nama; ?></td>
-            <form class="user" method="post" action="<?= base_url().'/Ormawa/add_ketua/'.$data->nim;?>">
+            <form class="user" method="post" action="<?= base_url().'/Ormawa/add_ketua/'.$this->session->idOrganisasi;?>">
             <td><div class=form-group>
                 <input type="hidden" name="nim" value="<?= $data->nim;?>">
                 <input type="hidden" name="nama" value="<?= $data->nama;?>">
-                <input type="text" name="idOrganisasi" value="<?php echo $this->session->idOrganisasi;?>">
+                <input type="hidden" name="idOrganisasi" value="<?= $idOrganisasi;?>">
                 <select name="id_thnAjaran" class="form-control form-control-sm">
                 <option value="1">2019/2020</option>
                 <option value="2">2020/2021</option>
