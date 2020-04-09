@@ -322,6 +322,11 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_anggotabaru', $data);
     }
 
+    public function tambah_ketua(){
+        $data['data'] = $this->model_ormawa->getPengurusbaru();
+        $this->load->view('v_tambahketua', $data);
+    }
+
     public function add_anggota($nim){
         $cek    = $this->model_daftar->view_where('mahasiswa',array('nim'=>$nim))->result_array();
 
@@ -350,12 +355,25 @@ class Ormawa extends CI_Controller {
                         'id_thnAjaran' => $id_thnAjaran,
                         'idOrganisasi' => $this->session->userdata('idOrganisasi') 
                     );
-        //$cek1=$this->model_daftar->lihat_akun($nim)->num_rows();
-        //if ($cek1==0) {
             $this->model_daftar->insert($data2,"pengurus");
             redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
-            //echo $cek[0]['nama'];
-       // }
+    }
+
+    public function add_ketua(){ 
+        $id_thnAjaran = $this->input->post('id_thnAjaran');
+        $nim = $this->input->post('nim');
+        $nama = $this->input->post('nama');
+        $jabatan = $this->input->post('jabatan');
+
+        $data2   = array('nim' => $nim,
+                        'nama' => $nama,
+                        'jabatan' => 'Ketua',
+                        'id_thnAjaran' => $id_thnAjaran,
+                        'idOrganisasi' => $this->session->userdata('idOrganisasi') 
+                    );
+            $this->model_daftar->insert($data2,"pengurus");
+            redirect('Organisasi/halaman_daftar/'.$this->session->userdata('idOrganisasi'));
+            echo "Berhasil Menambahkan";
     }
 
     public function ajaran1($where){

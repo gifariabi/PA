@@ -78,11 +78,17 @@ class model_daftar extends CI_Model{
             return $query->result();
     }
 
-     function searchAnggota($search){
+    function searchAnggota($search){
             $this->db->like('nama',$search);
             $this->db->or_like('nim',$search);
             $query=$this->db->get('mahasiswa');
             return $query->result();
+    }
+
+    public function get($where){
+        $this->db->select('*');
+        $this->db->from('organisasi');
+        $this->db->where('idOrganisasi', $where);
     }
 }
 ?>

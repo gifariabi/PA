@@ -155,7 +155,7 @@ class model_ormawa extends CI_Model{
 
         }
 
-         public function getPengurusbaru(){
+        public function getPengurusbaru(){
             $this->db->select('*');
             $this->db->from('mahasiswa');
             $this->db->where('nim > 0');
