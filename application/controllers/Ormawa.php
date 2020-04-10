@@ -367,16 +367,23 @@ class Ormawa extends CI_Controller {
         $jabatan = $this->input->post('jabatan');
         $idOrganisasi = $this->input->post('idOrganisasi');
 
-        $data2   = array('nim' => $nim,
+        $data   = array('nim' => $nim,
                         'nama' => $nama,
                         'jabatan' => 'Ketua',
                         'id_thnAjaran' => $id_thnAjaran,
                         'idOrganisasi' => $idOrganisasi
                     );
-            $this->model_daftar->insert($data2,"pengurus");
-            redirect('Organisasi/halaman_daftar/'.$idOrganisasi);
-            echo "<p> Berhasil Menambahkan </p>";
-        //print_r($data2);
+        $data2   = array('nim' => $nim,
+                        'nama' => $nama,
+                        'jabatan' => 'Ketua',
+                        'idOrganisasi' => $idOrganisasi
+                    );
+
+        $this->model_daftar->insert($data,"pengurus");
+        $this->model_daftar->insert($data2,"ang_organisasi");
+        redirect('Organisasi/halaman_daftar/'.$idOrganisasi);
+        echo "<p> Berhasil Menambahkan </p>";
+        
     }
 
     public function ajaran1($where){
