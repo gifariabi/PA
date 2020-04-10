@@ -60,6 +60,17 @@
                 $this->load->view('display_rapat',$data);
             }
         }
+        public function displayrapat(){
+            $newdata = $this->session->userdata('jabatan');
+            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
+                $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
+                redirect('rapat');
+            }else{
+                $data['data']=$this->rapat_model->tampil()->result();
+                $this->load->view('display_rapat2',$data);
+            }
+        }
+
         public function hapus($id){
             $where = array('id_rapat'=>$id);
             $this->rapat_model->hapus_data($where,'rapat');

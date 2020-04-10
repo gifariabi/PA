@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 </head>
@@ -99,7 +99,7 @@
         <!----AKUN -->
        
 
-        <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Event</span>
@@ -108,7 +108,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Event:</h6>
             <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaykegiatan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Kegiatan</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displayrapat/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Rapat</a>
             </a>
           </div>
         </div>
@@ -363,87 +362,62 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-<!DOCTYPE html>
-<html lang="en">
+<!-- <!DOCTYPE html>
+<html>
 <head>
-	<title>KAS</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="izmage/png" href="<?php echo base_url().'asset/login/images/icons/favicon.ico'?>"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/bootstrap/css/bootstrap.min.css'?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css'?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css'?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/animate/animate.css'?>">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/css-hamburgers/hamburgers.min.css'?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/animsition/css/animsition.min.css'?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/select2/select2.min.css'?>">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/daterangepicker/daterangepicker.css'?>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/css/util.css'?>">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/css/main.css'?>">
-<!--===============================================================================================-->
-</head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head> -->
 <body>
-	<?php foreach ($total_kas as $key) { ?>
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form class="login100-form validate-form" action="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->userdata('idOrganisasi')?>" method="POST">
-					<span class="login100-form-title p-b-33">
-						Total Kas
-					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "Username is required">
-						<td><h2 align="Center"><b> Rp <?php echo $key->total_kas ?></b></h2></td>
-						
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-
-					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn">
-							Lihat Detail Kas
-						</button>
-				</form>
-			</div>
-		</div>
-	</div>
-  <?php } ?>
-
-	
-
-	
-<!--===============================================================================================-->
-	<script src="<?php echo base_url().'asset/login/vendor/jquery/jquery-3.2.1.min.js'?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url().'asset/login/vendor/animsition/js/animsition.min.js'?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url().'asset/login/vendor/bootstrap/js/popper.js'?>"></script>
-	<script src="<?php echo base_url().'asset/login/vendor/bootstrap/js/bootstrap.min.js'?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url().'asset/login/vendor/select2/select2.min.js'?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url().'asset/login/vendor/daterangepicker/moment.min.js'?>"></script>
-	<script src="<?php echo base_url().'asset/login/vendor/daterangepicker/daterangepicker.js'?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url().'asset/login/vendor/countdowntime/countdowntime.js'?>"></script>
-<!--===============================================================================================-->
-	<script src="<?php echo base_url().'asset/login/js/main.js'?>"></script>
-
+<center>
+<h3>Rapat</h3>
+</center>
+    <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
+    <!-- <a class="btn btn-success" href="<?php echo base_url('index.php/rapat/rapat/'.$this->session->idOrganisasi.'/'.$this->session->nim); ?>" style="text-decoration: none">Buat Agenda Rapat</a> -->
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <tr>
+              <th>No</th>
+              <th>Keperluan</th>
+              <th>Tempat</th>
+              <th>Tanggal</th>
+              <th>Waktu</th>
+              <!-- <th>Aksi</th> -->
+          </tr>
+          <?php
+              $i=1;
+              foreach ($data as $key) {
+          ?>
+          <tr>
+              <td><?php echo $i; ?></td>
+              <td><?php echo $key->perihal; ?></td>
+              <td><?php echo $key->tempat; ?></td>
+              <td><?php echo $key->tanggal; ?></td>
+              <td><?php echo $key->waktu; ?></td>
+              <td>
+              <!-- <a href="<?php echo site_url('rapat/edit/'.$key->id_rapat); ?>" class="btn btn-primary">Edit</a> -->
+                  
+                
+              </td>
+          </tr>
+          <?php $i++; }?>
+        </table>
+      </div>  
+    </div>    
+    <!-- <a href="<?php echo base_url().'index.php/inventaris/index';?>">Tambah Data</a> -->
+    <!-- <a href="<?= base_url(); ?>index.php/inventaris/index">Kembali ke Menu</a> -->
+    <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
+</center>
+<!-- Footer -->
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy;</span>
+            <span>Copyright &copy; HMDSI 2019</span>
           </div>
         </div>
       </footer>
@@ -480,20 +454,20 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url().'asset/masuk/vendor/jquery/jquery.min.js'?>"></script>
-  <script src="<?php echo base_url().'asset/masuk/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/vendor/jquery/jquery.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url().'asset/masuk/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url().'asset/masuk/js/sb-admin-2.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/js/sb-admin-2.min.js'?>"></script>
 
   <!-- Page level plugins -->
-  <script src="<?php echo base_url().'asset/masuk/vendor/chart.js/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/vendor/chart.js/Chart.min.js'?>"></script>
 
   <!-- Page level custom scripts -->
-  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-area-demo.js'?>"></script>
-  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-pie-demo.js'?>"></script>
+  <script src="<?php echo base_url().'assets/js/demo/chart-area-demo.js'?>"></script>
+  <script src="<?php echo base_url().'assets/js/demo/chart-pie-demo.js'?>"></script>
 </body>
 </html>
