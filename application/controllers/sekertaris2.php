@@ -32,7 +32,7 @@ class sekertaris2 extends CI_Controller{
         $this->form_validation->set_rules('no_suratkeluar', 'no_suratkeluar', 'required');
         $this->form_validation->set_rules('penerima', 'Penerima', 'required');
         $this->form_validation->set_rules('perihal', 'Perihal', 'required');
-        $this->form_validation->set_rules('nim_pengurus', 'nim_pengurus', 'required');
+        $this->form_validation->set_rules('nim', 'nim', 'required');
 
         if ($this->form_validation->run() == FALSE){
             $this->load->view('formsuratkeluar');
@@ -44,14 +44,14 @@ class sekertaris2 extends CI_Controller{
         $penerima = $this->input->post('penerima');
         $tanggalkeluar = $this->input->post('tanggalkeluar');
         $perihal = $this->input->post('perihal');
-        $nim = $this->input->post('nim');
+        // $nim = $this->input->post('nim');
 
         $data = array(
             'no_suratkeluar' => $no_suratkeluar,
             'penerima' => $penerima,
             'tanggalkeluar' => $tanggalkeluar,
             'perihal' => $perihal,
-            'nim' => $nim
+            'nim' => $this->session->userdata('nim')
         );
             
         $this->model_suratkeluar->data($data,'suratkeluar');

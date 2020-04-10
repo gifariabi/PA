@@ -388,6 +388,11 @@
             <?php } ?>
         </tr>
         <tr>
+            <td>Waktu</td>
+            <td>:</td>
+            <td><input type="time" name="waktu" class="form-control form-control-user"></td>
+        </tr>
+        <tr>
             <td></td>
             <td></td>
             <td><input type="submit" name="submit" value="Simpan" class="btn btn-success btn-user btn-block "></td>

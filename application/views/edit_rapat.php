@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 </head>
@@ -28,7 +28,7 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-       <!-- Sidebar - Brand -->
+        <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div>
         <img src="<?php echo base_url('asset/images/ormawa/'.$this->session->userdata('logo'))?>" width="65" height="65">
@@ -362,57 +362,54 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head> -->
+
 <body>
-<center>
-<h3>Rapat</h3>
-</center>
-    <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
-    <a class="btn btn-success" href="<?php echo base_url('index.php/rapat/rapat/'.$this->session->idOrganisasi.'/'.$this->session->nim); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <tr>
-              <th>No</th>
-              <th>Keperluan</th>
-              <th>Tempat</th>
-              <th>Tanggal</th>
-              <th>Waktu</th>
-              <th>Aksi</th>
-          </tr>
-          <?php
-              $i=1;
-              foreach ($data as $key) {
-          ?>
-          <tr>
-              <td><?php echo $i; ?></td>
-              <td><?php echo $key->perihal; ?></td>
-              <td><?php echo $key->tempat; ?></td>
-              <td><?php echo $key->tanggal; ?></td>
-              <td><?php echo $key->waktu; ?></td>
-              <td>
-              <a href="<?php echo site_url('rapat/edit/'.$key->id_rapat); ?>" class="btn btn-primary">Edit</a>
-                  
-                
-              </td>
-          </tr>
-          <?php $i++; }?>
-        </table>
-      </div>  
-    </div>    
-    <!-- <a href="<?php echo base_url().'index.php/inventaris/index';?>">Tambah Data</a> -->
-    <!-- <a href="<?= base_url(); ?>index.php/inventaris/index">Kembali ke Menu</a> -->
+    <?php foreach($data as $key){ ?>
+<form action="<?php echo base_url().'index.php/rapat/simpan';?>" method="post">
+    <center>
+    <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
+    <h1>Pengajuan Rapat</h1>
+    <table class="table">
+        <tr>
+            <td>Keperluan</td>
+            <td>:</td>
+            <td><input type="text" name="keperluan" class="form-control form-control-user" value="<?php echo $key->perihal; ?>"></td>
+        </tr>
+        <tr>
+            <td>Tempat</td>
+            <td>:</td>
+            <td><input type="text" name="tempat" class="form-control form-control-user" value="<?php echo $key->tempat; ?>"></td>
+        </tr>
+        <tr>
+            <td>Tanggal</td>
+            <td>:</td>
+            <td><input type="date" name="tanggal" class="form-control form-control-user" value="<?php echo $key->tanggal; ?>">
+            <!-- <?php foreach($data as $data){ ?>    -->
+            <input type="hidden" name="nim" value="<?php echo $key->nim; ?>"></td>
+            <!-- <?php } ?> -->
+        </tr>
+        <tr>
+            <td>Waktu</td>
+            <td>:</td>
+            <td><input type="time" name="waktu" class="form-control form-control-user" value="<?php echo $key->waktu; ?>"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><input type="submit" name="submit" value="Simpan" class="btn btn-success btn-user ">
+            <a href="<?php echo site_url('rapat/hapus/'.$key->id_rapat); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a></td>
+        </tr>
+    </table>
+    <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
-</center>
+    <font color="red">
+        <?php if ($this->session->flashdata('error')) {
+		    echo $this->session->flashdata('error');
+	    } ?>
+    </font>
+    </center>
+</form>
+    <?php } ?>
 <!-- Footer -->
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -469,5 +466,4 @@
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url().'assets/js/demo/chart-area-demo.js'?>"></script>
   <script src="<?php echo base_url().'assets/js/demo/chart-pie-demo.js'?>"></script>
-</body>
-</html>
+  </body>

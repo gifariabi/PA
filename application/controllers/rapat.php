@@ -36,12 +36,14 @@
                 $keperluan = $this->input->post('keperluan');
                 $tempat = $this->input->post('tempat');
                 $tanggal = $this->input->post('tanggal');
+                $waktu = $this->input->post('waktu');
                 $nim = $this->input->post('nim');
                 
                 $data = array(
                     'perihal' => $keperluan, 
                     'tempat' => $tempat,
                     'tanggal' => $tanggal,
+                    'waktu' => $waktu,
                     'nim' => $this->session->userdata('nim')
                 );
                 $this->rapat_model->data($data,'rapat');
@@ -64,7 +66,7 @@
             redirect('rapat/displaydata/'.$this->session->userdata('idOrganisasi'));
         }
         public function edit($id){
-            $where = array('rapat'=>$id);
+            $where = array('id_rapat'=>$id);
             $data['data'] = $this->rapat_model->edit_data($where,'rapat')->result();
             $this->load->view('edit_rapat',$data);
         }

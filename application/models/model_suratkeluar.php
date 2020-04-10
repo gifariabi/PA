@@ -10,19 +10,19 @@
         public function edit_data($where,$table){      
             return $this->db->get_where($table,$where);
         }
-        public function tampil_nim($where){
+        // public function tampil_nim($where){
             
-            $this->db->select('s.nim, o.idOrganisasi');
-            $this->db->from('suratkeluar s');
-            $this->db->join('pengurus p','s.nim = p.nim');
-            $this->db->join('organisasi o','p.idOrganisasi =  o.idOrganisasi');
-            $this->db->where('o.idOrganisasi', $where);
+        //     $this->db->select('s.nim, o.idOrganisasi');
+        //     $this->db->from('suratkeluar s');
+        //     $this->db->join('pengurus p','s.nim = p.nim');
+        //     $this->db->join('organisasi o','p.idOrganisasi =  o.idOrganisasi');
+        //     $this->db->where('o.idOrganisasi', $where);
 
-            $query = $this->db->get();
-            // if($query->num_rows() > 0) {
-                return $query;
-            // }
-        }
+        //     $query = $this->db->get();
+        //     // if($query->num_rows() > 0) {
+        //         return $query;
+        //     // }
+        // }
         public function update_data($where,$data,$table){
             $this->db->where($where);
             $this->db->update($table,$data);

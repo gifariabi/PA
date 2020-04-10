@@ -378,7 +378,7 @@
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
     <div class="card-body">
       <div class="table-responsive">
-        <a href="<?php echo site_url('tiket/displaydata'); ?>">Keranjang</a>
+        <!-- <a href="<?php echo site_url('tiket/displaydata'); ?>">Keranjang</a> -->
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <tr>
               <th>No</th>

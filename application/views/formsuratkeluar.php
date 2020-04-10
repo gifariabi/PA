@@ -410,9 +410,11 @@
 		<td><input type="text" name="perihal" class="form-control form-control-user"></td>
 	</tr>
   <tr>
-    <td>NIM</td> 
-    <td>:</td>
-    <td><input type="text" name="nim" class="form-control form-control-user" ></td>
+    <!-- <td>NIM</td> 
+    <td>:</td> -->
+    <?php foreach($data as $data){ ?>
+    <td><input type="hidden" name="nim" class="form-control form-control-user" value="<?php echo $data->nim; ?>" ></td>
+    <?php } ?>
   </tr>
 	<tr>
 		<td></td><td></td>

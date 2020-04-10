@@ -32,15 +32,16 @@ class sekertaris extends CI_Controller{
             $this->load->view('suratmasuk');
 	}
 
-	function suratkeluar($where){
+	function suratkeluar($nim){
         $newdata = $this->session->userdata('jabatan');
         if ($this->session->userdata('jabatan') != 'Sekertaris'){
             $this->session->set_flashdata('pesann','<font color=red>Hanya Sekertaris yang dapat mengakses fitur tersebut</font>');
             redirect('sekertaris');
+        }else{
+            $where = array('nim' => $nim);
+            $data['data'] = $this->model_suratkeluar->edit_data($where, 'pengurus')->result();
+            $this->load->view('formsuratkeluar',$data);
         }
-            // $where = array('nim'=>$nim);
-            $data['data'] = $this->model_suratkeluar->tampil_nim($where)->result();
-		    $this->load->view('formsuratkeluar',$data);
 	}
 
     function req_Surat(){
