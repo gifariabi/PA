@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Apr 2020 pada 19.18
+-- Waktu pembuatan: 10 Apr 2020 pada 10.27
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -315,6 +315,7 @@ CREATE TABLE `rapat` (
   `perihal` varchar(255) COLLATE utf8_bin NOT NULL,
   `tempat` varchar(255) COLLATE utf8_bin NOT NULL,
   `tanggal` varchar(255) COLLATE utf8_bin NOT NULL,
+  `waktu` varchar(255) COLLATE utf8_bin NOT NULL,
   `nim` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -322,8 +323,8 @@ CREATE TABLE `rapat` (
 -- Dumping data untuk tabel `rapat`
 --
 
-INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `nim`) VALUES
-(5, 'Progres Maniac 2020', 'Ruang A1', '2020-04-11', 670117410);
+INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `waktu`, `nim`) VALUES
+(7, 'Rapat Rutin', 'Sekretariat ', '2020-03-03', '19:00', 670117410);
 
 -- --------------------------------------------------------
 
@@ -489,7 +490,7 @@ ALTER TABLE `rapat`
 --
 ALTER TABLE `suratkeluar`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `nim_pengurus` (`nim`);
+  ADD KEY `nim` (`nim`) USING BTREE;
 
 --
 -- Indeks untuk tabel `tahun_ajaran`
@@ -554,7 +555,7 @@ ALTER TABLE `programkerja`
 -- AUTO_INCREMENT untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `suratkeluar`
