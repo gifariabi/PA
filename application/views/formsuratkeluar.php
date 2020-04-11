@@ -390,6 +390,11 @@
 	<?php } else { redirect('Admin/login'); } ?> -->
 	
 <table>
+  <tr>
+    <?php foreach($data as $data){ ?>
+    <td><input type="hidden" name="nim" class="form-control form-control-user" value="<?php echo $data->nim; ?>" ></td>
+    <?php } ?>
+  </tr>
 	<tr>
 		<td>Nomor Surat</td> 
 		<td>:</td>
@@ -413,9 +418,9 @@
   <tr>
     <!-- <td>NIM</td> 
     <td>:</td> -->
-    <?php foreach($data as $data){ ?>
+    <!-- <?php foreach($data as $data){ ?>
     <td><input type="hidden" name="nim" class="form-control form-control-user" value="<?php echo $data->nim; ?>" ></td>
-    <?php } ?>
+    <?php } ?> -->
   </tr>
 	<tr>
 		<td></td><td></td>

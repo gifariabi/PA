@@ -38,9 +38,9 @@ class sekertaris extends CI_Controller{
             $this->session->set_flashdata('pesann','<font color=red>Hanya Sekertaris yang dapat mengakses fitur tersebut</font>');
             redirect('sekertaris');
         }else{
-            $where = array('nim' => $nim);
+            $where = array('nim',$nim);
             $data['data'] = $this->model_suratkeluar->edit_data($where, 'pengurus')->result();
-            $this->load->view('formsuratkeluar',$data);
+            $this->load->view('formsuratkeluar', $data);
         }
 	}
 
