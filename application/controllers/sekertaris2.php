@@ -43,6 +43,7 @@ class sekertaris2 extends CI_Controller{
         $no_suratkeluar = $this->input->post('no_suratkeluar');
         $penerima = $this->input->post('penerima');
         $tanggalkeluar = $this->input->post('tanggalkeluar');
+        $waktu = $this->input->post('waktu');
         $perihal = $this->input->post('perihal');
         // $nim = $this->input->post('nim');
 
@@ -50,6 +51,7 @@ class sekertaris2 extends CI_Controller{
             'no_suratkeluar' => $no_suratkeluar,
             'penerima' => $penerima,
             'tanggalkeluar' => $tanggalkeluar,
+            'waktu' => $waktu,
             'perihal' => $perihal,
             'nim' => $this->session->userdata('nim')
         );

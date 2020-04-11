@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Apr 2020 pada 10.27
+-- Waktu pembuatan: 11 Apr 2020 pada 16.31
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -324,7 +324,8 @@ CREATE TABLE `rapat` (
 --
 
 INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `waktu`, `nim`) VALUES
-(7, 'Rapat Rutin', 'Sekretariat ', '2020-03-03', '19:00', 670117410);
+(7, 'Rapat Rutin', 'Sekretariat ', '2020-03-03', '19:00', 670117410),
+(9, 'Rapat Rutin', 'Aula Fakultas Ilmu Terapan', '2020-01-02', '16:00', 670117410);
 
 -- --------------------------------------------------------
 
@@ -337,9 +338,19 @@ CREATE TABLE `suratkeluar` (
   `no_suratkeluar` varchar(255) COLLATE utf8_bin NOT NULL,
   `penerima` varchar(255) COLLATE utf8_bin NOT NULL,
   `tanggalkeluar` varchar(255) COLLATE utf8_bin NOT NULL,
+  `waktu` varchar(255) COLLATE utf8_bin NOT NULL,
   `perihal` varchar(255) COLLATE utf8_bin NOT NULL,
   `nim` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data untuk tabel `suratkeluar`
+--
+
+INSERT INTO `suratkeluar` (`id`, `no_suratkeluar`, `penerima`, `tanggalkeluar`, `waktu`, `perihal`, `nim`) VALUES
+(2, '003', 'Ketua Wapala', '2020-04-03', '', 'Peminjaman Logistik', 670117410),
+(3, '003', 'Ketua Wapala', '2020-04-03', '', 'Peminjaman Logistik', 670117410),
+(4, '002', 'Ketua Search', '2020-03-03', '08:00', 'Ultah Himpunan', 670117410);
 
 -- --------------------------------------------------------
 
@@ -555,13 +566,13 @@ ALTER TABLE `programkerja`
 -- AUTO_INCREMENT untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tahun_ajaran`

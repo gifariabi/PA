@@ -409,7 +409,12 @@
 		<td>Tanggal Keluar</td> 
 		<td>:</td>
 		<td><input type="date" name="tanggalkeluar"class="form-control form-control-user"></td>
-	</tr>
+  </tr>
+  <tr>
+    <td>Waktu</td>
+    <td>:</td>
+    <td><input type="time" name="waktu" class="form-control form-control-user"></td>
+  </tr>
 	<tr>
 		<td>Perihal</td> 
 		<td>:</td>
