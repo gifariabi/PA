@@ -22,7 +22,7 @@ class sekertaris2 extends CI_Controller{
     }
     public function cetak_surat($id){
         $where = array('id' => $id);
-        $data['data'] = $this->model_suratkeluar->edit_data($where,'suratkeluar')->result();
+        $data['data'] = $this->model_suratkeluar->tampil_pdf($where,'suratkeluar')->result();
         //$this->load->view('editsuratmasuk',$data);
         $this->load->library('pdf');
         $this->load->view('surat',$data);
@@ -55,7 +55,7 @@ class sekertaris2 extends CI_Controller{
         );
             
         $this->model_suratkeluar->data($data,'suratkeluar');
-        redirect('sekertaris2/inputan/');
+        redirect('sekertaris2/inputan/'.$this->session->idOrganisasi);
         }
     }
     public function inputan(){
