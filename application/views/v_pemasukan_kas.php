@@ -368,15 +368,25 @@
 	<h1><b>Pemasukan Kas</b></h1>
 	<hr>
 	<hr>
-	<form action="<?= base_url() ?>index.php/Ormawa/simpan_kas_masuk" method="POST" enctype="multipart/form-data">
+  <div class="container-login100">
+      <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+	<form action="<?= base_url() ?>index.php/Ormawa/simpan_kas_masuk" method="POST" enctype="multipart/form-data" class="login100-form validate-form">
 	<table>
 	<tr>
+    <div class="wrap-input100 validate-input" data-validate = "Pemasukan is required">
 		<td>Pemasukan Kas</td>
 		<td><input type="text" name="pemasukan_kas"></td>
+    <span class="focus-input100-1"></span>
+    <span class="focus-input100-2"></span>
+    </div>
 	</tr>
 	<tr>
+    <div class="wrap-input100 validate-input" data-validate = "Tanggal is required">
 		<td>Tanggal</td>
 		<td><input type="date" name="tanggal" style="width: 100%"></td>
+    <span class="focus-input100-1"></span>
+    <span class="focus-input100-2"></span>
+    </div>
 	</tr>
 	<tr>
 	<td></td>
@@ -386,6 +396,8 @@
 	</tr>	
 	</table>
 	</form>
+  </div>
+  </div>
 	</center>
 
 	<footer class="sticky-footer bg-white">
