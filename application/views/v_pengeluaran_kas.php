@@ -390,6 +390,9 @@
 	</tr>	
 	</table>
 	</form>
+  <?php
+      echo $this->session->flashdata('pesan');
+  ?>
 	</center>
 
 	<footer class="sticky-footer bg-white">

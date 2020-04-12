@@ -369,7 +369,7 @@
 	<hr>
 	<hr>
   <div class="container-login100">
-      <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+  <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
 	<form action="<?= base_url() ?>index.php/Ormawa/simpan_kas_masuk" method="POST" enctype="multipart/form-data" class="login100-form validate-form">
 	<table>
 	<tr>
@@ -398,6 +398,9 @@
 	</form>
   </div>
   </div>
+  <?php
+        echo $this->session->flashdata('pesan');
+  ?>
 	</center>
 
 	<footer class="sticky-footer bg-white">

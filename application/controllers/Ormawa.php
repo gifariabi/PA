@@ -76,6 +76,15 @@ class Ormawa extends CI_Controller {
 	}
 
     public function simpan_kas_masuk(){
+        $this->form_validation->set_rules('pemasukan_kas', 'Pemasukan Kas', 'required');
+        $this->form_validation->set_rules('tanggal', 'tanggal', 'required');
+
+        if ($this->form_validation->run() == FALSE){
+            $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
+            $this->load->view('v_pemasukan_kas');
+        }
+        else{
+
         $pemasukan_kas = $this->input->post('pemasukan_kas');
         $tanggal = $this->input->post('tanggal');
         
@@ -84,11 +93,21 @@ class Ormawa extends CI_Controller {
                     'idOrganisasi' => $this->session->userdata('idOrganisasi')
                     );
         $this->model_kas->insert($data,"kas");
-                       
         redirect('Ormawa/tampil_kas/'.$this->session->userdata('idOrganisasi'));
+        }
     }
 
     public function simpan_kas_keluar(){
+        $this->form_validation->set_rules('pengeluaran_kas', 'Pengeluaran Kas', 'required');
+        $this->form_validation->set_rules('tanggal', 'tanggal', 'required');
+        $this->form_validation->set_rules('keterangan', 'Keteranagn', 'required');
+
+        if ($this->form_validation->run() == FALSE){
+            $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
+            $this->load->view('v_pengeluaran_kas');
+            
+        }
+        else{
         $pengeluaran_kas = $this->input->post('pengeluaran_kas');
         $keterangan = $this->input->post('keterangan');
         $tanggal = $this->input->post('tanggal');
@@ -102,6 +121,7 @@ class Ormawa extends CI_Controller {
 
         $this->model_kas->insert($data,"kas");
         redirect('Ormawa/tampil_kas/'.$this->session->userdata('idOrganisasi'));
+        }
     }
 
     public function tampil_kas($where){
