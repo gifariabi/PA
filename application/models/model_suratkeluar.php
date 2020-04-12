@@ -18,7 +18,7 @@
 
         public function tampil_pdf($where){
             
-            $this->db->select('s.no_suratkeluar,s.penerima,s.tanggalkeluar,s.perihal, o.idOrganisasi, o.namaOrganisasi, o.logo, o.ketua');
+            $this->db->select('s.no_suratkeluar,s.penerima,s.tanggalkeluar,s.perihal, o.idOrganisasi, o.namaOrganisasi, o.logo, o.ketua, s.waktu');
             $this->db->from('pengurus p');
             $this->db->join('suratkeluar s','p.nim = s.nim');
             $this->db->join('organisasi o','s.idOrganisasi =  o.idOrganisasi');

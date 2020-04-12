@@ -14,9 +14,15 @@ class Ormawa extends CI_Controller {
         $this->load->library('image_lib');
 	}
     public function simpan_ormawa(){
-       
+        $this->form_validation->set_rules('namaOrganisasi', 'Nama Organisasi', 'required');
+        $this->form_validation->set_rules('ketua', 'Ketua', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
         $this->form_validation->set_rules('logo', 'Logo', 'callback_file_selected');
-
+        if ($this->form_validation->run() == FALSE){
+            $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
+            $this->load->view('buat_organisasi');
+        }
+        else{
         $config['upload_path'] = './asset/images/ormawa'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
@@ -54,7 +60,8 @@ class Ormawa extends CI_Controller {
                     }
                     }else{
                     //$this->load->view('admin/kegiatan/input_kegiatan');     
-                }   
+                }
+            }   
         }
     public function file_selected(){
 
