@@ -107,7 +107,7 @@ class Ormawa extends CI_Controller {
     public function simpan_kas_keluar(){
         $this->form_validation->set_rules('pengeluaran_kas', 'Pengeluaran Kas', 'required');
         $this->form_validation->set_rules('tanggal', 'tanggal', 'required');
-        $this->form_validation->set_rules('keterangan', 'Keteranagn', 'required');
+        $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
 
         if ($this->form_validation->run() == FALSE){
             $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
