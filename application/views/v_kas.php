@@ -122,7 +122,7 @@
         <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Administrasi:</h6>
-            <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Surat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar/'.$this->session->idOrganisasi.'/'.$this->session->userdata('nim')); ?>" style="text-decoration: none">Buat Surat</a>
             </a>
           </div>
         </div>

@@ -122,7 +122,7 @@
         <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Administrasi:</h6>
-            <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Buat Surat</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/sekertaris/suratkeluar/'.$this->session->idOrganisasi.'/'.$this->session->userdata('nim')); ?>" style="text-decoration: none">Buat Surat</a>
             </a>
           </div>
         </div>
@@ -389,6 +389,7 @@
             <th>No Surat</th>
             <th>Penerima</th>
             <th>Tanggal Keluar</th>
+            <th>Waktu</th>
             <th>Perihal</th>
             <th colspan="2">Kelola</th>
         </tr>
@@ -402,6 +403,7 @@
             <td><?php echo $data->no_suratkeluar; ?></td>
             <td><?php echo $data->penerima; ?></td>
             <td><?php echo $data->tanggalkeluar; ?></td>
+            <td><?php echo $data->waktu; ?></td>
             <td><?php echo $data->perihal; ?></td>
             <td><a href='<?php echo base_url()."index.php/sekertaris2/hapus_surat_keluar/".$data->id;?>'>Hapus</a>
             <a href='<?php echo base_url()."index.php/sekertaris2/editdata/".$data->id;?>'>Edit</a>

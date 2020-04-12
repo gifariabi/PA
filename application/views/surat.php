@@ -30,7 +30,7 @@ $pdf->SetFont('Arial', '', 9);
 	$pdf->Text(20, 104, 'Sehubungan dengan akan dilaksanakannya kegiatan ini Kami dari Himpunan D3 Sistem Informasi ingin ');
 	$pdf->Text(10,108,'meminta perwakilan dari '.$get->penerima.' '.'untuk hadir pada acara ini yang akan dilaksanakan pada :');
 	$pdf->Text(10, 112, 'tanggal :'.' '.$get->tanggalkeluar);
-	$pdf->Text(10, 116, 'waktu   : 18.00-selesai');
+	$pdf->Text(10, 116, 'waktu   : '.$get->waktu);
 	$pdf->Text(10, 120, 'tempat : disesuaikan');
 	
 
