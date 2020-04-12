@@ -394,7 +394,7 @@
         </tr>
         <?php
             $i=1;
-            $i = $this->uri->segment('3') + 1;
+            //$i = $this->uri->segment('3') + 1;
             foreach ($data as $data) {
         ?>
         <tr>
@@ -410,7 +410,7 @@
         <?php $i++; }?>
     </table>
         <?php 
-            echo $this->pagination->create_links();
+            //echo $this->pagination->create_links();
         ?>
         <br/>
         <a href="<?php echo base_url().'index.php/sekertaris/suratkeluar/'.$this->session->userdata('idOrganisasi');?>">Input Surat</a><br>

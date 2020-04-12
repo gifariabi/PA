@@ -383,7 +383,7 @@
 <center><h1>Surat Keluar</h1>
 
 
-    <a href='<?php echo base_url()."index.php/sekertaris2/inputan/" ;?>'>Lihat Data</a>
+    <a href='<?php echo base_url()."index.php/sekertaris2/inputan/".$this->session->userdata('idOrganisasi') ;?>'>Lihat Data</a>
 
 	<!-- <?php if ($this->session->username) { ?>
 	<h4><?= $this->session->namaLengkap ?></h4>

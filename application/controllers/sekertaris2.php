@@ -20,9 +20,9 @@ class sekertaris2 extends CI_Controller{
         }
 		    $this->load->view('formsuratkeluar');
     }
-    public function cetak_surat($id){
-        $where = array('id' => $id);
-        $data['data'] = $this->model_suratkeluar->tampil_pdf($where,'suratkeluar')->result();
+    public function cetak_surat($where){
+        //$where = array('id' => $id);
+        $data['data'] = $this->model_suratkeluar->tampil_pdf($where)->result();
         //$this->load->view('editsuratmasuk',$data);
         $this->load->library('pdf');
         $this->load->view('surat',$data);
@@ -57,20 +57,20 @@ class sekertaris2 extends CI_Controller{
         );
             
         $this->model_suratkeluar->data($data,'suratkeluar');
-        redirect('sekertaris2/inputan/'.$this->session->idOrganisasi);
+        redirect('sekertaris2/inputan/'.$this->session->userdata('idOrganisasi'));
         }
     }
-    public function inputan(){
-        $data['data']=$this->model_suratkeluar->tampil();
-        $this->load->database();
-        $jumlah_data = $this->model_suratkeluar->jumlah_data();
-        $this->load->library('pagination');
-        $config['base_url'] = base_url().'index.php/sekertaris2/inputan/';
-        $config['total_rows'] = $jumlah_data;
-        $config['per_page'] = 3;
-        $from = $this->uri->segment(3);
-        $this->pagination->initialize($config);     
-        $data['data'] = $this->model_suratkeluar->halaman($config['per_page'],$from);
+    public function inputan($where){
+        $data['data']=$this->model_suratkeluar->tampil($where);
+        //$this->load->database();
+        //$jumlah_data = $this->model_suratkeluar->jumlah_data($where);
+        //$this->load->library('pagination');
+        //$config['base_url'] = base_url().'index.php/sekertaris2/inputan/'.$this->session->userdata('idOrganisasi');
+        //$config['total_rows'] = $jumlah_data;
+        //$config['per_page'] = 3;
+        //$from = $this->uri->segment(3);
+        //$this->pagination->initialize($config);     
+        //$data['data'] = $this->model_suratkeluar->halaman($config['per_page'],$from);
         
         $this->load->view('datasuratkeluar',$data);
         }

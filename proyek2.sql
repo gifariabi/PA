@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Apr 2020 pada 16.31
+-- Waktu pembuatan: 12 Apr 2020 pada 10.51
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -55,8 +55,7 @@ INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
 (670117403, 'Gifari Abi Waqqash', 1, 'Anggota Divisi Olahraga'),
 (670117410, 'Muhammad Luqman', 1, 'Sekertaris'),
 (670117410, 'Muhammad Luqman', 5, 'Anggota Divisi Dalam Negeri'),
-(670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Olahraga'),
-(670117400, 'Yusril Wahyuda', 5, 'Sekertaris');
+(670117455, 'Eko Adinata', 5, 'Sekertaris');
 
 -- --------------------------------------------------------
 
@@ -340,17 +339,17 @@ CREATE TABLE `suratkeluar` (
   `tanggalkeluar` varchar(255) COLLATE utf8_bin NOT NULL,
   `waktu` varchar(255) COLLATE utf8_bin NOT NULL,
   `perihal` varchar(255) COLLATE utf8_bin NOT NULL,
-  `nim` int(10) NOT NULL
+  `nim` int(10) NOT NULL,
+  `idOrganisasi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data untuk tabel `suratkeluar`
 --
 
-INSERT INTO `suratkeluar` (`id`, `no_suratkeluar`, `penerima`, `tanggalkeluar`, `waktu`, `perihal`, `nim`) VALUES
-(2, '003', 'Ketua Wapala', '2020-04-03', '', 'Peminjaman Logistik', 670117410),
-(3, '003', 'Ketua Wapala', '2020-04-03', '', 'Peminjaman Logistik', 670117410),
-(4, '002', 'Ketua Search', '2020-03-03', '08:00', 'Ultah Himpunan', 670117410);
+INSERT INTO `suratkeluar` (`id`, `no_suratkeluar`, `penerima`, `tanggalkeluar`, `waktu`, `perihal`, `nim`, `idOrganisasi`) VALUES
+(1, '777', 'ketua', '25-06-2020', '07.00', 'undangan', 670117410, 1),
+(6, '2112', 'ketua', '11-11-11', '20:12', 'undangan', 670117455, 5);
 
 -- --------------------------------------------------------
 
@@ -501,7 +500,8 @@ ALTER TABLE `rapat`
 --
 ALTER TABLE `suratkeluar`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `nim` (`nim`) USING BTREE;
+  ADD KEY `nim` (`nim`) USING BTREE,
+  ADD KEY `fk_idorganisasi3` (`idOrganisasi`);
 
 --
 -- Indeks untuk tabel `tahun_ajaran`
@@ -572,7 +572,7 @@ ALTER TABLE `rapat`
 -- AUTO_INCREMENT untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tahun_ajaran`
@@ -652,6 +652,7 @@ ALTER TABLE `rapat`
 -- Ketidakleluasaan untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
+  ADD CONSTRAINT `fk_idorganisasi3` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
   ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`);
 
 --
