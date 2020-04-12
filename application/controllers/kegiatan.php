@@ -107,15 +107,10 @@
             }
         }
         public function displaykegiatan($where){
-            $newdata = $this->session->userdata('jabatan');
-            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
-                $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
-                redirect('kegiatan');
-            }else{
-                $data['data']=$this->kegiatan_model->tampil($where)->result();
-                // print_r($data);
-                $this->load->view('display_kegiatan2',$data);
-            }
+            $data['data']=$this->kegiatan_model->tampil($where)->result();
+            // print_r($data);
+            $this->load->view('display_kegiatan2',$data);
+            
         }
 
         public function displaykegiatan2($where){
