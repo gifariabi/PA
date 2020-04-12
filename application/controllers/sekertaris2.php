@@ -29,23 +29,23 @@ class sekertaris2 extends CI_Controller{
     }
 
 	public function suratkeluar(){
-        $this->form_validation->set_rules('no_suratkeluar', 'no_suratkeluar', 'required');
-        $this->form_validation->set_rules('penerima', 'Penerima', 'required');
-        $this->form_validation->set_rules('perihal', 'Perihal', 'required');
-        $this->form_validation->set_rules('nim', 'nim', 'required');
+        //$this->form_validation->set_rules('no_suratkeluar', 'no_suratkeluar', 'required');
+        //$this->form_validation->set_rules('penerima', 'Penerima', 'required');
+        //$this->form_validation->set_rules('perihal', 'Perihal', 'required');
+        //$this->form_validation->set_rules('nim', 'nim', 'required');
 
-        if ($this->form_validation->run() == FALSE){
-            $this->load->view('formsuratkeluar');
-            $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
-        }
-        else{
+        //if ($this->form_validation->run() == FALSE){
+          //  $this->load->view('formsuratkeluar');
+           // $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
+        //}
+        //else{
 
         $no_suratkeluar = $this->input->post('no_suratkeluar');
         $penerima = $this->input->post('penerima');
         $tanggalkeluar = $this->input->post('tanggalkeluar');
         $waktu = $this->input->post('waktu');
         $perihal = $this->input->post('perihal');
-        // $nim = $this->input->post('nim');
+        $idOrganisasi = $this->input->post('idOrganisasi');
 
         $data = array(
             'no_suratkeluar' => $no_suratkeluar,
@@ -53,12 +53,13 @@ class sekertaris2 extends CI_Controller{
             'tanggalkeluar' => $tanggalkeluar,
             'waktu' => $waktu,
             'perihal' => $perihal,
+            'idOrganisasi' => $idOrganisasi,
             'nim' => $this->session->userdata('nim')
         );
             
         $this->model_suratkeluar->data($data,'suratkeluar');
         redirect('sekertaris2/inputan/'.$this->session->userdata('idOrganisasi'));
-        }
+        //}
     }
     public function inputan($where){
         $data['data']=$this->model_suratkeluar->tampil($where);
@@ -78,7 +79,7 @@ class sekertaris2 extends CI_Controller{
     public function hapus_surat_keluar($id){
     	$this->load->model('model_suratkeluar');
     	$this->model_suratkeluar->hapus_data($id);
-    	redirect('sekertaris2/inputan');
+    	redirect('sekertaris2/inputan/'.$this->session->userdata('idOrganisasi'));
     }
     function editdata($id){
         $where = array('id' => $id);
@@ -86,25 +87,27 @@ class sekertaris2 extends CI_Controller{
         $this->load->view('editsuratkeluar',$data);
     }
     function update(){
-        $id = $this->input->post('idsuratkeluar');
+        $id = $this->input->post('id');
         $no_suratkeluar = $this->input->post('no_suratkeluar');
         $penerima = $this->input->post('penerima');
         $tanggalkeluar = $this->input->post('tanggalkeluar');
         $perihal = $this->input->post('perihal');
+        $idOrganisasi = $this->input->post('idOrganisasi');
  
         $data = array(
        	'no_suratkeluar' => $no_suratkeluar,
         'penerima' => $penerima,
         'tanggalkeluar' => $tanggalkeluar,
-        'perihal' => $perihal
+        'perihal' => $perihal,
+        'idOrganisasi' => $idOrganisasi
         );
  
         $where = array(
-        'idsuratkeluar' => $id
+        'id' => $id
         );
  
         $this->model_suratkeluar->update_data($where,$data,'suratkeluar');
-        redirect('sekertaris2/inputan');
+        redirect('sekertaris2/inputan/'.$this->session->userdata('idOrganisasi'));
     }  
     function cari(){
         $this->load->database();

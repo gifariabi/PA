@@ -377,7 +377,7 @@
   <!-- <div class="alert alert-primary" role="alert"> -->
     <?php echo  $this->session->flashdata('pesan');?>
 <!-- </div> -->
-<form action="<?=base_url();?>index.php/sekertaris2/suratkeluar" method="post">
+<form action="<?=base_url()."index.php/sekertaris2/suratkeluar/".$this->session->userdata('nim')?>" method="post">
 	<a href="<?= site_url('Admin/') ?>"></a>
 	<?php //print_r($user) ?>
 <center><h1>Surat Keluar</h1>
@@ -419,6 +419,7 @@
 		<td>Perihal</td> 
 		<td>:</td>
 		<td><input type="text" name="perihal" class="form-control form-control-user"></td>
+    <td><input type="hidden" name="idOrganisasi" value="<?= $idOrganisasi?>"></td>
 	</tr>
   <tr>
     <!-- <td>NIM</td> 

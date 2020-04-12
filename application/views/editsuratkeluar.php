@@ -383,7 +383,7 @@
             <td>No Surat</td>
             <td>:</td>
             <td>
-            	<input type="hidden" name="idsuratkeluar" value="<?php echo $u->idsuratkeluar ?>">
+            	<input type="hidden" name="id" value="<?php echo $u->id ?>">
             	<input type="text" name="no_suratkeluar" value="<?php echo $u->no_suratkeluar ?>">
            	</td>
         </tr>
