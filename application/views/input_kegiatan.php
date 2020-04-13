@@ -385,6 +385,9 @@
       <input type="text" name="tempat" class="form-control form-control-user" placeholder="Tempat Pelaksanaan"></td>
     </div>
     <div class="form-group">
+      <input type="text" name="harga" class="form-control form-control-user" placeholder="Harga">
+    </div>
+    <div class="form-group">
     <?php 
 if(is_array($data) || is_object($data)){
   foreach ($data as $data) { ?>

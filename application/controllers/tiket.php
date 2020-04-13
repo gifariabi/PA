@@ -4,6 +4,7 @@
             parent::__construct();
             $this->load->helper('url','form','file');
             $this->load->model('tiket_model');
+            $this->load->model('kegiatan_model');
             $this->load->library('form_validation','session');
         }
 
@@ -12,16 +13,11 @@
         }
 
         public function tiket($id_kegiatan){
-            $newdata = $this->session->userdata('jabatan');
-            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
-                $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
-                redirect('tiket');
-            }else{
                 $where = array('id_kegiatan' => $id_kegiatan);
-                $data['data'] = $this->kegiatan_model->edit_data($where,'kegiatan')->resut();
-                print_r($data);
-                // $this->load->view('input_tiket',$data);
-            }
+                $data['data'] = $this->kegiatan_model->edit_data($where,'kegiatan')->result();
+                // print_r($data);
+                $this->load->view('input_tiket',$data);
+            
         }
         public function simpan($id_kegiatan){
             $this->form_validation->set_rules('nama','Nama','required',array('required' => 'Kolom Nama masih kosong'));
@@ -33,16 +29,22 @@
             // $this->form_validation->set_rules('kondisi','Kondisi','required');
 
             if ($this->form_validation->run() === true) {
+                $id_kegiatan = $this->input->post('id_kegiatan');
+                $harga = $this->input->post('harga');
                 $nama = $this->input->post('nama');
                 $nim = $this->input->post('nim');
                 $jurusan = $this->input->post('jurusan');
                 $email = $this->input->post('email');
 
                 $jumlah = $this->input->post('jumlah');
-                if ($jumlah = 1) {
-                }
                 $metode = $this->input->post('metode');
                 $status = 'Menunggu';
+                $total = 0;
+                if ($jumlah == 1) {
+                    $total = $harga;
+                }else{
+                    $total = $jumlah * $harga;
+                }
 
                 $data = array(
                     'nama' => $nama, 
@@ -50,6 +52,7 @@
                     'jurusan' => $jurusan,
                     'email' => $email,
                     'jumlah' => $jumlah,
+                    'total' => $total,
                     'metode_pembayaran' => $metode,
                     'status' => $status,
                     'id_kegiatan' => $id_kegiatan
@@ -57,11 +60,11 @@
                 $this->tiket_model->data($data,'tiket');
                 // redirect('tiket/tiket/'.$id_kegiatan);
                 
-                redirect('tiket/simpan/'.$id_kegiatan);
+                redirect('tiket/displaydata/'.$id_kegiatan);
                 
             }
             else {
-                $data['id_kegiatan'] = $id_kegiatan;
+                $data['data'] = $id_kegiatan;
                 $this->load->view('input_tiket',$data);
             }
         }
@@ -104,9 +107,9 @@
             redirect('tiket/displaydata');
         }
         
-        public function cetak_tiket($no_tiket){
-            $where = array('no_tiket' => $no_tiket);
-            $data['data'] = $this->tiket_model->edit_data($where,'tiket')->result();
+        public function cetak_tiket($where){
+            // $where = array('no_tiket' => $no_tiket);
+            $data['data'] = $this->tiket_model->tampil_pdf($where)->result();
             //$this->load->view('editsuratmasuk',$data);
             $this->load->library('pdf');
             $this->load->view('tiket',$data);

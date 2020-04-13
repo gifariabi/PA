@@ -366,13 +366,18 @@
 
 <body>
 <!-- <?php echo validation_errors(); ?> -->
-<form class="user" action="<?php echo base_url().'index.php/tiket/simpan/'.$id_kegiatan;?>" method="post">
+<?php 
+if (is_array($data) || is_object($data)) {
+foreach($data as $key){ ?>
+<form class="user" action="<?php echo base_url().'index.php/tiket/simpan/'.$key->id_kegiatan?>" method="post">
     <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <div class="text-center">
         <h1 class="h4 text-gray-900 mb-4">Book Tiket</h1>
-        <a href="<?php echo site_url('tiket/displaydata'); ?>">History Pesanan</a>
+        
     </div>
+    <input type="hidden" name="id_kegiatan" value="<?php echo $key->id_kegiatan; ?>">
+    <input type="hidden" name="harga" value="<?php echo $key->harga; ?>">
     <div class="form-group">
       <input type="text" name="nama" class="form-control form-control-sm" placeholder="Nama Lengkap" value="<?= set_value('nama') ?>">
       <?php echo form_error('nama');?>
@@ -403,7 +408,7 @@
 						<option value="Transfer">Transfer</option>
 						<option value="Cash">Cash</option>
           </select>
-          <?php echo form_close('metode') ?>
+          <!-- <?php echo form_close('metode') ?> -->
     </div>
     <!-- <?php foreach($data as $key){ ?>
       <input type="hidden" name="harga" value="<?php echo $key->harga; ?>">
@@ -420,6 +425,7 @@
     </font> -->
     </center>
 </form>
+    <?php } }?>
 <!-- Footer -->
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">
