@@ -391,6 +391,7 @@
               <th>Jumlah</th>
               <th>Metode Pembayaran</th>
               <th>Status</th>
+              <th>Aksi</th>
       
           </tr>
           <?php
@@ -406,17 +407,17 @@
               <td><?php echo $key->jumlah; ?></td>
               <td><?php echo $key->metode_pembayaran;?></td>
               <td><?php echo $key->status; ?></td>
-              <td>
+              
               <!-- <a href="<?php echo site_url('tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
               <a href="<?php echo site_url('tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
                  -->
               <?php if ($key->status =='Accepted') { ?>
-                <td><a href="<?php echo base_url().'index.php/tiket/cetak_tiket/'.$data->no_tiket;?>">Cetak Tiket</a></td>
+                <td><a href="<?php echo base_url().'index.php/tiket/cetak_tiket/'.$key->no_tiket;?>">Cetak Tiket</a></td>
               <?php
               } else {?>
               <td><a href="#">Cetak Tiket</a></td>
               <?php }?>
-              </td>
+              
           </tr>
           <?php $i++; }?>
         </table>
@@ -424,7 +425,7 @@
         }else{ 
         ?>
         <?php foreach($data as $key){ ?>
-        <form action="<?php echo base_url().'index.php/tiket/update_status'.$key->no_tiket;?>" method="post"></form>
+        <form action="" method="post">
         <?php } ?>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <tr>
@@ -451,8 +452,8 @@
               <td><?php echo $key->email; ?></td>
               <td><?php echo $key->jumlah; ?></td>
               <td><?php echo $key->metode_pembayaran;?></td>
-              <td><?php echo $key->status; ?></td>
-              <td><input type="submit" name="status" value="Accept"></td>
+              <td><?php echo $key->status; ?><input type="hidden" value="<?php echo $key->no_tiket; ?>"></td>
+              <td><?= anchor('tiket/update_status_admin/'.$key->no_tiket,'Accept') ?></td>
               <td>
               <!-- <a href="<?php echo site_url('tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
               <a href="<?php echo site_url('tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
@@ -462,6 +463,7 @@
           <?php $i++; }?>
         </table>
               <?php }?>
+              </form>
       </div>  
     </div>    
     <!-- <a href="<?php echo base_url().'index.php/inventaris/index';?>">Tambah Data</a> -->

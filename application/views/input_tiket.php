@@ -379,7 +379,6 @@
     <div class="form-group">
       <input type="text" name="nim" class="form-control form-control-sm" placeholder="NIM">
     </div>
-    
     <div class=form-group>
       <input type="text" name="jurusan" class="form-control form-control-sm" placeholder="Jurusan">
     </div>
@@ -398,9 +397,14 @@
 						<option>- - - Pilih Metode - - -</option>
 						<option value="Transfer">Transfer</option>
 						<option value="Cash">Cash</option>
-					</select>
+          </select>
     </div>
+    <?php foreach($data as $key){ ?>
+      <input type="hidden" name="harga" value="<?php echo $key->harga; ?>">
+    <?php } ?>
+    <div class="form-group">
         <input type="submit" name="submit" value="Input" class="btn  btn-user btn-block btn-success" placeholder="input">
+    </div>
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
     <!-- <font color="red">
