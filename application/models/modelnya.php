@@ -22,7 +22,6 @@
             $this->db->where($where);
             $query = $this->db->update('requestsurat');
             return $query;
-
         }
         function tampil_req(){
             $query = $this->db->query("SELECT * FROM requestsurat WHERE nama='".$this->session->namaLengkap."'");

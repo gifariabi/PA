@@ -26,16 +26,15 @@
             $this->db->where($where);
             $this->db->update($table,$data);
         }
-        function update_status($no_tiket){
+        function update_status($no_tiket) {
             $where = array('no_tiket' => $no_tiket);
             $this->db->set('status', 'Accepted');
             $this->db->where($where);
             $query = $this->db->update('tiket');
             return $query;
-            //return $query->result();
         }
         function tampil_req(){
-            $query = $this->db->query("SELECT * FROM tiket WHERE nim='".$this->session->nim."'");
+            $query = $this->db->query("SELECT * FROM tiket ");
             //$this->db->where('namaLengkap',$nama);
             return $query->result();
         }

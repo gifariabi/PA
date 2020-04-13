@@ -36,6 +36,7 @@
                 $email = $this->input->post('email');
                 $jumlah = $this->input->post('jumlah');
                 $metode = $this->input->post('metode');
+                $status = 'Menunggu';
 
                 $data = array(
                     'nama' => $nama, 
@@ -44,6 +45,7 @@
                     'email' => $email,
                     'jumlah' => $jumlah,
                     'metode_pembayaran' => $metode,
+                    'status' => $status,
                     'id_kegiatan' => $id_kegiatan
                 );
                 $this->tiket_model->data($data,'tiket');
@@ -96,10 +98,8 @@
             $this->tiket_model->update_data($where,$data,'tiket');
             redirect('tiket/displaydata');
         }
-        public function cetak_tiket(){
-            
-        }
-        public function cetak_surat($no_tiket){
+        
+        public function cetak_tiket($no_tiket){
             $where = array('no_tiket' => $no_tiket);
             $data['data'] = $this->tiket_model->edit_data($where,'tiket')->result();
             //$this->load->view('editsuratmasuk',$data);
@@ -107,6 +107,10 @@
             $this->load->view('tiket',$data);
         }
     
+        public function update_status_admin($no_tiket){
+            $this->tiket_model->update_status($no_tiket);
+            redirect('tiket/status_tiket_admin/');  
+        }
 
         public function update_status(){
             $nama = $this->input->post('nama');
@@ -116,6 +120,19 @@
             $jumlah = $this->input->post('jumlah');
             $metode = $this->input->post('metode');
             $status = $this->input->post('status');
+            $no_tiket = $this->input->post('no_tiket');
+            // $data = array(
+            //     // 'nama' => $nama,
+            //     // 'nim' => $nim,
+            //     // 'jurusan' => $jurusan,
+            //     // 'email' => $email,
+            //     // 'jumlah' => $jumlah,
+            //     // 'metode_pembayaran' => $metode,
+            //     'status' => $status
+            // );
+            // $where = array(
+            //     'no_tiket' => $no_tiket
+            // );
             $this->tiket_model->update_status($nama,$nim,$jurusan,$email,$jumlah,$metode,$status);
             redirect('tiket/status_tiket_admin');
         }

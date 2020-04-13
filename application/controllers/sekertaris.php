@@ -115,7 +115,6 @@ class sekertaris extends CI_Controller{
     }
 
     public function update_status_admin($id_req){
-
         $this->modelnya->update_status($id_req);
         redirect('sekertaris/status_surat_admin');  
     }
