@@ -377,8 +377,8 @@
       <input type="file" name="lpj" class="form-control form-control-sm" placeholder="LPJ" size="50">
       <?php 
       if(is_array($data) || is_object($data)){
-      foreach($data as $key){ ?>
-        <input type="hidden" name="id_kegiatan" value="<?php echo $key->id_kegiatan; ?>">
+      foreach($data as $data){ ?>
+        <input type="hidden" name="id_kegiatan" value="<?php echo $data->id_kegiatan; ?>">
       
     </div>
         <input type="submit" name="submit" value="Input" class="btn  btn-user btn-block btn-success" placeholder="input">

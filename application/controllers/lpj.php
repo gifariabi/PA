@@ -12,6 +12,7 @@
         public function index(){
             $this->load->view('lpj');
         }
+
         public function lpj($id_kegiatan){
             if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
                 //$this->session->set_userdata('id_programkerja',$id_programkerja);
@@ -21,26 +22,26 @@
             }else{
                 $where = array('id_kegiatan' => $id_kegiatan);
                 $data['data'] = $this->kegiatan_model->edit_data($where,'kegiatan')->result();
-                // $this->load->view('lpj',$data);
-                print_r($data);
+                $this->load->view('lpj', $data);
+                // print_r($data);
                      
             }
         }
-        public function save2(){
-            $id_kegiatan = $this->input->post('id_kegiatan');
-            $file = $this->model_lpj->_uploadImage();
-            $data = array(
-                'id_kegiatan' => $id_kegiatan,
-                'file' => $file
-            );
-            $this->model_lpj->data($data,'lpj');
-        }
-        public function save(){
+        // public function save2(){
+        //     $id_kegiatan = $this->input->post('id_kegiatan');
+        //     $file = $this->model_lpj->_uploadImage();
+        //     $data = array(
+        //         'id_kegiatan' => $id_kegiatan,
+        //         'file' => $file
+        //     );
+        //     $this->model_lpj->data($data,'lpj');
+        // }
+        // public function save(){
             
-        }
+        // }
 
         public function do_upload(){
-            $id_kegiatan = $this->input->post('id_kegiatan');
+                $id_kegiatan = $this->input->post('id_kegiatan');
                 $config['upload_path']          = './asset/file/';
                 $config['allowed_types']        = 'pdf';
                 $config['max_size']             = 0;
