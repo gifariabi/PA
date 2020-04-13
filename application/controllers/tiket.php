@@ -24,10 +24,10 @@
             }
         }
         public function simpan($id_kegiatan){
-            $this->form_validation->set_rules('nama','Nama','required');
-            $this->form_validation->set_rules('nim','Nim','required');
-            $this->form_validation->set_rules('jurusan','Jurusan','required');
-            $this->form_validation->set_rules('email','Email','required');
+            $this->form_validation->set_rules('nama','Nama','required',array('required' => 'Kolom Nama masih kosong'));
+            $this->form_validation->set_rules('nim','Nim','trim|required|max_length[10]', array('required' => 'Kolom nim masih kosong','max_length' => 'NIM harus 10 digit'));
+            $this->form_validation->set_rules('jurusan','Jurusan','required',array('required' => 'Kolom jurusan masih kosong'));
+            $this->form_validation->set_rules('email','Email','trim|required|valid_email',array('required' => 'Kolom email masih kosong'));
             $this->form_validation->set_rules('jumlah','Jumlah','required');
             $this->form_validation->set_rules('metode','Metode','required');
             // $this->form_validation->set_rules('kondisi','Kondisi','required');
@@ -62,7 +62,6 @@
             }
             else {
                 $data['id_kegiatan'] = $id_kegiatan;
-                $this->session->set_flashdata('error', 'Data tidak sesusai');
                 $this->load->view('input_tiket',$data);
             }
         }

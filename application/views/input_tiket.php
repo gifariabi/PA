@@ -365,7 +365,7 @@
         <div class="container-fluid">
 
 <body>
-
+<!-- <?php echo validation_errors(); ?> -->
 <form class="user" action="<?php echo base_url().'index.php/tiket/simpan/'.$id_kegiatan;?>" method="post">
     <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
@@ -374,23 +374,28 @@
         <a href="<?php echo site_url('tiket/displaydata'); ?>">History Pesanan</a>
     </div>
     <div class="form-group">
-      <input type="text" name="nama" class="form-control form-control-sm" placeholder="Nama Lengkap">
+      <input type="text" name="nama" class="form-control form-control-sm" placeholder="Nama Lengkap" value="<?= set_value('nama') ?>">
+      <?php echo form_error('nama');?>
     </div>
     <div class="form-group">
-      <input type="text" name="nim" class="form-control form-control-sm" placeholder="NIM">
+      <input type="text" name="nim" class="form-control form-control-sm" placeholder="NIM" value="<?= set_value('nim') ?>">
+      <?php echo form_error('nim');?>
     </div>
     <div class=form-group>
-      <input type="text" name="jurusan" class="form-control form-control-sm" placeholder="Jurusan">
+      <input type="text" name="jurusan" class="form-control form-control-sm" placeholder="Jurusan" value="<?= set_value('jurusan') ?>">
+      <?php echo form_error('jurusan') ?>
     </div>
     <div class=form-group>
-      <input type="email" name="email" class="form-control form-control-sm" placeholder="Email">
+      <input type="email" name="email" class="form-control form-control-sm" placeholder="Email" value="<?= set_value('email') ?>">
+      <?php echo form_error('email') ?>
     </div>
     <div class=form-group>
       <select name="jumlah"  class="form-control form-control-sm">
 						<option>- - - Pilih Jumlah Tiket - - -</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
-					</select>
+          </select>
+          <?php echo form_error('jumlah'); ?>
     </div>
     <div class=form-group>
       <select name="metode"  class="custom-select custom-select-sm form-control - form-control-sm">
@@ -398,10 +403,11 @@
 						<option value="Transfer">Transfer</option>
 						<option value="Cash">Cash</option>
           </select>
+          <?php echo form_close('metode') ?>
     </div>
-    <?php foreach($data as $key){ ?>
+    <!-- <?php foreach($data as $key){ ?>
       <input type="hidden" name="harga" value="<?php echo $key->harga; ?>">
-    <?php } ?>
+    <?php } ?> -->
     <div class="form-group">
         <input type="submit" name="submit" value="Input" class="btn  btn-user btn-block btn-success" placeholder="input">
     </div>

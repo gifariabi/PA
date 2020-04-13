@@ -61,7 +61,6 @@
                 $nama_kegiatan = $this->input->post('nama_kegiatan');
                 $waktu = $this->input->post('waktu');
                 $tempat = $this->input->post('tempat');
-                $harga = $this->input->post('harga');
                 $id_programkerja = $this->input->post('id_programkerja');
 
                 $this->load->library('ciqrcode');
@@ -90,7 +89,6 @@
                     'nama_kegiatan' => $nama_kegiatan, 
                     'waktu' => $waktu,
                     'tempat' => $tempat,
-                    'harga' => $harga,
                     'qr_code' => $image_name,
                     'id_programkerja' => $id_programkerja
                 );
