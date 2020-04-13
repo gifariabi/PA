@@ -17,7 +17,10 @@
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('tiket');
             }else{
-                $this->load->view('input_tiket');
+                $where = array('id_kegiatan' => $id_kegiatan);
+                $data['data'] = $this->kegiatan_model->edit_data($where,'kegiatan')->resut();
+                print_r($data);
+                // $this->load->view('input_tiket',$data);
             }
         }
         public function simpan($id_kegiatan){
@@ -34,7 +37,10 @@
                 $nim = $this->input->post('nim');
                 $jurusan = $this->input->post('jurusan');
                 $email = $this->input->post('email');
+
                 $jumlah = $this->input->post('jumlah');
+                if ($jumlah = 1) {
+                }
                 $metode = $this->input->post('metode');
                 $status = 'Menunggu';
 
