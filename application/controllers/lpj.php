@@ -19,9 +19,11 @@
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('kegiatan');
             }else{
-                $where = array('id_kegiatan'=>$id_kegiatan);
-                $data['data'] = $this->kegiatan_model->edit_data($where, 'kegiatan')->result();
-                $this->load->view('lpj',$data);      
+                $where = array('id_kegiatan' => $id_kegiatan);
+                $data['data'] = $this->kegiatan_model->edit_data($where,'kegiatan')->result();
+                // $this->load->view('lpj',$data);
+                print_r($data);
+                     
             }
         }
         public function save2(){
@@ -34,51 +36,37 @@
             $this->model_lpj->data($data,'lpj');
         }
         public function save(){
-            $id_kegiatan = $this->input->post('id_kegiatan');
-            //$this->form_validation->set_rules('foto', 'Foto', 'callback_file_selected');
-    
-            $config['upload_path'] = './asset/file'; //path folder
-            $config['allowed_types'] = 'pdf'; //type yang dapat diakses bisa anda sesuaikan
-            $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
-    
-            $this->upload->initialize($config);
-            //if($this->form_validation->run() != false) {
-                if(!empty($_FILES['file']['name']))
-                    {
-                        if ($this->upload->do_upload('file'))
-                        {
-                            $gbr = $this->upload->data();
-                            //Compress Image
-                            $config['image_library']='gd2';
-                            $config['source_image']='./asset/file/'.$gbr['file_name'];
-                            $config['create_thumb']= FALSE;
-                            $config['maintain_ratio']= FALSE;
-                            $config['width']= 500;
-                            $config['height']= 325;
-                            $config['new_image']= './asset/file/'.$gbr['file_name'];
-                            $this->load->library('image_lib', $config);
-                            $this->file->resize();
             
-                            $file =$gbr['file_name'];
-                            $data = array(
-                                'file' => $file,
-                                'id_kegiatan' => $id_kegiatan
-                            );
-                            $this->model_lpj->data($data,'lpj');
-                           
-                            redirect('lpj/displayfile');
-                            echo "Berhasil Mengganti Foto Profile";
-                        }else{
-                            redirect('lpj/lpj');
-                            }
-    
-                        }
-                //}else{
-                    //echo "gagal";
-                        //$this->load->view('admin/kegiatan/input_kegiatan');     
-                //} 
         }
 
+        public function do_upload(){
+            $id_kegiatan = $this->input->post('id_kegiatan');
+                $config['upload_path']          = './asset/file/';
+                $config['allowed_types']        = 'pdf';
+                $config['max_size']             = 0;
+                // $config['max_width']            = 1024;
+                // $config['max_height']           = 768;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('lpj'))
+                {
+                        $error = array('error' => $this->upload->display_errors());
+
+                        $this->load->view('lpj', $error);
+                }
+                else
+                {
+                        $upload_data = $this->upload->data();
+                        $data = array(
+                            'file' => $upload_data,
+                            'id_kegiatan' => $id_kegiatan
+                        );
+                        $this->model_lpj->data($data,'lpj');
+
+                        // $this->load->view('upload_success', $data);
+                }
+        }
         // public function upload(){
         //     $id_kegiatan = $this->input->post('id_kegiatan');
 
