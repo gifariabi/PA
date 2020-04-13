@@ -16,11 +16,11 @@
             return $query->result();
         }
 
-        function update_status($id_req) {
-            $where = array('id_req'=>$id_req);
+        function update_status($no_tiket) {
+            $where = array('no_tiket'=>$no_tiket);
             $this->db->set('status', 'Accepted');
             $this->db->where($where);
-            $query = $this->db->update('requestsurat');
+            $query = $this->db->update('tiket');
             return $query;
 
         }
