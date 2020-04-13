@@ -59,14 +59,8 @@
             }
         }
         public function displaydata(){
-            $newdata = $this->session->userdata('jabatan');
-            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
-                $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
-                redirect('tiket');
-            }else{
-                $data['data']=$this->tiket_model->tampil()->result();
-                $this->load->view('display_tiket',$data);
-            }
+            $data['data']=$this->tiket_model->tampil()->result();
+            $this->load->view('display_tiket',$data);
         }
         public function hapus($id){
             $where = array('no_tiket'=>$id);
@@ -103,7 +97,7 @@
             redirect('tiket/displaydata');
         }
         public function cetak_tiket(){
-
+            
         }
         public function cetak_surat($no_tiket){
             $where = array('no_tiket' => $no_tiket);
@@ -126,14 +120,8 @@
             redirect('tiket/status_tiket_admin');
         }
         public function status_tiket_admin(){
-            $newdata = $this->session->userdata('jabatan');
-            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
-                $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
-                redirect('tiket');
-            }else{
-                $data['data']=$this->tiket_model->tampil_reg_admin();
+                $data['data']=$this->tiket_model->tampil_req();
                 $this->load->view('display_tiket',$data);
-            }
         }
 
     }

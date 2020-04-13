@@ -366,7 +366,7 @@
 
 <body>
 
-<form class="user" action="<?php echo base_url().'index.php/lpj/upload/'?>" method="post">
+<form class="user" action="<?php echo base_url().'index.php/lpj/save/'?>" method="post">
     <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <!-- <div class="text-center">
@@ -374,6 +374,9 @@
         <a href="<?php echo site_url('tiket/displaydata'); ?>">History Pesanan</a>
     </div> -->
     <div class="form-group">
+      <?php foreach($data as $key){ ?>
+        <input type="hidden" name="id_kegiatan" value="<?php echo $key->id_kegiatan; ?>">
+      <?php } ?>
       <input type="file" name="lpj" class="form-control form-control-sm" placeholder="LPJ" size="50">
     </div>
         <input type="submit" name="submit" value="Input" class="btn  btn-user btn-block btn-success" placeholder="input">

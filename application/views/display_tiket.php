@@ -423,7 +423,9 @@
         <?php 
         }else{ 
         ?>
-        <form action="<?php echo base_url().'index.php/tiket/update_status_admin';?>" method="post"></form>
+        <?php foreach($data as $key){ ?>
+        <form action="<?php echo base_url().'index.php/tiket/update_status'.$key->no_tiket;?>" method="post"></form>
+        <?php } ?>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <tr>
               <th>No</th>
@@ -450,7 +452,7 @@
               <td><?php echo $key->jumlah; ?></td>
               <td><?php echo $key->metode_pembayaran;?></td>
               <td><?php echo $key->status; ?></td>
-              <td><input type="submit" name="accept" value="Accept"></td>
+              <td><input type="submit" name="status" value="Accept"></td>
               <td>
               <!-- <a href="<?php echo site_url('tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
               <a href="<?php echo site_url('tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
