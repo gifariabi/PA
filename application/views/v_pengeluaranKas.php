@@ -371,10 +371,12 @@
  <table>
  <th>
   <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
    Bulan
   </button>
- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+  
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_januari/'.$this->session->userdata('idOrganisasi');?>">Januari</a>
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_februari/'.$this->session->userdata('idOrganisasi');?>">Februari</a>
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_maret/'.$this->session->userdata('idOrganisasi');?>">Maret</a>
@@ -388,14 +390,18 @@
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_november/'.$this->session->userdata('idOrganisasi');?>">November</a>
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_desember/'.$this->session->userdata('idOrganisasi');?>">Desember</a>
   </div> 
+  </th>
+  <th>
+  <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
    Lihat Kas
   </button>
+ 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/tampil_kas/'.$this->session->userdata('idOrganisasi');?>">Semua</a>
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasMasuk/'.$this->session->userdata('idOrganisasi');?>">Lihat Kas Masuk</a>
     <a class="dropdown-item" href="<?php echo base_url().'index.php/Ormawa/v_kasKeluar/'.$this->session->userdata('idOrganisasi');?>">Lihat Kas Keluar</a>
-    </th>
+     </th>
     </div>
     </div>
     </div>
