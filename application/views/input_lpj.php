@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 </head>
@@ -28,7 +28,7 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-       <!-- Sidebar - Brand -->
+        <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div>
         <img src="<?php echo base_url('asset/images/ormawa/'.$this->session->userdata('logo'))?>" width="65" height="65">
@@ -365,33 +365,37 @@
         <div class="container-fluid">
 
 <body>
-
-<form class="user" action="<?php echo base_url().'index.php/lpj/do_upload/'?>" method="post" enctype="multipart/data">
+<!-- <?php echo validation_errors(); ?> -->
+<?php 
+if (is_array($data) || is_object($data)) {
+foreach($data as $key){ ?>
+<?php echo form_open_multipart('lpj/do_upload'); ?>
     <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
-    <!-- <div class="text-center">
+    <div class="text-center">
         <h1 class="h4 text-gray-900 mb-4">Book Tiket</h1>
-        <a href="<?php echo site_url('tiket/displaydata'); ?>">History Pesanan</a>
-    </div> -->
-    <div class="form-group">
-      <input type="file" name="lpj" class="form-control form-control-sm" placeholder="LPJ" size="50">
-      <?php 
-      if(is_array($data) || is_object($data)){
-      foreach($data as $data){ ?>
-        <input type="hidden" name="id_kegiatan" value="<?php echo $data->id_kegiatan; ?>">
-      
+        
     </div>
+    <input type="hidden" name="id_kegiatan" value="<?php echo $key->id_kegiatan; ?>">
+    <!-- <input type="hidden" name="harga" value="<?php echo $key->harga; ?>"> -->
+    <div class="form-group">
+      <input type="file" name="file" class="form-control form-control-sm" placeholder="Upload LPJ" >
+      <!-- <?php echo form_error('nama');?> -->
+    </div>
+    
+    <div class="form-group">
         <input type="submit" name="submit" value="Input" class="btn  btn-user btn-block btn-success" placeholder="input">
+    </div>
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
     <!-- <font color="red">
         <?php if ($this->session->flashdata('error')) {
 		    echo $this->session->flashdata('error');
-      } ?>
-      <?php } }?>
+	    } ?>
     </font> -->
     </center>
-</form>
+<?php echo form_close(); ?>
+    <?php } }?>
 <!-- Footer -->
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -426,7 +430,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="<?= site_url('Admin/logout') ?>">Logout</a>
+          <a class="btn btn-primary" href="<?= site_url('Login/logout') ?>">Logout</a>
         </div>
       </div>
     </div>
