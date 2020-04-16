@@ -431,8 +431,8 @@
         <?php $i++; }?>
     </table>
         <br/>
-        <a href="<?php echo base_url().'index.php/Ormawa/v_pemasukan_kas/'.$this->session->userdata('idOrganisasi');?>;?>" class="btn btn-success">Catat Kas Masuk</a>
-        <a href="<?php echo base_url().'index.php/Ormawa/v_pengeluaran_kas/'.$this->session->userdata('idOrganisasi');?>;?>" class="btn btn-danger">Catat Kas Keluar</a>
+        <a href="<?php echo base_url().'index.php/Ormawa/v_pemasukan_kas/'.$this->session->userdata('idOrganisasi');?>" class="btn btn-success">Catat Kas Masuk</a>
+        <a href="<?php echo base_url().'index.php/Ormawa/v_pengeluaran_kas/'.$this->session->userdata('idOrganisasi');?>" class="btn btn-danger">Catat Kas Keluar</a>
         <a href="<?php echo base_url().'index.php/Ormawa/tampil_total_laporan/'.$this->session->userdata('idOrganisasi');?>" class="btn btn-primary">Laporan Kas</a>
 
 </center>

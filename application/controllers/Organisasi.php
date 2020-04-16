@@ -133,4 +133,47 @@ class Organisasi extends CI_Controller {
         $data['data'] = $this->model_daftar->search($keyword);
         $this->load->view('data_ormawa',$data);
     }
+
+    public function tampilOrg(){
+        $data['data'] = $this->model_daftar->getOrganisasi();
+        $this->load->view('v_organisasi', $data);
+    }
+
+    public function hapus_Org($idOrganisasi){
+        $where = array('idOrganisasi' => $idOrganisasi);
+        $this->model_daftar->hapus_Org($where,'organisasi');
+        //redirect('Organisasi/tampilan_awal/'.$this->session->nim);
+    }
+
+    public function editOrg($idOrganisasi){
+    $where = array('idOrganisasi' => $idOrganisasi);
+    $data['data'] = $this->model_daftar->edit_Org($where,'organisasi')->result();
+    $this->load->view('v_edit_organisasi',$data);
+    }
+
+    public function update_Org(){
+        $idOrganisasi = $this->input->post('idOrganisasi');
+        $namaOrganisasi = $this->input->post('namaOrganisasi');
+        $deskripsi = $this->input->post('deskripsi');
+        $ketua = $this->input->post('ketua');
+ 
+        $data = array(
+        'namaOrganisasi' => $namaOrganisasi,
+        'deskripsi' => $deskripsi,
+        'ketua' => $ketua
+        );
+ 
+        $where = array(
+        'idOrganisasi' => $idOrganisasi
+        );
+ 
+        $this->model_daftar->update_Org($where,$data,'organisasi');
+        redirect('Organisasi/tampilOrg');
+    }
+
+    public function searchOrganisasi(){
+        $search = $this->input->post('search');
+        $data['data'] = $this->model_daftar->searchOrg($search);
+        $this->load->view('v_organisasi',$data);
+    }
 }

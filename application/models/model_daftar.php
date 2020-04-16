@@ -86,10 +86,37 @@ class model_daftar extends CI_Model{
             return $query->result();
     }
 
+    function searchOrg($search){
+            $this->db->like('namaOrganisasi',$search);
+            $this->db->or_like('ketua',$search);
+            $query=$this->db->get('organisasi');
+            return $query->result();
+    }
+
     public function get($where){
         $this->db->select('*');
         $this->db->from('organisasi');
         $this->db->where('idOrganisasi', $where);
+    }
+
+    public function getOrganisasi(){
+        $this->db->select('*');
+        $this->db->from('organisasi');
+        $query=$this->db->get();
+        return $query->result();
+    }
+
+    public function edit_Org($where,$table){      
+        return $this->db->get_where($table,$where);
+    }
+
+    public function update_Org($where,$data,$table){
+        $this->db->where($where);
+        $this->db->update($table,$data);
+    }
+
+    public function hapus_Org($where,$table){
+        $this->db->delete($table,$where);
     }
 }
 ?>

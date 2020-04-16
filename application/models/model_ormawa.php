@@ -123,7 +123,7 @@ class model_ormawa extends CI_Model{
         }
 
         public function hapus_anggota($where,$table){
-        $this->db->delete($table,$where);
+            $this->db->delete($table,$where);
         }
 
         public function edit_foto($where,$table){      
