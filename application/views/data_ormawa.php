@@ -48,7 +48,13 @@
   <?php if ($this->session->username) { ?>
   
   <?php } else { redirect('Login/aksi_login'); } ?>
-
+  <?php if ($this->session->nim != 0 ) { ?> 
+    <form action="<?php echo site_url('Organisasi/cari');?>" method="post"> 
+          <input type="text" name="keyword">
+          <input type="submit" value="Cari"> 
+    </form>
+    <?php } ?>
+    <br>
     <?php if ($this->session->nim == 0 ) { ?> 
     <table align="right">
       <th><a href="<?= base_url() ?>Organisasi/buat_organisasi" class="btn btn-primary">+ Tambah Organisasi</a></th>
@@ -57,7 +63,7 @@
     <form action="<?php echo site_url('Organisasi/cari');?>" method="post"> 
           <input type="text" name="keyword">
           <input type="submit" value="Cari"> 
-  </form>
+    </form>
     <br> <br>
     <div class="row text-center">
       <?php foreach($data as $data ){ ?>
