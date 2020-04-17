@@ -25,6 +25,9 @@
     <header class="jumbotron my-4">
 <?php foreach ($data as $key) { ?>
 
+  <?php 
+  session_start();
+?>
 <center><h1>Organisasi</h1>
 <img src="<?php echo base_url('asset/images/ormawa/'.$key->logo)?>" width="300" height="300">
 <center>

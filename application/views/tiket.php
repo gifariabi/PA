@@ -31,7 +31,7 @@ $pdf->SetFont('Arial', '', 9);
 	$pdf->Text(10,108,'meminta perwakilan dari '.$get->nama.' '.'untuk hadir pada acara ini yang akan dilaksanakan pada :');
 	$pdf->Text(10, 112, 'tanggal : ');
 	$pdf->Text(10, 116, 'waktu   : '.$get->email);
-	$pdf->Text(10, 120, 'tempat : disesuaikan');
+	$pdf->Text(10, 120, 'tempat : disesu');
 	
 
 $pdf->Text(20, 124, 'Demikian surat undangan ini kami sampaikan, atas perhatian saudara saya ucapkan terimakasih');
