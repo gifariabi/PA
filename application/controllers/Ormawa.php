@@ -8,6 +8,7 @@ class Ormawa extends CI_Controller {
 		$this->load->helper(array('form', 'url','file'));
 		$this->load->model('model_ormawa');
         $this->load->model('model_kas');
+        $this->load->model('login_model');
         $this->load->model('model_daftar');
         $this->load->library('form_validation');
         $this->load->library('upload');
@@ -350,9 +351,19 @@ class Ormawa extends CI_Controller {
     }
 
     public function tambah_ketua($idOrganisasi){
+        $where2 = array('idOrganisasi'=>$idOrganisasi);
+        $org2 = $this->login_model->view_where('organisasi',$where2)->result();
+        $this->session->set_userdata('idOrganisasi',$org2[0]->idOrganisasi);
+        
+        //$data['data'] = $this->model_ormawa->getPengurusbaru();
+        //$this->load->view('v_tambahketua', $data);
+        redirect('Ormawa/tamket/'.$this->session->userdata('idOrganisasi'));
+    }
+
+    public function tamket($idOrganisasi){
         $data['idOrganisasi'] = $idOrganisasi;
         $data['data'] = $this->model_ormawa->getPengurusbaru();
-        $this->load->view('v_tambahketua', $data);
+        $this->load->view('v_tambahketua',$data);
     }
 
     public function add_anggota($nim){
@@ -434,8 +445,9 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_pengurusbaru',$data);
     }
 
-    public function searchKetua(){
+    public function searchKetua($idOrganisasi){ 
         $search = $this->input->post('search');
+        $data['idOrganisasi'] = $idOrganisasi;
         $data['data'] = $this->model_daftar->searchPengurus($search);
         $this->load->view('v_tambahketua',$data);
     }
