@@ -2,9 +2,7 @@
 <hr>
 <hr>
 <table>
-<?php 
-  session_start();
-?>
+
 	<?php foreach ($total_laporan1 as $key) { ?>
 	
 		<tr style="background-color: #E0FFFF;">
