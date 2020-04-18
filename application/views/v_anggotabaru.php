@@ -371,7 +371,7 @@
 <hr>
     <br>
     <div class="table-responsive">
-    <table class="table table-bordered" >
+    <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" >
 
         <tr>
             <th>No</th>

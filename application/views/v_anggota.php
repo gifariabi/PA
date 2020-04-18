@@ -371,7 +371,7 @@
     <div class="card mb-4">
     <div class="card-header"></div>
     <div class="table-responsive">
-    <table class="table table-bordered" width="100%" >
+    <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%" >
 
         <tr>
             <th>No</th>
@@ -391,7 +391,7 @@
             <td><?php echo $data->nama; ?></td>
             <td><?php echo $data->jabatan; ?></td>
             <td><a href="<?= base_url().'/Ormawa/editAnggota/'.$data->nim.'/'.$data->idOrganisasi;?>" class="btn btn-primary">Edit</a></td>
-            <td><a href="<?= base_url().'/Ormawa/hapus_anggota/'.$data->nim;?>" onclick="return confirm('Anda Yakin Menghapus Akun ?')" class="btn btn-danger">Hapus</a></td>
+            <td><a href="<?= base_url().'/Ormawa/hapus_anggota/'.$data->nim.'/'.$data->idOrganisasi;?>" onclick="return confirm('Anda Yakin Menghapus Akun ?')" class="btn btn-danger">Hapus</a></td>
         </tr>
         <?php $i++; }?>
     </table>

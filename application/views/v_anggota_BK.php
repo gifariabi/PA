@@ -244,7 +244,7 @@
     <div class="table-responsive">
   
     </div>
-    <table class="table table-bordered" width="100%" >
+    <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%" >
 
 
         <tr>

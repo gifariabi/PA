@@ -367,8 +367,9 @@ class Ormawa extends CI_Controller {
         //echo "Berhasil Diubah";
     }
 
-    public function hapus_anggota($nim){
-        $where = array('nim' => $nim);
+    public function hapus_anggota($nim,$idOrganisasi){
+        $where = array('nim' => $nim,
+                        'idOrganisasi' => $idOrganisasi);
         $this->model_ormawa->hapus_anggota($where,'ang_organisasi');
         redirect('Ormawa/tampil_anggota/'.$this->session->userdata('idOrganisasi'));
     }

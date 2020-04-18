@@ -407,7 +407,7 @@
     </div>
     </div>
     <br>
-    <table border="1">
+    <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0">
         <br>
         <tr>
             <th>No</th>
