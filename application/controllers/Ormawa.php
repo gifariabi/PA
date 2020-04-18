@@ -271,6 +271,20 @@ class Ormawa extends CI_Controller {
     }
 
     //pengurus
+    public function tampil_pengurusBK($idOrganisasi){
+        $where2 = array('idOrganisasi'=>$idOrganisasi);
+        $org2 = $this->login_model->view_where('organisasi',$where2)->result();
+        $this->session->set_userdata('namaOrganisasi',$org2[0]->namaOrganisasi);
+        $this->session->set_userdata('logo',$org2[0]->logo);
+        $this->session->set_userdata('idOrganisasi',$org2[0]->idOrganisasi);
+        redirect('Ormawa/show_pengurusBK/'.$this->session->userdata('idOrganisasi'));
+    }
+
+    public function show_pengurusBK($where){
+        $data['data'] = $this->model_ormawa->getPengurus($where);
+        $this->load->view('v_pengurus_BK', $data);
+    }
+
     public function tampil_pengurus($where){
         $data['data'] = $this->model_ormawa->getPengurus($where);
         $this->load->view('v_pengurus', $data);
@@ -308,6 +322,20 @@ class Ormawa extends CI_Controller {
     }
 
     //Anggota
+    public function tampil_anggotaBK($idOrganisasi){
+        $where2 = array('idOrganisasi'=>$idOrganisasi);
+        $org2 = $this->login_model->view_where('organisasi',$where2)->result();
+        $this->session->set_userdata('namaOrganisasi',$org2[0]->namaOrganisasi);
+        $this->session->set_userdata('logo',$org2[0]->logo);
+        $this->session->set_userdata('idOrganisasi',$org2[0]->idOrganisasi);
+        redirect('Ormawa/show_anggotaBK/'.$this->session->userdata('idOrganisasi'));
+    }
+
+    public function show_anggotaBK($where){
+        $data['data'] = $this->model_ormawa->getAnggota($where);
+        $this->load->view('v_anggota_BK', $data);
+    }
+
     public function tampil_anggota($where){
         $data['data'] = $this->model_ormawa->getAnggota($where);
         $this->load->view('v_anggota', $data);
@@ -354,9 +382,6 @@ class Ormawa extends CI_Controller {
         $where2 = array('idOrganisasi'=>$idOrganisasi);
         $org2 = $this->login_model->view_where('organisasi',$where2)->result();
         $this->session->set_userdata('idOrganisasi',$org2[0]->idOrganisasi);
-        
-        //$data['data'] = $this->model_ormawa->getPengurusbaru();
-        //$this->load->view('v_tambahketua', $data);
         redirect('Ormawa/tamket/'.$this->session->userdata('idOrganisasi'));
     }
 
