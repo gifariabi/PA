@@ -1,5 +1,5 @@
 <?php 
-    class model_suratkeluar extends CI_Model{
+    class Model_suratkeluar extends CI_Model{
         public function data($data,$table){
             $this->db->insert($table, $data);
         }

@@ -1,12 +1,13 @@
 <?php
 
-class sekertaris2 extends CI_Controller{
+class Sekertaris2 extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();
 		$this->load->helper('url');
         $this->load->model('model_suratkeluar');
-        $this->load->library('form_validation','pdf');
+        $this->load->library('form_validation');
+        $this->load->library('pdf');
 
 	}
 	public function index(){

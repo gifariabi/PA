@@ -1,5 +1,5 @@
 <?php 
-    class rapat extends CI_Controller{
+    class Rapat extends CI_Controller{
         public function __construct(){
             parent::__construct();
             $this->load->helper('url','form','file');

@@ -1,5 +1,5 @@
 s<?php
-class model_kas extends CI_Model{
+class Model_kas extends CI_Model{
 
     public function getKas($where){
     	$this->db->select('*');

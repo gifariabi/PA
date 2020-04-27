@@ -30,7 +30,7 @@ class Login extends CI_Controller{
 		if ($this->input->method(TRUE) == 'GET') {
 			$this->load->view('login_sso');
 		} else {
-			$user = $this->login_model->ambil_akun(
+			$user = $this->Login_model->ambil_akun(
 				$this->input->post('username'),
 				$this->input->post('password'));
 

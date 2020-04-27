@@ -1,5 +1,5 @@
 <?php 
-    class kegiatan_model extends CI_Model{
+    class Kegiatan_model extends CI_Model{
         //input data
         function data($data,$table){
             // $query = "INSERT INTO kelas VALUES('','$nama','$spesifik','$jumlah','$kondisi')";

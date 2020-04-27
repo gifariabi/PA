@@ -3,10 +3,10 @@
         public function __construct(){
             parent::__construct();
             $this->load->helper('url','form','file');
-            $this->load->model('kegiatan_model');
-            $this->load->model('model_daftar');
-            $this->load->model('proker_model');
-            $this->load->model('model_presensi');
+            $this->load->Model('Kegiatan_model');
+            $this->load->Model('Model_daftar');
+            $this->load->Model('Proker_model');
+            $this->load->Model('Model_presensi');
             $this->load->library('form_validation','session');
         }
 
@@ -23,7 +23,7 @@
                 redirect('kegiatan');
             }else{
                 $where = array('id_programkerja'=>$id_programkerja);
-                $data['data'] = $this->proker_model->edit_data($where, 'programkerja')->result();
+                $data['data'] = $this->Proker_model->edit_data($where, 'programkerja')->result();
                 $this->load->view('input_kegiatan',$data);      
             }
         }
@@ -40,7 +40,7 @@
 
         public function save($id_programkerja){
             $where = array('id_programkerja'=>$id_programkerja);
-            $data['data'] = $this->kegiatan_model->getId($where,'kegiatan')->result();
+            $data['data'] = $this->Kegiatan_model->getId($where,'kegiatan')->result();
             $this->load->view('input_kegiatan',$data);
         }
 
@@ -66,9 +66,9 @@
 
                 $this->load->library('ciqrcode');
                 $config['cacheable'] = true;
-                $config['cachedir'] = './assets/';
-                $config['errorlog'] = './assets/';
-                $config['imagedir'] = './assets/images/';
+                $config['cachedir'] = './asset/';
+                $config['errorlog'] = './asset/';
+                $config['imagedir'] = './asset/images/';
                 $config['quality'] = true;
                 $config['size'] = '1024';
                 $config['black'] = array(224,255,255);
@@ -83,7 +83,7 @@
                 $params['size'] = '10';
                 $params['savename'] = FCPATH.$config['imagedir'].$image_name;
                 $this->ciqrcode->generate($params);
-                //$cek    = $this->model_daftar->view_where('programkerja',array('id_programkerja'=>$id_programkerja))->result();
+                //$cek    = $this->Model_daftar->view_where('programkerja',array('id_programkerja'=>$id_programkerja))->result();
                 
                 $data = array(
                     'id_kegiatan' => $id_kegiatan,
@@ -94,7 +94,7 @@
                     'qr_code' => $image_name,
                     'id_programkerja' => $id_programkerja
                 );
-                $this->kegiatan_model->data($data,'kegiatan');
+                $this->Kegiatan_model->data($data,'kegiatan');
                 redirect('kegiatan/displaydata/'.$this->session->userdata('idOrganisasi'));
             }
         }
@@ -104,12 +104,12 @@
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('kegiatan');
             }else{
-                $data['data']=$this->kegiatan_model->tampil()->result();
+                $data['data']=$this->Kegiatan_model->tampil()->result();
                 $this->load->view('display_kegiatan',$data);
             }
         }
         public function displaykegiatan($where){
-            $data['data']=$this->kegiatan_model->tampil($where)->result();
+            $data['data']=$this->Kegiatan_model->tampil($where)->result();
             // print_r($data);
             $this->load->view('display_kegiatan2',$data);
             
@@ -121,19 +121,19 @@
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('kegiatan');
             }else{
-                $data['data']=$this->kegiatan_model->tampil($where)->result();
+                $data['data']=$this->Kegiatan_model->tampil($where)->result();
                 // print_r($data);
                 $this->load->view('v_presensikegiatan',$data);
             }
         }
         public function hapus($id){
             $where = array('id_kegiatan'=>$id);
-            $this->kegiatan_model->hapus_data($where,'kegiatan');
+            $this->Kegiatan_model->hapus_data($where,'kegiatan');
             redirect('kegiatan/displaydata');
         }
         public function edit($id){
             $where = array('id_kegiatan'=>$id);
-            $data['data'] = $this->kegiatan_model->edit_data($where,'kegiatan')->result();
+            $data['data'] = $this->Kegiatan_model->edit_data($where,'kegiatan')->result();
             $this->load->view('edit',$data);
         }
         public function update(){
@@ -150,12 +150,12 @@
             $where = array(
                 'id_kegiatan' => $id
             );
-            $this->kegiatan_model->update_data($where,$data,'kegiatan');
+            $this->Kegiatan_model->update_data($where,$data,'kegiatan');
             redirect('kegiatan/displaydata');
         }
 
         public function presensi($where){
-            $data['data'] = $this->model_presensi->tampilPresensi($where);
+            $data['data'] = $this->Model_presensi->tampilPresensi($where);
             $this->load->view('v_kehadiran',$data); 
         }
 

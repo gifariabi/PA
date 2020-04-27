@@ -1,5 +1,5 @@
 <?php
-class model_presensi extends CI_Model{
+class Model_presensi extends CI_Model{
 	
 		
 	function tampilPresensi($where){

@@ -1,9 +1,9 @@
 <?php 
-    class programkerja extends CI_Controller{
+    class Programkerja extends CI_Controller{
         public function __construct(){
             parent::__construct();
             $this->load->helper('url','form','file');
-            $this->load->model('proker_model');
+            $this->load->model('Proker_model');
             $this->load->library('form_validation','session');
         }
 
@@ -18,7 +18,7 @@
                 redirect('proker');
             }else{
                 $where = array('idOrganisasi'=>$idOrganisasi);
-                $data['data'] = $this->proker_model->edit_data($where, 'programkerja')->result();
+                $data['data'] = $this->Proker_model->edit_data($where, 'programkerja')->result();
                 $this->load->view('input_proker',$data);
             }
         }
@@ -46,7 +46,7 @@
                     'departemen' => $tempat,
                     'idOrganisasi' => $idOrganisasi,
                 );
-                $this->proker_model->data($data,'programkerja');
+                $this->Proker_model->data($data,'programkerja');
                 redirect('programkerja/displaydata/'.$this->session->userdata('idOrganisasi'));
             }
         }
@@ -56,18 +56,18 @@
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('programkerja');
             }else{
-                $data['data']=$this->proker_model->tampil($where);
+                $data['data']=$this->Proker_model->tampil($where);
                 $this->load->view('display_programkerja',$data);
             }
         }
         public function hapus($id){
             $where = array('id_programkerja'=>$id);
-            $this->proker_model->hapus_data($where,'programkerja');
+            $this->Proker_model->hapus_data($where,'programkerja');
             redirect('programkerja/displaydata/'.$this->session->userdata('idOrganisasi'));
         }
         public function edit($id){
             $where = array('id_programkerja'=>$id);
-            $data['data'] = $this->proker_model->edit_data($where,'programkerja')->result();
+            $data['data'] = $this->Proker_model->edit_data($where,'programkerja')->result();
             $this->load->view('edit_proker',$data);
         }
         public function update(){
@@ -84,8 +84,8 @@
             $where = array(
                 'id_programkerja' => $id
             );
-            $this->proker_model->update_data($where,$data,'programkerja');
-            redirect('programkerja/displaydata');
+            $this->Proker_model->update_data($where,$data,'programkerja');
+            redirect('Programkerja/displaydata/'.$this->session->userdata('idOrganisasi'));
         }
 
     }

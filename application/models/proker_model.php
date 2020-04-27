@@ -1,5 +1,5 @@
 <?php 
-    class proker_model extends CI_Model{
+    class Proker_model extends CI_Model{
         //input data
         function data($data,$table){
             // $query = "INSERT INTO kelas VALUES('','$nama','$spesifik','$jumlah','$kondisi')";
