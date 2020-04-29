@@ -27,9 +27,7 @@ class Login_model extends CI_Model
 	// Input data ke database
 	
 	// update akun pengurus
-	public function update()
-	{
-
+	public function update($nim){
 		$this->db->update($this->_table, $this, array('nim' => $nim));
 	}
 
