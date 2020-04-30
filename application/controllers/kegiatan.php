@@ -158,6 +158,11 @@
             $data['data'] = $this->Model_presensi->tampilPresensi($where);
             $this->load->view('v_kehadiran',$data); 
         }
+        public function cari(){
+            $keyword = $this->input->post('keyword');
+            $data['data'] = $this->Kegiatan_model->search($keyword);
+            $this->load->view('display_kegiatan2',$data);
+        }
 
     }
 

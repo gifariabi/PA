@@ -389,6 +389,7 @@
               <th>Waktu Pelaksanaan</th>
               <th>Tempat Pelaksanaan</th>
               <th>Harga</th>
+              <th>Departemen</th>
               <th>Aksi</th>
           </tr>
           <?php
@@ -401,6 +402,7 @@
               <td><?php echo $key->waktu; ?></td>
               <td><?php echo $key->tempat; ?></td>
               <td><?php echo $key->harga; ?></td>
+              <td><?php echo $key->departemen; ?></td>
               <td>
               <!-- <a href="<?php echo site_url('kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary">Edit</a>
               <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" class="btn btn-primary">Hapus</a> -->
