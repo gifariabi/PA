@@ -375,6 +375,7 @@
 				<td>
 				<input type="hidden" name="nim" value="<?php echo $u->nim ?>">
         <input type="hidden" name="idOrganisasi" value="<?php echo $u->idOrganisasi?>">
+        <input type="hidden" name="id_thnAjaran" value="<?php echo $u->id_thnAjaran?>">
 				<?php echo $u->nama ?>
 				</td>
 			</tr>

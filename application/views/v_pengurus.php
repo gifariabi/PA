@@ -402,8 +402,8 @@
             <td><?php echo $data->nim; ?></td>
             <td><?php echo $data->nama; ?></td>
             <td><?php echo $data->jabatan; ?></td>
-            <td><a href="<?= base_url().'/Ormawa/editPengurus/'.$data->nim.'/'.$this->session->idOrganisasi;?>" class="btn btn-primary">Edit</a></td>
-            <td><a href="<?= base_url().'/Ormawa/hapus_pengurus/'.$data->nim.'/'.$this->session->idOrganisasi;?>" onclick="return confirm('Anda Yakin Menghapus Akun ?')" class="btn btn-danger">Hapus</a></td>
+            <td><a href="<?= base_url().'/Ormawa/editPengurus/'.$data->nim.'/'.$this->session->idOrganisasi.'/'.$data->id_thnAjaran;?>" class="btn btn-primary">Edit</a></td>
+            <td><a href="<?= base_url().'/Ormawa/hapus_pengurus/'.$data->nim.'/'.$this->session->idOrganisasi.'/'.$data->id_thnAjaran;?>" onclick="return confirm('Anda Yakin Menghapus Pengurus ?')" class="btn btn-danger">Hapus</a></td>
         </tr>
         <?php $i++; }?>
     </table>

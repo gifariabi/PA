@@ -6,10 +6,10 @@ class Ormawa extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url','file'));
-		$this->load->model('Model_ormawa');
-        $this->load->model('Model_kas');
-        $this->load->model('Login_model');
-        $this->load->model('Model_daftar');
+		$this->load->Model('Model_ormawa');
+        $this->load->Model('Model_kas');
+        $this->load->Model('Login_model');
+        $this->load->Model('Model_daftar');
         $this->load->library('form_validation');
         $this->load->library('upload');
         $this->load->library('image_lib');
@@ -293,8 +293,8 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_pengurus', $data);
     }
 
-    public function editPengurus($nim,$idOrganisasi){
-    $where = array('nim' => $nim ,'idOrganisasi' => $idOrganisasi);
+    public function editPengurus($nim,$idOrganisasi,$id_thnAjaran){
+    $where = array('nim' => $nim ,'idOrganisasi' => $idOrganisasi, 'id_thnAjaran' => $id_thnAjaran);
     $data['data'] = $this->Model_ormawa->edit_pengurus($where,'pengurus')->result();
     $this->load->view('v_edit_pengurus',$data);
     }
@@ -303,23 +303,28 @@ class Ormawa extends CI_Controller {
         $nim = $this->input->post('nim');
         $idOrganisasi = $this->input->post('idOrganisasi');
         $jabatan = $this->input->post('jabatan');
+        $id_thnAjaran = $this->input->post('id_thnAjaran');
  
         $data = array(
         'idOrganisasi' => $idOrganisasi,
-        'jabatan' => $jabatan
+        'jabatan' => $jabatan,
+        'id_thnAjaran' => $id_thnAjaran
         );
  
         $where = array(
         'nim' => $nim,
-        'idOrganisasi' => $idOrganisasi
+        'idOrganisasi' => $idOrganisasi,
+        'id_thnAjaran' => $id_thnAjaran
         );
  
         $this->Model_ormawa->update_pengurus($where,$data,'pengurus');
         redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
     }
 
-    public function hapus_pengurus($nim){
-        $where = array('nim' => $nim);
+    public function hapus_pengurus($nim,$idOrganisasi,$id_thnAjaran){
+        $where = array('nim' => $nim,
+                        'idOrganisasi' => $idOrganisasi,
+                        'id_thnAjaran' => $id_thnAjaran);
         $this->Model_ormawa->hapus_pengurus($where,'pengurus');
         redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
     }
@@ -397,7 +402,7 @@ class Ormawa extends CI_Controller {
     }
 
     public function add_anggota($nim){
-        $cek    = $this->model_daftar->view_where('mahasiswa',array('nim'=>$nim))->result_array();
+        $cek    = $this->Model_daftar->view_where('mahasiswa',array('nim'=>$nim))->result_array();
 
         $data2   = array('nim' => $cek[0]['nim'],
                         'nama' => $cek[0]['nama'],
@@ -423,13 +428,12 @@ class Ormawa extends CI_Controller {
                         'id_thnAjaran' => $id_thnAjaran,
                         'idOrganisasi' => $this->session->userdata('idOrganisasi') 
                     );
-<<<<<<< HEAD
-        $this->model_daftar->insert($data2,"pengurus");
+
+        $this->Model_daftar->insert($data2,"pengurus");
         redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
-=======
+
             $this->Model_daftar->insert($data2,"pengurus");
             redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
->>>>>>> 708687a0e6663d63da1b144e2c2e52f59df4e4f3
     }
 
     public function add_ketua(){ 
