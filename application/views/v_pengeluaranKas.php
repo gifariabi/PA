@@ -367,8 +367,13 @@
 
 <center>
 <h1><b>Data Kas</b></h1>
+</center>
 <hr>
 <hr>
+<?php foreach ($data1 as $key1) { ?>
+  <h3><p align="right"><b>SALDO = RP <?php echo $key1->total_kas;?></b></p></h3>
+<?php } ?>
+<center>
  <table>
  <th>
   <div class="dropdown">
