@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class login_model extends CI_Model 
+class Login_model extends CI_Model 
 {
 	// Mengambil semua data di database
 	public function getAll()
@@ -27,9 +27,7 @@ class login_model extends CI_Model
 	// Input data ke database
 	
 	// update akun pengurus
-	public function update()
-	{
-
+	public function update($nim){
 		$this->db->update($this->_table, $this, array('nim' => $nim));
 	}
 

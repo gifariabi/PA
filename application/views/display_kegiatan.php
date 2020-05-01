@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -379,7 +379,7 @@
 <h3>Kelola Kegiatan</h3>
 </center>
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
-    <a class="btn btn-success" href="<?php echo base_url('index.php/kegiatan/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Kegiatan</a>
+    <!-- <a class="btn btn-success" href="<?php echo base_url('index.php/kegiatan/simpan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Pengajuan Kegiatan</a> -->
     <div class="card-body">
       
       <div class="table-responsive">
@@ -404,10 +404,10 @@
               <td><?php echo $key->waktu; ?></td>
               <td><?php echo $key->tempat; ?></td>
               <td><?php echo $key->harga; ?></td>
-              <td><img src="<?php echo base_url().'assets/images/'.$key->qr_code; ?>" style="width: 100px" alt=""></td>
+              <td><img src="<?php echo base_url().'asset/images/'.$key->qr_code; ?>" style="width: 100px" alt=""></td>
               <td>
               <a href="<?php echo site_url('kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary">Edit</a>
-              <!-- <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a>     -->
+              <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a>    
               <a href="<?php echo site_url('lpj/lpj/'.$key->id_kegiatan); ?>" class="btn btn-success">LPJ</a>  
               </td>
           </tr>

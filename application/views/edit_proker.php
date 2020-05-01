@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -367,7 +367,7 @@
 
 <body>
 <?php foreach ($data as $key) { ?>
-<form class="user" action="<?php echo base_url().'index.php/programkerja/update';?>" method="post">
+<form class="user" action="<?php echo base_url().'Programkerja/update';?>" method="post">
     <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <div class="text-center">
@@ -384,8 +384,8 @@
     <div class=form-group>
       <input type="text" name="departemen" class="form-control form-control-user" placeholder="Departemen" value="<?php echo $key->departemen; ?>"></td>
     </div>  
-        <input type="submit" name="submit" value="Input" class="btn btn-success btn-block" placeholder="input">
-        <a href="<?= base_url().'/programkerja/hapus/'.$key->id_programkerja;?>" class="btn btn-block btn-danger">Hapus</a>
+        <input type="submit" name="submit" value="Input" class="btn btn-success " placeholder="input">
+        <a href="<?= base_url().'Programkerja/hapus/'.$key->id_programkerja;?>" class="btn btn-danger">Hapus</a>
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
     <!-- <font color="red">
@@ -437,19 +437,19 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url().'assets/vendor/jquery/jquery.min.js'?>"></script>
-  <script src="<?php echo base_url().'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/vendor/jquery/jquery.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url().'assets/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url().'assets/js/sb-admin-2.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/js/sb-admin-2.min.js'?>"></script>
 
   <!-- Page level plugins -->
-  <script src="<?php echo base_url().'assets/vendor/chart.js/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/vendor/chart.js/Chart.min.js'?>"></script>
 
   <!-- Page level custom scripts -->
-  <script src="<?php echo base_url().'assets/js/demo/chart-area-demo.js'?>"></script>
-  <script src="<?php echo base_url().'assets/js/demo/chart-pie-demo.js'?>"></script>
+  <script src="<?php echo base_url().'asset/js/demo/chart-area-demo.js'?>"></script>
+  <script src="<?php echo base_url().'asset/js/demo/chart-pie-demo.js'?>"></script>
   </body>

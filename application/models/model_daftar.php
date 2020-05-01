@@ -1,5 +1,5 @@
 <?php
-class model_daftar extends CI_Model{
+class Model_daftar extends CI_Model{
 	public function simpan($nim,$username,$password,$nama,$prodi){
       	$query = "INSERT INTO mahasiswa VALUES('$nim','$username','$password','$nama','','','','','$prodi','')";
         $this->db->query($query);

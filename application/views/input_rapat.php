@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -366,7 +366,7 @@
         <div class="container-fluid">
 
 <body>
-<form action="<?php echo base_url().'index.php/rapat/simpan';?>" method="post">
+<form action="<?php echo base_url().'Rapat/simpan';?>" method="post">
     <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <h1>Pengajuan Rapat</h1>
@@ -384,7 +384,7 @@
         <tr>
             <td>Tanggal</td>
             <td>:</td>
-            <td><input type="date" name="tanggal" class="form-control form-control-user">
+            <td><input type="date" name="tanggal" class="form-control form-control-user" >
             <?php foreach($data as $data){ ?>   
             <input type="hidden" name="nim" value="<?php echo $data->nim; ?>"></td>
             <?php } ?>
@@ -393,6 +393,12 @@
             <td>Waktu</td>
             <td>:</td>
             <td><input type="time" name="waktu" class="form-control form-control-user"></td>
+        </tr>
+        <tr>
+          <td>Ditujukan untuk</td>
+          <td>:</td>
+          <td><label class="radio-inline"><input type="radio" name="kategori" checked> Pengurus</label>
+        <label class="radio-inline"><input type="radio" name="kategori"> Pengurus dan Anggota</label></td>
         </tr>
         <tr>
             <td></td>

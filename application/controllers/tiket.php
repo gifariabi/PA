@@ -1,5 +1,5 @@
 <?php 
-    class tiket extends CI_Controller{
+    class Tiket extends CI_Controller{
         public function __construct(){
             parent::__construct();
             $this->load->helper('url','form','file');

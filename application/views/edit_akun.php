@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -367,7 +367,7 @@
 <?php //foreach($data as $u){ ?>
 <center><h1>Edit Akun</h1>
 </center>
-	<form action="<?= base_url() ?>index.php/Organisasi/update" method="POST">
+	<form action="<?= base_url() ?>Organisasi/update" method="POST">
 	<table style="margin: 20px auto;">
 		<body>
 			<tr>

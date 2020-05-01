@@ -7,9 +7,9 @@ class Organisasi extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url','file'));
-		$this->load->model('model_daftar');
-		$this->load->model('model_ormawa');
-        $this->load->model('login_model');
+		$this->load->Model('Model_daftar');
+		$this->load->Model('Model_ormawa');
+        $this->load->Model('Login_model');
         $this->load->library('form_validation');
 	}
 
@@ -22,7 +22,7 @@ class Organisasi extends CI_Controller {
 	}
 
 	public function tampilDaftar(){
-		$data['data'] = $this->model_ormawa->getOrganisasi();
+		$data['data'] = $this->Model_ormawa->getOrganisasi();
 		$this->load->view('data_ormawa', $data);
 	}
 	
@@ -31,12 +31,12 @@ class Organisasi extends CI_Controller {
 	}
 
 	public function halaman_daftar($where){
-        $data['data'] = $this->model_ormawa->deskripsi($where)->result();
+        $data['data'] = $this->Model_ormawa->deskripsi($where)->result();
 		$this->load->view('halaman_daftar',$data);
 	}
 
     public function lihat_akun(){ 
-        $user = $this->model_daftar->ambil_akun($this->session->nim)->row();
+        $user = $this->Model_daftar->ambil_akun($this->session->nim)->row();
         $data = array(
             'nim'   => $user->nim,
             'username' => $user->username,
@@ -53,15 +53,15 @@ class Organisasi extends CI_Controller {
 
     public function tampilan_awal($where){
     	$nim=$where;
-		$data['data']=$this->model_daftar->tampilDaftar($where)->result();
+		$data['data']=$this->Model_daftar->tampilDaftar($where)->result();
 		$this->load->view('halaman_awal', $data);
     }
 
     public function dashboard($idOrganisasi){
         $where2 = array('idOrganisasi'=>$idOrganisasi);
         $where=array('nim'=>$this->session->userdata('nim'),'idOrganisasi'=>$idOrganisasi);
-        $org=$this->login_model->view_where('ang_organisasi',$where)->result();
-        $org2 = $this->login_model->view_where('organisasi',$where2)->result();
+        $org=$this->Login_model->view_where('ang_organisasi',$where)->result();
+        $org2 = $this->Login_model->view_where('organisasi',$where2)->result();
         $this->session->set_userdata('jabatan',$org[0]->jabatan);
         $this->session->set_userdata('logo',$org2[0]->logo);
         $this->session->set_userdata('idOrganisasi',$idOrganisasi);
@@ -78,7 +78,7 @@ class Organisasi extends CI_Controller {
     }
 
     public function edit_akun(){
-        $user = $this->model_daftar->edit_data($this->session->nim)->row();
+        $user = $this->Model_daftar->edit_data($this->session->nim)->row();
         $data = array(
             'nim'   => $user->nim,
             'username' => $user->username,
@@ -114,13 +114,13 @@ class Organisasi extends CI_Controller {
         'nim' => $nim
         );
  
-        $this->model_daftar->update_data($where,$data,'mahasiswa');
+        $this->Model_daftar->update_data($where,$data,'mahasiswa');
         redirect('Organisasi/lihat_akun');
     }
 
     public function hapus_akun($nim){
         $where = array('nim' => $nim);
-        $this->model_daftar->hapus_akun($where,'ang_organisasi');
+        $this->Model_daftar->hapus_akun($where,'ang_organisasi');
         redirect('Organisasi/tampilan_awal/'.$this->session->nim);
     } 
 
@@ -130,24 +130,24 @@ class Organisasi extends CI_Controller {
 
     public function cari(){
         $keyword = $this->input->post('keyword');
-        $data['data'] = $this->model_daftar->search($keyword);
+        $data['data'] = $this->Model_daftar->search($keyword);
         $this->load->view('data_ormawa',$data);
     }
 
     public function tampilOrg(){
-        $data['data'] = $this->model_daftar->getOrganisasi();
+        $data['data'] = $this->Model_daftar->getOrganisasi();
         $this->load->view('v_organisasi', $data);
     }
 
     public function hapus_Org($idOrganisasi){
         $where = array('idOrganisasi' => $idOrganisasi);
-        $this->model_daftar->hapus_Org($where,'organisasi');
+        $this->Model_daftar->hapus_Org($where,'organisasi');
         //redirect('Organisasi/tampilan_awal/'.$this->session->nim);
     }
 
     public function editOrg($idOrganisasi){
     $where = array('idOrganisasi' => $idOrganisasi);
-    $data['data'] = $this->model_daftar->edit_Org($where,'organisasi')->result();
+    $data['data'] = $this->Model_daftar->edit_Org($where,'organisasi')->result();
     $this->load->view('v_edit_organisasi',$data);
     }
 
@@ -167,13 +167,13 @@ class Organisasi extends CI_Controller {
         'idOrganisasi' => $idOrganisasi
         );
  
-        $this->model_daftar->update_Org($where,$data,'organisasi');
+        $this->Model_daftar->update_Org($where,$data,'organisasi');
         redirect('Organisasi/tampilOrg');
     }
 
     public function searchOrganisasi(){
         $search = $this->input->post('search');
-        $data['data'] = $this->model_daftar->searchOrg($search);
+        $data['data'] = $this->Model_daftar->searchOrg($search);
         $this->load->view('v_organisasi',$data);
     }
 }

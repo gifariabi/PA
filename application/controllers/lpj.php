@@ -1,5 +1,5 @@
 <?php
-    class lpj extends CI_Controller{
+    class Lpj extends CI_Controller{
         public function __construct(){
             parent::__construct();
             $this->load->helper('url','form','file');

@@ -16,12 +16,12 @@ class Export_Anggota extends CI_Controller {
 
      public function index()
      {
-          $data['anggota'] = $this->model_ormawa->getAnggota()->result();
+          $data['anggota'] = $this->Model_ormawa->getAnggota()->result();
           $this->load->view('v_anggota', $data);
      }
 
      public function export($where){
-          $pengurus = $this->model_ormawa->getAnggota($where);
+          $pengurus = $this->Model_ormawa->getAnggota($where);
 
           $spreadsheet = new Spreadsheet;
 

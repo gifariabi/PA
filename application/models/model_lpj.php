@@ -1,5 +1,5 @@
 <?php
-    class model_lpj extends CI_Model{
+    class Model_lpj extends CI_Model{
         //input data
         function data($data,$table){
             // $query = "INSERT INTO kelas VALUES('','$nama','$spesifik','$jumlah','$kondisi')";

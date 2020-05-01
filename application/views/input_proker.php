@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -367,7 +367,7 @@
 
 <body>
   
-<form class="user" action="<?php echo base_url().'index.php/programkerja/simpan';?>" method="post">
+<form class="user" action="<?php echo base_url().'Programkerja/simpan';?>" method="post">
 
 <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->

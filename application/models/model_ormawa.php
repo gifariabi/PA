@@ -1,5 +1,5 @@
 <?php
-class model_ormawa extends CI_Model{
+class Model_ormawa extends CI_Model{
 		public function simpan($namaOrganisasi,$deskripsi,$logo,$ketua){
             $data = array (
             'namaOrganisasi' => $namaOrganisasi,

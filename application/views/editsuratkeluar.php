@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -367,7 +367,7 @@
 
 
 <?php foreach($data as $u){ ?>
-<form action="<?php echo base_url().'index.php/sekertaris2/update';?>" method="post">
+<form action="<?php echo base_url().'Sekertaris2/update';?>" method="post">
     <a href="<?= site_url('Admin/') ?>"></a>
     <a href="<?= site_url('Admin/logout') ?>">Logout</a>
     <?php //print_r($user) ?>

@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -378,10 +378,10 @@
 <center>
 <h3>Jadwal Kegiatan</h3>
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
-    <a href="<?php echo site_url('tiket/displaydata/'.$this->session->nim); ?>">History Pesanan</a>
+    <a href="<?php echo site_url('Tiket/displaydata/'.$this->session->nim); ?>">History Pesanan</a>
     <div class="card-body">
       <div class="table-responsive">
-        <!-- <a href="<?php echo site_url('tiket/displaydata'); ?>">Keranjang</a> -->
+        <!-- <a href="<?php echo site_url('Tiket/displaydata'); ?>">Keranjang</a> -->
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <tr>
               <th>No</th>
@@ -389,6 +389,7 @@
               <th>Waktu Pelaksanaan</th>
               <th>Tempat Pelaksanaan</th>
               <th>Harga</th>
+              <th>Departemen</th>
               <th>Aksi</th>
           </tr>
           <?php
@@ -401,10 +402,11 @@
               <td><?php echo $key->waktu; ?></td>
               <td><?php echo $key->tempat; ?></td>
               <td><?php echo $key->harga; ?></td>
+              <td><?php echo $key->departemen; ?></td>
               <td>
               <!-- <a href="<?php echo site_url('kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary">Edit</a>
               <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" class="btn btn-primary">Hapus</a> -->
-              <a href="<?php echo site_url('tiket/tiket/'.$key->id_kegiatan); ?>" class="btn btn-primary">Book</a>    
+              <a href="<?php echo site_url('Tiket/tiket/'.$key->id_kegiatan); ?>" class="btn btn-primary">Book</a>    
                 
               </td>
           </tr>

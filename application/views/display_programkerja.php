@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -379,7 +379,7 @@
 </center>
 
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
-    <a class="btn btn-success" href="<?php echo base_url().'programkerja/kegiatan/'.$this->session->userdata('idOrganisasi') ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
+    <a class="btn btn-success" href="<?php echo base_url().'Programkerja/kegiatan/'.$this->session->userdata('idOrganisasi') ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover table-condensed" id="dataTable" width="100%" cellspacing="0">
@@ -401,8 +401,8 @@
               <td><?php echo $data->waktu_pelaksanaan; ?></td>
               <td><?php echo $data->departemen; ?></td>
               <td>
-              <a href="<?= base_url().'/programkerja/edit/'.$data->id_programkerja;?>" class="btn btn-success">Edit</a>  
-              <a href="<?= base_url().'/kegiatan/kegiatan/'.$data->id_programkerja;?>" class="btn btn-primary">Input Kegiatan</a>   
+              <a href="<?= base_url().'/Programkerja/edit/'.$data->id_programkerja;?>" class="btn btn-success">Edit</a>  
+              <a href="<?= base_url().'/Kegiatan/kegiatan/'.$data->id_programkerja;?>" class="btn btn-primary">Input Kegiatan</a>   
                 
               </td>
           </tr>

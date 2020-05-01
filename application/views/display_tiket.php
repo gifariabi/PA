@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -411,11 +411,11 @@
               <td><?php echo $key->metode_pembayaran;?></td>
               <td><?php echo $key->status; ?></td>
               
-              <!-- <a href="<?php echo site_url('tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
-              <a href="<?php echo site_url('tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
+              <!-- <a href="<?php echo site_url('Tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
+              <a href="<?php echo site_url('Tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
                  -->
               <?php if ($key->status =='Accepted') { ?>
-                <td><a href="<?php echo base_url().'index.php/tiket/cetak_tiket/'.$key->no_tiket;?>">Cetak Tiket</a></td>
+                <td><a href="<?php echo base_url().'Tiket/cetak_tiket/'.$key->no_tiket;?>">Cetak Tiket</a></td>
               <?php
               } else {?>
               <td><a href="#">Cetak Tiket</a></td>
@@ -458,10 +458,10 @@
               <td><?php echo $key->total;?></td>
               <td><?php echo $key->metode_pembayaran;?></td>
               <td><?php echo $key->status; ?><input type="hidden" value="<?php echo $key->no_tiket; ?>"></td>
-              <td><?= anchor('tiket/update_status_admin/'.$key->no_tiket,'Accept') ?></td>
+              <td><?= anchor('Tiket/update_status_admin/'.$key->no_tiket,'Accept') ?></td>
               <td>
-              <!-- <a href="<?php echo site_url('tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
-              <a href="<?php echo site_url('tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
+              <!-- <a href="<?php echo site_url('Tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
+              <a href="<?php echo site_url('Tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
                  -->
               </td>
           </tr>

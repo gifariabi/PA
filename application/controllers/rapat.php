@@ -1,5 +1,5 @@
 <?php 
-    class rapat extends CI_Controller{
+    class Rapat extends CI_Controller{
         public function __construct(){
             parent::__construct();
             $this->load->helper('url','form','file');
@@ -38,12 +38,14 @@
                 $tanggal = $this->input->post('tanggal');
                 $waktu = $this->input->post('waktu');
                 $nim = $this->input->post('nim');
+                $kategori = $this->input->post('kategori');
                 
                 $data = array(
                     'perihal' => $keperluan, 
                     'tempat' => $tempat,
                     'tanggal' => $tanggal,
                     'waktu' => $waktu,
+                    'kategori' => $kategori,
                     'nim' => $this->session->userdata('nim')
                 );
                 $this->rapat_model->data($data,'rapat');

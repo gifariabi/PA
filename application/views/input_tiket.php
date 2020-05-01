@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -370,7 +370,7 @@
 <?php 
 if (is_array($data) || is_object($data)) {
 foreach($data as $key){ ?>
-<form class="user" action="<?php echo base_url().'index.php/tiket/simpan/'.$key->id_kegiatan?>" method="post">
+<form class="user" action="<?php echo base_url().'Tiket/simpan/'.$key->id_kegiatan?>" method="post">
     <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <div class="text-center">

@@ -1,5 +1,5 @@
 <?php 
-    class modelnya extends CI_Model{
+    class Modelnya extends CI_Model{
         function data($no_surat,$pengirim,$tanggalmasuk,$penerima,$perihal){
             $query = "INSERT INTO suratmasuk 
                     VALUES('','$no_surat','$pengirim','$tanggalmasuk','$penerima','$perihal')";

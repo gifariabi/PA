@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -379,7 +379,7 @@
     <h4><?= $this->session->namaLengkap ?></h4>
     <?php } else { redirect('Admin/login'); } ?>
     
-    <form action="<?php echo site_url('sekertaris2/cari');?>" method="post">
+    <form action="<?php echo site_url('Sekertaris2/cari');?>" method="post">
             <input type="text" name="keyword"/>
             <input type="submit" value="Cari"/>
     </form>
@@ -406,9 +406,9 @@
             <td><?php echo $data->tanggalkeluar; ?></td>
             <td><?php echo $data->waktu; ?></td>
             <td><?php echo $data->perihal; ?></td>
-            <td><a href='<?php echo base_url()."index.php/sekertaris2/hapus_surat_keluar/".$data->id;?>'>Hapus</a>
-            <a href='<?php echo base_url()."index.php/sekertaris2/editdata/".$data->id;?>'>Edit</a>
-            <a href='<?php echo base_url()."index.php/sekertaris2/cetak_surat/".$data->id;?>'>Cetak</a></td>
+            <td><a href='<?php echo base_url()."Sekertaris2/hapus_surat_keluar/".$data->id;?>'>Hapus</a>
+            <a href='<?php echo base_url()."Sekertaris2/editdata/".$data->id;?>'>Edit</a>
+            <a href='<?php echo base_url()."Sekertaris2/cetak_surat/".$data->id;?>'>Cetak</a></td>
         </tr>
         <?php $i++; }?>
     </table>
@@ -416,8 +416,8 @@
             //echo $this->pagination->create_links();
         ?>
         <br/>
-        <a href="<?php echo base_url().'index.php/sekertaris/suratkeluar/'.$this->session->userdata('idOrganisasi').'/'.$this->session->userdata('nim');?>">Input Surat</a><br>
-        <a href="<?php echo base_url().'index.php/sekertaris/index';?>">Home</a>
+        <a href="<?php echo base_url().'Sekertaris/suratkeluar/'.$this->session->userdata('idOrganisasi').'/'.$this->session->userdata('nim');?>">Input Surat</a><br>
+        <a href="<?php echo base_url().'Sekertaris/index';?>">Home</a>
 </center>
 	<br>
 	<br>

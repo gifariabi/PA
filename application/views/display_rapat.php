@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -379,7 +379,7 @@
 <h3>Rapat</h3>
 </center>
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
-    <a class="btn btn-success" href="<?php echo base_url('index.php/rapat/rapat/'.$this->session->idOrganisasi.'/'.$this->session->nim); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
+    <a class="btn btn-success" href="<?php echo base_url('Rapat/rapat/'.$this->session->idOrganisasi.'/'.$this->session->nim); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -389,6 +389,7 @@
               <th>Tempat</th>
               <th>Tanggal</th>
               <th>Waktu</th>
+              <th></th>
               <th>Aksi</th>
           </tr>
           <?php
@@ -402,7 +403,7 @@
               <td><?php echo $key->tanggal; ?></td>
               <td><?php echo $key->waktu; ?></td>
               <td>
-              <a href="<?php echo site_url('rapat/edit/'.$key->id_rapat); ?>" class="btn btn-primary">Edit</a>
+              <a href="<?php echo site_url('Rapat/edit/'.$key->id_rapat); ?>" class="btn btn-primary">Edit</a>
                   
                 
               </td>

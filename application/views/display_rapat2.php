@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -100,7 +100,7 @@
         <!----AKUN -->
        
 
-      <li class="nav-item">
+        <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Event</span>
@@ -109,6 +109,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Event:</h6>
             <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaykegiatan/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displayrapat/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Rapat</a>
             </a>
           </div>
         </div>

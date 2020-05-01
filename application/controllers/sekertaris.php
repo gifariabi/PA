@@ -1,11 +1,11 @@
 <?php
-class sekertaris extends CI_Controller{
+class Sekertaris extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();
 		$this->load->helper(array('form', 'url','file'));
-        $this->load->model('modelnya');
-        $this->load->model('model_suratkeluar');
+        $this->load->model('Modelnya');
+        $this->load->model('Model_suratkeluar');
         $this->load->library('form_validation','pdf','session');
 	}
 
@@ -15,7 +15,7 @@ class sekertaris extends CI_Controller{
 
     public function cetak_surat($id){
         $where = array('id' => $id);
-        $data['data'] = $this->modelnya->edit_data($where,'suratkeluar')->result();
+        $data['data'] = $this->Modelnya->edit_data($where,'suratkeluar')->result();
         //$this->load->view('editsuratmasuk',$data);
         $this->load->library('pdf');
         $this->load->view('surat',$data);
@@ -40,7 +40,7 @@ class sekertaris extends CI_Controller{
         }else{
             $data['idOrganisasi'] = $idOrganisasi;
             $where = array('nim',$nim);
-            $data['data'] = $this->model_suratkeluar->edit_data($where, 'pengurus')->result();
+            $data['data'] = $this->Model_suratkeluar->edit_data($where, 'pengurus')->result();
             $this->load->view('formsuratkeluar', $data);
         }
 	}
@@ -55,14 +55,14 @@ class sekertaris extends CI_Controller{
 
     function cari(){
         $this->load->database();
-        $jumlah_data = $this->modelnya->jumlah_data();
+        $jumlah_data = $this->Modelnya->jumlah_data();
         $this->load->library('pagination');
         $config['base_url'] = base_url().'index.php/sekertaris/inputan/';
         $config['total_rows'] = $jumlah_data;
         $config['per_page'] = 3;
         $from = $this->uri->segment(3);
         $this->pagination->initialize($config);     
-        $data['data'] = $this->modelnya->halaman($config['per_page'],$from);
+        $data['data'] = $this->Modelnya->halaman($config['per_page'],$from);
         //$this->load->view('datasuratmasuk',$data);
 
         $keyword = $this->input->post('keyword');
@@ -130,7 +130,7 @@ class sekertaris extends CI_Controller{
     }
 
     public function status_surat(){
-        $data['data']=$this->modelnya->tampil_req();
+        $data['data']=$this->Modelnya->tampil_req();
         $this->load->view('status_surat',$data);
     }
 
@@ -145,7 +145,7 @@ class sekertaris extends CI_Controller{
 
     public function inputan(){
         $this->load->database();
-        $jumlah_data = $this->modelnya->jumlah_data();
+        $jumlah_data = $this->Modelnya->jumlah_data();
         $this->load->library('pagination');
         $config['base_url'] = base_url().'index.php/sekertaris/inputan/';
         $config['total_rows'] = $jumlah_data;
@@ -157,14 +157,14 @@ class sekertaris extends CI_Controller{
     }
 
     public function hapus_surat_masuk($id){
-    	$this->load->model('modelnya');
+    	$this->load->Model('modelnya');
     	$this->modelnya->hapus_data($id);
     	redirect('sekertaris/inputan');
     }
 
     function editdata($id){
         $where = array('idsurat' => $id);
-        $data['data'] = $this->modelnya->edit_data($where,'suratmasuk')->result();
+        $data['data'] = $this->Modelnya->edit_data($where,'suratmasuk')->result();
         $this->load->view('editsuratmasuk',$data);
     }
     
@@ -189,7 +189,7 @@ class sekertaris extends CI_Controller{
         'idsurat' => $id
         );
  
-        $this->modelnya->update_data($where,$data,'suratmasuk');
+        $this->Modelnya->update_data($where,$data,'suratmasuk');
         redirect('sekertaris/inputan');
     } 
 }

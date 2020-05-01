@@ -55,8 +55,8 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true" aria-controls="collapseTwo">
          
           <span>Kas</span>
         </a>
@@ -367,32 +367,29 @@
 <body>
 <center>
 <?php foreach ($data as $key) { ?>
-<form action="<?php echo base_url().'index.php/kegiatan/update';?>" method="post">
-    <h1>Pengajuan Kegiatan</h1>
-    <table class="table">
-        <tr>
-            <td>Nama Kegiatan</td>
-            <td>:</td>
-            <td>
-            <input type="hidden" name="id_kegiatan" value="<?php echo $key->id_kegiatan ?>">
-            <input type="text" name="nama_kegiatan" value="<?php echo $key->nama_kegiatan ?>"></td>
-        </tr>
-        <tr>
-            <td>Waktu Pelaksanaan</td>
-            <td>:</td>
-            <td><input type="date" name="waktu" value="<?php echo $key->waktu ?>"></td>
-        </tr>
-        <tr>
-            <td>Tempat</td>
-            <td>:</td>
-            <td><input type="text" name="tempat" value="<?php echo $key->tempat ?>"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td><input type="submit" name="submit" value="Input"></td>
-        </tr>
-    </table>
+<form action="<?php echo base_url().'Kegiatan/update';?>" method="post">
+<!-- <h1>Pengajuan Kegiatan</h1> -->
+<div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Pengajuan Kegiatan</h1>
+    </div>
+    <div class="form-group">
+    <input type="hidden" name="id_kegiatan" value="<?php echo $key->id_kegiatan; ?>">
+      <input type="text" name="nama_kegiatan" class="form-control form-control-user" placeholder="Nama Kegiatan" value="<?php echo $key->nama_kegiatan; ?>">
+    </div>
+    <div class="form-group">
+      <input type="date" name="waktu" class="form-control form-control-user" placeholder="waktu" value=<?php echo $key->waktu; ?>>
+    </div>
+    
+    <div class=form-group>
+      <input type="tempat" name="tempat" class="form-control form-control-user" placeholder="Temapat Pelaksanaan" value="<?php echo $key->tempat; ?>">
+    </div>
+    <div class=form-group>
+      <input type="harga" name="harga" class="form-control form-control-user" placeholder="Harga" value="<?php echo $key->harga; ?>">
+    </div>
+    
+    <input type="hidden" name="id_programkerja" class="form-control form-control-user" value="<?= $key->id_programkerja ?>">
+    <input type="submit" name="submit" value="Input" class="btn btn-success btn-user " placeholder="input">
+    <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a>
 </form>
 <?php } ?>
 </center>
