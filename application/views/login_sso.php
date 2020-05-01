@@ -29,9 +29,11 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	<?php if ($this->session->flashdata('pesan')) {
-		echo $this->session->flashdata('pesan');
-	} ?>
+	<?php if ($this->session->flashdata('pesan')) { ?>
+		<div class="alert alert-danger">
+			<?php echo $this->session->flashdata('pesan'); ?>
+		</div>
+	<?php } ?>
 	
 	<div class="limiter">
 		<div class="container-login100">

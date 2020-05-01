@@ -76,9 +76,11 @@
 		</td>
 	</tr>	
 	</table>
+  <div class="alert alert-danger">
   <?php
       echo $this->session->flashdata('pesan');
   ?>
+  </div>
 
 	  <footer class="py-5 bg-dark">
     <div class="container">

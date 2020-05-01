@@ -62,7 +62,7 @@
         </a>
         <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
+         
             <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_total_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Total Kas</a>
           </div>
         </div>
@@ -412,16 +412,13 @@
 
 					<div class="container-login100-form-btn m-t-20">
 						<button class="login100-form-btn">
-							Lihat Detail Kas
+							Kelola Kas
 						</button>
 				</form>
 			</div>
 		</div>
 	</div>
   <?php } ?>
-
-	
-
 	
 <!--===============================================================================================-->
 	<script src="<?php echo base_url().'asset/login/vendor/jquery/jquery-3.2.1.min.js'?>"></script>
