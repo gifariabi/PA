@@ -68,13 +68,12 @@
     <div class="row text-center">
       <?php foreach($data as $data ){ ?>
       
-      <div class="col-lg-3 col-md-6 mb-4">
+      <div class="col-lg-2 col-md-4 mb-3">
         <div class="card h-100">
           <img class="card-img-top" src="<?= base_url('asset/images/ormawa/').$data->logo ?>" alt="">
           <div class="card-body">
             <h4 class="card-title"><?= $data->namaOrganisasi ?></h4>
             <p class="card-text">Ketua : <?= $data->ketua ?></p>
-            <p class="card-text"><?= $data->deskripsi ?></p>
           </div>
           <div class="card-footer">
             <a href="<?= base_url() ?>Organisasi/halaman_daftar/<?=$data->idOrganisasi;?>" class="btn btn-primary">Tentang</a>
@@ -86,13 +85,12 @@
       <div class="row text-center">
          <?php foreach($data as $data ){ ?>
       
-      <div class="col-lg-3 col-md-6 mb-4">
+      <div class="col-lg-2 col-md-4 mb-3">
         <div class="card h-100">
           <img class="card-img-top" src="<?= base_url('asset/images/ormawa/').$data->logo ?>" alt="">
           <div class="card-body">
             <h4 class="card-title"><?= $data->namaOrganisasi ?></h4>
             <p class="card-text">Ketua : <?= $data->ketua ?></p>
-            <p class="card-text"><?= $data->deskripsi ?></p>
           </div>
           <div class="card-footer">
             <a href="<?= base_url() ?>Organisasi/halaman_daftar/<?= $data->idOrganisasi;?>" class="btn btn-primary">Tentang</a>
