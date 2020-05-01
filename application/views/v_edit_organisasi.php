@@ -233,7 +233,7 @@
         <div class="container-fluid">
 
 <?php foreach($data as $u){ ?>
-<center><h1>Edit Kas</h1>
+<center><h1>Edit Organisasi</h1>
 </center>
 	<form action="<?= base_url() ?>index.php/Organisasi/update_Org" method="POST">
 	<table style="margin: 20px auto;">

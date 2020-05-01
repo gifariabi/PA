@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Apr 2020 pada 10.51
+-- Waktu pembuatan: 20 Apr 2020 pada 17.46
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -53,9 +53,9 @@ CREATE TABLE `ang_organisasi` (
 
 INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
 (670117403, 'Gifari Abi Waqqash', 1, 'Anggota Divisi Olahraga'),
-(670117410, 'Muhammad Luqman', 1, 'Sekertaris'),
-(670117410, 'Muhammad Luqman', 5, 'Anggota Divisi Dalam Negeri'),
-(670117455, 'Eko Adinata', 5, 'Sekertaris');
+(670117455, 'Eko Adinata', 5, 'Sekertaris'),
+(670117400, 'Yusril Wahyuda', 1, 'Ketua'),
+(670117410, 'Muhammad Luqman', 1, 'Sekertaris');
 
 -- --------------------------------------------------------
 
@@ -202,7 +202,7 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`nim`, `username`, `password`, `nama`, `noWA`, `noHP`, `idLine`, `foto`, `prodi`) VALUES
-(0, 'bk', 'bk', '', '', '', '', '', ''),
+(0, 'bk', 'bk', 'bk', '', '', '', '6726e8e98dcbc91451361b2b12bb36c3.png', ''),
 (670117400, 'yusril', 'yusril123', 'Yusril Wahyuda', '', '', '', 'b60e2ca62d0a36db693c98d0191a9586.jpg', 'D3SI'),
 (670117403, 'gifariabi', 'gifariabi', 'Gifari Abi Waqqash', '085868442225', '085868442226', 'gifarifr', '217af0b91e134c93fe445afec6e3c284.jpg', 'D3 Sistem Informasi'),
 (670117406, 'sherli', 'sherli', 'Sherli Yualinda', '', '', '', '', 'D3 Sistem Informasi'),
@@ -254,9 +254,9 @@ CREATE TABLE `pengurus` (
 
 INSERT INTO `pengurus` (`nim`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`) VALUES
 (670117403, 'Gifari Abi Waqqash', 'Kepala Divisi Luar Negeri', 5, 1),
-(670117455, 'Eko Adinata', 'Sekertaris', 5, 1),
 (670117410, 'Muhammad Luqman', 'Sekertaris', 1, 1),
-(670117410, 'Muhammad Luqman', 'Kepala Divisi Dalam Negeri', 5, 1);
+(670117410, 'Muhammad Luqman', 'Kepala Divisi Dalam Negeri', 5, 1),
+(670117400, 'Yusril Wahyuda', 'Ketua', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -348,8 +348,7 @@ CREATE TABLE `suratkeluar` (
 --
 
 INSERT INTO `suratkeluar` (`id`, `no_suratkeluar`, `penerima`, `tanggalkeluar`, `waktu`, `perihal`, `nim`, `idOrganisasi`) VALUES
-(1, '777', 'ketua', '25-06-2020', '07.00', 'undangan', 670117410, 1),
-(6, '2112', 'ketua', '11-11-11', '20:12', 'undangan', 670117455, 5);
+(1, '7778', 'ketua', '2020-04-14', '07.00', 'undangan', 670117410, 1);
 
 -- --------------------------------------------------------
 
@@ -388,6 +387,13 @@ CREATE TABLE `tiket` (
   `status` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data untuk tabel `tiket`
+--
+
+INSERT INTO `tiket` (`no_tiket`, `nama`, `nim`, `jurusan`, `email`, `jumlah`, `metode_pembayaran`, `status`, `id_kegiatan`) VALUES
+(1, 'Yusril Wahyuda', '1234', 'D3 Sistem Informasi', 'wahyudayusril29@gmail.com', '1', 'Transfer', 'Accepted', 9);
 
 -- --------------------------------------------------------
 
@@ -572,7 +578,7 @@ ALTER TABLE `rapat`
 -- AUTO_INCREMENT untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tahun_ajaran`
@@ -584,7 +590,7 @@ ALTER TABLE `tahun_ajaran`
 -- AUTO_INCREMENT untuk tabel `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -653,7 +659,7 @@ ALTER TABLE `rapat`
 --
 ALTER TABLE `suratkeluar`
   ADD CONSTRAINT `fk_idorganisasi3` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
-  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`);
+  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tiket`

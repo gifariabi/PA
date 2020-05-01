@@ -413,15 +413,14 @@ class Ormawa extends CI_Controller {
         $id_thnAjaran = $this->input->post('id_thnAjaran');
         $nim = $this->input->post('nim');
         $nama = $this->input->post('nama');
-        //$cek    = $this->model_daftar->view_where('mahasiswa',array('nim'=>$nim))->result_array();
 
         $data2   = array('nim' => $nim,
                         'nama' => $nama,
                         'id_thnAjaran' => $id_thnAjaran,
                         'idOrganisasi' => $this->session->userdata('idOrganisasi') 
                     );
-            $this->model_daftar->insert($data2,"pengurus");
-            redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
+        $this->model_daftar->insert($data2,"pengurus");
+        redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
     }
 
     public function add_ketua(){ 
