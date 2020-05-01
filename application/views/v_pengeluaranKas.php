@@ -411,9 +411,9 @@
         <br>
         <tr>
             <th>No</th>
-            <th>Pengeluaran Kas</th>
-            <th>Keterangan</th>
             <th>Tanggal</th>
+            <th>Keterangan</th>
+            <th>Pengeluaran Kas</th>
             <th colspan="2">Kelola</th>
         </tr>
         <?php
@@ -423,9 +423,9 @@
         ?>
         <tr>
             <td><?php echo $i; ?></td>
-            <td>Rp <?php echo $data->pengeluaran_kas; ?></td>
-            <td><?php echo $data->keterangan; ?></td>
             <td><?php echo $data->tanggal; ?></td>
+            <td><?php echo $data->keterangan; ?></td>
+            <td>Rp <?php echo $data->pengeluaran_kas; ?></td>
             <td><a href="<?= base_url().'/Ormawa/editKas/'.$data->id_kas;?>" class="btn btn-primary">Edit</a></td>
             <td><a href="<?= base_url().'/Ormawa/hapus_kas/'.$data->id_kas;?>" class="btn btn-danger">Hapus</a></td>
         </tr>
