@@ -137,6 +137,7 @@ class Ormawa extends CI_Controller {
 
     public function tampil_kas($where){
         // $idOrganisasi=$where;
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->getKas($where)->result();
         $this->load->view('v_kas', $data);
     }
@@ -196,31 +197,37 @@ class Ormawa extends CI_Controller {
     }
 //Bulan
     public function v_januari($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_januari($where)->result();
         $this->load->view('v_kas',$data);
     }
 
     public function v_februari($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_februari($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
     public function v_maret($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_maret($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
     public function v_april($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_april($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
     public function v_mei($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_mei($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
     public function v_juni($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_juni($where)->result();
         $this->load->view('v_kas',$data);
     } 
@@ -231,36 +238,43 @@ class Ormawa extends CI_Controller {
     } 
 
     public function v_agustus($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_agustus($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
     public function v_september($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_september($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
     public function v_oktober($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_oktober($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
     public function v_november($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_november($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
     public function v_desember($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_desember($where)->result();
         $this->load->view('v_kas',$data);
     }
 
     public function v_kasMasuk($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_kasMasuk($where)->result();
         $this->load->view('v_kas',$data);
     }  
 
     public function v_kasKeluar($where){
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_kasKeluar($where)->result();
         $this->load->view('v_pengeluaranKas',$data);
     } 

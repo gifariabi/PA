@@ -62,7 +62,7 @@
         </a>
         <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
+          
             <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_total_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Total Kas</a>
           </div>
         </div>
@@ -367,8 +367,13 @@
 
 <center>
 <h1><b>Data Kas</b></h1>
+</center>
 <hr>
 <hr>
+<?php foreach ($data1 as $key1) { ?>
+  <h3><p align="right"><b>SALDO = RP <?php echo $key1->total_kas;?></b></p></h3>
+<?php } ?>
+<center>
  <table>
  <th>
   <div class="dropdown">
@@ -411,9 +416,9 @@
         <br>
         <tr>
             <th>No</th>
-            <th>Pengeluaran Kas</th>
-            <th>Keterangan</th>
             <th>Tanggal</th>
+            <th>Keterangan</th>
+            <th>Pengeluaran Kas</th>
             <th colspan="2">Kelola</th>
         </tr>
         <?php
@@ -423,9 +428,9 @@
         ?>
         <tr>
             <td><?php echo $i; ?></td>
-            <td>Rp <?php echo $data->pengeluaran_kas; ?></td>
-            <td><?php echo $data->keterangan; ?></td>
             <td><?php echo $data->tanggal; ?></td>
+            <td><?php echo $data->keterangan; ?></td>
+            <td>Rp <?php echo $data->pengeluaran_kas; ?></td>
             <td><a href="<?= base_url().'/Ormawa/editKas/'.$data->id_kas;?>" class="btn btn-primary">Edit</a></td>
             <td><a href="<?= base_url().'/Ormawa/hapus_kas/'.$data->id_kas;?>" class="btn btn-danger">Hapus</a></td>
         </tr>

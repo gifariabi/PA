@@ -62,7 +62,7 @@
         </a>
         <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Kelola Kas</a>
+          
             <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_total_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Total Kas</a>
           </div>
         </div>
@@ -398,6 +398,19 @@
 <center><h1>Laporan Kas</h1></center>
 <hr>
 <hr>
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><?php echo date('d-F-Y'); ?></b>
 <table>
 	<?php foreach ($total_laporan1 as $key) { ?>
 	
@@ -422,8 +435,12 @@
             <td><b> Rp <?php echo $key->total_kas ?></b></td>
 					</tr>	
  </table> <br>
-
+<br>
+<a href="<?php echo base_url().'index.php/Ormawa/cetak_laporan/'.$key->idOrganisasi;?>" class="btn btn-success">Cetak Laporan</a>
   <!--  -->
+<center>
+<h2>Grafik Kas</h2>
+<hr>
 <div id="piechart"></div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -451,14 +468,13 @@ function drawChart() {
 }
 </script>
  
-
-<a href="<?php echo base_url().'index.php/Ormawa/cetak_laporan/'.$key->idOrganisasi;?>" class="btn btn-success">Cetak Laporan</a>
 <body>
  
 <div id="container"></div>
 
-
-	<?php } ?>
+</body>
+</center>
+<?php } ?>
 <!--===============================================================================================-->
 	<script src="<?php echo base_url().'asset/login/vendor/jquery/jquery-3.2.1.min.js'?>"></script>
 <!--===============================================================================================-->
@@ -475,6 +491,7 @@ function drawChart() {
 	<script src="<?php echo base_url().'asset/login/vendor/countdowntime/countdowntime.js'?>"></script>
 <!--===============================================================================================-->
 	<script src="<?php echo base_url().'asset/login/js/main.js'?>"></script>
+  <br><br>
 
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">
