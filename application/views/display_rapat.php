@@ -389,7 +389,7 @@
               <th>Tempat</th>
               <th>Tanggal</th>
               <th>Waktu</th>
-              <th></th>
+              <!-- <th></th> -->
               <th>Aksi</th>
           </tr>
           <?php
@@ -403,7 +403,7 @@
               <td><?php echo $key->tanggal; ?></td>
               <td><?php echo $key->waktu; ?></td>
               <td>
-              <a href="<?php echo site_url('Rapat/edit/'.$key->id_rapat); ?>" class="btn btn-primary">Edit</a>
+              <a href="<?php echo site_url('Rapat/edit/'.$key->id_rapat); ?>" class="btn btn-primary btn-sm btn-block" style="height: 30px; width: 60px">Edit</a>
                   
                 
               </td>

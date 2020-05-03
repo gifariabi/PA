@@ -384,7 +384,7 @@
             <input type="submit" value="Cari"/>
     </form>
     <br>
-    <table border="1">
+    <table class="table table-striped table-bordered table-hover table-condensed" id="dataTable" width="100%" cellspacing="0">
         <tr>
             <th>No</th>
             <th>No Surat</th>
@@ -406,8 +406,8 @@
             <td><?php echo $data->tanggalkeluar; ?></td>
             <td><?php echo $data->waktu; ?></td>
             <td><?php echo $data->perihal; ?></td>
-            <td><a href='<?php echo base_url()."Sekertaris2/hapus_surat_keluar/".$data->id;?>'>Hapus</a>
-            <a href='<?php echo base_url()."Sekertaris2/editdata/".$data->id;?>'>Edit</a>
+            <td><a href='<?php echo base_url()."Sekertaris2/hapus_surat_keluar/".$data->id;?>'onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger btn-sm">Hapus</a>
+            <a href='<?php echo base_url()."Sekertaris2/editdata/".$data->id;?>'class="btn btn-success btn-sm">Edit</a>
             <a href='<?php echo base_url()."Sekertaris2/cetak_surat/".$data->id;?>'>Cetak</a></td>
         </tr>
         <?php $i++; }?>

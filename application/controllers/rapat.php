@@ -38,7 +38,7 @@
                 $tempat = $this->input->post('tempat');
                 $date_now = date("m/d/Y");
                 $tanggal = $this->input->post('tanggal');
-                $date_convert = date_format($tanggal,"m")
+                $date_convert = date_format($tanggal,"m/d/Y");
                 $waktu = $this->input->post('waktu');
                 $nim = $this->input->post('nim');
                 $kategori = $this->input->post('kategori');

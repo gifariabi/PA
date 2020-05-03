@@ -404,11 +404,11 @@
               <td><?php echo $key->waktu; ?></td>
               <td><?php echo $key->tempat; ?></td>
               <td><?php echo $key->harga; ?></td>
-              <td><img src="<?php echo base_url().'asset/images/'.$key->qr_code; ?>" style="width: 100px" alt=""></td>
+              <td><img src="<?php echo base_url().'asset/images/'.$key->qr_code; ?>" style="width: 90px" alt=""></td>
               <td>
-              <a href="<?php echo site_url('Kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary btn-sm btn-block" >Edit</a>
-              <a href="<?php echo site_url('Kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger btn-sm btn-block">Hapus</a>    
-              <a href="<?php echo site_url('Lpj/lpj/'.$key->id_kegiatan); ?>" class="btn btn-success btn-sm btn-block">LPJ</a>  
+              <a href="<?php echo site_url('Kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary btn-sm"  style="height: 30px; width: 60px">Edit</a>
+              <a href="<?php echo site_url('Kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger btn-sm" style="height: 30px; width:60px">Hapus</a>    
+              <a href="<?php echo site_url('Lpj/lpj/'.$key->id_kegiatan); ?>" class="btn btn-success btn-sm" style="height: 30px; width: 60px">LPJ</a>  
               </td>
           </tr>
           <?php $i++; }?>
