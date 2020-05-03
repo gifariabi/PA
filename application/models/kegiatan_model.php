@@ -14,7 +14,7 @@
         function tampil(){
             // $query = $this->db->query("SELECT * FROM kelas");
             // return $query->result();
-            $this->db->select('k.id_kegiatan, k.nama_kegiatan, k.waktu, k.tempat, k.harga, p.departemen');
+            $this->db->select('k.id_kegiatan, k.nama_kegiatan, k.waktu, k.tempat, k.harga, k.qr_code, p.departemen');
             $this->db->from('kegiatan k');
             $this->db->join('programkerja p','p.id_programkerja = k.id_programkerja');
             

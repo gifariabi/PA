@@ -401,8 +401,8 @@
               <td><?php echo $data->waktu_pelaksanaan; ?></td>
               <td><?php echo $data->departemen; ?></td>
               <td>
-              <a href="<?= base_url().'/Programkerja/edit/'.$data->id_programkerja;?>" class="btn btn-success">Edit</a>  
-              <a href="<?= base_url().'/Kegiatan/kegiatan/'.$data->id_programkerja;?>" class="btn btn-primary">Input Kegiatan</a>   
+              <a href="<?= base_url().'/Programkerja/edit/'.$data->id_programkerja;?>" class="btn btn-success btn-sm btn-block">Edit</a>  
+              <a href="<?= base_url().'/Kegiatan/kegiatan/'.$data->id_programkerja;?>" class="btn btn-primary btn-sm btn-block">Input Kegiatan</a>   
                 
               </td>
           </tr>

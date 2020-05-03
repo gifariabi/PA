@@ -26,6 +26,7 @@
             $this->form_validation->set_rules('keperluan','Keperluan','required');
             $this->form_validation->set_rules('tempat','Tempat','required');
             $this->form_validation->set_rules('tanggal','Tanggal','required');
+
             // $this->form_validation->set_rules('kondisi','Kondisi','required');
 
             if ($this->form_validation->run() === false) {
@@ -35,7 +36,9 @@
             else {
                 $keperluan = $this->input->post('keperluan');
                 $tempat = $this->input->post('tempat');
+                $date_now = date("m/d/Y");
                 $tanggal = $this->input->post('tanggal');
+                $date_convert = date_format($tanggal,"m")
                 $waktu = $this->input->post('waktu');
                 $nim = $this->input->post('nim');
                 $kategori = $this->input->post('kategori');

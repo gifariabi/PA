@@ -406,9 +406,9 @@
               <td><?php echo $key->harga; ?></td>
               <td><img src="<?php echo base_url().'asset/images/'.$key->qr_code; ?>" style="width: 100px" alt=""></td>
               <td>
-              <a href="<?php echo site_url('kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary">Edit</a>
-              <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a>    
-              <a href="<?php echo site_url('lpj/lpj/'.$key->id_kegiatan); ?>" class="btn btn-success">LPJ</a>  
+              <a href="<?php echo site_url('Kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary btn-sm btn-block" >Edit</a>
+              <a href="<?php echo site_url('Kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger btn-sm btn-block">Hapus</a>    
+              <a href="<?php echo site_url('Lpj/lpj/'.$key->id_kegiatan); ?>" class="btn btn-success btn-sm btn-block">LPJ</a>  
               </td>
           </tr>
           <?php $i++; }?>
