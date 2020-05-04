@@ -440,7 +440,7 @@
   <script src="<?php echo base_url().'asset/masuk/js/sb-admin-2.min.js'?>"></script>
 
   <!-- Page level plugins -->
-  <script src="<?php echo base_url().'asset/masuk/vendor/chart.js/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/chartjs/Chart.min.js'?>"></script>
 
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url().'asset/masuk/js/demo/chart-area-demo.js'?>"></script>
