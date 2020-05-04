@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Bulan Mei 2020 pada 10.58
+-- Waktu pembuatan: 04 Bulan Mei 2020 pada 16.56
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -181,6 +181,13 @@ CREATE TABLE `lpj` (
   `file` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data untuk tabel `lpj`
+--
+
+INSERT INTO `lpj` (`id_lpj`, `file`, `id_kegiatan`) VALUES
+(1, '', 16);
 
 -- --------------------------------------------------------
 
@@ -555,7 +562,7 @@ ALTER TABLE `kegiatan`
 -- AUTO_INCREMENT untuk tabel `lpj`
 --
 ALTER TABLE `lpj`
-  MODIFY `id_lpj` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_lpj` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `organisasi`
