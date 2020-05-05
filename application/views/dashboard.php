@@ -3,7 +3,6 @@
 <head>
 </head>
 <body>
-
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,7 +28,7 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Sidebar - Brand -->
+       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div>
         <img src="<?php echo base_url('asset/images/ormawa/'.$this->session->userdata('logo'))?>" width="65" height="65">
@@ -62,6 +61,7 @@
         </a>
         <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
+          
             <a class="collapse-item" href="<?= base_url() ?>index.php/Ormawa/tampil_total_kas/<?=$this->session->idOrganisasi;?>" style="text-decoration: none">Total Kas</a>
           </div>
         </div>
@@ -156,7 +156,6 @@
           </div>
         </div>
       </li>
-
       <!-- Divider -->
       <hr class="sidebar-divider">
 

@@ -48,7 +48,7 @@ class Model_daftar extends CI_Model{
 		
 	function tampilDaftar($where){
         $this->db->distinct();
-		$this->db->select('m.nama, m.nim, o.namaOrganisasi, o.deskripsi,o.logo,o.ketua, o.idOrganisasi');
+        $this->db->select('m.nama, m.nim, o.namaOrganisasi, o.deskripsi,o.logo,o.ketua, o.idOrganisasi');
         $this->db->from('ang_organisasi g');
         $this->db->join('organisasi o','g.idOrganisasi = o.idOrganisasi');
         $this->db->join('pengurus an','o.idOrganisasi =  an.idOrganisasi');
@@ -56,9 +56,9 @@ class Model_daftar extends CI_Model{
         $this->db->where('m.nim', $where);
 
         $query = $this->db->get();
-       	//if($query->num_rows() > 0) {
-        	return $query;
-    	//}
+        //if($query->num_rows() > 0) {
+            return $query;
+        //}
 	}
 
     public function ambil_akun($nim){
