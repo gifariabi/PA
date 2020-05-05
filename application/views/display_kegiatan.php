@@ -404,11 +404,11 @@
               <td><?php echo $key->waktu; ?></td>
               <td><?php echo $key->tempat; ?></td>
               <td><?php echo $key->harga; ?></td>
-              <td><img src="<?php echo base_url().'asset/images/'.$key->qr_code; ?>" style="width: 100px" alt=""></td>
+              <td><img src="<?php echo base_url().'asset/images/'.$key->qr_code; ?>" style="width: 90px" alt=""></td>
               <td>
-              <a href="<?php echo site_url('kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary">Edit</a>
-              <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a>    
-              <a href="<?php echo site_url('lpj/lpj/'.$key->id_kegiatan); ?>" class="btn btn-success">LPJ</a>  
+              <a href="<?php echo site_url('Kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary btn-sm"  style="height: 30px; width: 60px">Edit</a>
+              <a href="<?php echo site_url('Kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger btn-sm" style="height: 30px; width:60px">Hapus</a>    
+              <a href="<?php echo site_url('Lpj/lpj/'.$key->id_kegiatan); ?>" class="btn btn-success btn-sm" style="height: 30px; width: 60px">LPJ</a>  
               </td>
           </tr>
           <?php $i++; }?>
@@ -460,20 +460,20 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url().'assets/vendor/jquery/jquery.min.js'?>"></script>
-  <script src="<?php echo base_url().'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/vendor/jquery/jquery.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url().'assets/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url().'assets/js/sb-admin-2.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/js/sb-admin-2.min.js'?>"></script>
 
   <!-- Page level plugins -->
-  <script src="<?php echo base_url().'assets/vendor/chart.js/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/chartjs/Chart.min.js'?>"></script>
 
   <!-- Page level custom scripts -->
-  <script src="<?php echo base_url().'assets/js/demo/chart-area-demo.js'?>"></script>
-  <script src="<?php echo base_url().'assets/js/demo/chart-pie-demo.js'?>"></script>
+  <script src="<?php echo base_url().'asset/js/demo/chart-area-demo.js'?>"></script>
+  <script src="<?php echo base_url().'asset/js/demo/chart-pie-demo.js'?>"></script>
 </body>
 </html>
