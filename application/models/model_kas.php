@@ -1,4 +1,4 @@
-s<?php
+<?php
 class Model_kas extends CI_Model{
 
     public function getKas($where){
