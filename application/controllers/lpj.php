@@ -29,30 +29,43 @@
         }
 
         public function do_upload(){
-                
-                $id_kegiatan = $this->input->post('id_kegiatan');
-                // $file = $_FILES['file'];
-                // if ($file = '') {
-                // }else{
-                    $config['upload_path']      = './asset/images/';
-                    $config['allowed_types']    = 'pdf';
-                    $config['max_size']         = 0;
-                    
-                    $this->load->library('upload' ,$config);
+            $id_kegiatan = $this->input->post('id_kegiatan');
+            $config['upload_path'] = './asset/laporanlpj';
+            $config['allowed_types'] = 'pdf';
+            
+            $this->upload->initialize($config);
+            
+            if (!$this->upload->do_upload('lpjfile')) {
+                $where = array('id_kegiatan' => $id_kegiatan);
+                $this->session->set_flashdata('error', $this->upload->display_errors());
+                $data['data'] = $this->kegiatan_model->edit_data($where,'kegiatan')->result();
+                $this->load->view('input_lpj', $data);
+            }else{
+                $cekkegiatan = $this->model_lpj->ceklpj($id_kegiatan)->result();
+                // print_r($cekkegiatan);
+                if (empty($cekkegiatan)) {
+                    $upload_data = $this->upload->data();
+                    $upload = $upload_data['file_name'];
 
-                    if ($this->upload->do_upload()) {
-                        $file = $this->upload->data('file_name');
-                    }
-                // }    
-
-                $data = array(
-                    'file' => $file,
-                    'id_kegiatan' => $id_kegiatan
-                );
-                
-                $this->model_lpj->data($data,'lpj');
-
-                
+                    $data = array(
+                        'file' => $upload,
+                        'id_kegiatan' => $id_kegiatan
+                    );
+                    $this->model_lpj->update_data(array('id_programkerja'=>$id_kegiatan),array('upload_lpj'=> 1),'kegiatan');
+                    $this->model_lpj->data($data,'lpj');
+                }else{
+                    $upload_data = $this->upload->data();
+                    $upload = $upload_data['file_name'];
+    
+                    $data = array(
+                        'file' => $upload,
+                        'id_kegiatan' => $id_kegiatan
+                    );
+                    $this->model_lpj->update_data(array('id_kegiatan'=>$id_kegiatan),array('upload_lpj'=> 1),'kegiatan');
+                    $this->model_lpj->update_data(array('id_kegiatan'=>$id_kegiatan),$data,'lpj');
+                }
+                redirect('Lpj/lpj/'.$id_kegiatan);
+            }
         }
         
         public function displayfile(){

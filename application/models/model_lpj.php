@@ -47,6 +47,11 @@
             $this->db->where($where);
             $this->db->update($table,$data);
         }
+        public function ceklpj($where)
+        {
+            $this->db->where('id_kegiatan', $where);
+            return $this->db->get('lpj');   
+        }
     }
 
 

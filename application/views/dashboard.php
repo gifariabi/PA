@@ -12,11 +12,11 @@
   <title></title>
 
   <!-- Custom fonts for this template-->
-  <link href="<?php echo base_url().'asset/masuk/vendor/fontawesome-free/css/all.min.css'?>" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url().'asset/vendor/fontawesome-free/css/all.min.css'?>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="<?php echo base_url().'asset/masuk/css/sb-admin-2.min.css" rel="stylesheet'?>">
+  <link href="<?php echo base_url().'asset/css/sb-admin-2.min.css" rel="stylesheet'?>">
 
 </head>
 
@@ -429,7 +429,56 @@
               </div>
             </div>
           </div>
+          </div>
+          <div class="row">
+            <!-- Area Chart -->
+            <div class="col-xl-6 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                <form action="" method="get">
+                <!-- <h1>Pengajuan Kegiatan</h1> -->
+                  <div class="text-center">
+                      <h1 class="h4 text-gray-900 mb-4">Pengajuan Kegiatan</h1>
+                  </div>
+                  <div class="form-group">
+                    <select name="departemen" id="departemen" class="form-control form-control-user">
+                      <option value="">departemen</option>
+                      <?php foreach ($departemen as $i) { ?>
+                        <option value="<?= $i->departemen?>"><?= $i->departemen?></option>
+                      <?php }?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <select name="proker" id="proker" class="form-control form-control-user">
+                      <option value="">Proker</option>
+                    </select>
+                  </div>
 
+                  <input type="submit" name="submit" value="Input" class="btn btn-success btn-user " placeholder="input">
+                </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4">
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- Content Row -->
           <div class="row">
 
@@ -482,20 +531,36 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url().'asset/masuk/vendor/jquery/jquery.min.js'?>"></script>
-  <script src="<?php echo base_url().'asset/masuk/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/vendor/jquery/jquery.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url().'asset/masuk/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url().'asset/masuk/js/sb-admin-2.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/js/sb-admin-2.min.js'?>"></script>
 
   <!-- Page level plugins -->
-  <script src="<?php echo base_url().'asset/masuk/chartjs/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/js/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/js/Chart.js'?>"></script>
 
   <!-- Page level custom scripts -->
-  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-area-demo.js'?>"></script>
-  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-pie-demo.js'?>"></script>
-
+  <script src="<?php echo base_url().'asset/js/demo/chart-pie-demo.js'?>"></script>
+  <script>
+  $(document).ready(function() {
+    $('#departemen').change(function() {
+        var departemen_id = $('#departemen').val();
+        if (departemen_id != '') {
+            $.ajax({
+              url: "<?php echo base_url()?>Organisasi/set_proker/",
+              method: "POST",
+              data: { departemen_id:departemen_id },
+              success: function(data) {
+                  $('#proker').html(data);
+              }
+            });
+        }
+    })
+  })
+  </script>
 </body>

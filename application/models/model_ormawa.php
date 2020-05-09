@@ -162,5 +162,50 @@ class Model_ormawa extends CI_Model{
             return $query->result();
         }
 
+        public function departemenOrganisasi($where)
+        {
+            $this->db->where('idOrganisasi', $where);
+            $this->db->group_by('departemen');
+            return $this->db->get('programkerja');
+        }
+        public function lpjdone($idproker)
+        {
+            $this->db->query('SELECT
+            COUNT( upload_lpj ) AS jumlah 
+        FROM
+            kegiatan 
+        WHERE
+            id_programkerja = '.$idproker.' 
+            AND upload_lpj = 1');
+        }
+
+        public function lpjnot($idproker)
+        {
+            $this->db->query('SELECT
+            COUNT( upload_lpj ) AS jumlah 
+        FROM
+            kegiatan 
+        WHERE
+            id_programkerja = '.$idproker.' 
+            AND upload_lpj = 0');
+        }
+        
+        public function getproker($iddepartemen,$idorganisasi)
+        {
+            $this->db->where('departemen', $iddepartemen);
+            $this->db->where('idOrganisasi', $idorganisasi);
+            return $this->db->get('programkerja');
+        }
+
+        public function proker($idproker)
+        {
+            $this->db->query('SELECT
+            COUNT( id_programkerja ) AS jumlah 
+        FROM
+            kegiatan 
+        WHERE
+            id_programkerja = '.$idproker);
+        }
+
     }
 ?>

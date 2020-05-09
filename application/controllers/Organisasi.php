@@ -69,8 +69,35 @@ class Organisasi extends CI_Controller {
     }
 
     public function show($jabatan){
+        
+        if (isset($_GET['submit'])) {
+            $idproker = $this->input->get('proker');
+            
+            $done = $this->Model_ormawa->lpjdone($idproker);
+            $not = $this->Model_ormawa->lpjnot($idproker);
+            $sumproker = $this->Model_ormawa->proker($idproker);
+
+            $d = round($done/$sumproker,2);
+            $n = round($not/$sumproker,2);
+            $chart = array($n,$d);
+            $data['chart'] = $chart;
+        }
+        $data['departemen'] = $this->Model_ormawa->departemenOrganisasi($this->session->userdata('idOrganisasi'))->result();
         $this->session->set_userdata('jabatan',$jabatan);
-        $this->load->view('dashboard'.$this->session->$jabatan);
+        $this->load->view('dashboard'.$this->session->$jabatan,$data);
+    }
+
+    public function set_proker()
+    {
+        if ($this->input->post('departemen_id')) {
+            $id = $this->input->post('departemen_id');
+            $query = $this->Model_ormawa->getproker($id,$this->session->userdata('idOrganisasi'))->result();
+            $html = "<option value=''>Proker</option>";
+            foreach ($query as $i) {
+                $html .= "<option value='".$i->id_programkerja."'>".$i->nama_programkerja."</option>";
+            }
+            echo $html;
+        }
     }
 
     public function tampilan_organisasi(){
