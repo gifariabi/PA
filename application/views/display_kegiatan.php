@@ -391,6 +391,7 @@
               <th>Waktu Pelaksanaan</th>
               <th>Tempat Pelaksanaan</th>
               <th>Harga</th>
+              <th>Departemen</th>
               <th>QRCODE</th>
               <th>Aksi</th>
           </tr>
@@ -404,6 +405,7 @@
               <td><?php echo $key->waktu; ?></td>
               <td><?php echo $key->tempat; ?></td>
               <td><?php echo $key->harga; ?></td>
+              <td><?php echo $key->departemen; ?></td>
               <td><img src="<?php echo base_url().'asset/images/'.$key->qr_code; ?>" style="width: 90px" alt=""></td>
               <td>
               <a href="<?php echo site_url('Kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary btn-sm"  style="height: 30px; width: 60px">Edit</a>
