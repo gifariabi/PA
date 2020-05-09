@@ -40,7 +40,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url() ?>Organisasi/dashboard/<?= $key->idOrganisasi?>">
+        <a class="nav-link" href="<?php echo base_url().'index.php/Organisasi'?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
