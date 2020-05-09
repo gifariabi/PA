@@ -18,7 +18,6 @@
 
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url().'asset/masuk/css/sb-admin-2.min.css" rel="stylesheet'?>">
-
 </head>
 
 <body id="page-top">
@@ -369,18 +368,25 @@
 <!-- <?php echo validation_errors(); ?> -->
 <?php 
 if (is_array($data) || is_object($data)) {
-foreach($data as $key){ ?>
+foreach($data as $key){ 
+  if ($this->session->flashdata('error') != null) {?>
+    <div class="card mb-4 py-3 border-left-danger">
+                <div class="card-body">
+                  <?php echo $this->session->flashdata('error');?>
+                </div>
+              </div>
+  <?php } ?>
 <?php echo form_open_multipart('Lpj/do_upload'); ?>
     <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <div class="text-center">
-        <h1 class="h4 text-gray-900 mb-4">Book Tiket</h1>
+        <h1 class="h4 text-gray-900 mb-4">Upload lpj file</h1>
         
     </div>
     <input type="hidden" name="id_kegiatan" value="<?php echo $key->id_kegiatan; ?>">
     <!-- <input type="hidden" name="harga" value="<?php echo $key->harga; ?>"> -->
     <div class="form-group">
-      <input type="file" name="file" class="form-control form-control-sm" placeholder="Upload LPJ" >
+      <input type="file" name="lpjfile" class="form-control form-control-sm" placeholder="Upload LPJ" >
       <!-- <?php echo form_error('nama');?> -->
     </div>
     
