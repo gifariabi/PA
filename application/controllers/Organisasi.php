@@ -69,18 +69,21 @@ class Organisasi extends CI_Controller {
     }
 
     public function show($jabatan){
-        
-        if (isset($_GET['submit'])) {
+        $data['proker'] = '';
+        if (isset($_GET['submit']) && $this->input->get('proker') != null) {
             $idproker = $this->input->get('proker');
+            $data['proker'] = $this->Model_ormawa->getidproker($this->input->get('proker'))->result()[0]->nama_programkerja;
             
-            $done = $this->Model_ormawa->lpjdone($idproker);
-            $not = $this->Model_ormawa->lpjnot($idproker);
-            $sumproker = $this->Model_ormawa->proker($idproker);
-
-            $d = round($done/$sumproker,2);
-            $n = round($not/$sumproker,2);
-            $chart = array($n,$d);
-            $data['chart'] = $chart;
+            $done = $this->Model_ormawa->lpjdone($idproker)->result()[0]->jumlah;
+            $not = $this->Model_ormawa->lpjnot($idproker)->result()[0]->jumlah;
+            $sumproker = $this->Model_ormawa->proker($idproker)->result();
+            if ($sumproker[0]->jumlah > 0) {
+                $sumproker = $sumproker[0]->jumlah;
+                $d = round($done/$sumproker * 100,2);
+                $n = round($not/$sumproker * 100,2) ;
+                $chart = array($d,$n);
+                $data['chart'] = json_encode($chart); 
+            }            
         }
         $data['departemen'] = $this->Model_ormawa->departemenOrganisasi($this->session->userdata('idOrganisasi'))->result();
         $this->session->set_userdata('jabatan',$jabatan);

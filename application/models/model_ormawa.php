@@ -170,7 +170,7 @@ class Model_ormawa extends CI_Model{
         }
         public function lpjdone($idproker)
         {
-            $this->db->query('SELECT
+            return $this->db->query('SELECT
             COUNT( upload_lpj ) AS jumlah 
         FROM
             kegiatan 
@@ -181,7 +181,7 @@ class Model_ormawa extends CI_Model{
 
         public function lpjnot($idproker)
         {
-            $this->db->query('SELECT
+            return  $this->db->query('SELECT
             COUNT( upload_lpj ) AS jumlah 
         FROM
             kegiatan 
@@ -196,10 +196,14 @@ class Model_ormawa extends CI_Model{
             $this->db->where('idOrganisasi', $idorganisasi);
             return $this->db->get('programkerja');
         }
-
+        public function getidproker($idproker)
+        {
+            $this->db->where('id_programkerja', $idproker);
+            return $this->db->get('programkerja');
+        }
         public function proker($idproker)
         {
-            $this->db->query('SELECT
+            return $this->db->query('SELECT
             COUNT( id_programkerja ) AS jumlah 
         FROM
             kegiatan 

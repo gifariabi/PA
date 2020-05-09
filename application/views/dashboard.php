@@ -2,7 +2,6 @@
 <html>
 <head>
 </head>
-<body>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -468,11 +467,21 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                  <?php
+                  if ($proker == null) {?>
+                    <h6 class="m-0 font-weight-bold text-primary">Persentase </h6>
+                    
+                  <?php }else{ ?>
+                    <h6 class="m-0 font-weight-bold text-primary"><?= $proker?> Persentase</h6>
+                    
+                  <?php }?>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-pie pt-4">
+                    <script>
+                      var datapie = JSON.parse(`<?= $chart ?>`);
+                    </script>
                     <canvas id="myPieChart"></canvas>
                   </div>
                 </div>
@@ -505,12 +514,7 @@
 
   </div>
   <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
+  
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -535,17 +539,17 @@
   <script src="<?php echo base_url().'asset/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url().'asset/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url().'asset/js/sb-admin-2.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/js/sb-admin-2.min.js'?>"></script>
 
   <!-- Page level plugins -->
-  <script src="<?php echo base_url().'asset/js/Chart.min.js'?>"></script>
-  <script src="<?php echo base_url().'asset/js/Chart.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/vendor/chart.js/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/vendor/chart.js/Chart.js'?>"></script>
 
   <!-- Page level custom scripts -->
-  <script src="<?php echo base_url().'asset/js/demo/chart-pie-demo.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-pie-proker.js'?>"></script>
   <script>
   $(document).ready(function() {
     $('#departemen').change(function() {
@@ -564,3 +568,4 @@
   })
   </script>
 </body>
+</html>
