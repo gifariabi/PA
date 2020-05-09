@@ -378,7 +378,7 @@
 <center>
 <h3>Jadwal Kegiatan</h3>
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
-    <a href="<?php echo site_url('Tiket/displaydata/'.$this->session->nim); ?>">History Pesanan</a>
+    <a href="<?php echo site_url('Tiket/displaydata/'.$this->session->nim); ?>" class="btn btn-success">History Pesanan</a>
     <div class="card-body">
       <div class="table-responsive">
         <!-- <a href="<?php echo site_url('Tiket/displaydata'); ?>">Keranjang</a> -->

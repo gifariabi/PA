@@ -380,6 +380,7 @@
 
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
     <a class="btn btn-success" href="<?php echo base_url().'Programkerja/kegiatan/'.$this->session->userdata('idOrganisasi') ?>" style="text-decoration: none">Pengajuan Program Kerja</a>
+    <a class="btn btn-success" href="<?php echo base_url('index.php/kegiatan/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Kegiatan</a>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover table-condensed" id="dataTable" width="100%" cellspacing="0">
