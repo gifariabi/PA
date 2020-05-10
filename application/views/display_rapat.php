@@ -278,6 +278,8 @@
 <h3>Rapat</h3>
 </center>
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
+    <div id="notifications"><?php echo $this->session->flashdata('hapus');
+    echo $this->session->flashdata('update'); ?></div>
     <a class="btn btn-success" href="<?php echo base_url('Rapat/rapat/'.$this->session->idOrganisasi.'/'.$this->session->nim); ?>" style="text-decoration: none">Buat Agenda Rapat</a>
     <div class="card-body">
       <div class="table-responsive">
@@ -288,7 +290,7 @@
               <th>Tempat</th>
               <th>Tanggal</th>
               <th>Waktu</th>
-              <!-- <th></th> -->
+              <th>Kategori</th>
               <th>Aksi</th>
           </tr>
           <?php
@@ -301,6 +303,7 @@
               <td><?php echo $key->tempat; ?></td>
               <td><?php echo $key->tanggal; ?></td>
               <td><?php echo $key->waktu; ?></td>
+              <td><?php echo $key->kategori; ?></td>
               <td>
               <a href="<?php echo site_url('Rapat/edit/'.$key->id_rapat); ?>" class="btn btn-primary btn-sm btn-block" style="height: 30px; width: 60px">Edit</a>
                   

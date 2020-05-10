@@ -270,6 +270,7 @@
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <h1>Pengajuan Rapat</h1>
     <table class="table">
+    <div id="notifications"><?php echo $this->session->flashdata('msg'); ?></div>
         <tr>
             <td>Keperluan</td>
             <td>:</td>
@@ -287,6 +288,7 @@
             <?php foreach($data as $data){ ?>   
             <input type="hidden" name="nim" value="<?php echo $data->nim; ?>"></td>
             <?php } ?>
+            <div id="notifications"><?php echo $this->session->flashdata('tgl'); ?></div>
         </tr>
         <tr>
             <td>Waktu</td>
@@ -296,8 +298,8 @@
         <tr>
           <td>Ditujukan untuk</td>
           <td>:</td>
-          <td><label class="radio-inline"><input type="radio" name="kategori" checked> Pengurus</label>
-        <label class="radio-inline"><input type="radio" name="kategori"> Pengurus dan Anggota</label></td>
+          <td><label class="radio-inline"><input type="radio" name="kategori" checked value="Pengurus"> Pengurus</label>
+        <label class="radio-inline"><input type="radio" name="kategori" value="Pengurus dan Anggota"> Pengurus dan Anggota</label></td>
         </tr>
         <tr>
             <td></td>
@@ -305,6 +307,9 @@
             <td><input type="submit" name="submit" value="Simpan" class="btn btn-success btn-user btn-block "></td>
         </tr>
     </table>
+    <script>
+    $('#notifications').slideDown('slow').delay(3000).slideUp('slow');
+</script>
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
     <font color="red">

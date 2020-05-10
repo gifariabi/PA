@@ -265,11 +265,12 @@
 
 <body>
     <?php foreach($data as $key){ ?>
-<form action="<?php echo base_url().'Rapat/simpan';?>" method="post">
+<form action="<?php echo base_url().'Rapat/update';?>" method="post">
     <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <h1>Pengajuan Rapat</h1>
     <table class="table">
+    <input type="hidden" name="id_rapat" value="<?php echo $key->id_rapat; ?>">
         <tr>
             <td>Keperluan</td>
             <td>:</td>
@@ -292,6 +293,12 @@
             <td>Waktu</td>
             <td>:</td>
             <td><input type="time" name="waktu" class="form-control form-control-user" value="<?php echo $key->waktu; ?>"></td>
+        </tr>
+        <tr>
+          <td>Ditujukan untuk</td>
+          <td>:</td>
+          <td><label class="radio-inline"><input type="radio" name="kategori" checked value="Pengurus"> Pengurus</label>
+        <label class="radio-inline"><input type="radio" name="kategori" value="Pengurus dan Anggota"> Pengurus dan Anggota</label></td>
         </tr>
         <tr>
             <td></td>
