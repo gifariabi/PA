@@ -271,6 +271,7 @@
     <div class="text-center">
         <h1 class="h4 text-gray-900 mb-4">Pengajuan Kegiatan</h1>
     </div>
+    <div id="notifications" ><?php echo $this->session->flashdata('msg'); ?></div>
     </center>
     <!-- <input type="hidden" name="id_programkerja" value=""> -->
     <div class="form-group">
@@ -278,6 +279,7 @@
     </div>
     <div class="form-group">
       <input type="date" name="waktu" class="form-control form-control-user" placeholder="Waktu Pelaksanaan">
+      <div id="notifications" ><?php echo $this->session->flashdata('tgl'); ?></div>
     </div>
     
     <div class="form-group">
@@ -296,6 +298,9 @@ if(is_array($data) || is_object($data)){
         <input type="submit" name="submit" value="Input" class="btn btn-success btn-user btn-block" placeholder="input">
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
+    <script>
+    $('#notifications').slideDown('slow').delay(3000).slideUp('slow');
+</script>
     <?php } } ?>
     <font color="red">
         <?php if ($this->session->flashdata('error')) {

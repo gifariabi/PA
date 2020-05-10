@@ -1,5 +1,8 @@
-<?php 
-    class kegiatan extends CI_Controller{
+<?php
+
+use PhpOffice\PhpSpreadsheet\Shared\Date;
+
+class kegiatan extends CI_Controller{
         public function __construct(){
             parent::__construct();
             $this->load->helper('url','form','file');
@@ -60,6 +63,8 @@
                 $id_kegiatan = $this->input->post('id_kegiatan');
                 $nama_kegiatan = $this->input->post('nama_kegiatan');
                 $waktu = $this->input->post('waktu');
+                $date_now = new DateTime();
+                $date2 = new DateTime($waktu);
                 $tempat = $this->input->post('tempat');
                 $harga = $this->input->post('harga');
                 $id_programkerja = $this->input->post('id_programkerja');
@@ -84,18 +89,29 @@
                 $params['savename'] = FCPATH.$config['imagedir'].$image_name;
                 $this->ciqrcode->generate($params);
                 //$cek    = $this->Model_daftar->view_where('programkerja',array('id_programkerja'=>$id_programkerja))->result();
-                
-                $data = array(
-                    'id_kegiatan' => $id_kegiatan,
-                    'nama_kegiatan' => $nama_kegiatan, 
-                    'waktu' => $waktu,
-                    'tempat' => $tempat,
-                    'harga' => $harga,
-                    'qr_code' => $image_name,
-                    'id_programkerja' => $id_programkerja
-                );
+                if($date_now > $date2){
+                    $this->session->set_flashdata('tgl', '<div class="alert alert-success">
+                    <p>Tanggal tidak sesuai, tanggal diharuskan H +1</p>
+                    </div>');
+                    redirect('kegiatan/kegiatan/'.$id_programkerja);
+                }else{
+                    $data = array(
+                        'id_kegiatan' => $id_kegiatan,
+                        'nama_kegiatan' => $nama_kegiatan, 
+                        'waktu' => $waktu,
+                        'tempat' => $tempat,
+                        'harga' => $harga,
+                        'qr_code' => $image_name,
+                        'id_programkerja' => $id_programkerja
+                    );
+                }
                 $this->Kegiatan_model->data($data,'kegiatan');
-                redirect('kegiatan/displaydata/'.$this->session->userdata('idOrganisasi'));
+                $this->session->set_flashdata('msg',
+                '<div class="alert alert-success">
+                <h4>Berhasil</h4>
+                <p> Anda berhasil input jadwal Kegiatan</p>
+                </div>');
+                redirect('kegiatan/kegiatan/'.$id_programkerja);
             }
         }
         public function displaydata(){
