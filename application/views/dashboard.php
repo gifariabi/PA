@@ -345,7 +345,7 @@
                   </div>
                   <div class="form-group">
                     <select name="departemen" id="departemen" class="form-control form-control-user">
-                      <option value="">departemen</option>
+                      <option value="">Departemen</option>
                       <?php foreach ($departemen as $i) { ?>
                         <option value="<?= $i->departemen?>"><?= $i->departemen?></option>
                       <?php }?>
