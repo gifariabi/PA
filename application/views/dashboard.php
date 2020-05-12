@@ -38,11 +38,12 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url().'index.php/Organisasi'?>">
+       <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url().'index.php/Organisasi/show/'.$this->session->userdata('jabatan').'/'.$this->session->userdata('idOrganisasi')?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -270,22 +271,18 @@
           <div class="row">
 
             <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
+            <div class="col-xl-4 col-lg-6">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary"><?= $this->session->namaOrganisasi?></h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                   
-                  </div>
+                  <h6 class="m-0 font-weight-bold text-primary">Universitas Telkom</h6>
                 </div>
+                <br>
                 <!-- Card Body -->
                 <div class="text">
                   <div class="text">
-                    Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik, HMDSI juga tempat belajar bagaimana mengasah potensi non-akademik yang ada pada diri kita.
+                    <center><img src="<?php echo base_url('asset/images/ormawa/telkom.png')?>" width="100" height="100"></center><br>
+                    <p align="justify">Universitas Telkom, atau disingkat Tel-U, adalah sebuah perguruan tinggi swasta di Indonesia. Kampus utama Tel-U terletak di Kabupaten Bandung, Jawa Barat, tepatnya di Jalan Telekomunikasi - Terusan Buahbatu, di kawasan Bandung Technoplex (BT-Plex). Kampus lainnya berlokasi di daerah Gegerkalong Hilir, sebelah utara Kota Bandung, di kompleks perkantoran PT. Telkom .</p><br>
                   </div>
                 </div>
               </div>
@@ -297,25 +294,13 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Visi dan Misi</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
                 </div>
                 <!-- Card Body -->
                 <div class="text">
                   <div class="text">
                     <b>Visi</b><br>
 
-                    Menjadi research and entrepreneurial university pada tahun 2023, yang berperan aktif dalam pengembangan teknologi, sains dan seni berbasis teknologi informasi<br>
+                    <p align="justify">Menjadi research and entrepreneurial university pada tahun 2023, yang berperan aktif dalam pengembangan teknologi, sains dan seni berbasis teknologi informasi<br></p>
 
                     <b>Misi</b><br>
 
@@ -327,6 +312,24 @@
               </div>
             </div>
           </div>
+          <div class="col-xl-4 col-lg-6">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Organisasi Mahasiswa</h6>
+                </div>
+                <br>
+                <!-- Card Body -->
+                <div class="text">
+                  <div class="text">
+                    <center><img src="<?php echo base_url('asset/images/ormawa/'.$this->session->userdata('logo'))?>" width="80" height="80"></center><br>
+                    <p align="justify">Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik, HMDSI juga tempat belajar bagaimana mengasah potensi non-akademik yang ada pada diri kita.</p>
+                    <p align="justify">Aplikasi ini diharapkan mampu untuk membantu organisasi mahasiswa yang ada di Telkom University dalam menjalankan kepengurusan organisasi</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
           <div class="row">
             <!-- Area Chart -->

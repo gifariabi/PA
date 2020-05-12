@@ -45,7 +45,7 @@ class Model_ormawa extends CI_Model{
     	}
 
         public function getPengurus($where){
-            $this->db->select('p.nim, p.nama, p.jabatan, o.idOrganisasi, id_thnAjaran');
+            $this->db->select('a.foto, p.nim, p.nama, p.jabatan, o.idOrganisasi, id_thnAjaran');
             $this->db->from('organisasi o');
             $this->db->join('pengurus p','o.idOrganisasi =  p.idOrganisasi');
             $this->db->join('mahasiswa a','p.nim =  a.nim');
@@ -101,7 +101,7 @@ class Model_ormawa extends CI_Model{
 
         public function getAnggota($where){
 
-            $this->db->select('a.nim, an.nama, an.jabatan, o.idOrganisasi');
+            $this->db->select('a.foto, a.nim, an.nama, an.jabatan, o.idOrganisasi');
             $this->db->from('organisasi o');
             $this->db->join('ang_organisasi an','o.idOrganisasi =  an.idOrganisasi');
             $this->db->join('mahasiswa a','an.nim =  a.nim');

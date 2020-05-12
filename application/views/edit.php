@@ -40,8 +40,8 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url().'index.php/Organisasi'?>">
+     <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url().'index.php/Organisasi/show/'.$this->session->userdata('jabatan').'/'.$this->session->userdata('idOrganisasi')?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
