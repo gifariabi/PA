@@ -24,6 +24,22 @@
                 return $query;
             //}
         }
+        public function tampil_tiket($where){
+            $this->db->select('t.no_tiket, t.nama, t.nim, t.jurusan, t.email, t.jumlah, t.total, t.metode_pembayaran, t.status');
+            $this->db->from('tiket t');
+            $this->db->join('kegiatan k','t.id_kegiatan = k.id_kegiatan');
+            $this->db->join('programkerja p','k.id_programkerja = p.id_programkerja');
+            $this->db->join('organisasi o','o.idOrganisasi = p.idOrganisasi');
+            $this->db->join('ang_organisasi a','a.idOrganisasi = o.idOrganisasi');
+            // $this->db->join('organisasi o','s.idOrganisasi =  o.idOrganisasi');
+            $this->db->where('a.nim', $where);
+
+            $query = $this->db->get();
+            //if($query->num_rows() > 0) {
+                return $query;
+            //}
+        }
+
         // menghapus data
         function hapus_data($where,$table){
             $this->db->where($where);

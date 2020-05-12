@@ -60,7 +60,7 @@
                 $this->tiket_model->data($data,'tiket');
                 // redirect('tiket/tiket/'.$id_kegiatan);
                 
-                redirect('tiket/displaydata/'.$id_kegiatan);
+                redirect('tiket/displaydata/'.$this->session->userdata('nim'));
                 
             }
             else {
@@ -69,7 +69,8 @@
             }
         }
         public function displaydata(){
-            $data['data']=$this->tiket_model->tampil()->result();
+            $where = $this->session->userdata('nim');
+            $data['data']=$this->tiket_model->tampil_tiket($where)->result();
             $this->load->view('display_tiket',$data);
         }
         public function hapus($id){
