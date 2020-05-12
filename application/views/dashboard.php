@@ -323,8 +323,8 @@
                 <div class="text">
                   <div class="text">
                     <center><img src="<?php echo base_url('asset/images/ormawa/'.$this->session->userdata('logo'))?>" width="80" height="80"></center><br>
-                    <p align="justify">Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik, HMDSI juga tempat belajar bagaimana mengasah potensi non-akademik yang ada pada diri kita.</p>
-                    <p align="justify">Aplikasi ini diharapkan mampu untuk membantu organisasi mahasiswa yang ada di Telkom University dalam menjalankan kepengurusan organisasi</p>
+                    <p align="justify">Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik, <?php echo $this->session->userdata('namaOrganisasi')?> juga tempat belajar bagaimana mengasah potensi non-akademik yang ada pada diri kita.</p>
+                    <p align="justify">Aplikasi ini diharapkan mampu untuk membantu organisasi mahasiswa dalam menjalankan kepengurusan organisasi</p>
                   </div>
                 </div>
               </div>

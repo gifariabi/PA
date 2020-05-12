@@ -64,6 +64,7 @@ class Organisasi extends CI_Controller {
         $org2 = $this->Login_model->view_where('organisasi',$where2)->result();
         $this->session->set_userdata('jabatan',$org[0]->jabatan);
         $this->session->set_userdata('logo',$org2[0]->logo);
+        $this->session->set_userdata('namaOrganisasi',$org2[0]->namaOrganisasi);
         $this->session->set_userdata('idOrganisasi',$idOrganisasi);
     	redirect('Organisasi/show/'.$this->session->jabatan.'/'.$this->session->idOrganisasi);
     }
