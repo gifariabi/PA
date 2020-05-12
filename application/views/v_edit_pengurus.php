@@ -292,6 +292,14 @@
 	</form>
 <?php } ?>
 
+<p align="center">*Contoh Pengurus <br/>
+1. Ketua <br/>
+2. Wakil Ketua <br/>
+3. Sekretaris <br/>
+4. Bendahara <br/>
+5. Dll. </p>
+
+
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
