@@ -510,5 +510,9 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_anggotabaru',$data);
     }
 
+    public function grafikKas(){
+        $this->load->view('v_grafikKas');
+    }
+
 
 }
