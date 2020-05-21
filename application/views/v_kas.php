@@ -270,7 +270,8 @@
 <hr>
 <hr>
 <?php foreach ($data1 as $key1) { ?>
-  <h3><p align="right"><b>SALDO = RP <?php echo $key1->total_kas;?></b></p></h3>
+<p align="right" style="font-family:verdana;"> <b>Saldo</b> </p>
+  <h3><p align="right" style="font-family:verdana;"><b>RP <?php echo $key1->total_kas;?></b></p></h3>
 <?php } ?>
 <center>
 <table>

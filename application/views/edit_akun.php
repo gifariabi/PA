@@ -297,16 +297,16 @@
 	<table style="margin: 20px auto;">
 		<body>
 			<tr>
-				<td>Username SSO</td>
+				<td></td>
         <div class="form-group">
 				<input type="hidden" name="nim" class="form-control" value="<?= $nim ?>">
-				<td><input type="text" name="username" class="form-control" value="<?= $username ?>"></td>
+				<td><input type="hidden" name="username" class="form-control" value="<?= $username ?>"></td>
         </div>
 			</tr>
 			<tr>
-				<td>Password</td>
+				
         <div class="form-group">
-				<td><input type="password" name="password" class="form-control" value="<?= $password ?>"></td>
+				<td><input type="hidden" name="password" class="form-control" value="<?= $password ?>"></td>
         </div>
 			</tr>
 			<tr>
