@@ -11,6 +11,7 @@ class kegiatan extends CI_Controller{
             $this->load->Model('Proker_model');
             $this->load->Model('Model_presensi');
             $this->load->library('form_validation','session');
+            // $this->load->library('upload');
         }
 
         public function index(){
@@ -88,6 +89,14 @@ class kegiatan extends CI_Controller{
                 $params['size'] = '10';
                 $params['savename'] = FCPATH.$config['imagedir'].$image_name;
                 $this->ciqrcode->generate($params);
+
+                // $config['upload_path'] = './asset/kegiatan/';
+                // $config['allowed_type'] = 'jpg | png';
+                // $config['file_name'] = $nama_kegiatan.'.png';
+                // $config['overwrite'] = true;
+                // $config['max_size'] = 1024
+
+                // $this->load->library('upload', $config);
                 //$cek    = $this->Model_daftar->view_where('programkerja',array('id_programkerja'=>$id_programkerja))->result();
                 if($date_now > $date2){
                     $this->session->set_flashdata('tgl', '<div class="alert alert-success">
@@ -95,23 +104,47 @@ class kegiatan extends CI_Controller{
                     </div>');
                     redirect('kegiatan/kegiatan/'.$id_programkerja);
                 }else{
-                    $data = array(
-                        'id_kegiatan' => $id_kegiatan,
-                        'nama_kegiatan' => $nama_kegiatan, 
-                        'waktu' => $waktu,
-                        'tempat' => $tempat,
-                        'harga' => $harga,
-                        'qr_code' => $image_name,
-                        'id_programkerja' => $id_programkerja
-                    );
+                    $config['upload_path'] = './asset/images/kegiatan/';
+                    $config['allowed_type'] = 'jpg|png';
+                    $config['file_name'] = $nama_kegiatan.'.png';
+                    $config['overwrite'] = true;
+                    $config['max_size'] = 1000;
+                    $config['max_width'] = 1000;
+                    $config['max_height'] = 1000;
+
+                    // $this->load->library('upload', $config);
+                    $this->load->library('upload',$config);
+
+                    if($this->upload->do_upload()){
+
+                        $file = $this->upload->data();
+                        $data = array(
+                            'id_kegiatan' => $id_kegiatan,
+                            'nama_kegiatan' => $nama_kegiatan, 
+                            'waktu' => $waktu,
+                            'tempat' => $tempat,
+                            'harga' => $harga,
+                            'foto' => $file['file_name'],
+                            'qr_code' => $image_name,
+                            'id_programkerja' => $id_programkerja
+                        );
+                        $this->Kegiatan_model->data($data,'kegiatan');
+                        $this->session->set_flashdata('msg',
+                        '<div class="alert alert-success">
+                        <h4>Berhasil</h4>
+                        <p> Anda berhasil input jadwal Kegiatan</p>
+                        </div>');
+                        redirect('kegiatan/kegiatan/'.$id_programkerja);
+                    }else{
+                        $this->session->set_flashdata('msg',
+                        '<div class="alert alert-danger">
+                        <h4>Error</h4>
+                        <p> Anda Gagal Upload Foto</p>
+                        </div>');
+                        redirect('kegiatan/kegiatan/'.$id_programkerja);
+                    }
                 }
-                $this->Kegiatan_model->data($data,'kegiatan');
-                $this->session->set_flashdata('msg',
-                '<div class="alert alert-success">
-                <h4>Berhasil</h4>
-                <p> Anda berhasil input jadwal Kegiatan</p>
-                </div>');
-                redirect('kegiatan/kegiatan/'.$id_programkerja);
+                
             }
         }
         public function displaydata(){

@@ -55,7 +55,7 @@
         <!-- Interface -->
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
+      <!-- Nav Item - Pages Collapse  Menu -->
       <?php include('sidebar.php');?>
 
       <!-- Divider -->

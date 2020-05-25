@@ -13,28 +13,28 @@ $pdf->Cell(10, 10, 'Himpunan Mahasiswa Diploma Sistem Informasi');
 $pdf->Cell(10, 20, 'Keluarga Mahasiswa Fakultas Ilmu Terapan');
 $pdf->Text(80, 27, 'Telkom University');
 
-$pdf->SetFont('Arial', 'i', 10);
-$pdf->Text(60, 32, 'Jl.Telekomunikasi Telp/Fax. (022)7506283 Bandung 40257');
-$pdf->Line(10, 35, 200, 35);
+// $pdf->SetFont('Arial', 'i', 10);
+// $pdf->Text(60, 32, 'Jl.Telekomunikasi Telp/Fax. (022)7506283 Bandung 40257');
+// $pdf->Line(10, 35, 200, 35);
 
 $pdf->SetFont('Arial', '', 9);
 
 	$pdf->Text(10, 45, 'No Surat :'.$get->no_suratkeluar );
-	$pdf->Text(10, 50, 'Lampiran : -');
+	// $pdf->Text(10, 50, 'Lampiran : -');
 	$pdf->Text(10, 55, 'Perihal :'.' '.$get->perihal);
-	$pdf->Text(10, 80, 'Yth.');
+	// $pdf->Text(10, 80, 'Yth.');
 	$pdf->Text(10, 84, ''.$get->penerima);
-	$pdf->Text(10, 88, 'Fakultas Ilmu Terapan');
-	$pdf->Text(10, 92, 'di Tempat');
-	$pdf->Text(10, 100, 'Assalamualaikum Wr.Wb.');
-	$pdf->Text(20, 104, 'Sehubungan dengan akan dilaksanakannya kegiatan ini Kami dari Himpunan D3 Sistem Informasi ingin ');
+	// $pdf->Text(10, 88, 'Fakultas Ilmu Terapan');
+	// $pdf->Text(10, 92, 'di Tempat');
+	// $pdf->Text(10, 100, 'Assalamualaikum Wr.Wb.');
+	// $pdf->Text(20, 104, 'Sehubungan dengan akan dilaksanakannya kegiatan ini Kami dari Himpunan D3 Sistem Informasi ingin ');
 	$pdf->Text(10,108,'meminta perwakilan dari '.$get->penerima.' '.'untuk hadir pada acara ini yang akan dilaksanakan pada :');
 	$pdf->Text(10, 112, 'tanggal :'.' '.$get->tanggalkeluar);
 	$pdf->Text(10, 116, 'waktu   : '.$get->waktu);
-	$pdf->Text(10, 120, 'tempat : disesuaikan');
+	// $pdf->Text(10, 120, 'tempat : disesuaikan');
 	
 
-$pdf->Text(20, 124, 'Demikian surat undangan ini kami sampaikan, atas perhatian saudara saya ucapkan terimakasih');
+// $pdf->Text(20, 124, 'Demikian surat undangan ini kami sampaikan, atas perhatian saudara saya ucapkan terimakasih');
 
 $pdf->Text(80,140, 'Mengetahui');
 

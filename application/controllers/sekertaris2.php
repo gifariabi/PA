@@ -5,7 +5,7 @@ class Sekertaris2 extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->helper('url');
-        $this->load->model('model_suratkeluar');
+        $this->load->model('Model_suratkeluar');
         $this->load->library('form_validation');
         $this->load->library('pdf');
 
@@ -21,9 +21,16 @@ class Sekertaris2 extends CI_Controller{
         }
 		    $this->load->view('formsuratkeluar');
     }
+    // public function cetak_tiket($where){
+    //     //$where = array('id' => $id);
+    //     $data['data'] = $this->model_suratkeluar->tampil_pdf($where)->result();
+    //     //$this->load->view('editsuratmasuk',$data);
+    //     $this->load->library('pdf');
+    //     $this->load->view('surat',$data);
+    // }
     public function cetak_surat($where){
-        //$where = array('id' => $id);
-        $data['data'] = $this->model_suratkeluar->tampil_pdf($where)->result();
+        // $where = array('no_tiket' => $no_tiket);
+        $data['data'] = $this->Model_suratkeluar->tampil_pdf($where)->result();
         //$this->load->view('editsuratmasuk',$data);
         $this->load->library('pdf');
         $this->load->view('surat',$data);
@@ -63,7 +70,7 @@ class Sekertaris2 extends CI_Controller{
         //}
     }
     public function inputan($where){
-        $data['data']=$this->model_suratkeluar->tampil($where);
+        $data['data']=$this->Model_suratkeluar->tampil($where);
         //$this->load->database();
         //$jumlah_data = $this->model_suratkeluar->jumlah_data($where);
         //$this->load->library('pagination');

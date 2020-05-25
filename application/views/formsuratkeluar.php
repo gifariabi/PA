@@ -282,7 +282,7 @@
 <center><h1>Surat Keluar</h1>
 
 
-    <a href='<?php echo base_url()."Sekertaris2/inputan/".$this->session->userdata('idOrganisasi') ;?>'>Lihat Data</a>
+    <a href='<?php echo base_url()."Sekertaris2/inputan/".$this->session->userdata('idOrganisasi')."/".$this->session->userdata('nim') ;?>'>Lihat Data</a>
 
 	<!-- <?php if ($this->session->username) { ?>
 	<h4><?= $this->session->namaLengkap ?></h4>

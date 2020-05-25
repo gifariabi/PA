@@ -272,6 +272,7 @@
         <h1 class="h4 text-gray-900 mb-4">Pengajuan Kegiatan</h1>
     </div>
     <div id="notifications" ><?php echo $this->session->flashdata('msg'); ?></div>
+    <!-- <div id="notifications" ><?php echo $this->session->flashdata('error'); ?></div> -->
     </center>
     <!-- <input type="hidden" name="id_programkerja" value=""> -->
     <div class="form-group">
@@ -287,6 +288,9 @@
     </div>
     <div class="form-group">
       <input type="text" name="harga" class="form-control form-control-user" placeholder="Harga">
+    </div>
+    <div class="form-group">
+      <input type="file" name="foto" class="form-control form-control-user" placeholder="Gambar Kegiatan">
     </div>
     <div class="form-group">
     <?php 

@@ -19,28 +19,19 @@ $pdf->Line(10, 35, 200, 35);
 
 $pdf->SetFont('Arial', '', 9);
 
+	$pdf->Text(10,108,'Nama : '.$get->nama);
 	$pdf->Text(10, 45, 'No Tiket :'.$get->no_tiket);
-	$pdf->Text(10, 50, 'Lampiran : -');
-	$pdf->Text(10, 55, 'Perihal :'.' '.$get->waktu);
-	$pdf->Text(10, 80, 'Yth.');
-	$pdf->Text(10, 84, ''.$get->tempat);
-	$pdf->Text(10, 88, 'Fakultas Ilmu Terapan');
-	$pdf->Text(10, 92, 'di Tempat');
-	$pdf->Text(10, 100, 'Assalamualaikum Wr.Wb.');
-	$pdf->Text(20, 104, 'Sehubungan dengan akan dilaksanakannya kegiatan ini Kami dari Himpunan D3 Sistem Informasi ingin ');
-	$pdf->Text(10,108,'meminta perwakilan dari '.$get->nama.' '.'untuk hadir pada acara ini yang akan dilaksanakan pada :');
-	$pdf->Text(10, 112, 'tanggal : ');
-	$pdf->Text(10, 116, 'waktu   : '.$get->email);
-	$pdf->Text(10, 120, 'tempat : disesu');
-	
+	// $pdf->Text(10, 50, 'Lampiran : -');
+	$pdf->Text(10, 55, 'Waktu Pelaksanaan : '.$get->waktu);
+	// $pdf->Text(10, 80, 'Yth.');
+	$pdf->Text(10, 84, 'Tempat Pelaksaan :'.$get->tempat);
+	$pdf->Text(10, 116, 'waktu   : '.$get->email);	
 
-$pdf->Text(20, 124, 'Demikian surat undangan ini kami sampaikan, atas perhatian saudara saya ucapkan terimakasih');
 
-$pdf->Text(80,140, 'Mengetahui');
 
-$pdf->Text(20, 155, 'Ketua HMDSI 2019');
-$pdf->Text(20, 165, $get->jumlah);
-$pdf->Text(20, 170, '67011741212');
+// $pdf->Text(20, 155, 'Ketua HMDSI 2019');
+$pdf->Text(20, 165, 'Harga Tiket :' .$get->jumlah);
+// $pdf->Text(20, 170, '67011741212');
 
 // $pdf->Text(150, 155, 'Ketua Pelaksana');
 // $pdf->Text(150, 165, 'Gifari Abi Waqqash');
