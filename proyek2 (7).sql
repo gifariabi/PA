@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Bulan Mei 2020 pada 16.56
+-- Waktu pembuatan: 20 Bulan Mei 2020 pada 19.02
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -357,8 +357,6 @@ CREATE TABLE `suratkeluar` (
 --
 
 INSERT INTO `suratkeluar` (`id`, `no_suratkeluar`, `penerima`, `tanggalkeluar`, `waktu`, `perihal`, `nim`, `idOrganisasi`) VALUES
-(6, '2112', 'ketua', '11-11-11', '20:12', 'undangan', 670117455, 5),
-(7, '004', 'Ketua Search', '2020-02-01', '16:00', 'Seminar', 670117455, 5),
 (8, '002', 'Ketua Search', '2020-04-03', '19:00', 'Ulang tahun Himpunan', 670117410, 1),
 (9, '004', 'Ketua Wapala', '2020-10-03', '19:00', 'Seminar', 670117410, 1),
 (10, '003', 'Ketua Search', '2020-01-01', '20:00', 'Seminar Pembangunan', 670117410, 1);
@@ -672,8 +670,8 @@ ALTER TABLE `rapat`
 -- Ketidakleluasaan untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
-  ADD CONSTRAINT `fk_idorganisasi3` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
-  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`);
+  ADD CONSTRAINT `fk_idorganisasi3` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tiket`
