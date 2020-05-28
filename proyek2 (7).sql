@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Bulan Mei 2020 pada 19.02
+-- Waktu pembuatan: 28 Bulan Mei 2020 pada 14.28
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -55,7 +55,31 @@ INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
 (670117403, 'Gifari Abi Waqqash', 1, 'Anggota Divisi Olahraga'),
 (670117410, 'Muhammad Luqman', 1, 'Sekertaris'),
 (670117410, 'Muhammad Luqman', 5, 'Anggota Divisi Dalam Negeri'),
-(670117455, 'Eko Adinata', 5, 'Sekertaris');
+(670117455, 'Eko Adinata', 5, 'Sekertaris'),
+(670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Sosial');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `berita`
+--
+
+CREATE TABLE `berita` (
+  `id_berita` int(11) NOT NULL,
+  `judul` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `isi` text COLLATE utf8_bin,
+  `gambar` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data untuk tabel `berita`
+--
+
+INSERT INTO `berita` (`id_berita`, `judul`, `isi`, `gambar`, `tanggal`) VALUES
+(1, 'Anak Yang Terasingkan', 'Anak terlihat diasingkan di depan pertokoan', 'bagan.PNG', '2020-05-28 05:32:23'),
+(2, 'Luxurious 2020', 'Mengundang onadio', 'index.png', '2020-05-28 05:35:35'),
+(3, 'Ragam Kriteria Daerah yang Boleh Terapkan New Normal di Tengah Wabah', 'Pemerintah tengah menggodok protokol tatanan normal yang baru atau new normal di tengah pandemi virus Corona baru (COVID-19). Ada dua kriteria daerah yang akan menerapkan new normal.\r\n\"Adapun untuk daerah yang nantinya akan dibuka, dapat kami sampaikan ada 2 kriteria di sini,\" kata Ketua Gugus Tugas Penanganan COVID-19 Doni Monardo saat konferensi pers di YouTube Setpres, Rabu (25/7/2020).\r\n\r\nKriteria pertama adalah daerah-daerah yang sama sekali belum ada kasus Corona. Tercatat, terdapat sebanyak 110 kabupaten/kota di mana terdiri dari 87 di wilayah daratan, dan 23 di wilayah kepulauan, kemudian kecuali Papua.\r\n\"Makanya yang akan nantinya diberikan tawaran untuk membuka adalah 87 kabupaten/kota, yaitu 65 di wilayah daratan, dan 22 di wilayah kepulauan,\" jelas Doni.\r\nDoni mengatakan daerah-daerah yang akan dibuka atau dilonggarkan aktivitasnya adalah daerah yang nyaris steril. Meski begitu, Doni meminta semua daerah tetap waspada dari Corona.\r\n\r\n\"Daerah-daerah ini nyaris steril dari ancaman COVID, tetapi belum tentu selamanya akan tetap aman,\" ucapnya.\r\n\r\nAlasan mengapa daerah itu nyaris steril dari kasus Corona adalah tingginya tingkat kesadaran masyarakat dan kepatuhan masyarakat terhadap protokol kesehatan. Daerah ini, kata Doni, juga daerah yang jarang dikunjungi oleh wisatawan asing.\r\n\r\n\"Minggu lalu kami telah komunikasi dengan para pimpinan dan bupati, wali kota tentang kenapa daerah mereka aman COVID, setelah pemaparan yang diberikan, maka dapat disimpulkan bahwa yang pertama tingkat kesadaran dan kepatuhan masyarakat tinggi, kemudian kerja sama antar-tokoh di daerah, baik pemerintah daerah maupun unsur tokoh nonformal lainnya sampai tingkat RT dan RW,\" jelasnya.', '2682f0ab-0b82-4729-bd16-9218e56c5121_169.jpeg', '2020-05-28 06:01:28');
 
 -- --------------------------------------------------------
 
@@ -141,17 +165,22 @@ CREATE TABLE `kegiatan` (
   `tempat` varchar(255) COLLATE utf8_bin NOT NULL,
   `harga` varchar(255) COLLATE utf8_bin NOT NULL,
   `qr_code` varchar(255) COLLATE utf8_bin NOT NULL,
-  `id_programkerja` int(10) NOT NULL
+  `foto` varchar(255) COLLATE utf8_bin NOT NULL,
+  `id_programkerja` int(10) NOT NULL,
+  `upload_lpj` tinyint(255) DEFAULT '0' COMMENT '1 = sudah upload , 0 belum upload'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data untuk tabel `kegiatan`
 --
 
-INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `harga`, `qr_code`, `id_programkerja`) VALUES
-(14, 'Seminar Android', '2020-05-05', 'Aula Fakultas Ilmu Terapan', '20000', 'Seminar UX .png', 10),
-(15, 'Bakti Sosial COVID 19', '2020-05-05', 'Telkom University', '20000', 'Bakti Sosial COVID 19.png', 11),
-(16, 'Voli Competition', '2020-06-07', 'Batununggal Sport Center', '20000', 'Voli Competition.png', 5);
+INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `harga`, `qr_code`, `foto`, `id_programkerja`, `upload_lpj`) VALUES
+(14, 'Seminar Android', '2020-05-05', 'Aula Fakultas Ilmu Terapan', '20000', 'Seminar UX .png', '', 10, 1),
+(15, 'Bakti Sosial COVID 19', '2020-05-05', 'Telkom University', '20000', 'Bakti Sosial COVID 19.png', '', 11, 0),
+(16, 'Voli Competition', '2020-06-07', 'Batununggal Sport Center', '20000', 'Voli Competition.png', '', 5, 1),
+(19, 'Sepak Bola Bersama', '2020-07-08', 'Batununggal Sport Center', '10000', 'Sepak Bola Bersama.png', '', 7, 1),
+(20, 'MANIAC 2021', '2021-08-08', 'Batununggal Sport Center', '20000', 'MANIAC 2021.png', '', 7, 0),
+(21, 'Badminton Competition', '2020-05-14', 'Aula Fakultas Ilmu Terapan', '20000', 'Badminton Competition.png', '', 7, 0);
 
 -- --------------------------------------------------------
 
@@ -187,7 +216,9 @@ CREATE TABLE `lpj` (
 --
 
 INSERT INTO `lpj` (`id_lpj`, `file`, `id_kegiatan`) VALUES
-(1, '', 16);
+(3, '9586_TP32.pdf', 16),
+(4, '6701174033_Registrasi___Telkom_University1.pdf', 19),
+(5, '6701174033_GifariAbiWaqqash_D3MI4103_TAMODUL3.pdf', 14);
 
 -- --------------------------------------------------------
 
@@ -267,7 +298,8 @@ INSERT INTO `pengurus` (`nim`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`
 (670117455, 'Eko Adinata', 'Sekertaris', 5, 1),
 (670117410, 'Muhammad Luqman', 'Sekertaris', 1, 1),
 (670117410, 'Muhammad Luqman', 'Kepala Divisi Dalam Negeri', 5, 1),
-(670117403, 'Gifari Abi Waqqash', '', 1, 1);
+(670117403, 'Gifari Abi Waqqash', '', 1, 1),
+(670117400, 'Yusril Wahyuda', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -328,12 +360,14 @@ CREATE TABLE `rapat` (
 --
 
 INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `waktu`, `kategori`, `nim`) VALUES
-(9, 'Rapat Rutin', 'Aula Fakultas Ilmu Terapan', '2020-01-02', '16:00', '', 670117410),
-(10, 'Rapat bersama DPM', 'G6 FIT', '2020-05-03', '19:00', '', 670117410),
-(11, 'Pemaparan Progress', 'A1 FIT', '2020-06-05', '19:00', '', 670117410),
-(12, 'Rapat bersama DPM', 'Aula Fakultas Ilmu Terapan', '2020-04-21', '04:00', '', 670117410),
-(13, 'Rapat bersama DPM', 'Aula Fakultas Ilmu Terapan', '2020-01-02', '16:00', '', 670117410),
-(14, 'MANIAC ', 'Aula Fakultas Ilmu Terapan', '2020-04-28', '19:00', 'on', 670117410);
+(14, 'MANIAC ', 'Aula Fakultas Ilmu Terapan', '2020-05-28', '19:00', 'Pengurus', 670117410),
+(15, 'Rapat Rutin', 'Aula Fakultas Ilmu Terapan', '2020-06-05', '19:00', 'Pengurus', 670117410),
+(16, 'Rapat Rutin', 'Sekretariat ', '2020-07-05', '19:00', 'Pengurus', 670117410),
+(17, 'Rapat Rutin', 'Aula Fakultas Ilmu Terapan', '2020-06-05', '19:00', 'Pengurus', 670117410),
+(18, 'Rapat Rutin', 'Aula Fakultas Ilmu Terapan', '2020-06-05', '19:00', 'Pengurus dan Anggota', 670117410),
+(19, 'Pemaparan Progress', 'Sekretariat ', '2020-06-04', '19:00', 'Pengurus', 670117410),
+(20, 'Pemaparan Progress', 'Sekretariat ', '2020-06-04', '19:00', 'Pengurus', 670117410),
+(21, 'MANIAC ', 'Sekretariat ', '2020-02-01', '19:00', 'Pengurus', 670117410);
 
 -- --------------------------------------------------------
 
@@ -357,9 +391,9 @@ CREATE TABLE `suratkeluar` (
 --
 
 INSERT INTO `suratkeluar` (`id`, `no_suratkeluar`, `penerima`, `tanggalkeluar`, `waktu`, `perihal`, `nim`, `idOrganisasi`) VALUES
-(8, '002', 'Ketua Search', '2020-04-03', '19:00', 'Ulang tahun Himpunan', 670117410, 1),
-(9, '004', 'Ketua Wapala', '2020-10-03', '19:00', 'Seminar', 670117410, 1),
-(10, '003', 'Ketua Search', '2020-01-01', '20:00', 'Seminar Pembangunan', 670117410, 1);
+(6, '2112', 'ketua', '11-11-11', '20:12', 'undangan', 670117455, 5),
+(7, '004', 'Ketua Search', '2020-02-01', '16:00', 'Seminar', 670117455, 5),
+(12, '002', 'Ketua Search', '2020-01-01', '19:00', 'Seminar', 670117410, 1);
 
 -- --------------------------------------------------------
 
@@ -405,7 +439,9 @@ CREATE TABLE `tiket` (
 --
 
 INSERT INTO `tiket` (`no_tiket`, `nama`, `nim`, `jurusan`, `email`, `jumlah`, `total`, `metode_pembayaran`, `status`, `id_kegiatan`) VALUES
-(12, 'Shinta Fitria', '6701174233', 'D3 Sistem Informasi', 'shintafitria2@gmail.com', '2', '40000', 'Transfer', 'Accepted', 14);
+(12, 'Shinta Fitria', '6701174233', 'D3 Sistem Informasi', 'shintafitria2@gmail.com', '2', '40000', 'Transfer', 'Accepted', 14),
+(13, 'GIfari Abi Waqqash', '6701174033', 'D3 Sistem Informasi', 'gifariabi75@gmail.com', '2', '40000', 'Cash', 'Accepted', 14),
+(14, 'Eko', '6701174033', 'SI Teknik Informatika', 'gifariabi75@gmail.com', '2', '40000', 'Transfer', 'Accepted', 14);
 
 -- --------------------------------------------------------
 
@@ -436,6 +472,12 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 ALTER TABLE `ang_organisasi`
   ADD KEY `fk_idOrganisasi` (`idOrganisasi`),
   ADD KEY `fk_nim_anggota` (`nim`);
+
+--
+-- Indeks untuk tabel `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id_berita`);
 
 --
 -- Indeks untuk tabel `datauser`
@@ -539,6 +581,12 @@ ALTER TABLE `tiket`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT untuk tabel `departemen`
 --
 ALTER TABLE `departemen`
@@ -554,13 +602,13 @@ ALTER TABLE `kas`
 -- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `lpj`
 --
 ALTER TABLE `lpj`
-  MODIFY `id_lpj` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_lpj` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `organisasi`
@@ -584,13 +632,13 @@ ALTER TABLE `programkerja`
 -- AUTO_INCREMENT untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `tahun_ajaran`
@@ -602,7 +650,7 @@ ALTER TABLE `tahun_ajaran`
 -- AUTO_INCREMENT untuk tabel `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -670,8 +718,8 @@ ALTER TABLE `rapat`
 -- Ketidakleluasaan untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
-  ADD CONSTRAINT `fk_idorganisasi3` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_idorganisasi3` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
+  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`);
 
 --
 -- Ketidakleluasaan untuk tabel `tiket`

@@ -93,6 +93,43 @@ class Organisasi extends CI_Controller {
         $this->session->set_userdata('jabatan',$jabatan);
         $this->load->view('dashboard'.$this->session->$jabatan,$data);
     }
+    function berita(){
+        $this->load->view('v_post_news');
+    }
+    function simpan_post(){
+        $config['upload_path'] = './asset/images/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+        $config['ecnrypt_name'] = TRUE;
+
+        $this->upload->initialize($config);
+        if(!empty($_FILES['filefoto']['name'])){
+            if($this->upload->do_upload('filefoto')){
+                $gbr = $this->upload->data();
+
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = './asset/images/'.$gbr['file_name'];
+                $config['create_thumb'] = FALSE;
+                $config['maintain_ratio'] = FALSE;
+                $config['quality'] = '60%';
+                $config['width'] = 710;
+                $config['height'] = 420;
+                $config['new_image'] = './asset/images/'.$gbr['file_name'];
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
+
+                $gambar = $gbr['file_name'];
+                $jdl = $this->input->post('judul');
+                $berita = $this->input->post('berita');
+
+                $this->Model_berita->simpan_berita($jdl,$berita,$gambar);
+                redirect('Organisasi/lists');
+            }else{
+                redirect('Organisasi/berita/');
+            }
+        }else{
+            redirect('Organisasi/berita/');
+        }
+    }
 
     public function set_proker()
     {
