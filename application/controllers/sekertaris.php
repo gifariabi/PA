@@ -6,6 +6,7 @@ class Sekertaris extends CI_Controller{
 		$this->load->helper(array('form', 'url','file'));
         $this->load->model('Modelnya');
         $this->load->model('Model_suratkeluar');
+        $this->load->model('Model_berita');
         $this->load->library('form_validation','pdf','session');
 	}
 
@@ -49,6 +50,10 @@ class Sekertaris extends CI_Controller{
         $this->load->view('permintaan_surat');
     }
 
+    function lists(){
+        $x['data'] = $this->Model_berita->get_all_berita();
+        $this->load->view('dashboard',$x);
+    }
 	function aspirasi(){
 		$this->load->view('form_Aspirasi');
 	}

@@ -10,6 +10,7 @@ class Organisasi extends CI_Controller {
 		$this->load->Model('Model_daftar');
 		$this->load->Model('Model_ormawa');
         $this->load->Model('Login_model');
+        $this->load->model('Model_berita');
         $this->load->library('form_validation');
 	}
 
@@ -87,6 +88,8 @@ class Organisasi extends CI_Controller {
             }            
         }
         $data['departemen'] = $this->Model_ormawa->departemenOrganisasi($this->session->userdata('idOrganisasi'))->result();
+        $data['data'] = $this->Model_berita->get_all_berita();
+        // $this->load->view('dashboard',$x);
         $this->session->set_userdata('jabatan',$jabatan);
         $this->load->view('dashboard'.$this->session->$jabatan,$data);
     }

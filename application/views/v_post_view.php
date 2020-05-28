@@ -1,7 +1,10 @@
-    <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
 <head>
 </head>
+<body>
+
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -55,6 +58,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <?php include('sidebar.php');?>
+
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -258,184 +262,47 @@
 
         </nav>
         <!-- End of Topbar -->
+
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-          <!-- Page Heading -->
-          
-          <!-- Content Row -->
-        
-
-          <!-- Content Row -->
-
-          <div class="row">
-
-            <!-- Area Chart -->
-            <div class="col-xl-4 col-lg-6">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Universitas Telkom</h6>
-                </div>
-                <br>
-                <!-- Card Body -->
-                <div class="text">
-                  <div class="text">
-                    <center><img src="<?php echo base_url('asset/images/ormawa/telkom.png')?>" width="100" height="100"></center><br>
-                    <p align="justify">Universitas Telkom, atau disingkat Tel-U, adalah sebuah perguruan tinggi swasta di Indonesia. Kampus utama Tel-U terletak di Kabupaten Bandung, Jawa Barat, tepatnya di Jalan Telekomunikasi - Terusan Buahbatu, di kawasan Bandung Technoplex (BT-Plex). Kampus lainnya berlokasi di daerah Gegerkalong Hilir, sebelah utara Kota Bandung, di kompleks perkantoran PT. Telkom .</p><br>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Visi dan Misi</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="text">
-                  <div class="text">
-                    <b>Visi</b><br>
-
-                    <p align="justify">Menjadi research and entrepreneurial university pada tahun 2023, yang berperan aktif dalam pengembangan teknologi, sains dan seni berbasis teknologi informasi<br></p>
-
-                    <b>Misi</b><br>
-
-                    1. Menyelenggarakan dan mengembangkan pendidikan berstandar internasional berbasis teknologi informasi.<br>
-                    2. Mengembangkan, menyebarluaskan dan menerapkan teknologi, sains dan seni yang diakui secara internasional<br>
-                    3. Memanfaatkan teknologi, sains dan seni untuk kesejahteraan dan kemajuan peradaban bangsa melalui pengembangan kompetensi entrepreneurial
-                  </div>
-                 
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-6">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Organisasi Mahasiswa</h6>
-                </div>
-                <br>
-                <!-- Card Body -->
-                <div class="text">
-                  <div class="text">
-                    <center><img src="<?php echo base_url('asset/images/ormawa/'.$this->session->userdata('logo'))?>" width="80" height="80"></center><br>
-                    <p align="justify">Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik, <?php echo $this->session->userdata('namaOrganisasi')?> juga tempat belajar bagaimana mengasah potensi non-akademik yang ada pada diri kita.</p>
-                    <p align="justify">Aplikasi ini diharapkan mampu untuk membantu organisasi mahasiswa dalam menjalankan kepengurusan organisasi</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <!-- Area Chart -->
-            <div class="col-xl-6 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                <form action="" method="get">
-                <!-- <h1>Pengajuan Kegiatan</h1> -->
-                  <div class="text-center">
-                      <h1 class="h4 text-gray-900 mb-4">Pengajuan Kegiatan</h1>
-                  </div>
-                  <div class="form-group">
-                    <select name="departemen" id="departemen" class="form-control form-control-user">
-                      <option value="">Departemen</option>
-                      <?php foreach ($departemen as $i) { ?>
-                        <option value="<?= $i->departemen?>"><?= $i->departemen?></option>
-                      <?php }?>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <select name="proker" id="proker" class="form-control form-control-user">
-                      <option value="">Proker</option>
-                    </select>
-                  </div>
-
-                  <input type="submit" name="submit" value="Input" class="btn btn-success btn-user " placeholder="input">
-                </form>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-7">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3">
-                  <?php
-                  if ($proker == null) {?>
-                    <h6 class="m-0 font-weight-bold text-primary">Persentase </h6>
-                    
-                  <?php }else{ ?>
-                    <h6 class="m-0 font-weight-bold text-primary"><?= $proker?> Persentase</h6>
-                    
-                  <?php }?>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4">
-                    <script>
-                      var datapie = JSON.parse(`<?= $chart ?>`);
-                    </script>
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row text-center">
-          <div class="col-xl-4 col-lg-6">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <?php
-                  function limit_words($string, $word_limit){
-                    $words = explode(" ",$string);
-                    return implode(" ",array_splice($words,0,$word_limit));
-                  }
-                  foreach ($data->result_array() as $i) :
-                    $id=$i['id_berita'];
-                    $judul=$i['judul'];
-                    $image=$i['gambar'];
-                    $isi=$i['isi'];
-                ?>
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary"><?php echo $judul;?></h6>
-                </div>
-                <br>
-                <!-- Card Body -->
-                <div class="text">
-                  <div class="text">
-                    <center><img src="<?php echo base_url().'asset/images/'.$image;?>" width="400" height="200"></center><br>
-                    <p align="justify"><?php echo limit_words($isi,30);?><a href="<?php echo base_url().'index.php/post_berita/view/'.$id;?>"> Selengkapnya ></a></p><br>
-                  </div>
-                </div>
-                <?php endforeach;?>
-              </div>
-            </div>
-            </div>
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Content Column -->
-            <div class="col-lg-6 mb-4">
-              
-             
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head> -->
+<?php
+    $b=$data->row_array();
+?>
+<head>
+    <title><?php echo $b['berita_judul'];?></title>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/bootstrap.css'?>">
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+            <h2><?php echo $b['judul'];?></h2><hr/>
+            <img src="<?php echo base_url().'asset/images/'.$b['gambar'];?>">
+            <p><?php echo $b['isi'];?></p><br>
+        </div>
+         
+    </div>
+ 
+    <script src="<?php echo base_url().'assets/jquery/jquery-2.2.3.min.js'?>"></script>
+    <script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.js'?>"></script>   
+    <!-- <a href="<?php echo base_url().'index.php/inventaris/index';?>">Tambah Data</a> -->
+    <!-- <a href="<?= base_url(); ?>index.php/inventaris/index">Kembali ke Menu</a> -->
+    <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
+</center>
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy;</span>
+            <span>Copyright &copy; HMDSI 2019</span>
           </div>
         </div>
       </footer>
@@ -446,7 +313,12 @@
 
   </div>
   <!-- End of Page Wrapper -->
-  
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -471,33 +343,16 @@
   <script src="<?php echo base_url().'asset/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url().'asset/masuk/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url().'asset/masuk/js/sb-admin-2.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/js/sb-admin-2.min.js'?>"></script>
 
   <!-- Page level plugins -->
-  <script src="<?php echo base_url().'asset/masuk/vendor/chart.js/Chart.min.js'?>"></script>
-  <script src="<?php echo base_url().'asset/masuk/vendor/chart.js/Chart.js'?>"></script>
+  <script src="<?php echo base_url().'asset/chartjs/Chart.min.js'?>"></script>
 
   <!-- Page level custom scripts -->
-  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-pie-proker.js'?>"></script>
-  <script>
-  $(document).ready(function() {
-    $('#departemen').change(function() {
-        var departemen_id = $('#departemen').val();
-        if (departemen_id != '') {
-            $.ajax({
-              url: "<?php echo base_url()?>Organisasi/set_proker/",
-              method: "POST",
-              data: { departemen_id:departemen_id },
-              success: function(data) {
-                  $('#proker').html(data);
-              }
-            });
-        }
-    })
-  })
-  </script>
+  <script src="<?php echo base_url().'asset/js/demo/chart-area-demo.js'?>"></script>
+  <script src="<?php echo base_url().'asset/js/demo/chart-pie-demo.js'?>"></script>
 </body>
 </html>
