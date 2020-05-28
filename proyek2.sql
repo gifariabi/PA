@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Bulan Mei 2020 pada 14.28
+-- Waktu pembuatan: 28 Bulan Mei 2020 pada 15.06
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -53,7 +53,6 @@ CREATE TABLE `ang_organisasi` (
 
 INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
 (670117403, 'Gifari Abi Waqqash', 1, 'Anggota Divisi Olahraga'),
-(670117410, 'Muhammad Luqman', 1, 'Sekertaris'),
 (670117410, 'Muhammad Luqman', 5, 'Anggota Divisi Dalam Negeri'),
 (670117455, 'Eko Adinata', 5, 'Sekertaris'),
 (670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Sosial');
@@ -297,8 +296,7 @@ INSERT INTO `pengurus` (`nim`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`
 (670117403, 'Gifari Abi Waqqash', 'Kepala Divisi Luar Negeri', 5, 1),
 (670117455, 'Eko Adinata', 'Sekertaris', 5, 1),
 (670117410, 'Muhammad Luqman', 'Sekertaris', 1, 1),
-(670117410, 'Muhammad Luqman', 'Kepala Divisi Dalam Negeri', 5, 1),
-(670117403, 'Gifari Abi Waqqash', '', 1, 1),
+(670117403, 'Gifari Abi Waqqash', 'Bendahara', 1, 1),
 (670117400, 'Yusril Wahyuda', '', 1, 1);
 
 -- --------------------------------------------------------
@@ -355,20 +353,6 @@ CREATE TABLE `rapat` (
   `nim` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dumping data untuk tabel `rapat`
---
-
-INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `waktu`, `kategori`, `nim`) VALUES
-(14, 'MANIAC ', 'Aula Fakultas Ilmu Terapan', '2020-05-28', '19:00', 'Pengurus', 670117410),
-(15, 'Rapat Rutin', 'Aula Fakultas Ilmu Terapan', '2020-06-05', '19:00', 'Pengurus', 670117410),
-(16, 'Rapat Rutin', 'Sekretariat ', '2020-07-05', '19:00', 'Pengurus', 670117410),
-(17, 'Rapat Rutin', 'Aula Fakultas Ilmu Terapan', '2020-06-05', '19:00', 'Pengurus', 670117410),
-(18, 'Rapat Rutin', 'Aula Fakultas Ilmu Terapan', '2020-06-05', '19:00', 'Pengurus dan Anggota', 670117410),
-(19, 'Pemaparan Progress', 'Sekretariat ', '2020-06-04', '19:00', 'Pengurus', 670117410),
-(20, 'Pemaparan Progress', 'Sekretariat ', '2020-06-04', '19:00', 'Pengurus', 670117410),
-(21, 'MANIAC ', 'Sekretariat ', '2020-02-01', '19:00', 'Pengurus', 670117410);
-
 -- --------------------------------------------------------
 
 --
@@ -392,8 +376,7 @@ CREATE TABLE `suratkeluar` (
 
 INSERT INTO `suratkeluar` (`id`, `no_suratkeluar`, `penerima`, `tanggalkeluar`, `waktu`, `perihal`, `nim`, `idOrganisasi`) VALUES
 (6, '2112', 'ketua', '11-11-11', '20:12', 'undangan', 670117455, 5),
-(7, '004', 'Ketua Search', '2020-02-01', '16:00', 'Seminar', 670117455, 5),
-(12, '002', 'Ketua Search', '2020-01-01', '19:00', 'Seminar', 670117410, 1);
+(7, '004', 'Ketua Search', '2020-02-01', '16:00', 'Seminar', 670117455, 5);
 
 -- --------------------------------------------------------
 
@@ -712,14 +695,14 @@ ALTER TABLE `programkerja`
 -- Ketidakleluasaan untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`);
+  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
   ADD CONSTRAINT `fk_idorganisasi3` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
-  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`);
+  ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tiket`
