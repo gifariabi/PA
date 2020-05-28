@@ -389,6 +389,9 @@
               </div>
             </div>
           </div>
+          
+          <!-- Content Row -->
+          <div class="row">
           <div class="row text-center">
           <div class="col-xl-4 col-lg-6">
               <div class="card shadow mb-4">
@@ -411,16 +414,17 @@
                 <!-- Card Body -->
                 <div class="text">
                   <div class="text">
-                    <center><img src="<?php echo base_url().'asset/images/'.$image;?>" width="400" height="200"></center><br>
-                    <p align="justify"><?php echo limit_words($isi,30);?><a href="<?php echo base_url().'index.php/post_berita/view/'.$id;?>"> Selengkapnya ></a></p><br>
+                    <center><img src="<?php echo base_url().'asset/images/'.$image;?>" width="200" height="200"></center><br>
+                    <p align="justify"><?php echo limit_words($isi,30);?><a href="<?php echo base_url().'index.php/post_berita/view/'.$id;?>"> Selengkapnya ></a></p>
                   </div>
                 </div>
                 <?php endforeach;?>
               </div>
             </div>
             </div>
-          <!-- Content Row -->
-          <div class="row">
+            </div>
+            
+
 
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
