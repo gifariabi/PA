@@ -93,8 +93,17 @@ class Organisasi extends CI_Controller {
         $this->session->set_userdata('jabatan',$jabatan);
         $this->load->view('dashboard'.$this->session->$jabatan,$data);
     }
+    function error(){
+        $this->load->view('home');
+    }
     function berita(){
-        $this->load->view('v_post_news');
+        $newdata = $this->session->userdata('jabatan');
+        if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
+            $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
+            redirect('Organisasi/error');
+        }else{
+            $this->load->view('v_post_news');
+        }
     }
     function simpan_post(){
         $config['upload_path'] = './asset/images/';
