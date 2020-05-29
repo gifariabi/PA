@@ -29,7 +29,7 @@
 <center><h1>Organisasi</h1>
 <img src="<?php echo base_url('asset/images/ormawa/'.$key->logo)?>" width="300" height="300">
 <center>
-<?php echo $key->deskripsi; ?>
+
 <br>
 <?php if ($this->session->nim == 0) { ?>
   <a href="<?php echo base_url('Ormawa/tampil_anggotaBK/'.$key->idOrganisasi)?> " class="btn btn-success">Lihat Anggota</a>
@@ -37,7 +37,7 @@
   <a href="<?php echo base_url('Ormawa/tampil_pengurusBK/'.$key->idOrganisasi)?>" class="btn btn-success">Lihat Pengurus</a>
 <?php } ?>
 </center>
-
+<?php echo $key->deskripsi; ?>
 <?php } ?>
 
   <!-- Bootstrap core JavaScript -->
