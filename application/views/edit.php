@@ -266,7 +266,7 @@
 <body>
 <center>
 <?php foreach ($data as $key) { ?>
-<form action="<?php echo base_url().'Kegiatan/update';?>" method="post">
+<form action="<?php echo base_url().'Kegiatan/update';?>" method="post" enctype="multipart/form-data">
 <!-- <h1>Pengajuan Kegiatan</h1> -->
 <div class="text-center">
         <h1 class="h4 text-gray-900 mb-4">Pengajuan Kegiatan</h1>
@@ -284,6 +284,9 @@
     </div>
     <div class=form-group>
       <input type="harga" name="harga" class="form-control form-control-user" placeholder="Harga" value="<?php echo $key->harga; ?>">
+    </div>
+    <div class="form-group">
+      <input type="file" name="foto" class="form-control form-control-user" required>
     </div>
     
     <input type="hidden" name="id_programkerja" class="form-control form-control-user" value="<?= $key->id_programkerja ?>">

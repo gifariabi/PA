@@ -11,7 +11,7 @@ class kegiatan extends CI_Controller{
             $this->load->Model('Proker_model');
             $this->load->Model('Model_presensi');
             $this->load->library('form_validation','session');
-            // $this->load->library('upload');
+            $this->load->library('upload');
         }
 
         public function index(){
@@ -95,6 +95,7 @@ class kegiatan extends CI_Controller{
                 // $config['file_name'] = $nama_kegiatan.'.png';
                 // $config['overwrite'] = true;
                 // $config['max_size'] = 1024
+                
 
                 // $this->load->library('upload', $config);
                 //$cek    = $this->Model_daftar->view_where('programkerja',array('id_programkerja'=>$id_programkerja))->result();
@@ -104,46 +105,24 @@ class kegiatan extends CI_Controller{
                     </div>');
                     redirect('kegiatan/kegiatan/'.$id_programkerja);
                 }else{
-                    $config['upload_path'] = './asset/images/kegiatan/';
-                    $config['allowed_type'] = 'jpg|png';
-                    $config['file_name'] = $nama_kegiatan.'.png';
-                    $config['overwrite'] = true;
-                    $config['max_size'] = 1000;
-                    $config['max_width'] = 1000;
-                    $config['max_height'] = 1000;
-
-                    // $this->load->library('upload', $config);
-                    $this->load->library('upload',$config);
-
-                    if($this->upload->do_upload()){
-
-                        $file = $this->upload->data();
-                        $data = array(
-                            'id_kegiatan' => $id_kegiatan,
-                            'nama_kegiatan' => $nama_kegiatan, 
-                            'waktu' => $waktu,
-                            'tempat' => $tempat,
-                            'harga' => $harga,
-                            'foto' => $file['file_name'],
-                            'qr_code' => $image_name,
-                            'id_programkerja' => $id_programkerja
-                        );
-                        $this->Kegiatan_model->data($data,'kegiatan');
-                        $this->session->set_flashdata('msg',
-                        '<div class="alert alert-success">
-                        <h4>Berhasil</h4>
-                        <p> Anda berhasil input jadwal Kegiatan</p>
-                        </div>');
-                        redirect('kegiatan/kegiatan/'.$id_programkerja);
-                    }else{
-                        $this->session->set_flashdata('msg',
-                        '<div class="alert alert-danger">
-                        <h4>Error</h4>
-                        <p> Anda Gagal Upload Foto</p>
-                        </div>');
-                        redirect('kegiatan/kegiatan/'.$id_programkerja);
-                    }
-                }
+                    $data = array(
+                        'id_kegiatan' => $id_kegiatan,
+                        'nama_kegiatan' => $nama_kegiatan, 
+                        'waktu' => $waktu,
+                        'tempat' => $tempat,
+                        'harga' => $harga,
+                        'qr_code' => $image_name,
+                        'id_programkerja' => $id_programkerja
+                    );
+                    $this->Kegiatan_model->data($data,'kegiatan');
+                    $this->session->set_flashdata('msg',
+                    '<div class="alert alert-success">
+                    <h4>Berhasil</h4>
+                    <p> Anda berhasil input jadwal Kegiatan</p>
+                    </div>');
+                    redirect('Kegiatan/kegiatan/'.$id_programkerja);
+                            
+                }        
                 
             }
         }
@@ -186,21 +165,50 @@ class kegiatan extends CI_Controller{
             $this->load->view('edit',$data);
         }
         public function update(){
-            $id = $this->input->post('id_kegiatan');
-            $nama_kegiatan = $this->input->post('nama_kegiatan');
-            $waktu = $this->input->post('waktu');
-            $tempat = $this->input->post('tempat');
+            $config['upload_path'] = './asset/images/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+            $config['ecnrypt_name'] = TRUE;
 
-            $data = array('nama_kegiatan' => $nama_kegiatan, 
-                'waktu' => $waktu,
-                'tempat' => $tempat 
-            );
+            $this->upload->initialize($config);
+            if(!empty($_FILES['foto']['name'])){
+                if($this->upload->do_upload('foto')){
+                    $gbr = $this->upload->data();
 
-            $where = array(
-                'id_kegiatan' => $id
-            );
-            $this->Kegiatan_model->update_data($where,$data,'kegiatan');
-            redirect('kegiatan/displaydata');
+                    $config['image_library'] = 'gd2';
+                    $config['source_image'] = './asset/images/'.$gbr['file_name'];
+                    $config['create_thumb'] = FALSE;
+                    $config['maintain_ratio'] = FALSE;
+                    $config['quality'] = '60%';
+                    $config['width'] = 710;
+                    $config['height'] = 420;
+                    $config['new_image'] = './asset/images/'.$gbr['file_name'];
+                    $this->load->library('image_lib', $config);
+                    $this->image_lib->resize();
+
+                    $id = $this->input->post('id_kegiatan');
+                    $nama_kegiatan = $this->input->post('nama_kegiatan');
+                    $waktu = $this->input->post('waktu');
+                    $tempat = $this->input->post('tempat');
+                    $gambar = $gbr['file_name'];
+                    $data = array(
+                        'nama_kegiatan' => $nama_kegiatan, 
+                        'waktu' => $waktu,
+                        'tempat' => $tempat,
+                        'foto' => $gambar
+                    );
+
+                    $where = array(
+                        'id_kegiatan' => $id
+                    );
+                    $this->Kegiatan_model->update_data($where,$data,'kegiatan');
+                    redirect('kegiatan/displaydata');
+                }else{
+                    redirect('Kegiatan');
+                }
+            }else{
+                redirect('Kegiatan');
+            }
+
         }
 
         public function presensi($where){

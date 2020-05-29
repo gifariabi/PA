@@ -289,9 +289,7 @@
     <div class="form-group">
       <input type="text" name="harga" class="form-control form-control-user" placeholder="Harga">
     </div>
-    <div class="form-group">
-      <input type="file" name="foto" class="form-control form-control-user" placeholder="Gambar Kegiatan">
-    </div>
+    
     <div class="form-group">
     <?php 
 if(is_array($data) || is_object($data)){
