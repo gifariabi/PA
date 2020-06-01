@@ -33,7 +33,7 @@
 
             if ($this->form_validation->run() === false) {
                 $this->session->set_flashdata('error', 'Data tidak sesusai');
-                $this->load->view('input_proker');
+                redirect('programkerja/kegiatan/'.$this->session->userdata('idOrganisasi'));
             }
             else {
                 $nama = $this->input->post('namaproker');

@@ -1,4 +1,4 @@
-<?php 
+ <?php 
     class Tiket extends CI_Controller{
         public function __construct(){
             parent::__construct();
@@ -12,9 +12,10 @@
             $this->load->view('home');
         }
 
-        public function tiket($id_kegiatan){
-                $where = array('id_kegiatan' => $id_kegiatan);
-                $data['data'] = $this->kegiatan_model->edit_data($where,'kegiatan')->result();
+        public function tiket($nim,$id_kegiatan){
+                $where = $id_kegiatan;
+                $where2 = $nim;
+                $data['data'] = $this->kegiatan_model->edit($where, $where2)->result();
                 // print_r($data);
                 $this->load->view('input_tiket',$data);
             
@@ -60,7 +61,7 @@
                 $this->tiket_model->data($data,'tiket');
                 // redirect('tiket/tiket/'.$id_kegiatan);
                 
-                redirect('tiket/displaydata/'.$this->session->userdata('nim'));
+                redirect('tiket/displaydata/'.$this->session->nim);
                 
             }
             else {

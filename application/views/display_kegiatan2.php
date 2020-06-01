@@ -280,10 +280,29 @@
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
     <a href="<?php echo site_url('Tiket/displaydata/'.$this->session->nim); ?>" class="btn btn-success">History Pesanan</a>
     <div class="card-body">
+    <div class="row text-center">
+      <?php foreach($data as $key) { ?>
+      <div class="col-lg-3 col-md-4 mb-3">
+        <div class="card h-100">
+          <img class="card-img-top" src="<?= base_url('asset/images/').$key->foto; ?>" alt="">
+          <div class="card-body">
+            <h4 class="card-title"><?= $key->nama_kegiatan ?></h4>
+            <p class="card-text">Waktu : <?= $key->waktu ?></p>
+            <p class="card-text">Tempat : <?= $key->tempat ?></p>
+            <p class="card-text">Harga : <?= $key->harga ?></p>
+            <p class="card-text">Departemen : <?= $key->departemen ?></p>
+          </div>
+          <div class="card-footer">
+          <a href="<?php echo site_url('Tiket/tiket/'.$this->session->nim.'/'.$key->id_kegiatan); ?>" class="btn btn-primary">Book</a>
+          </div>
+        </div>
+      </div>
+      <?php } ?>
+    </div>
       <div class="table-responsive">
         <!-- <a href="<?php echo site_url('Tiket/displaydata'); ?>">Keranjang</a> -->
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <tr>
+          <!-- <tr>
               <th>No</th>
               <th>Nama Kegiatan</th>
               <th>Waktu Pelaksanaan</th>
@@ -291,26 +310,28 @@
               <th>Harga</th>
               <th>Departemen</th>
               <th>Aksi</th>
-          </tr>
+          </tr> -->
           <?php
               $i=1;
-              foreach ($data as $key) {
+              // foreach ($data as $key) {
           ?>
           <tr>
-              <td><?php echo $i; ?></td>
-              <td><?php echo $key->nama_kegiatan; ?></td>
-              <td><?php echo $key->waktu; ?></td>
-              <td><?php echo $key->tempat; ?></td>
-              <td><?php echo $key->harga; ?></td>
-              <td><?php echo $key->departemen; ?></td>
+              <!-- <td><?php echo $i; ?></td> -->
+              <!-- <td><?php echo $key->nama_kegiatan; ?></td> -->
+              <!-- <td><?php echo $key->waktu; ?></td> -->
+              <!-- <td><?php echo $key->tempat; ?></td> -->
+              <!-- <td><?php echo $key->harga; ?></td> -->
+              <!-- <td><?php echo $key->departemen; ?></td> -->
               <td>
               <!-- <a href="<?php echo site_url('kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary">Edit</a>
               <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" class="btn btn-primary">Hapus</a> -->
-              <a href="<?php echo site_url('Tiket/tiket/'.$key->id_kegiatan); ?>" class="btn btn-primary">Book</a>    
+                  
                 
               </td>
           </tr>
-          <?php $i++; }?>
+          <?php 
+          // $i++; }
+          ?>
         </table>
       </div>  
     </div>    

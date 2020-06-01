@@ -49,6 +49,21 @@
         function edit_data($where,$table){
             return $this->db->get_where($table,$where);
         }
+        function edit($where,$where2){
+            $this->db->select('');
+            $this->db->from('kegiatan k');
+            $this->db->join('programkerja p','k.id_programkerja = p.id_programkerja');
+            $this->db->join('organisasi o', 'p.idOrganisasi = o.idOrganisasi');
+            $this->db->join('ang_organisasi a','a.idOrganisasi = o.idOrganisasi');
+            $this->db->join('mahasiswa m','a.nim = m.nim');
+
+            $this->db->where('k.id_kegiatan', $where);
+            $this->db->where('m.nim', $where2);
+
+            $query =$this->db->get();
+            return $query;
+        }
+
         // update data
         function update_data($where,$data,$table){
             $this->db->where($where);
