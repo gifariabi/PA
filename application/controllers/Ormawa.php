@@ -422,9 +422,15 @@ class Ormawa extends CI_Controller {
                         'nama' => $cek[0]['nama'],
                         'idOrganisasi' => $this->session->userdata('idOrganisasi')
                     );
+        $data = array('nim' => $cek[0]['nim'],
+                        'nama' => $cek[0]['nama'],
+                        'id_thnAjaran' => 1,
+                        'idOrganisasi' => $this->session->userdata('idOrganisasi')
+                    );
 
-            $this->Model_daftar->insert($data2,"ang_organisasi");
-            redirect('Ormawa/tampil_anggota/'.$this->session->userdata('idOrganisasi'));
+        $this->Model_daftar->insert($data2,"ang_organisasi");
+        $this->Model_daftar->insert($data,"pengurus");
+        redirect('Ormawa/tampil_anggota/'.$this->session->userdata('idOrganisasi'));
     }
     // tambah pengurus
     public function tambah_pengurus(){
