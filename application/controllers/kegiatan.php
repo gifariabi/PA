@@ -20,7 +20,7 @@ class kegiatan extends CI_Controller{
 
         public function kegiatan($id_programkerja){
             $newdata = $this->session->userdata('jabatan');
-            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
+            if ($this->session->userdata('jabatan') != 'Sekretaris' ) {
                 //$this->session->set_userdata('id_programkerja',$id_programkerja);
                
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
@@ -128,7 +128,7 @@ class kegiatan extends CI_Controller{
         }
         public function displaydata(){
             $newdata = $this->session->userdata('jabatan');
-            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
+            if ($this->session->userdata('jabatan') != 'Sekretaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('kegiatan');
             }else{
@@ -145,7 +145,7 @@ class kegiatan extends CI_Controller{
 
         public function displaykegiatan2($where){
             $newdata = $this->session->userdata('jabatan');
-            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
+            if ($this->session->userdata('jabatan') != 'Sekretaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('kegiatan');
             }else{

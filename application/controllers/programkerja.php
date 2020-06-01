@@ -13,7 +13,7 @@
 
         public function kegiatan($idOrganisasi){
             $newdata = $this->session->userdata('jabatan');
-            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
+            if ($this->session->userdata('jabatan') != 'Sekretaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('proker');
             }else{
@@ -52,7 +52,7 @@
         }
         public function displaydata($where){
             $newdata = $this->session->userdata('jabatan');
-            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
+            if ($this->session->userdata('jabatan') != 'Sekretaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('programkerja');
             }else{

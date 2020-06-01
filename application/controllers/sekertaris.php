@@ -24,7 +24,7 @@ class Sekertaris extends CI_Controller{
 
 	function suratmasuk(){
         $newdata = $this->session->userdata('jabatan');
-        if ($this->session->userdata('jabatan') != 'Sekertaris'){
+        if ($this->session->userdata('jabatan') != 'Sekretaris'){
             $this->session->set_flashdata('pesann','<font color=red>Hanya Sekertaris yang dapat mengakses fitur tersebut</font>');
             redirect('sekertaris');
 
@@ -35,7 +35,7 @@ class Sekertaris extends CI_Controller{
 
 	function suratkeluar($idOrganisasi,$nim){
         $newdata = $this->session->userdata('jabatan');
-        if ($this->session->userdata('jabatan') != 'Sekertaris'){
+        if ($this->session->userdata('jabatan') != 'Sekretaris'){
             $this->session->set_flashdata('pesann','<font color=red>Hanya Sekertaris yang dapat mengakses fitur tersebut</font>');
             redirect('sekertaris');
         }else{

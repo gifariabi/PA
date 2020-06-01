@@ -12,7 +12,7 @@
 
         public function rapat($nim){
             $newdata = $this->session->userdata('jabatan');
-            if($this->session->userdata('jabatan') != 'Sekertaris'){
+            if($this->session->userdata('jabatan') != 'Sekretaris'){
                 $this->session->set_flashdata('pesan', ' hanya dapat diakses sekretaris');
                 redirect('rapat');
             }else{
@@ -69,7 +69,7 @@
         }
         public function displaydata(){
             $newdata = $this->session->userdata('jabatan');
-            if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
+            if ($this->session->userdata('jabatan') != 'Sekretaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
                 redirect('rapat');
             }else{
