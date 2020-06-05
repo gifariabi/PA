@@ -8,6 +8,7 @@ class kegiatan extends CI_Controller{
             $this->load->helper('url','form','file');
             $this->load->Model('Kegiatan_model');
             $this->load->Model('Model_daftar');
+            $this->load->Model('Login_model');
             $this->load->Model('Proker_model');
             $this->load->Model('Model_presensi');
             $this->load->library('form_validation','session');
@@ -150,7 +151,6 @@ class kegiatan extends CI_Controller{
                 redirect('kegiatan');
             }else{
                 $data['data']=$this->Kegiatan_model->tampil($where)->result();
-                // print_r($data);
                 $this->load->view('v_presensikegiatan',$data);
             }
         }
@@ -211,9 +211,16 @@ class kegiatan extends CI_Controller{
 
         }
 
-        public function presensi($where){
+        public function presensi($id_kegiatan){
+            $where2 = array('id_kegiatan'=>$id_kegiatan);
+            $org=$this->Login_model->view_where('kegiatan',$where2)->result();
+            $this->session->set_userdata('id_kegiatan',$org[0]->id_kegiatan);
+            redirect('Kegiatan/show2/'.$this->session->id_kegiatan);      
+        }
+
+        public function show2($where){
             $data['data'] = $this->Model_presensi->tampilPresensi($where);
-            $this->load->view('v_kehadiran',$data); 
+            $this->load->view('v_kehadiran',$data);  
         }
         public function cari(){
             $keyword = $this->input->post('keyword');

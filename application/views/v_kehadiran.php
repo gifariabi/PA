@@ -275,10 +275,13 @@
 <body>
 <center>
 <h3>Kehadiran Peserta</h3>
+</center>
 <hr>
 <hr>
     <div class="card-body">
       <div class="table-responsive">
+      <p style="text-align: right;"><a href="<?= base_url().'/Export/export_kehadiran/'.$this->session->userdata('id_kegiatan')?>" class="btn btn-success">Unduh Kehadiran</a></p><br/>
+      <center>
         <table id="demo-dt-basic" class="table table-striped table-bordered" width="100%" cellspacing="0">
           <tr>
               <th>No</th>

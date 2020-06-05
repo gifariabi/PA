@@ -453,8 +453,8 @@ class Ormawa extends CI_Controller {
         $this->Model_daftar->insert($data2,"pengurus");
         redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
 
-            $this->Model_daftar->insert($data2,"pengurus");
-            redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
+            //$this->Model_daftar->insert($data2,"pengurus");
+            //redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
     }
 
     public function add_ketua(){ 
