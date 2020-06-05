@@ -10,8 +10,8 @@ class Export_Anggota extends CI_Controller {
      public function __construct()
      {
         parent::__construct();
-        $this->load->model('model_ormawa');
-        $this->load->model('model_daftar');
+        $this->load->model('Model_ormawa');
+        $this->load->model('Model_daftar');
      }
 
      public function index()

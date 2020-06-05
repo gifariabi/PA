@@ -10,18 +10,18 @@ class Export extends CI_Controller {
      public function __construct()
      {
         parent::__construct();
-        $this->load->model('model_ormawa');
-        $this->load->model('model_daftar');
+        $this->load->model('Model_ormawa');
+        $this->load->model('Model_daftar');
      }
 
      public function index()
      {
-          $data['pengurus'] = $this->model_ormawa->getPengurus()->result();
+          $data['pengurus'] = $this->Model_ormawa->getPengurus()->result();
           $this->load->view('v_pengurus', $data);
      }
 
      public function export($where){
-          $pengurus = $this->model_ormawa->getPengurus($where);
+          $pengurus = $this->Model_ormawa->getPengurus($where);
 
           $spreadsheet = new Spreadsheet;
 

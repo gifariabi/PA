@@ -6,7 +6,7 @@ class Edit_Foto extends CI_Controller{
 		parent::__construct();
 		$this->load->helper(array('form', 'url','file'));
 		$this->load->library('form_validation','session');
-		$this->load->model('model_ormawa');
+		$this->load->model('Model_ormawa');
 		$this->load->library('upload');
         $this->load->library('image_lib');
 
@@ -39,7 +39,7 @@ class Edit_Foto extends CI_Controller{
                         $this->image_lib->resize();
         
                         $foto=$gbr['file_name'];
-                        $this->model_ormawa->simpanfoto($foto);
+                        $this->Model_ormawa->simpanfoto($foto);
                        
                         redirect('Organisasi/lihat_akun');
                         echo "Berhasil Mengganti Foto Profile";
@@ -61,7 +61,7 @@ class Edit_Foto extends CI_Controller{
 
     public function editf($nim){
     $where = array('nim' => $nim);
-    $data['data'] = $this->model_ormawa->edit_foto($where,'mahasiswa')->result();
+    $data['data'] = $this->Model_ormawa->edit_foto($where,'mahasiswa')->result();
     $this->load->view('v_edit_foto',$data);
     }
 
@@ -98,7 +98,7 @@ class Edit_Foto extends CI_Controller{
         				'nim' => $nim
         				);
  
-       	 				$this->model_ormawa->update_foto($where,$data,'mahasiswa');
+       	 				$this->Model_ormawa->update_foto($where,$data,'mahasiswa');
         				redirect('Organisasi/lihat_akun');
         				//$foto = $this->input->post('foto');
                         //$this->model_ormawa->simpanfoto($foto);

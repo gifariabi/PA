@@ -234,6 +234,7 @@ class Ormawa extends CI_Controller {
 
     public function v_juli($where){
         $data['data'] = $this->Model_kas->get_juli($where)->result();
+        $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $this->load->view('v_kas',$data);
     } 
 
