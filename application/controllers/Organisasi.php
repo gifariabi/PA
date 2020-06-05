@@ -98,7 +98,7 @@ class Organisasi extends CI_Controller {
     }
     function berita(){
         $newdata = $this->session->userdata('jabatan');
-        if ($this->session->userdata('jabatan') != 'Sekertaris' ) {
+        if ($this->session->userdata('jabatan') != 'Sekretaris' ) {
             $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
             redirect('Organisasi/error');
         }else{
