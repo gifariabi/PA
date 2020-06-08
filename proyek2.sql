@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jun 2020 pada 12.43
+-- Waktu pembuatan: 08 Jun 2020 pada 13.12
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -280,6 +280,7 @@ INSERT INTO `organisasi` (`idOrganisasi`, `namaOrganisasi`, `deskripsi`, `logo`,
 
 CREATE TABLE `pengurus` (
   `nim` int(10) NOT NULL,
+  `id` int(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `jabatan` varchar(255) NOT NULL,
   `idOrganisasi` int(11) NOT NULL,
@@ -290,14 +291,13 @@ CREATE TABLE `pengurus` (
 -- Dumping data untuk tabel `pengurus`
 --
 
-INSERT INTO `pengurus` (`nim`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`) VALUES
-(670117403, 'Gifari Abi Waqqash', 'Kepala Divisi Luar Negeri', 5, 1),
-(670117455, 'Eko Adinata', 'Sekertaris', 5, 1),
-(670117410, 'Muhammad Luqman', 'Sekretaris', 1, 1),
-(670117400, 'Yusril Wahyuda', '', 1, 1),
-(670117410, 'Muhammad Luqman', '', 5, 1),
-(670117403, 'Gifari Abi Waqqash', '', 1, 1),
-(670117410, 'Muhammad Luqman', '', 1, 1);
+INSERT INTO `pengurus` (`nim`, `id`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`) VALUES
+(670117403, 1, 'Gifari Abi Waqqash', 'Kepala Divisi Luar Negeri', 5, 1),
+(670117455, 2, 'Eko Adinata', 'Sekertaris', 5, 1),
+(670117410, 4, 'Muhammad Luqman', '', 5, 1),
+(670117403, 5, 'Gifari Abi Waqqash', '', 1, 1),
+(670117410, 6, 'Muhammad Luqman', 'Sekretaris', 1, 1),
+(670117400, 7, 'Yusril Wahyuda', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -512,6 +512,7 @@ ALTER TABLE `organisasi`
 -- Indeks untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id_thnAjaran` (`id_thnAjaran`) USING BTREE,
   ADD KEY `fk_organisasi` (`idOrganisasi`),
   ADD KEY `nim` (`nim`);
@@ -598,6 +599,12 @@ ALTER TABLE `lpj`
 --
 ALTER TABLE `organisasi`
   MODIFY `idOrganisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT untuk tabel `pengurus`
+--
+ALTER TABLE `pengurus`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `presensi`

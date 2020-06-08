@@ -45,7 +45,7 @@ class Model_ormawa extends CI_Model{
     	}
 
         public function getPengurus($where){
-            $this->db->select('a.foto, p.nim, p.nama, p.jabatan, o.idOrganisasi, id_thnAjaran');
+            $this->db->select('p.id,a.foto, p.nim, p.nama, p.jabatan, o.idOrganisasi, id_thnAjaran');
             $this->db->from('organisasi o');
             $this->db->join('pengurus p','o.idOrganisasi =  p.idOrganisasi');
             $this->db->join('mahasiswa a','p.nim =  a.nim');
@@ -57,7 +57,7 @@ class Model_ormawa extends CI_Model{
         }
 
         public function getPengurus1($where){
-            $this->db->select('nim, nama, jabatan,id_thnAjaran');
+            $this->db->select('id,nim, nama, jabatan,id_thnAjaran');
             $this->db->from('pengurus');
             $this->db->where('idOrganisasi',$where);
             $this->db->where('id_thnAjaran',1);
@@ -67,7 +67,7 @@ class Model_ormawa extends CI_Model{
         }
 
         public function getPengurus2($where){
-            $this->db->select('nim, nama, jabatan,id_thnAjaran');
+            $this->db->select('id,nim, nama, jabatan,id_thnAjaran');
             $this->db->from('pengurus');
             $this->db->where('idOrganisasi',$where);
             $this->db->where('id_thnAjaran',2);
@@ -77,7 +77,7 @@ class Model_ormawa extends CI_Model{
         }
 
         public function getPengurus3($where){
-            $this->db->select('nim, nama, jabatan,id_thnAjaran');
+            $this->db->select('id,nim, nama, jabatan,id_thnAjaran');
             $this->db->from('pengurus');
             $this->db->where('idOrganisasi',$where);
             $this->db->where('id_thnAjaran',3);

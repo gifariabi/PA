@@ -308,25 +308,28 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_pengurus', $data);
     }
 
-    public function editPengurus($nim,$idOrganisasi,$id_thnAjaran){
-    $where = array('nim' => $nim ,'idOrganisasi' => $idOrganisasi, 'id_thnAjaran' => $id_thnAjaran);
+    public function editPengurus($nim,$id,$idOrganisasi,$id_thnAjaran){
+    $where = array('nim' => $nim , 'id' => $id ,'idOrganisasi' => $idOrganisasi, 'id_thnAjaran' => $id_thnAjaran);
     $data['data'] = $this->Model_ormawa->edit_pengurus($where,'pengurus')->result();
     $this->load->view('v_edit_pengurus',$data);
     }
 
     public function update_pengurus(){
+        $id = $this->input->post('id');
         $nim = $this->input->post('nim');
         $idOrganisasi = $this->input->post('idOrganisasi');
         $jabatan = $this->input->post('jabatan');
         $id_thnAjaran = $this->input->post('id_thnAjaran');
  
         $data = array(
+            'id' => $id,
         'idOrganisasi' => $idOrganisasi,
         'jabatan' => $jabatan,
         'id_thnAjaran' => $id_thnAjaran
         );
  
         $where = array(
+            'id' => $id,
         'nim' => $nim,
         'idOrganisasi' => $idOrganisasi,
         'id_thnAjaran' => $id_thnAjaran
@@ -336,8 +339,9 @@ class Ormawa extends CI_Controller {
         redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
     }
 
-    public function hapus_pengurus($nim,$idOrganisasi,$id_thnAjaran){
+    public function hapus_pengurus($nim,$id,$idOrganisasi,$id_thnAjaran){
         $where = array('nim' => $nim,
+                        'id' => $id,
                         'idOrganisasi' => $idOrganisasi,
                         'id_thnAjaran' => $id_thnAjaran);
         $this->Model_ormawa->hapus_pengurus($where,'pengurus');
