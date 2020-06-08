@@ -29,6 +29,14 @@ class Sekertaris2 extends CI_Controller{
         $this->load->view('surat',$data);
     }
 
+    public function cetak_surat2($where){
+        // $where = array('no_tiket' => $no_tiket);
+        $data['data'] = $this->model_suratkeluar->tampil_pdf($where)->result();
+        //$this->load->view('editsuratmasuk',$data);
+        $this->load->library('pdf');
+        $this->load->view('surat',$data);
+    }
+
 	public function suratkeluar(){
         //$this->form_validation->set_rules('no_suratkeluar', 'no_suratkeluar', 'required');
         //$this->form_validation->set_rules('penerima', 'Penerima', 'required');
