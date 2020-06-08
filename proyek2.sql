@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Bulan Mei 2020 pada 15.06
+-- Waktu pembuatan: 08 Jun 2020 pada 12.43
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -52,10 +52,8 @@ CREATE TABLE `ang_organisasi` (
 --
 
 INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
-(670117403, 'Gifari Abi Waqqash', 1, 'Anggota Divisi Olahraga'),
-(670117410, 'Muhammad Luqman', 5, 'Anggota Divisi Dalam Negeri'),
-(670117455, 'Eko Adinata', 5, 'Sekertaris'),
-(670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Sosial');
+(670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Sosial'),
+(670117403, 'Gifari Abi Waqqash', 1, 'Anggota Devisi Olahraga');
 
 -- --------------------------------------------------------
 
@@ -269,10 +267,10 @@ CREATE TABLE `organisasi` (
 --
 
 INSERT INTO `organisasi` (`idOrganisasi`, `namaOrganisasi`, `deskripsi`, `logo`, `ketua`) VALUES
-(1, 'HMDSI', 'HMDSI adalah Himpunan Mahasiswa D3 Sistem Informasi', '5d458932f2c4f50297475fe9aa1c2d36.png', 'kelvin'),
-(2, 'SAMALOWA', 'UKM Lombok Sumbawa', '0b9b5daa9df9de0b50cef003221ffb5b.jpg', 'Esa'),
-(4, 'PERMALA', 'Mahasiswa Lampung', '811539bf69c57ce8660fce77201a6a31.jpg', 'Deva'),
-(5, 'SEARCH', 'Lomba dll', '201a283dc472a6733bc943460775c71f.jpg', 'riko');
+(1, 'HMDSI', 'HMDSI adalah Himpunan Mahasiswa D3 Sistem Informasi, Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik', '5d458932f2c4f50297475fe9aa1c2d36.png', 'kelvin'),
+(2, 'SAMALOWA', 'UKM Lombok Sumbawa, Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik', '0b9b5daa9df9de0b50cef003221ffb5b.jpg', 'Esa'),
+(4, 'PERMALA', 'Mahasiswa Lampung, Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik', '811539bf69c57ce8660fce77201a6a31.jpg', 'Deva'),
+(5, 'SEARCH', 'Search adalah ukm lomba dan Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik', '201a283dc472a6733bc943460775c71f.jpg', 'riko');
 
 -- --------------------------------------------------------
 
@@ -295,9 +293,11 @@ CREATE TABLE `pengurus` (
 INSERT INTO `pengurus` (`nim`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`) VALUES
 (670117403, 'Gifari Abi Waqqash', 'Kepala Divisi Luar Negeri', 5, 1),
 (670117455, 'Eko Adinata', 'Sekertaris', 5, 1),
-(670117410, 'Muhammad Luqman', 'Sekertaris', 1, 1),
-(670117403, 'Gifari Abi Waqqash', 'Bendahara', 1, 1),
-(670117400, 'Yusril Wahyuda', '', 1, 1);
+(670117410, 'Muhammad Luqman', 'Sekretaris', 1, 1),
+(670117400, 'Yusril Wahyuda', '', 1, 1),
+(670117410, 'Muhammad Luqman', '', 5, 1),
+(670117403, 'Gifari Abi Waqqash', '', 1, 1),
+(670117410, 'Muhammad Luqman', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -312,6 +312,14 @@ CREATE TABLE `presensi` (
   `nim` int(10) NOT NULL,
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data untuk tabel `presensi`
+--
+
+INSERT INTO `presensi` (`id_presensi`, `waktu_submit`, `status`, `nim`, `id_kegiatan`) VALUES
+(1, '2020-06-05 05:44:44', 'Hadir', 670606006, 14),
+(2, '2020-06-05 05:44:44', 'Hadir', 670117400, 19);
 
 -- --------------------------------------------------------
 
@@ -369,14 +377,6 @@ CREATE TABLE `suratkeluar` (
   `nim` int(10) NOT NULL,
   `idOrganisasi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data untuk tabel `suratkeluar`
---
-
-INSERT INTO `suratkeluar` (`id`, `no_suratkeluar`, `penerima`, `tanggalkeluar`, `waktu`, `perihal`, `nim`, `idOrganisasi`) VALUES
-(6, '2112', 'ketua', '11-11-11', '20:12', 'undangan', 670117455, 5),
-(7, '004', 'Ketua Search', '2020-02-01', '16:00', 'Seminar', 670117455, 5);
 
 -- --------------------------------------------------------
 
@@ -603,7 +603,7 @@ ALTER TABLE `organisasi`
 -- AUTO_INCREMENT untuk tabel `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id_presensi` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_presensi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `programkerja`
@@ -615,13 +615,13 @@ ALTER TABLE `programkerja`
 -- AUTO_INCREMENT untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `tahun_ajaran`
