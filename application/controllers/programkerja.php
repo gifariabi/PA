@@ -15,7 +15,7 @@
             $newdata = $this->session->userdata('jabatan');
             if ($this->session->userdata('jabatan') != 'Sekretaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
-                redirect('proker');
+                redirect('Programkerja');
             }else{
                 $where = array('idOrganisasi'=>$idOrganisasi);
                 $data['data'] = $this->Proker_model->edit_data($where, 'programkerja')->result();
@@ -33,7 +33,7 @@
 
             if ($this->form_validation->run() === false) {
                 $this->session->set_flashdata('error', 'Data tidak sesusai');
-                redirect('programkerja/kegiatan/'.$this->session->userdata('idOrganisasi'));
+                redirect('Programkerja/kegiatan/'.$this->session->userdata('idOrganisasi'));
             }
             else {
                 $nama = $this->input->post('namaproker');
@@ -47,14 +47,14 @@
                     'idOrganisasi' => $idOrganisasi,
                 );
                 $this->Proker_model->data($data,'programkerja');
-                redirect('programkerja/displaydata/'.$this->session->userdata('idOrganisasi'));
+                redirect('Programkerja/displaydata/'.$this->session->userdata('idOrganisasi'));
             }
         }
         public function displaydata($where){
             $newdata = $this->session->userdata('jabatan');
             if ($this->session->userdata('jabatan') != 'Sekretaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
-                redirect('programkerja');
+                redirect('Programkerja');
             }else{
                 $data['data']=$this->Proker_model->tampil($where);
                 $this->load->view('display_programkerja',$data);
@@ -63,7 +63,7 @@
         public function hapus($id){
             $where = array('id_programkerja'=>$id);
             $this->Proker_model->hapus_data($where,'programkerja');
-            redirect('programkerja/displaydata/'.$this->session->userdata('idOrganisasi'));
+            redirect('Programkerja/displaydata/'.$this->session->userdata('idOrganisasi'));
         }
         public function edit($id){
             $where = array('id_programkerja'=>$id);

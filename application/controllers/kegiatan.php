@@ -2,7 +2,7 @@
 
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 
-class kegiatan extends CI_Controller{
+class Kegiatan extends CI_Controller{
         public function __construct(){
             parent::__construct();
             $this->load->helper('url','form','file');
@@ -25,7 +25,7 @@ class kegiatan extends CI_Controller{
                 //$this->session->set_userdata('id_programkerja',$id_programkerja);
                
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
-                redirect('kegiatan');
+                redirect('Kegiatan');
             }else{
                 $where = array('id_programkerja'=>$id_programkerja);
                 $data['data'] = $this->Proker_model->edit_data($where, 'programkerja')->result();
@@ -36,7 +36,7 @@ class kegiatan extends CI_Controller{
 
         public function save2($id){
             $this->session->set_userdata('id_programkerja',$id);
-    	    redirect('kegiatan/show/'.$this->session->id_programkerja);
+    	    redirect('Kegiatan/show/'.$this->session->id_programkerja);
         }
 
         public function show(){
@@ -104,7 +104,7 @@ class kegiatan extends CI_Controller{
                     $this->session->set_flashdata('tgl', '<div class="alert alert-success">
                     <p>Tanggal tidak sesuai, tanggal diharuskan H +1</p>
                     </div>');
-                    redirect('kegiatan/kegiatan/'.$id_programkerja);
+                    redirect('Kegiatan/kegiatan/'.$id_programkerja);
                 }else{
                     $data = array(
                         'id_kegiatan' => $id_kegiatan,
@@ -131,7 +131,7 @@ class kegiatan extends CI_Controller{
             $newdata = $this->session->userdata('jabatan');
             if ($this->session->userdata('jabatan') != 'Sekretaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
-                redirect('kegiatan');
+                redirect('Kegiatan');
             }else{
                 $data['data']=$this->Kegiatan_model->tampil()->result();
                 $this->load->view('display_kegiatan',$data);
@@ -148,7 +148,7 @@ class kegiatan extends CI_Controller{
             $newdata = $this->session->userdata('jabatan');
             if ($this->session->userdata('jabatan') != 'Sekretaris' ) {
                 $this->session->set_flashdata('pesan', 'hanya dapat diakses Sekretaris');
-                redirect('kegiatan');
+                redirect('Kegiatan');
             }else{
                 $data['data']=$this->Kegiatan_model->tampil($where)->result();
                 $this->load->view('v_presensikegiatan',$data);
@@ -157,7 +157,7 @@ class kegiatan extends CI_Controller{
         public function hapus($id){
             $where = array('id_kegiatan'=>$id);
             $this->Kegiatan_model->hapus_data($where,'kegiatan');
-            redirect('kegiatan/displaydata');
+            redirect('Kegiatan/displaydata');
         }
         public function edit($id){
             $where = array('id_kegiatan'=>$id);

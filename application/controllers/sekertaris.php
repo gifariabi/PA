@@ -26,7 +26,7 @@ class Sekertaris extends CI_Controller{
         $newdata = $this->session->userdata('jabatan');
         if ($this->session->userdata('jabatan') != 'Sekretaris'){
             $this->session->set_flashdata('pesann','<font color=red>Hanya Sekertaris yang dapat mengakses fitur tersebut</font>');
-            redirect('sekertaris');
+            redirect('Sekertaris');
 
             // echo $this->session->departemen;
         }
@@ -37,7 +37,7 @@ class Sekertaris extends CI_Controller{
         $newdata = $this->session->userdata('jabatan');
         if ($this->session->userdata('jabatan') != 'Sekretaris'){
             $this->session->set_flashdata('pesann','<font color=red>Hanya Sekertaris yang dapat mengakses fitur tersebut</font>');
-            redirect('sekertaris');
+            redirect('Sekertaris');
         }else{
             $data['idOrganisasi'] = $idOrganisasi;
             $where = array('nim',$nim);
@@ -93,7 +93,7 @@ class Sekertaris extends CI_Controller{
             $perihal = $this->input->post('perihal');
         
         $this->modelnya->data($no_surat,$pengirim,$tanggalmasuk,$penerima,$perihal);
-        redirect('sekertaris/inputan');
+        redirect('Sekertaris/inputan');
         }
     }
 
@@ -104,7 +104,7 @@ class Sekertaris extends CI_Controller{
 
         if ($this->form_validation->run() == FALSE){
             $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
-            redirect('sekertaris/req_surat');
+            redirect('Sekertaris/req_surat');
         }
         else{
             $nama = $this->input->post('nama');
@@ -115,13 +115,13 @@ class Sekertaris extends CI_Controller{
                 
             $this->modelnya->insert_req_surat($nama,$penerima,$tanggalkeluar,$perihal,$status);
             //$data['data']=$this->modelnya->insert_req_surat();
-            redirect('sekertaris/status_surat'); 
+            redirect('Sekertaris/status_surat'); 
         }   
     }
 
     public function update_status_admin($id_req){
         $this->modelnya->update_status($id_req);
-        redirect('sekertaris/status_surat_admin');  
+        redirect('Sekertaris/status_surat_admin');  
     }
 
     public function update_status(){
@@ -131,7 +131,7 @@ class Sekertaris extends CI_Controller{
         $perihal = $this->input->post('perihal');
         $status = $this->input->post('status');
         $this->modelnya->update_status($nama,$penerima,$tanggalkeluar,$perihal,$status);
-        redirect('sekertaris/status_surat');  
+        redirect('Sekertaris/status_surat');  
     }
 
     public function status_surat(){
@@ -142,7 +142,7 @@ class Sekertaris extends CI_Controller{
     public function status_surat_admin(){
         if ($this->session->userdata('asw') != 'Sekretaris'){
             $this->session->set_flashdata('pesann','<font color=red>Hanya Sekertaris yang dapat mengakses fitur tersebut</font>');
-            redirect('sekertaris');
+            redirect('Sekertaris');
         }
         $data['data']=$this->modelnya->tampil_req_admin();
         $this->load->view('status_surat',$data);
@@ -164,7 +164,7 @@ class Sekertaris extends CI_Controller{
     public function hapus_surat_masuk($id){
     	$this->load->Model('modelnya');
     	$this->modelnya->hapus_data($id);
-    	redirect('sekertaris/inputan');
+    	redirect('Sekertaris/inputan');
     }
 
     function editdata($id){
@@ -195,6 +195,6 @@ class Sekertaris extends CI_Controller{
         );
  
         $this->Modelnya->update_data($where,$data,'suratmasuk');
-        redirect('sekertaris/inputan');
+        redirect('Sekertaris/inputan');
     } 
 }

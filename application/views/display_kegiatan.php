@@ -293,7 +293,7 @@
               <th>Harga</th>
               <th>Departemen</th>
               <th>QRCODE</th>
-              <th>Foto</th>
+              <th>Poster</th>
               <th>Aksi</th>
           </tr>
           <?php
