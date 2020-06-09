@@ -305,7 +305,7 @@
               <td><?php echo $key->nama_kegiatan; ?></td>
               <td><?php echo $key->waktu; ?></td>
               <td><?php echo $key->tempat; ?></td>
-              <td><?php echo $key->harga; ?></td>
+              <td>Rp. <?php echo $key->harga; ?></td>
               <td><?php echo $key->departemen; ?></td>
               <td><img src="<?php echo base_url().'asset/images/'.$key->qr_code; ?>" style="width: 90px" alt=""></td>
               <td><img src="<?php echo base_url().'asset/images/'.$key->foto; ?>" style="width: 90px" alt=""></td>

@@ -190,6 +190,7 @@ class kegiatan extends CI_Controller{
                     $waktu = $this->input->post('waktu');
                     $tempat = $this->input->post('tempat');
                     $gambar = $gbr['file_name'];
+
                     $data = array(
                         'nama_kegiatan' => $nama_kegiatan, 
                         'waktu' => $waktu,
@@ -201,12 +202,10 @@ class kegiatan extends CI_Controller{
                         'id_kegiatan' => $id
                     );
                     $this->Kegiatan_model->update_data($where,$data,'kegiatan');
-                    redirect('kegiatan/displaydata');
+                    redirect('Kegiatan/displaydata');
                 }else{
                     redirect('Kegiatan');
                 }
-            }else{
-                redirect('Kegiatan');
             }
 
         }

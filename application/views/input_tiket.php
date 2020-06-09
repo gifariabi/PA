@@ -294,16 +294,9 @@ foreach($data as $key){ ?>
       <?php echo form_error('email') ?>
     </div>
     <div class=form-group>
-      <select name="jumlah"  class="form-control form-control-sm">
-						<option>- - - Pilih Jumlah Tiket - - -</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-          </select>
-          <?php echo form_error('jumlah'); ?>
-    </div>
-    <div class=form-group>
       <select name="metode"  class="custom-select custom-select-sm form-control - form-control-sm">
-						<option>- - - Pilih Metode - - -</option>
+            <option>- - - Pilih Metode - - -</option>
+            <option value="Transfer">Free</option>
 						<option value="Transfer">Transfer</option>
 						<option value="Cash">Cash</option>
           </select>

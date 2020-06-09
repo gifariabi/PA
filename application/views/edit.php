@@ -289,6 +289,7 @@
       <input type="file" name="foto" class="form-control form-control-user" required>
     </div>
     
+    
     <input type="hidden" name="id_programkerja" class="form-control form-control-user" value="<?= $key->id_programkerja ?>">
     <input type="submit" name="submit" value="Input" class="btn btn-success btn-user " placeholder="input">
     <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger">Hapus</a>

@@ -288,7 +288,6 @@
               <th>NIM</th>
               <th>Jurusan</th>
               <th>Email</th>
-              <th>Jumlah</th>
               <th>Total</th>
               <th>Metode Pembayaran</th>
               <th>Status</th>
@@ -305,8 +304,7 @@
               <td><?php echo $key->nim; ?></td>
               <td><?php echo $key->jurusan; ?></td>
               <td><?php echo $key->email; ?></td>
-              <td><?php echo $key->jumlah; ?></td>
-              <td><?php echo $key->total;?></td>
+              <td>Rp. <?php echo $key->total;?></td>
               <td><?php echo $key->metode_pembayaran;?></td>
               <td><?php echo $key->status; ?></td>
               

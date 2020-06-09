@@ -288,6 +288,7 @@
     </div>
     <div class="form-group">
       <input type="text" name="harga" class="form-control form-control-user" placeholder="Harga">
+      <p>Jika gratis Ketik "Free", Jika berbayar Tulis harga dengan format "Rp. 10.000"</p>
     </div>
     
     <div class="form-group">

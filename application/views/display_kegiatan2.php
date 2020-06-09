@@ -289,11 +289,11 @@
             <h4 class="card-title"><?= $key->nama_kegiatan ?></h4>
             <p class="card-text">Waktu : <?= $key->waktu ?></p>
             <p class="card-text">Tempat : <?= $key->tempat ?></p>
-            <p class="card-text">Harga : <?= $key->harga ?></p>
+            <p class="card-text">Harga : Rp. <?= $key->harga ?></p>
             <p class="card-text">Departemen : <?= $key->departemen ?></p>
           </div>
           <div class="card-footer">
-          <a href="<?php echo site_url('Tiket/tiket/'.$this->session->nim.'/'.$key->id_kegiatan); ?>" class="btn btn-primary">Book</a>
+          <a href="<?php echo site_url('Tiket/tiket/'.$key->id_kegiatan); ?>" class="btn btn-primary">Book</a>
           </div>
         </div>
       </div>
