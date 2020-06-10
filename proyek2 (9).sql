@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jun 2020 pada 13.12
+-- Waktu pembuatan: 10 Jun 2020 pada 10.07
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -53,7 +53,8 @@ CREATE TABLE `ang_organisasi` (
 
 INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
 (670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Sosial'),
-(670117403, 'Gifari Abi Waqqash', 1, 'Anggota Devisi Olahraga');
+(670117403, 'Gifari Abi Waqqash', 1, 'Anggota Devisi Olahraga'),
+(670117406, 'Sherli Yualinda', 1, 'Anggota Divisi Sosial');
 
 -- --------------------------------------------------------
 
@@ -172,12 +173,21 @@ CREATE TABLE `kegiatan` (
 --
 
 INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `harga`, `qr_code`, `foto`, `id_programkerja`, `upload_lpj`) VALUES
-(14, 'Seminar Android', '2020-05-05', 'Aula Fakultas Ilmu Terapan', '20000', 'Seminar UX .png', '', 10, 1),
+(14, 'Seminar Android', '2020-05-05', 'Aula Fakultas Ilmu Terapan', '20000', 'Seminar UX .png', 'index1.png', 10, 1),
 (15, 'Bakti Sosial COVID 19', '2020-05-05', 'Telkom University', '20000', 'Bakti Sosial COVID 19.png', '', 11, 0),
 (16, 'Voli Competition', '2020-06-07', 'Batununggal Sport Center', '20000', 'Voli Competition.png', '', 5, 1),
 (19, 'Sepak Bola Bersama', '2020-07-08', 'Batununggal Sport Center', '10000', 'Sepak Bola Bersama.png', '', 7, 1),
 (20, 'MANIAC 2021', '2021-08-08', 'Batununggal Sport Center', '20000', 'MANIAC 2021.png', '', 7, 0),
-(21, 'Badminton Competition', '2020-05-14', 'Aula Fakultas Ilmu Terapan', '20000', 'Badminton Competition.png', '', 7, 0);
+(21, 'Badminton Competition', '2020-05-14', 'Aula Fakultas Ilmu Terapan', '20000', 'Badminton Competition.png', '', 7, 0),
+(22, 'Seminar UX ', '2020-08-07', 'Aula Fakultas Ilmu Terapan', 'Free', 'Seminar UX .png', '', 7, 0),
+(23, 'Seminar Pembangunan', '2020-09-02', 'Aula Fakultas Ilmu Terapan', '20000', 'Seminar Pembangunan.png', '', 5, 0),
+(24, 'COVID 19', '2020-08-01', 'Lapangan FIT', 'Free', 'COVID 19.png', '', 5, 0),
+(25, 'Seminar Kotlin', '2020-07-01', 'Aula Fakultas Ilmu Terapan', '10000', 'Seminar Kotlin.png', '', 10, 0),
+(26, 'Bantuan Panti Asuhan', '2020-08-01', 'Lapangan FIT', '20000', 'Bantuan Panti Asuhan.png', '', 11, 0),
+(27, 'Ping pong', '2020-08-01', 'Batununggal Sport Center', '10000', 'Ping pong.png', '', 7, 0),
+(28, 'Badminton Competition', '2020-07-01', 'Batununggal Sport Center', '20000', '.png', '', 5, 0),
+(29, 'Tenis Lapangan', '2020-08-01', 'Batununggal Sport Center', '20000', '.png', '', 7, 0),
+(30, 'Archery', '2020-08-01', 'Batununggal Sport Center', '20000', 'Archery.png', '', 7, 0);
 
 -- --------------------------------------------------------
 
@@ -215,7 +225,7 @@ CREATE TABLE `lpj` (
 INSERT INTO `lpj` (`id_lpj`, `file`, `id_kegiatan`) VALUES
 (3, '9586_TP32.pdf', 16),
 (4, '6701174033_Registrasi___Telkom_University1.pdf', 19),
-(5, '6701174033_GifariAbiWaqqash_D3MI4103_TAMODUL3.pdf', 14);
+(5, '5__LEMBAR_AKTIVITAS_HARIAN_MAGANG_Gifari.pdf', 14);
 
 -- --------------------------------------------------------
 
@@ -297,7 +307,8 @@ INSERT INTO `pengurus` (`nim`, `id`, `nama`, `jabatan`, `idOrganisasi`, `id_thnA
 (670117410, 4, 'Muhammad Luqman', '', 5, 1),
 (670117403, 5, 'Gifari Abi Waqqash', '', 1, 1),
 (670117410, 6, 'Muhammad Luqman', 'Sekretaris', 1, 1),
-(670117400, 7, 'Yusril Wahyuda', '', 1, 1);
+(670117400, 7, 'Yusril Wahyuda', '', 1, 1),
+(670117406, 10, 'Sherli Yualinda', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -361,6 +372,13 @@ CREATE TABLE `rapat` (
   `nim` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data untuk tabel `rapat`
+--
+
+INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `waktu`, `kategori`, `nim`) VALUES
+(1, 'Rapat Rutin', 'Ruang G6 FIT', '2020-10-02', '19:00', 'Pengurus', 670117410);
+
 -- --------------------------------------------------------
 
 --
@@ -396,7 +414,8 @@ CREATE TABLE `tahun_ajaran` (
 INSERT INTO `tahun_ajaran` (`id_thnAjaran`, `tahunAjaran`) VALUES
 (1, '2019-2020'),
 (2, '2020-2021'),
-(3, '2021-2022');
+(3, '2021-2022'),
+(4, '2022-2023');
 
 -- --------------------------------------------------------
 
@@ -407,10 +426,10 @@ INSERT INTO `tahun_ajaran` (`id_thnAjaran`, `tahunAjaran`) VALUES
 CREATE TABLE `tiket` (
   `no_tiket` int(10) NOT NULL,
   `nama` varchar(255) COLLATE utf8_bin NOT NULL,
+  `nimAkun` int(10) NOT NULL,
   `nim` varchar(255) COLLATE utf8_bin NOT NULL,
   `jurusan` varchar(255) COLLATE utf8_bin NOT NULL,
   `email` varchar(255) COLLATE utf8_bin NOT NULL,
-  `jumlah` varchar(255) COLLATE utf8_bin NOT NULL,
   `total` varchar(255) COLLATE utf8_bin NOT NULL,
   `metode_pembayaran` varchar(255) COLLATE utf8_bin NOT NULL,
   `status` varchar(255) COLLATE utf8_bin NOT NULL,
@@ -421,10 +440,18 @@ CREATE TABLE `tiket` (
 -- Dumping data untuk tabel `tiket`
 --
 
-INSERT INTO `tiket` (`no_tiket`, `nama`, `nim`, `jurusan`, `email`, `jumlah`, `total`, `metode_pembayaran`, `status`, `id_kegiatan`) VALUES
-(12, 'Shinta Fitria', '6701174233', 'D3 Sistem Informasi', 'shintafitria2@gmail.com', '2', '40000', 'Transfer', 'Accepted', 14),
-(13, 'GIfari Abi Waqqash', '6701174033', 'D3 Sistem Informasi', 'gifariabi75@gmail.com', '2', '40000', 'Cash', 'Accepted', 14),
-(14, 'Eko', '6701174033', 'SI Teknik Informatika', 'gifariabi75@gmail.com', '2', '40000', 'Transfer', 'Accepted', 14);
+INSERT INTO `tiket` (`no_tiket`, `nama`, `nimAkun`, `nim`, `jurusan`, `email`, `total`, `metode_pembayaran`, `status`, `id_kegiatan`) VALUES
+(12, 'Shinta Fitria', 0, '6701174233', 'D3 Sistem Informasi', 'shintafitria2@gmail.com', '40000', 'Transfer', 'Accepted', 14),
+(13, 'GIfari Abi Waqqash', 0, '6701174033', 'D3 Sistem Informasi', 'gifariabi75@gmail.com', '40000', 'Cash', 'Accepted', 14),
+(14, 'Eko', 0, '6701174033', 'SI Teknik Informatika', 'gifariabi75@gmail.com', '40000', 'Transfer', 'Accepted', 14),
+(15, 'Eko', 0, '6701174033', 'D3 Sistem Informasi', 'gifariabi9@gmail.com', '0', 'Transfer', 'Menunggu', 22),
+(16, 'Yulia', 0, '6701174022', 'D3 Seni Budaya', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Menunggu', 20),
+(17, 'Anton', 0, '6701175533', 'D3 Sepakbola', 'anton@gmail.com', '20000', 'Transfer', 'Menunggu', 19),
+(18, 'GIfari Abi Waqqash', 0, '6701174233', 'SI Teknik Informatika', 'gifariabi75@gmail.com', '20000', 'Transfer', 'Menunggu', 15),
+(19, 'Sherli Y', 0, '6701174033', 'D3 Sistem Informasi', 'sherliyualinda@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
+(20, 'Sherla Y', 0, '670117406', 'D3 Sistem Informasi', 'sherlayualinda@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
+(21, 'Luqm', 0, '670117410', 'D3 Sistem Informasi', 'luqman@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
+(22, 'Sem', 670117410, '6701174033', 'D3 Sistem Informasi', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Menunggu', 15);
 
 -- --------------------------------------------------------
 
@@ -586,7 +613,7 @@ ALTER TABLE `kas`
 -- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT untuk tabel `lpj`
@@ -604,7 +631,7 @@ ALTER TABLE `organisasi`
 -- AUTO_INCREMENT untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `presensi`
@@ -622,7 +649,7 @@ ALTER TABLE `programkerja`
 -- AUTO_INCREMENT untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `suratkeluar`
@@ -634,13 +661,13 @@ ALTER TABLE `suratkeluar`
 -- AUTO_INCREMENT untuk tabel `tahun_ajaran`
 --
 ALTER TABLE `tahun_ajaran`
-  MODIFY `id_thnAjaran` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_thnAjaran` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
