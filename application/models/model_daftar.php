@@ -48,7 +48,7 @@ class Model_daftar extends CI_Model{
 		
 	function tampilDaftar($where){
         $this->db->distinct();
-        $this->db->select('m.nama, m.nim, o.namaOrganisasi, o.deskripsi,o.logo,o.ketua, o.idOrganisasi');
+        $this->db->select('m.nama, m.nim, o.namaOrganisasi, o.deskripsi,o.logo,o.ketua, o.idOrganisasi, an.id');
         $this->db->from('ang_organisasi g');
         $this->db->join('organisasi o','g.idOrganisasi = o.idOrganisasi');
         $this->db->join('pengurus an','o.idOrganisasi =  an.idOrganisasi');
