@@ -32,7 +32,7 @@
             // $this->form_validation->set_rules('kondisi','Kondisi','required');
 
             if ($this->form_validation->run() === false) {
-                $this->session->set_flashdata('error', 'Data tidak sesusai');
+                $this->session->set_flashdata('error', 'Data tidak sesuai');
                 redirect('Programkerja/kegiatan/'.$this->session->userdata('idOrganisasi'));
             }
             else {
@@ -40,12 +40,22 @@
                 $waktu = $this->input->post('waktupelaksanaan');
                 $tempat = $this->input->post('departemen');
                 $idOrganisasi = $this->input->post('idOrganisasi');
-                $data = array(
-                    'nama_programkerja' => $nama, 
-                    'waktu_pelaksanaan' => $waktu,
-                    'departemen' => $tempat,
-                    'idOrganisasi' => $idOrganisasi,
-                );
+                $date_now = new DateTime();
+                $date2 = new DateTime($waktu);
+
+                if ($date_now > $date2) {
+                    $this->session->set_flashdata('tgl', '<div class="alert alert-success">
+                    <p>Tanggal tidak sesuai, tanggal diharuskan H +1</p>
+                    </div>');
+                    redirect('Programkerja/kegiatan/'.$this->session->idOrganisasi);
+                }else{
+                    $data = array(
+                        'nama_programkerja' => $nama, 
+                        'waktu_pelaksanaan' => $waktu,
+                        'departemen' => $tempat,
+                        'idOrganisasi' => $idOrganisasi,
+                    );
+                }
                 $this->Proker_model->data($data,'programkerja');
                 redirect('Programkerja/displaydata/'.$this->session->userdata('idOrganisasi'));
             }
@@ -76,14 +86,24 @@
             $waktu = $this->input->post('waktupelaksanaan');
             $tempat = $this->input->post('departemen');
 
-            $data = array('nama_programkerja' => $nama_kegiatan, 
-                'waktu_pelaksanaan' => $waktu,
-                'departemen' => $tempat 
-            );
+            $date_now = new DateTime();
+            $date2 = new DateTime($waktu);
 
-            $where = array(
-                'id_programkerja' => $id
-            );
+            if ($date_now > $date2) {
+                $this->session->set_flashdata('tgl', '<div class="alert alert-success">
+                <p>Tanggal tidak sesuai, tanggal diharuskan H +1</p>
+                </div>');
+                redirect('Programkerja/edit/'.$this->session->idOrganisasi);
+            }else{
+                $data = array('nama_programkerja' => $nama_kegiatan, 
+                    'waktu_pelaksanaan' => $waktu,
+                    'departemen' => $tempat 
+                );
+
+                $where = array(
+                    'id_programkerja' => $id
+                );
+            }
             $this->Proker_model->update_data($where,$data,'programkerja');
             redirect('Programkerja/displaydata/'.$this->session->userdata('idOrganisasi'));
         }

@@ -80,8 +80,9 @@ class Ciqrcode
 			&& array_filter($params['white'], 'is_int') === $params['white']) {
 			QRimage::$white = $params['white']; 
 		}
-		
-		$params['data'] = (isset($params['data'])) ? $params['data'] : 'QR Code Library';
+		// $data['data'] = $this
+
+		$params['data'] = (isset($params['data'])) ? $params['data'] : 'QR CODE LIBRARY';
 		if (isset($params['savename'])) {
 			$level = 'L';
 			if (isset($params['level']) && in_array($params['level'], array('L','M','Q','H'))) $level = $params['level'];

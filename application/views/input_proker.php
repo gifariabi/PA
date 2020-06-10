@@ -265,7 +265,8 @@
         <div class="container-fluid">
 
 <body>
-  
+
+
 <form class="user" action="<?php echo base_url().'Programkerja/simpan';?>" method="post">
 
 <center>
@@ -273,11 +274,13 @@
     <div class="text-center">
         <h1 class="h4 text-gray-900 mb-4">Pengajuan Program Kerja</h1>
     </div>
+    <div id="notifications"><?php echo $this->session->flashdata('error'); ?></div>
     <div class="form-group">
       <input type="text" name="namaproker" class="form-control form-control-user" placeholder="Nama Program Kerja">
     </div>
     <div class="form-group">
       <input type="date" name="waktupelaksanaan" class="form-control form-control-user" placeholder="Waktu Pelaksanaan">
+      <div id="notifications"><?php echo $this->session->flashdata('tgl'); ?></div>
     </div>
     
     <div class=form-group>

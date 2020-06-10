@@ -85,7 +85,7 @@ class Kegiatan extends CI_Controller{
                 
                 $image_name = $nama_kegiatan.'.png';
 
-                $params['data'] = $id_kegiatan;
+                $params['data'] = $nama_kegiatan;
                 $params['level'] = 'H';
                 $params['size'] = '10';
                 $params['savename'] = FCPATH.$config['imagedir'].$image_name;

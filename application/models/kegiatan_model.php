@@ -23,6 +23,12 @@
                 return $query;
             // }
         }
+        function tampil_date(){
+            $this->db->select('k.id_kegiatan, k.nama_kegiatan, k.waktu, k.tempat, FORMAT(k.harga,0) AS harga, k.qr_code,k.foto, p.departemen');
+            $this->db->from('kegiatan k');
+            $this->db->join('programkerja p','p.id_programkerja = k.id_programkerja');
+            $this->db->where('k.waktu >= CURRENT_DATE');
+        }
         // menghapus data
         function hapus_data($where,$table){
             $this->db->where($where);
@@ -56,6 +62,14 @@
             $this->db->or_like('harga',$keyword);
             $query=$this->db->get('kegiatan');
             return $query->result();
+        }
+        function cekKegiatan($where){
+            $this->db->select('COUNT(*) as cekKegiatan');
+            $this->db->from('kegiatan');
+            $this->db->where('nama_kegiatan',$where);
+            $query = $this->db->get();
+            return $query;
+
         }
     }
 ?>

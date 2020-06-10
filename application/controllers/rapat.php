@@ -30,7 +30,7 @@
             // $this->form_validation->set_rules('kondisi','Kondisi','required');
 
             if ($this->form_validation->run() === false) {
-                $this->session->set_flashdata('error', 'Data tidak sesusai');
+                $this->session->set_flashdata('error', 'Data tidak sesuai');
                 $this->load->view('input_rapat');
             }
             else {
