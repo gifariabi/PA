@@ -431,7 +431,7 @@ class Ormawa extends CI_Controller {
                     );
         $data = array('nim' => $cek[0]['nim'],
                         'nama' => $cek[0]['nama'],
-                        'id_thnAjaran' => 1,
+                        'id_thnAjaran' => 4,
                         'idOrganisasi' => $this->session->userdata('idOrganisasi')
                     );
 
