@@ -221,6 +221,19 @@
 <hr>
 <hr>
 <div class="table-responsive">
+<?php if ($this->session->flashdata('pesan')!== null) { ?>
+  <div class="alert alert-danger">
+  <?php
+      echo $this->session->flashdata('pesan');
+  ?>
+  </div>
+  <?php }elseif($this->session->flashdata('sukses')!== null) { ?>
+  <div class="alert alert-success">
+  <?php
+      echo $this->session->flashdata('sukses');
+  ?>
+  </div>
+  <?php } ?>
     <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" >
   
         <br>

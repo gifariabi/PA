@@ -173,6 +173,27 @@ class Organisasi extends CI_Controller {
     }
 
     function update(){
+        $this->form_validation->set_rules('nama','Nama Lengkap','regex_match[/^([a-z ])+$/i]','trim|required|alpha');
+        //$this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
+        $this->form_validation->set_rules('idLine', 'ID Line', 'required');
+        $this->form_validation->set_rules('noHP', 'No Hp','trim|required|max_length[255]|numeric');
+        $this->form_validation->set_rules('noWA', 'No WA','trim|required|max_length[255]|numeric');
+        if ($this->form_validation->run() == FALSE){
+            $this->session->set_flashdata('pesan','Gagal Mengubah Data');
+        $user = $this->Model_daftar->edit_data($this->session->nim)->row();
+        $data = array(
+            'nim'   => $user->nim,
+            'username' => $user->username,
+            'password' => $user->password, 
+            'nama'  => $user->nama,
+            'noWA'  => $user->noWA,
+            'noHP'  => $user->noHP,
+            'idLine' => $user->idLine,
+            'prodi' => $user->prodi
+            );
+            $this->load->view('edit_akun',$data);
+        }
+        else{
         $nim = $this->input->post('nim');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
@@ -196,6 +217,7 @@ class Organisasi extends CI_Controller {
  
         $this->Model_daftar->update_data($where,$data,'mahasiswa');
         redirect('Organisasi/lihat_akun');
+        }
     }
 
     public function hapus_akun($nim,$idOrganisasi){
@@ -233,6 +255,15 @@ class Organisasi extends CI_Controller {
     }
 
     public function update_Org(){
+        $this->form_validation->set_rules('ketua','Ketua','regex_match[/^([a-z ])+$/i]','trim|required|alpha');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
+        $this->form_validation->set_rules('namaOrganisasi', 'Nama Organisasi', 'required');
+        if ($this->form_validation->run() == FALSE){
+            $this->session->set_flashdata('pesan','Gagal Mengubah Data');
+            $data['data'] = $this->Model_daftar->getOrganisasi();
+            $this->load->view('v_organisasi',$data);
+        }else{
+        $this->session->set_flashdata('sukses','Berhasil Mengubah Data');
         $idOrganisasi = $this->input->post('idOrganisasi');
         $namaOrganisasi = $this->input->post('namaOrganisasi');
         $deskripsi = $this->input->post('deskripsi');
@@ -250,6 +281,7 @@ class Organisasi extends CI_Controller {
  
         $this->Model_daftar->update_Org($where,$data,'organisasi');
         redirect('Organisasi/tampilOrg');
+        }
     }
 
     public function searchOrganisasi(){
