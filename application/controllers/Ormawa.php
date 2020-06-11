@@ -24,7 +24,7 @@ class Ormawa extends CI_Controller {
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
         $this->form_validation->set_rules('logo', 'Logo', 'callback_file_selected');
         if ($this->form_validation->run() == FALSE){
-            $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
+            $this->session->set_flashdata('pesan','<font color=red>Gagal Menambahkan Organisasi</font>');
             $this->load->view('buat_organisasi');
         }
         else{
@@ -285,6 +285,8 @@ class Ormawa extends CI_Controller {
 
     public function cetak_laporan($where){        
         $data['total_laporan1'] = $this->Model_kas->getlaporan($where)->result();
+        $data['pemasukan'] = $this->Model_kas->getKas1($where)->result();
+        $data['pengeluaran'] = $this->Model_kas->getKas2($where)->result();
         $mpdf = new \Mpdf\Mpdf();
         $data = $this->load->view('laporan_kass',$data, TRUE);
         $mpdf->WriteHTML($data);
@@ -427,7 +429,7 @@ class Ormawa extends CI_Controller {
         $cekAnggota    = $this->Model_daftar->cekAnggota($nim,$idOrganisasi)->result();
         if ($cekAnggota[0]->cekAnggota != 0) {
             $data['data'] = $this->Model_ormawa->getAnggotabaru();
-            $this->session->set_flashdata('pesan','<font color=red>Sudah Terdaftar Sebagai Anggota</font>');
+            $this->session->set_flashdata('pesan','<font color=red>Mahasiswa Sudah Terdaftar Sebagai Anggota</font>');
             $this->load->view('v_anggotabaru',$data);
         }else{
 

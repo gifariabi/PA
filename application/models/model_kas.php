@@ -13,6 +13,32 @@ class Model_kas extends CI_Model{
         //}
    	}
 
+    public function getKas1($where){
+        $this->db->select('id_kas, FORMAT(pemasukan_kas,0) AS pemasukan_kas,tanggal, idOrganisasi');
+        $this->db->from('kas');
+        $this->db->where('idOrganisasi',$where);
+        $this->db->WHERE('FORMAT(pemasukan_kas,0) > 0');
+        
+        $this->db->order_by('id_kas', 'ASC');
+        $query = $this->db->get();
+        //if($query->num_rows() > 0) {
+            return $query;
+        //}
+    }
+
+    public function getKas2($where){
+        $this->db->select('id_kas,FORMAT(pengeluaran_kas,0) as pengeluaran_kas, keterangan, tanggal , idOrganisasi');
+        $this->db->from('kas');
+        $this->db->where('idOrganisasi',$where);
+        $this->db->WHERE('FORMAT(pengeluaran_kas,0) > 0');
+        
+        $this->db->order_by('id_kas', 'ASC');
+        $query = $this->db->get();
+        //if($query->num_rows() > 0) {
+            return $query;
+        //}
+    }
+
    	public function edit_kas($where,$table){      
         return $this->db->get_where($table,$where);
     }
