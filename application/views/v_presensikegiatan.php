@@ -297,8 +297,6 @@
               <td><?php echo $key->waktu; ?></td>
               <td><?php echo $key->tempat; ?></td>
               <td>
-              <!-- <a href="<?php echo site_url('kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary">Edit</a>
-              <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" class="btn btn-primary">Hapus</a> -->
               <a href="<?php echo site_url('kegiatan/Presensi/'.$key->id_kegiatan); ?>" class="btn btn-primary">Lihat Kehadiran</a>    
                 
               </td>
