@@ -71,5 +71,11 @@
             return $query;
 
         }
+        function cekPresensi($nim, $idKegiatan){
+            $sql = "SELECT EXISTS(SELECT * FROM presensi WHERE nim = '$nim' AND id_kegiatan = $idKegiatan) as cekPresensi";
+
+            $query = $this->db->query($sql);
+            return $query;
+        }
     }
 ?>

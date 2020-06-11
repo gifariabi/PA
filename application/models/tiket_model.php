@@ -82,5 +82,11 @@
             //$this->db->where('namaLengkap',$nama);
             return $query->result();
         }
+        function cekTiket($nim, $idKegiatan){
+            $sql = "SELECT EXISTS(SELECT * FROM tiket WHERE nim = '$nim' AND id_kegiatan = $idKegiatan) as cekTiket";
+
+            $query = $this->db->query($sql);
+            return $query;
+        }
     }
 ?>
