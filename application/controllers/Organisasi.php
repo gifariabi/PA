@@ -223,7 +223,7 @@ class Organisasi extends CI_Controller {
     public function hapus_Org($idOrganisasi){
         $where = array('idOrganisasi' => $idOrganisasi);
         $this->Model_daftar->hapus_Org($where,'organisasi');
-        //redirect('Organisasi/tampilan_awal/'.$this->session->nim);
+        redirect('Organisasi/tampilOrg');
     }
 
     public function editOrg($idOrganisasi){

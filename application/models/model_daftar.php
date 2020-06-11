@@ -48,7 +48,7 @@ class Model_daftar extends CI_Model{
 		
 	function tampilDaftar($where){
         $this->db->distinct();
-        $this->db->select('p.nama, p.nim, o.namaOrganisasi, o.deskripsi,o.logo,o.ketua, o.idOrganisasi, p.id');
+        $this->db->select('p.nama, p.nim, o.namaOrganisasi, o.deskripsi,o.logo,o.ketua, o.idOrganisasi');
         $this->db->from('pengurus p');
         $this->db->join('organisasi o','p.idOrganisasi = o.idOrganisasi');
         //$this->db->join('pengurus an','o.idOrganisasi =  an.idOrganisasi');
@@ -117,6 +117,13 @@ class Model_daftar extends CI_Model{
 
     public function hapus_Org($where,$table){
         $this->db->delete($table,$where);
+    }
+
+    function cekAnggota($nim, $idOrganisasi){
+        $sql = "SELECT EXISTS(SELECT * FROM ang_organisasi WHERE nim = $nim AND idOrganisasi = $idOrganisasi) as cekAnggota";
+
+        $query = $this->db->query($sql);
+        return $query;
     }
 }
 ?>

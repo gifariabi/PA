@@ -268,6 +268,14 @@
 <hr>
 <hr>
     <br>
+    <?php if ($this->session->flashdata('pesan')!== null) { ?>
+      <div class="alert alert-danger">
+      <?php
+        echo $this->session->flashdata('pesan');
+      ?>
+      </div>
+    <?php } ?>
+      
     <div class="table-responsive">
     <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" >
 
@@ -286,12 +294,11 @@
             <td><?php echo $i; ?></td>
             <td><?php echo $data->nim; ?></td>
             <td><?php echo $data->nama; ?></td>
-            <td><a href="<?= base_url().'/Ormawa/add_anggota/'.$data->nim;?>" onclick="return confirm('Anda Yakin Menambah Anggota ?')" class="btn btn-primary">Tambah</a></td>
+            <td><a href="<?= base_url().'/Ormawa/add_anggota/'.$data->nim.'/'.$this->session->userdata('idOrganisasi');?>" onclick="return confirm('Anda Yakin Menambah Anggota ?')" class="btn btn-primary">Tambah</a></td>
         </tr>
         <?php $i++; }?>
     </table>
         <br/>
-
 
 </center>
 

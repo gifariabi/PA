@@ -20,6 +20,7 @@ class Ormawa extends CI_Controller {
     public function simpan_ormawa(){
         $this->form_validation->set_rules('namaOrganisasi', 'Nama Organisasi', 'required');
         $this->form_validation->set_rules('ketua', 'Ketua', 'required');
+        $this->form_validation->set_rules('ketua','Ketua','regex_match[/^([a-z ])+$/i]','trim|required|alpha');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
         $this->form_validation->set_rules('logo', 'Logo', 'callback_file_selected');
         if ($this->form_validation->run() == FALSE){
@@ -54,9 +55,9 @@ class Ormawa extends CI_Controller {
                         $deskripsi = $this->input->post('deskripsi');
                         $ketua = $this->input->post('ketua');
                         $this->Model_ormawa->simpan($namaOrganisasi,$deskripsi,$logo,$ketua);
-                       
+                        $this->session->set_flashdata('sukses','Berhasil Menambahkan');
                         redirect('Organisasi/buat_organisasi');
-                        echo "Berhasil Menambahkan Organisasi";
+                        $this->session->set_flashdata('sukses','Berhasil Menambahkan');
                     }else{
                         redirect('Organisasi/tampilDaftar');
                         }
@@ -422,7 +423,14 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_tambahketua',$data);
     }
 
-    public function add_anggota($nim){
+    public function add_anggota($nim,$idOrganisasi){
+        $cekAnggota    = $this->Model_daftar->cekAnggota($nim,$idOrganisasi)->result();
+        if ($cekAnggota[0]->cekAnggota != 0) {
+            $data['data'] = $this->Model_ormawa->getAnggotabaru();
+            $this->session->set_flashdata('pesan','<font color=red>Sudah Terdaftar Sebagai Anggota</font>');
+            $this->load->view('v_anggotabaru',$data);
+        }else{
+
         $cek    = $this->Model_daftar->view_where('mahasiswa',array('nim'=>$nim))->result_array();
 
         $data2   = array('nim' => $cek[0]['nim'],
@@ -438,6 +446,7 @@ class Ormawa extends CI_Controller {
         $this->Model_daftar->insert($data2,"ang_organisasi");
         $this->Model_daftar->insert($data,"pengurus");
         redirect('Ormawa/tampil_anggota/'.$this->session->userdata('idOrganisasi'));
+        }
     }
     // tambah pengurus
     public function tambah_pengurus(){

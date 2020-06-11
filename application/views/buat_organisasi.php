@@ -24,7 +24,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Organisasi Mahasiswa</a>
+      <a class="navbar-brand" href="<?= base_url('Organisasi/tampilDaftar/'.$this->session->nim)?>">Organisasi Mahasiswa</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -76,11 +76,20 @@
 		</td>
 	</tr>	
 	</table>
+  <?php if ($this->session->flashdata('pesan')!== null) { ?>
   <div class="alert alert-danger">
   <?php
       echo $this->session->flashdata('pesan');
   ?>
   </div>
+  <?php }elseif($this->session->flashdata('sukses')!== null) { ?>
+  <div class="alert alert-success">
+  <?php
+      echo $this->session->flashdata('sukses');
+  ?>
+  </div>
+  <?php } ?>
+
 
 	  <footer class="py-5 bg-dark">
     <div class="container">
