@@ -15,7 +15,7 @@ $pdf->Cell(10, 10, 'Tiket '.$get->nama_kegiatan);
 
 // $pdf->SetFont('Arial', 'i', 10);
 // $pdf->Text(60, 32, 'Jl.Telekomunikasi Telp/Fax. (022)7506283 Bandung 40257');
-$pdf->Line(10, 35, 200, 35);
+// $pdf->Line(10, 35, 200, 35);
 
 $pdf->SetFont('Arial', '', 9);
 

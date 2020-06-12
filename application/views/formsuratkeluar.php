@@ -279,10 +279,10 @@
 <form action="<?=base_url()."Sekertaris2/suratkeluar/".$this->session->userdata('nim')?>" method="post">
 	<a href="<?= site_url('Admin/') ?>"></a>
 	<?php //print_r($user) ?>
-<center><h1>Surat Keluar</h1>
+<h1>Surat Keluar</h1>
 
 
-    <a href='<?php echo base_url()."Surat/displaydata/".$this->session->userdata('idOrganisasi')."/".$this->session->userdata('nim') ;?>'>Lihat Data</a>
+    <a href='<?php echo base_url()."Surat/displaydata/".$this->session->userdata('idOrganisasi')."/".$this->session->userdata('nim') ;?>'class="btn btn-primary btn-sm">Lihat Data</a>
 
 	<!-- <?php if ($this->session->username) { ?>
 	<h4><?= $this->session->namaLengkap ?></h4>
@@ -335,7 +335,6 @@
       <?php
         echo $this->session->flashdata('pesan');
       ?>
-</center>
 	
 	<br>
 	<br>

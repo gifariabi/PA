@@ -18,7 +18,6 @@ $pdf->Text(80, 27, 'Telkom University');
 // $pdf->Line(10, 35, 200, 35);
 
 $pdf->SetFont('Arial', '', 9);
-
 	// $pdf->Text(10, 45, 'No Surat :'.$get->no_suratkeluar );
 	$pdf->Text(10, 50, 'Lampiran : -');
 	$pdf->Text(10, 55, 'Perihal :'.' '.$get->perihal);

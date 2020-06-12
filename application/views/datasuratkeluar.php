@@ -308,7 +308,7 @@
             <td><?php echo $data->perihal; ?></td>
             <td><a href='<?php echo base_url().'Sekertaris2/hapus_surat_keluar/'.$data->id;?>'onclick="return confirm('Anda yakin mau menghapus kegiatan ini ?')" class="btn btn-danger btn-sm">Hapus</a>
             <a href='<?php echo base_url().'Sekertaris2/editdata/'.$data->id;?>'class="btn btn-success btn-sm">Edit</a>
-            <a href='<?php echo base_url().'Surat/cetak_surat/'.$data->id;?>'>Cetak</a></td>
+            <a href='<?php echo base_url().'Surat/cetak_surat/'.$data->id;?> 'class="btn btn-primary btn-sm">Cetak</a></td>
         </tr>
         <?php $i++; }?>
     </table>
@@ -316,8 +316,8 @@
             //echo $this->pagination->create_links();
         ?>
         <br/>
-        <a href="<?php echo base_url().'Sekertaris/suratkeluar/'.$this->session->userdata('idOrganisasi').'/'.$this->session->userdata('nim');?>">Input Surat</a><br>
-        <a href="<?php echo base_url().'Sekertaris/index';?>">Home</a>
+        <a href="<?php echo base_url().'Sekertaris/suratkeluar/'.$this->session->userdata('idOrganisasi').'/'.$this->session->userdata('nim');?>" class="btn btn-success btn-sm">Input Surat</a><br>
+        <!-- <a href="<?php echo base_url().'Sekertaris/index';?>">Home</a> -->
 </center>
 	<br>
 	<br>
