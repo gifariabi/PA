@@ -33,7 +33,7 @@ class Surat extends CI_Controller {
         $data['data'] = $this->model_suratkeluar->tampil_pdf($where)->result();
         //$this->load->view('editsuratmasuk',$data);
         $this->load->library('pdf');
-        $this->load->view('surat2',$data);
+        $this->load->view('surat',$data);
     }
 }
 

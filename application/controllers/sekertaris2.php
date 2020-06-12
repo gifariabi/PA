@@ -108,7 +108,7 @@ class Sekertaris2 extends CI_Controller{
         'penerima' => $penerima,
         'tanggalkeluar' => $tanggalkeluar,
         'perihal' => $perihal,
-        'idOrganisasi' => $idOrganisasi
+        'idOrganisasi' => $this->session->idOrganisasi
         );
  
         $where = array(
