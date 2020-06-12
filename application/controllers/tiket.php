@@ -29,7 +29,13 @@
             $this->form_validation->set_rules('metode','Metode','required');
             // $this->form_validation->set_rules('kondisi','Kondisi','required');
 
-            if ($this->form_validation->run() === true) {
+            if ($this->form_validation->run() === false) {
+                $where = array('id_kegiatan' => $id_kegiatan);
+                $data['data'] = $this->Kegiatan_model->edit_data($where,'kegiatan')->result();
+                // print_r($data);
+                $this->load->view('input_tiket',$data);
+            }
+            else {
                 $id_kegiatan = $this->input->post('id_kegiatan');
                 $harga = $this->input->post('harga');
                 $nama = $this->input->post('nama');
@@ -63,11 +69,6 @@
                 // redirect('tiket/tiket/'.$id_kegiatan);
                 
                 redirect('tiket/displaydata/'.$this->session->nim);
-                
-            }
-            else {
-                $data['data'] = $id_kegiatan;
-                $this->load->view('input_tiket',$data);
             }
         }
         public function displaydata($where){

@@ -26,12 +26,27 @@
             $this->form_validation->set_rules('keperluan','Keperluan','required');
             $this->form_validation->set_rules('tempat','Tempat','required');
             $this->form_validation->set_rules('tanggal','Tanggal','required');
+            $this->form_validation->set_rules('waktu','Waktu','required');
+
 
             // $this->form_validation->set_rules('kondisi','Kondisi','required');
 
             if ($this->form_validation->run() === false) {
-                $this->session->set_flashdata('error', 'Data tidak sesuai');
-                $this->load->view('input_rapat');
+                $this->session->set_flashdata('keperluan', '<div class="alert alert-danger">
+                <p>Kolom tidak boleh kosong</p>
+                </div>');
+                $this->session->set_flashdata('tempat', '<div class="alert alert-danger">
+                <p>Kolom tidak boleh kosong</p>
+                </div>');
+                $this->session->set_flashdata('tanggal', '<div class="alert alert-danger">
+                <p>Kolom tidak boleh kosong</p>
+                </div>');
+                $this->session->set_flashdata('waktu', '<div class="alert alert-danger">
+                <p>Kolom tidak boleh kosong</p>
+                </div>');
+                $where = $this->session->nim;
+                $data['data'] = $this->rapat_model->edit_data($where, 'pengurus')->result();
+                $this->load->view('input_rapat',$data);
             }
             else {
                 $keperluan = $this->input->post('keperluan');
@@ -44,7 +59,7 @@
                 $nim = $this->input->post('nim');
                 $kategori = $this->input->post('kategori');
                 if($date_now > $date2){
-                    $this->session->set_flashdata('tgl', '<div class="alert alert-success">
+                    $this->session->set_flashdata('tgl', '<div class="alert alert-danger">
                     <p>Tanggal tidak sesuai, tanggal diharuskan H +1</p>
                     </div>');
                     redirect('rapat/rapat/'.$this->session->idOrganisasi);

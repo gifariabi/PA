@@ -270,16 +270,19 @@
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <h1>Pengajuan Rapat</h1>
     <table class="table">
-    <div id="notifications"><?php echo $this->session->flashdata('msg'); ?></div>
+    <!-- <div id="notifications"><?php echo $this->session->flashdata('msg'); ?></div> -->
         <tr>
             <td>Keperluan</td>
             <td>:</td>
-            <td><input type="text" name="keperluan" class="form-control form-control-user"></td>
+            <td><input type="text" name="keperluan" class="form-control form-control-user">
+            <div id="notifications"><?php echo $this->session->flashdata('keperluan'); ?></div></td>
+            
         </tr>
         <tr>
             <td>Tempat</td>
             <td>:</td>
-            <td><input type="text" name="tempat" class="form-control form-control-user"></td>
+            <td><input type="text" name="tempat" class="form-control form-control-user">
+            <div id="notifications"><?php echo $this->session->flashdata('tempat'); ?></div></td>
         </tr>
         <tr>
             <td>Tanggal</td>
@@ -289,11 +292,13 @@
             <input type="hidden" name="nim" value="<?php echo $data->nim; ?>"></td>
             <?php } ?>
             <div id="notifications"><?php echo $this->session->flashdata('tgl'); ?></div>
+            <div id="notifications"><?php echo $this->session->flashdata('tanggal'); ?></div>
         </tr>
         <tr>
             <td>Waktu</td>
             <td>:</td>
-            <td><input type="time" name="waktu" class="form-control form-control-user"></td>
+            <td><input type="time" name="waktu" class="form-control form-control-user">
+            <div id="notifications"><?php echo $this->session->flashdata('waktu'); ?></div></td>
         </tr>
         <tr>
           <td>Ditujukan untuk</td>
