@@ -24,5 +24,14 @@ class Model_presensi extends CI_Model{
         $query = $this->db->get();
         return $query;
     }
+    function historiPresensi($nim){
+        $this->db->select('waktu_submit, nim, p.id_kegiatan, nama_kegiatan, foto');
+        $this->db->from('presensi p');
+        $this->db->join('kegiatan k', 'p.id_kegiatan = k.id_kegiatan');
+        $this->db->where('nim', $nim);
+
+        $query = $this->db->get();
+        return $query;
+    }
 }
 ?>
