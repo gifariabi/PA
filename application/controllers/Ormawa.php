@@ -429,7 +429,7 @@ class Ormawa extends CI_Controller {
         $cekAnggota    = $this->Model_daftar->cekAnggota($nim,$idOrganisasi)->result();
         if ($cekAnggota[0]->cekAnggota != 0) {
             $data['data'] = $this->Model_ormawa->getAnggotabaru();
-            $this->session->set_flashdata('pesan','<font color=red>Mahasiswa Sudah Terdaftar Sebagai Anggota</font>');
+            $this->session->set_flashdata('pesan','<font color=red>Mahasiswa Sudah Terdaftar Sebagai Anggota di Organisasi Ini</font>');
             $this->load->view('v_anggotabaru',$data);
         }else{
 
