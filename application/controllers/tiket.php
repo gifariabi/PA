@@ -71,10 +71,15 @@
             }
         }
         public function displaydata($where){
-            // $where = $this->session->userdata('nim');
-            $data['data']=$this->Tiket_model->tampil_tiket($where)->result();
-            // print_r($data);
-            $this->load->view('display_tiket',$data);
+            // $newdata = $this->session->userdata('jabatan');
+            if ($this->session->userdata('jabatan') == 'Sekretaris') {
+                $data['data'] = $this->Tiket_model->tampil_req();
+                $this->load->view('display_tiket',$data);
+            }else{
+                $data['data']=$this->Tiket_model->tampil_tiket($where)->result();
+                // print_r($data);
+                $this->load->view('display_tiket',$data);
+            }
         }
         public function hapus($id){
             $where = array('no_tiket'=>$id);
@@ -121,7 +126,7 @@
     
         public function update_status_admin($no_tiket){
             $this->Tiket_model->update_status($no_tiket);
-            redirect('tiket/status_tiket_admin/');  
+            redirect('tiket/status_tiket_admin/'.$this->session->nim);  
         }
 
         public function update_status(){
@@ -148,8 +153,8 @@
             $this->Tiket_model->update_status($nama,$nim,$jurusan,$email,$jumlah,$metode,$status);
             redirect('tiket/status_tiket_admin');
         }
-        public function status_tiket_admin(){
-                $data['data']=$this->Tiket_model->tampil_req();
+        public function status_tiket_admin($where){
+                $data['data']=$this->Tiket_model->tampil_tiket($where)->result();
                 $this->load->view('display_tiket',$data);
         }
 

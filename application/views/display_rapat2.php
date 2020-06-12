@@ -300,11 +300,11 @@
               <td><?php echo $key->tempat; ?></td>
               <td><?php echo $key->tanggal; ?></td>
               <td><?php echo $key->waktu; ?></td>
-              <td>
+              <!-- <td> -->
               <!-- <a href="<?php echo site_url('rapat/edit/'.$key->id_rapat); ?>" class="btn btn-primary">Edit</a> -->
                   
                 
-              </td>
+              <!-- </td> -->
           </tr>
           <?php $i++; }?>
         </table>

@@ -77,8 +77,8 @@
                 $this->load->view('display_rapat',$data);
             }
         }
-        public function displayrapat(){
-            $data['data']=$this->rapat_model->tampil()->result();
+        public function displayrapat($where){
+            $data['data']=$this->rapat_model->tampil_data($where)->result();
             $this->load->view('display_rapat2',$data);
         }
 

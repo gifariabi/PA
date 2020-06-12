@@ -22,7 +22,7 @@
             return $this->db->get_where($table,$where);
         }
         function tampil_data($where){
-            $this->db->select('p.nim , o.idOrganisasi');
+            $this->db->select('p.nim , o.idOrganisasi,r.perihal, r.tempat, r.tanggal, r.waktu');
             $this->db->from('rapat r');
             $this->db->join('pengurus p','r.nim = p.nim');
             $this->db->join('organisasi o','p.idOrganisasi = o.idOrganisasi');

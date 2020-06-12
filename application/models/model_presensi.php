@@ -14,6 +14,15 @@ class Model_presensi extends CI_Model{
        	//if($query->num_rows() > 0) {
         return $query->result();
     	//}
-	}
+    }
+    function hitungPresensi($nim){
+        // SELECT COUNT(*) from presensi WHERE nim = 670117400
+        $this->db->select('COUNT(*) as hitungPresensi');
+        $this->db->from('presensi');
+        $this->db->where('nim', $nim);
+        
+        $query = $this->db->get();
+        return $query;
+    }
 }
 ?>

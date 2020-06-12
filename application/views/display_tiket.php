@@ -279,7 +279,7 @@
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
     <div class="card-body">
       <div class="table-responsive">
-        <?php if ($this->session->userdata('jabatan') != 'Sekertaris') { 
+        <?php if ($this->session->userdata('jabatan') != 'Sekretaris') { 
           ?>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <tr>
@@ -334,7 +334,7 @@
               <th>NIM</th>
               <th>Jurusan</th>
               <th>Email</th>
-              <th>Jumlah</th>
+              <!-- <th>Jumlah</th> -->
               <th>Total</th>
               <th>Metode Pembayaran</th>
               <th>Status</th>
@@ -351,16 +351,15 @@
               <td><?php echo $key->nim; ?></td>
               <td><?php echo $key->jurusan; ?></td>
               <td><?php echo $key->email; ?></td>
-              <td><?php echo $key->jumlah; ?></td>
-              <td><?php echo $key->total;?></td>
+              <td>Rp. <?php echo $key->total;?></td>
               <td><?php echo $key->metode_pembayaran;?></td>
               <td><?php echo $key->status; ?><input type="hidden" value="<?php echo $key->no_tiket; ?>"></td>
               <td><?= anchor('Tiket/update_status_admin/'.$key->no_tiket,'Accept') ?></td>
-              <td>
+              <!-- <td> -->
               <!-- <a href="<?php echo site_url('Tiket/edit/'.$key->no_tiket); ?>" class="btn btn-success">Edit</a>
               <a href="<?php echo site_url('Tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
                  -->
-              </td>
+              <!-- </td> -->
           </tr>
           <?php $i++; }?>
         </table>
