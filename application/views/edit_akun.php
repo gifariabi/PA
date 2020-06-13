@@ -293,7 +293,7 @@
 <center><h1>Edit Akun</h1>
 <hr><hr>
 </center>
-	<form class="login100-form" action="<?= base_url() ?>Organisasi/update/<?php $this->session->userdata('idOrganisasi') ?>" method="POST">
+	<form class="login100-form" action="<?= base_url() ?>Organisasi/update" method="POST">
 	<table style="margin: 20px auto;">
 		<body>
 			<tr>

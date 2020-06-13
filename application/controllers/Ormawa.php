@@ -494,7 +494,7 @@ class Ormawa extends CI_Controller {
                     );
 
         $this->Model_daftar->insert($data,"pengurus");
-        $this->Model_daftar->insert($data2,"ang_organisasi");
+        //$this->Model_daftar->insert($data2,"ang_organisasi");
         redirect('Organisasi/halaman_daftar/'.$idOrganisasi);
         echo "<p> Berhasil Menambahkan </p>";
         
