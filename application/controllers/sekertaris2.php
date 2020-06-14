@@ -38,16 +38,16 @@ class Sekertaris2 extends CI_Controller{
     }
 
 	public function suratkeluar(){
-        //$this->form_validation->set_rules('no_suratkeluar', 'no_suratkeluar', 'required');
-        //$this->form_validation->set_rules('penerima', 'Penerima', 'required');
-        //$this->form_validation->set_rules('perihal', 'Perihal', 'required');
-        //$this->form_validation->set_rules('nim', 'nim', 'required');
+        $this->form_validation->set_rules('no_suratkeluar', 'no_suratkeluar', 'required');
+        $this->form_validation->set_rules('penerima', 'Penerima', 'required');
+        $this->form_validation->set_rules('perihal', 'Perihal', 'required');
+        $this->form_validation->set_rules('nim', 'nim', 'required');
 
-        //if ($this->form_validation->run() == FALSE){
-          //  $this->load->view('formsuratkeluar');
-           // $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
-        //}
-        //else{
+        if ($this->form_validation->run() == FALSE){
+			$this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
+			redirect('Sekertaris/suratkeluar/'.$this->session->userdata('idOrganisasi').'/'.$this->session->userdata('nim'));
+        }
+        else{
 
         $no_suratkeluar = $this->input->post('no_suratkeluar');
         $penerima = $this->input->post('penerima');
@@ -67,8 +67,8 @@ class Sekertaris2 extends CI_Controller{
         );
             
         $this->model_suratkeluar->data($data,'suratkeluar');
-        redirect('sekertaris2/inputan/'.$this->session->userdata('idOrganisasi'));
-        //}
+        redirect('sekertaris2/inputan/'.$this->session->userdata('idOrganisasi').'/'.$this->session->userdata('nim'));
+        }
     }
     public function inputan($where){
         $data['data']=$this->model_suratkeluar->tampil($where);

@@ -274,12 +274,12 @@
 	<h4>Selamat Datang, <?= $this->session->namaLengkap ?></h4>
 	<?php } else { redirect('Admin/login'); } ?> -->
   <!-- <div class="alert alert-primary" role="alert"> -->
-    <?php echo  $this->session->flashdata('pesan');?>
 <!-- </div> -->
 <form action="<?=base_url()."Sekertaris2/suratkeluar/".$this->session->userdata('nim')?>" method="post">
 	<a href="<?= site_url('Admin/') ?>"></a>
 	<?php //print_r($user) ?>
 <center><h1>Surat Keluar</h1>
+<?php echo  $this->session->flashdata('pesan');?> <br>
 
 
     <a href='<?php echo base_url()."Surat/displaydata/".$this->session->userdata('idOrganisasi')."/".$this->session->userdata('nim') ;?>'class="btn btn-primary btn-sm">Lihat Data</a>
@@ -289,6 +289,7 @@
 	<?php } else { redirect('Admin/login'); } ?> -->
 	
 <table>
+
   <tr>
     <?php foreach($data as $data){ ?>
     <td><input type="hidden" name="nim" class="form-control form-control-user" value="<?php echo $data->nim; ?>" ></td>
@@ -332,9 +333,6 @@
 		<td><input type="submit" name="submit" value="Simpan" class="btn btn-success btn-user btn-block"></td>
 	</tr>
 </table>
-      <?php
-        echo $this->session->flashdata('pesan');
-      ?>
 </center>
 	
 	<br>
