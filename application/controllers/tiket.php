@@ -154,8 +154,8 @@
             $this->Tiket_model->update_status($nama,$nim,$jurusan,$email,$jumlah,$metode,$status);
             redirect('tiket/status_tiket_admin');
         }
-        public function status_tiket_admin($where){
-                $data['data']=$this->Tiket_model->tampil_tiket($where)->result();
+        public function status_tiket_admin(){
+                $data['data']=$this->Tiket_model->tampil()->result();
                 $this->load->view('display_tiket',$data);
         }
 

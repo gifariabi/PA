@@ -13,7 +13,7 @@
             return $this->db->get('tiket');
         }
         public function tampil_pdf($where){
-            $this->db->select('t.no_tiket, t.nama, t.nim, t.jurusan, t.email, t.jumlah, k.nama_kegiatan, k.waktu, k.tempat, k.qr_code');
+            $this->db->select('t.no_tiket, t.nama, t.nim, t.jurusan, t.email, FORMAT(t.total,0) as total, k.nama_kegiatan, k.waktu, k.tempat, k.qr_code');
             $this->db->from('tiket t');
             $this->db->join('kegiatan k','t.id_kegiatan = k.id_kegiatan');
             // $this->db->join('organisasi o','s.idOrganisasi =  o.idOrganisasi');

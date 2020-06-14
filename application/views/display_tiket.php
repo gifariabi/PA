@@ -312,7 +312,7 @@
               <a href="<?php echo site_url('Tiket/hapus/'.$key->no_tiket); ?>" class="btn btn-danger">Batal</a>    
                  -->
               <?php if ($key->status =='Accepted') { ?>
-                <td><a href="<?php echo base_url().'Tiket/cetak_tiket/'.$key->no_tiket;?>">Cetak Tiket</a></td>
+                <td><a href="<?php echo base_url().'Tiket/cetak_tiket/'.$key->no_tiket;?>" >Cetak Tiket</a></td>
               <?php
               } else {?>
               <td><a href="#">Cetak Tiket</a></td>
