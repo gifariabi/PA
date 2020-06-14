@@ -136,7 +136,7 @@ class Organisasi extends CI_Controller {
                 <h4>Berhasil</h4>
                 <p> Anda berhasil post berita</p>
                 </div>');
-				redirect('Organisasi/berita');
+				redirect('Organisasi/berita/');
             }else{
                 redirect('Organisasi/berita/');
             }
