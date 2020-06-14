@@ -78,7 +78,7 @@
             return $query;
         }
         function tampil_req(){
-            $query = $this->db->query("SELECT * FROM tiket t JOIN kegiatan k ON t.");
+            $query = $this->db->query("SELECT t.no_tiket, t.nim, t.nama,t.jurusan, t.email,t.jumlah, k.nama_kegiatan FROM tiket t JOIN kegiatan k ON t.id_kegiatan = k.id_kegiatan");
             //$this->db->where('namaLengkap',$nama);
             return $query->result();
         }
