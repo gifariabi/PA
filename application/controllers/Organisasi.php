@@ -139,6 +139,10 @@ class Organisasi extends CI_Controller {
             redirect('Organisasi/berita/');
         }
     }
+	function lists(){
+        $x['data'] = $this->Model_berita->get_all_berita();
+        $this->load->view('dashboard',$x);
+    }
 
     public function set_proker()
     {
