@@ -266,6 +266,7 @@
 <body>
 
 <h2>Portal Berita</h2><hr/>
+<div id="notifications"><?php echo $this->session->flashdata('msg'); ?></div>
             <form action="<?php echo base_url().'index.php/Post_berita/simpan_post'?>" method="post" enctype="multipart/form-data">
                 <input type="text" name="judul" class="form-control" placeholder="Judul berita" required/><br/>
                 <textarea id="ckeditor" name="berita" class="form-control" required cols="20" rows="10" placeholder="Isi Berita"></textarea><br/>
@@ -289,7 +290,9 @@
 
     </div>
     <!-- End of Content Wrapper -->
-
+<script>
+    $('#notifications').slideDown('slow').delay(3000).slideUp('slow');
+</script>
   </div>
   <!-- End of Page Wrapper -->
 

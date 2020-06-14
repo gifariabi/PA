@@ -131,7 +131,12 @@ class Organisasi extends CI_Controller {
                 $berita = $this->input->post('berita');
 
                 $this->Model_berita->simpan_berita($jdl,$berita,$gambar);
-                redirect('Organisasi/lists');
+                $this->session->set_flashdata('msg',
+                '<div class="alert alert-success">
+                <h4>Berhasil</h4>
+                <p> Anda berhasil post berita</p>
+                </div>');
+				redirect('Organisasi/berita');
             }else{
                 redirect('Organisasi/berita/');
             }
