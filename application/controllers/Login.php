@@ -12,6 +12,8 @@ class Login extends CI_Controller{
 	public function index(){
 		if (!$this->session->username) {
 			redirect('Login/login');
+		}elseif ($this->session->username == 'bk') {
+			redirect('Organisasi/tampilDaftar/'.$this->session->nim);
 		}
 		redirect('Organisasi/tampilan_awal/'.$this->session->nim);
 	}
