@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jun 2020 pada 10.07
--- Versi server: 10.1.31-MariaDB
--- Versi PHP: 7.2.3
+-- Generation Time: Jun 15, 2020 at 07:46 AM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 
 DELIMITER $$
 --
--- Prosedur
+-- Procedures
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `total_kas` (IN `total_kas` INT(255))  NO SQL
     DETERMINISTIC
@@ -37,7 +37,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ang_organisasi`
+-- Table structure for table `ang_organisasi`
 --
 
 CREATE TABLE `ang_organisasi` (
@@ -48,7 +48,7 @@ CREATE TABLE `ang_organisasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
 --
--- Dumping data untuk tabel `ang_organisasi`
+-- Dumping data for table `ang_organisasi`
 --
 
 INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
@@ -59,19 +59,19 @@ INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `berita`
+-- Table structure for table `berita`
 --
 
 CREATE TABLE `berita` (
   `id_berita` int(11) NOT NULL,
   `judul` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `isi` text COLLATE utf8_bin,
+  `isi` text COLLATE utf8_bin DEFAULT NULL,
   `gambar` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data untuk tabel `berita`
+-- Dumping data for table `berita`
 --
 
 INSERT INTO `berita` (`id_berita`, `judul`, `isi`, `gambar`, `tanggal`) VALUES
@@ -82,7 +82,7 @@ INSERT INTO `berita` (`id_berita`, `judul`, `isi`, `gambar`, `tanggal`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `datauser`
+-- Table structure for table `datauser`
 --
 
 CREATE TABLE `datauser` (
@@ -96,7 +96,7 @@ CREATE TABLE `datauser` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `datauser`
+-- Dumping data for table `datauser`
 --
 
 INSERT INTO `datauser` (`nama`, `nim`, `jenisKelamin`, `prodi`, `username`, `password`, `foto`) VALUES
@@ -106,7 +106,7 @@ INSERT INTO `datauser` (`nama`, `nim`, `jenisKelamin`, `prodi`, `username`, `pas
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `departemen`
+-- Table structure for table `departemen`
 --
 
 CREATE TABLE `departemen` (
@@ -116,7 +116,7 @@ CREATE TABLE `departemen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
 --
--- Dumping data untuk tabel `departemen`
+-- Dumping data for table `departemen`
 --
 
 INSERT INTO `departemen` (`idDept`, `namaDepartemen`, `idOrganisasi`) VALUES
@@ -125,7 +125,7 @@ INSERT INTO `departemen` (`idDept`, `namaDepartemen`, `idOrganisasi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kas`
+-- Table structure for table `kas`
 --
 
 CREATE TABLE `kas` (
@@ -138,7 +138,7 @@ CREATE TABLE `kas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
 --
--- Dumping data untuk tabel `kas`
+-- Dumping data for table `kas`
 --
 
 INSERT INTO `kas` (`id_kas`, `pemasukan_kas`, `pengeluaran_kas`, `keterangan`, `tanggal`, `idOrganisasi`) VALUES
@@ -153,7 +153,7 @@ INSERT INTO `kas` (`id_kas`, `pemasukan_kas`, `pengeluaran_kas`, `keterangan`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kegiatan`
+-- Table structure for table `kegiatan`
 --
 
 CREATE TABLE `kegiatan` (
@@ -165,11 +165,11 @@ CREATE TABLE `kegiatan` (
   `qr_code` varchar(255) COLLATE utf8_bin NOT NULL,
   `foto` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_programkerja` int(10) NOT NULL,
-  `upload_lpj` tinyint(255) DEFAULT '0' COMMENT '1 = sudah upload , 0 belum upload'
+  `upload_lpj` tinyint(255) DEFAULT 0 COMMENT '1 = sudah upload , 0 belum upload'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data untuk tabel `kegiatan`
+-- Dumping data for table `kegiatan`
 --
 
 INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `harga`, `qr_code`, `foto`, `id_programkerja`, `upload_lpj`) VALUES
@@ -181,7 +181,7 @@ INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `harg
 (21, 'Badminton Competition', '2020-05-14', 'Aula Fakultas Ilmu Terapan', '20000', 'Badminton Competition.png', '', 7, 0),
 (22, 'Seminar UX ', '2020-08-07', 'Aula Fakultas Ilmu Terapan', 'Free', 'Seminar UX .png', '', 7, 0),
 (23, 'Seminar Pembangunan', '2020-09-02', 'Aula Fakultas Ilmu Terapan', '20000', 'Seminar Pembangunan.png', '', 5, 0),
-(24, 'COVID 19', '2020-08-01', 'Lapangan FIT', 'Free', 'COVID 19.png', '', 5, 0),
+(24, 'COVID 19', '2020-08-01', 'Lapangan FIT', 'Free', 'COVID 19.png', '107928881-profile-head-shot-from-red-blotched-tabby-american-curl-cat-kitten-looking-at-the-side-isolated-on-w.jpg', 5, 0),
 (25, 'Seminar Kotlin', '2020-07-01', 'Aula Fakultas Ilmu Terapan', '10000', 'Seminar Kotlin.png', '', 10, 0),
 (26, 'Bantuan Panti Asuhan', '2020-08-01', 'Lapangan FIT', '20000', 'Bantuan Panti Asuhan.png', '', 11, 0),
 (27, 'Ping pong', '2020-08-01', 'Batununggal Sport Center', '10000', 'Ping pong.png', '', 7, 0),
@@ -192,7 +192,7 @@ INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `harg
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `konten`
+-- Table structure for table `konten`
 --
 
 CREATE TABLE `konten` (
@@ -200,7 +200,7 @@ CREATE TABLE `konten` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data untuk tabel `konten`
+-- Dumping data for table `konten`
 --
 
 INSERT INTO `konten` (`deskripsi`) VALUES
@@ -209,7 +209,7 @@ INSERT INTO `konten` (`deskripsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `lpj`
+-- Table structure for table `lpj`
 --
 
 CREATE TABLE `lpj` (
@@ -219,7 +219,7 @@ CREATE TABLE `lpj` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data untuk tabel `lpj`
+-- Dumping data for table `lpj`
 --
 
 INSERT INTO `lpj` (`id_lpj`, `file`, `id_kegiatan`) VALUES
@@ -230,7 +230,7 @@ INSERT INTO `lpj` (`id_lpj`, `file`, `id_kegiatan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mahasiswa`
+-- Table structure for table `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -246,7 +246,7 @@ CREATE TABLE `mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
 --
--- Dumping data untuk tabel `mahasiswa`
+-- Dumping data for table `mahasiswa`
 --
 
 INSERT INTO `mahasiswa` (`nim`, `username`, `password`, `nama`, `noWA`, `noHP`, `idLine`, `foto`, `prodi`) VALUES
@@ -261,7 +261,7 @@ INSERT INTO `mahasiswa` (`nim`, `username`, `password`, `nama`, `noWA`, `noHP`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `organisasi`
+-- Table structure for table `organisasi`
 --
 
 CREATE TABLE `organisasi` (
@@ -273,7 +273,7 @@ CREATE TABLE `organisasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
 --
--- Dumping data untuk tabel `organisasi`
+-- Dumping data for table `organisasi`
 --
 
 INSERT INTO `organisasi` (`idOrganisasi`, `namaOrganisasi`, `deskripsi`, `logo`, `ketua`) VALUES
@@ -285,7 +285,7 @@ INSERT INTO `organisasi` (`idOrganisasi`, `namaOrganisasi`, `deskripsi`, `logo`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengurus`
+-- Table structure for table `pengurus`
 --
 
 CREATE TABLE `pengurus` (
@@ -298,13 +298,13 @@ CREATE TABLE `pengurus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
 --
--- Dumping data untuk tabel `pengurus`
+-- Dumping data for table `pengurus`
 --
 
 INSERT INTO `pengurus` (`nim`, `id`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`) VALUES
 (670117403, 1, 'Gifari Abi Waqqash', 'Kepala Divisi Luar Negeri', 5, 1),
 (670117455, 2, 'Eko Adinata', 'Sekertaris', 5, 1),
-(670117410, 4, 'Muhammad Luqman', '', 5, 1),
+(670117410, 4, 'Muhammad Luqman', 'Sekretaris', 5, 1),
 (670117403, 5, 'Gifari Abi Waqqash', '', 1, 1),
 (670117410, 6, 'Muhammad Luqman', 'Sekretaris', 1, 1),
 (670117400, 7, 'Yusril Wahyuda', '', 1, 1),
@@ -313,29 +313,33 @@ INSERT INTO `pengurus` (`nim`, `id`, `nama`, `jabatan`, `idOrganisasi`, `id_thnA
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `presensi`
+-- Table structure for table `presensi`
 --
 
 CREATE TABLE `presensi` (
   `id_presensi` int(5) NOT NULL,
-  `waktu_submit` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `waktu_submit` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` varchar(255) COLLATE utf8_bin NOT NULL,
   `nim` int(10) NOT NULL,
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data untuk tabel `presensi`
+-- Dumping data for table `presensi`
 --
 
 INSERT INTO `presensi` (`id_presensi`, `waktu_submit`, `status`, `nim`, `id_kegiatan`) VALUES
 (1, '2020-06-05 05:44:44', 'Hadir', 670606006, 14),
-(2, '2020-06-05 05:44:44', 'Hadir', 670117400, 19);
+(2, '2020-06-05 05:44:44', 'Hadir', 670117400, 19),
+(3, '2020-06-11 17:09:32', 'Hadir', 670117410, 14),
+(5, '2020-06-11 17:17:22', 'Hadir', 670117400, 14),
+(8, '2020-06-14 05:24:37', 'Hadir', 670117403, 24),
+(9, '2020-06-14 17:22:06', 'Hadir', 670117410, 24);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `programkerja`
+-- Table structure for table `programkerja`
 --
 
 CREATE TABLE `programkerja` (
@@ -347,7 +351,7 @@ CREATE TABLE `programkerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data untuk tabel `programkerja`
+-- Dumping data for table `programkerja`
 --
 
 INSERT INTO `programkerja` (`id_programkerja`, `nama_programkerja`, `waktu_pelaksanaan`, `departemen`, `idOrganisasi`) VALUES
@@ -359,7 +363,7 @@ INSERT INTO `programkerja` (`id_programkerja`, `nama_programkerja`, `waktu_pelak
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rapat`
+-- Table structure for table `rapat`
 --
 
 CREATE TABLE `rapat` (
@@ -369,20 +373,22 @@ CREATE TABLE `rapat` (
   `tanggal` varchar(255) COLLATE utf8_bin NOT NULL,
   `waktu` varchar(255) COLLATE utf8_bin NOT NULL,
   `kategori` varchar(255) COLLATE utf8_bin NOT NULL,
-  `nim` int(10) NOT NULL
+  `nim` int(10) NOT NULL,
+  `id_organisasi` int(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data untuk tabel `rapat`
+-- Dumping data for table `rapat`
 --
 
-INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `waktu`, `kategori`, `nim`) VALUES
-(1, 'Rapat Rutin', 'Ruang G6 FIT', '2020-10-02', '19:00', 'Pengurus', 670117410);
+INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `waktu`, `kategori`, `nim`, `id_organisasi`) VALUES
+(1, 'Rapat Rutin', 'Ruang G6 FIT', '2020-10-02', '19:00', 'Pengurus', 670117410, 1),
+(2, 'Coba 1', 'Telkom', '2020-05-16', '1700', 'Pengurus', 670117410, 2);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `suratkeluar`
+-- Table structure for table `suratkeluar`
 --
 
 CREATE TABLE `suratkeluar` (
@@ -399,7 +405,7 @@ CREATE TABLE `suratkeluar` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tahun_ajaran`
+-- Table structure for table `tahun_ajaran`
 --
 
 CREATE TABLE `tahun_ajaran` (
@@ -408,7 +414,7 @@ CREATE TABLE `tahun_ajaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
 --
--- Dumping data untuk tabel `tahun_ajaran`
+-- Dumping data for table `tahun_ajaran`
 --
 
 INSERT INTO `tahun_ajaran` (`id_thnAjaran`, `tahunAjaran`) VALUES
@@ -420,7 +426,7 @@ INSERT INTO `tahun_ajaran` (`id_thnAjaran`, `tahunAjaran`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tiket`
+-- Table structure for table `tiket`
 --
 
 CREATE TABLE `tiket` (
@@ -437,7 +443,7 @@ CREATE TABLE `tiket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data untuk tabel `tiket`
+-- Dumping data for table `tiket`
 --
 
 INSERT INTO `tiket` (`no_tiket`, `nama`, `nimAkun`, `nim`, `jurusan`, `email`, `total`, `metode_pembayaran`, `status`, `id_kegiatan`) VALUES
@@ -451,13 +457,22 @@ INSERT INTO `tiket` (`no_tiket`, `nama`, `nimAkun`, `nim`, `jurusan`, `email`, `
 (19, 'Sherli Y', 0, '6701174033', 'D3 Sistem Informasi', 'sherliyualinda@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
 (20, 'Sherla Y', 0, '670117406', 'D3 Sistem Informasi', 'sherlayualinda@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
 (21, 'Luqm', 0, '670117410', 'D3 Sistem Informasi', 'luqman@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
-(22, 'Sem', 670117410, '6701174033', 'D3 Sistem Informasi', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Menunggu', 15);
+(22, 'Sem', 670117410, '6701174033', 'D3 Sistem Informasi', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Menunggu', 15),
+(23, 'fajarrr', 670117410, 'fajarrr', 'fajarrr', 'emluqman194@gmail.com', '20,000', 'Transfer', 'Menunggu', 16),
+(24, 'fajarrr', 670117410, 'fajarrr', 'fajarrr', 'emluqman194@gmail.com', '20,000', 'Transfer', 'Menunggu', 16),
+(25, 'luwmann', 670117410, 'luwmnann', 'bfbebe', 'hbeve@gmail.com', '20,000', 'Transfer', 'Menunggu', 16),
+(26, 'gitari', 670117403, '505050', 'gitari', 'gitari@gmail.com', '0', 'Transfer', 'Menunggu', 24),
+(27, 'gifari abi', 670117403, '670117403', 'd3 si', 'gifari@gmail.com', '0', 'Transfer', 'Menunggu', 24),
+(28, 'gifari', 670117403, '670117403', 'd3 si', 'emluqman194@gmail.com', '20,000', 'Cash', 'Menunggu', 23),
+(29, 'gifari', 670117403, '670771584', 'D3 SI', 'gipati@gmail.com', '20,000', 'Transfer', 'Menunggu', 23),
+(30, 'gipari', 670117403, '670014789', 'd3 telco', 'gipari@gmail.com', '0', 'Transfer', 'Menunggu', 24),
+(31, 'luqman', 670117410, '670117410', 'desi', 'emluqman194@gmail.com', '0', 'Transfer', 'Menunggu', 24);
 
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `view_total_kas`
--- (Lihat di bawah untuk tampilan aktual)
+-- Stand-in structure for view `view_total_kas`
+-- (See below for the actual view)
 --
 CREATE TABLE `view_total_kas` (
 `Total Kas` decimal(65,0)
@@ -466,77 +481,77 @@ CREATE TABLE `view_total_kas` (
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `view_total_kas`
+-- Structure for view `view_total_kas`
 --
 DROP TABLE IF EXISTS `view_total_kas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_total_kas`  AS  select (sum(`kas`.`pemasukan_kas`) - sum(`kas`.`pengeluaran_kas`)) AS `Total Kas` from `kas` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_total_kas`  AS  select sum(`kas`.`pemasukan_kas`) - sum(`kas`.`pengeluaran_kas`) AS `Total Kas` from `kas` ;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `ang_organisasi`
+-- Indexes for table `ang_organisasi`
 --
 ALTER TABLE `ang_organisasi`
   ADD KEY `fk_idOrganisasi` (`idOrganisasi`),
   ADD KEY `fk_nim_anggota` (`nim`);
 
 --
--- Indeks untuk tabel `berita`
+-- Indexes for table `berita`
 --
 ALTER TABLE `berita`
   ADD PRIMARY KEY (`id_berita`);
 
 --
--- Indeks untuk tabel `datauser`
+-- Indexes for table `datauser`
 --
 ALTER TABLE `datauser`
   ADD PRIMARY KEY (`nim`);
 
 --
--- Indeks untuk tabel `departemen`
+-- Indexes for table `departemen`
 --
 ALTER TABLE `departemen`
   ADD PRIMARY KEY (`idDept`),
   ADD UNIQUE KEY `idOrganisasi` (`idOrganisasi`);
 
 --
--- Indeks untuk tabel `kas`
+-- Indexes for table `kas`
 --
 ALTER TABLE `kas`
   ADD PRIMARY KEY (`id_kas`),
   ADD KEY `fk_idOrganisasii` (`idOrganisasi`);
 
 --
--- Indeks untuk tabel `kegiatan`
+-- Indexes for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
   ADD PRIMARY KEY (`id_kegiatan`),
   ADD KEY `id_programkerja` (`id_programkerja`);
 
 --
--- Indeks untuk tabel `lpj`
+-- Indexes for table `lpj`
 --
 ALTER TABLE `lpj`
   ADD PRIMARY KEY (`id_lpj`),
   ADD UNIQUE KEY `id_kegiatan` (`id_kegiatan`);
 
 --
--- Indeks untuk tabel `mahasiswa`
+-- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`nim`);
 
 --
--- Indeks untuk tabel `organisasi`
+-- Indexes for table `organisasi`
 --
 ALTER TABLE `organisasi`
   ADD PRIMARY KEY (`idOrganisasi`);
 
 --
--- Indeks untuk tabel `pengurus`
+-- Indexes for table `pengurus`
 --
 ALTER TABLE `pengurus`
   ADD PRIMARY KEY (`id`),
@@ -545,7 +560,7 @@ ALTER TABLE `pengurus`
   ADD KEY `nim` (`nim`);
 
 --
--- Indeks untuk tabel `presensi`
+-- Indexes for table `presensi`
 --
 ALTER TABLE `presensi`
   ADD PRIMARY KEY (`id_presensi`),
@@ -553,21 +568,22 @@ ALTER TABLE `presensi`
   ADD KEY `id_kegiatan` (`id_kegiatan`) USING BTREE;
 
 --
--- Indeks untuk tabel `programkerja`
+-- Indexes for table `programkerja`
 --
 ALTER TABLE `programkerja`
   ADD PRIMARY KEY (`id_programkerja`),
   ADD KEY `idOrganisasi` (`idOrganisasi`) USING BTREE;
 
 --
--- Indeks untuk tabel `rapat`
+-- Indexes for table `rapat`
 --
 ALTER TABLE `rapat`
   ADD PRIMARY KEY (`id_rapat`),
-  ADD KEY `nim` (`nim`);
+  ADD KEY `nim` (`nim`),
+  ADD KEY `rapat_idOrganisasi` (`id_organisasi`);
 
 --
--- Indeks untuk tabel `suratkeluar`
+-- Indexes for table `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
   ADD PRIMARY KEY (`id`),
@@ -575,137 +591,137 @@ ALTER TABLE `suratkeluar`
   ADD KEY `fk_idorganisasi3` (`idOrganisasi`);
 
 --
--- Indeks untuk tabel `tahun_ajaran`
+-- Indexes for table `tahun_ajaran`
 --
 ALTER TABLE `tahun_ajaran`
   ADD PRIMARY KEY (`id_thnAjaran`);
 
 --
--- Indeks untuk tabel `tiket`
+-- Indexes for table `tiket`
 --
 ALTER TABLE `tiket`
   ADD PRIMARY KEY (`no_tiket`),
   ADD KEY `id_kegiatan` (`id_kegiatan`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `berita`
+-- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
   MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `departemen`
+-- AUTO_INCREMENT for table `departemen`
 --
 ALTER TABLE `departemen`
   MODIFY `idDept` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `kas`
+-- AUTO_INCREMENT for table `kas`
 --
 ALTER TABLE `kas`
   MODIFY `id_kas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `kegiatan`
+-- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
   MODIFY `id_kegiatan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT untuk tabel `lpj`
+-- AUTO_INCREMENT for table `lpj`
 --
 ALTER TABLE `lpj`
   MODIFY `id_lpj` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `organisasi`
+-- AUTO_INCREMENT for table `organisasi`
 --
 ALTER TABLE `organisasi`
   MODIFY `idOrganisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `pengurus`
+-- AUTO_INCREMENT for table `pengurus`
 --
 ALTER TABLE `pengurus`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `presensi`
+-- AUTO_INCREMENT for table `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id_presensi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_presensi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `programkerja`
+-- AUTO_INCREMENT for table `programkerja`
 --
 ALTER TABLE `programkerja`
   MODIFY `id_programkerja` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `rapat`
+-- AUTO_INCREMENT for table `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `suratkeluar`
+-- AUTO_INCREMENT for table `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tahun_ajaran`
+-- AUTO_INCREMENT for table `tahun_ajaran`
 --
 ALTER TABLE `tahun_ajaran`
   MODIFY `id_thnAjaran` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `tiket`
+-- AUTO_INCREMENT for table `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `ang_organisasi`
+-- Constraints for table `ang_organisasi`
 --
 ALTER TABLE `ang_organisasi`
   ADD CONSTRAINT `fk_idOrganisasi` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
   ADD CONSTRAINT `fk_nim_anggota` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`);
 
 --
--- Ketidakleluasaan untuk tabel `departemen`
+-- Constraints for table `departemen`
 --
 ALTER TABLE `departemen`
   ADD CONSTRAINT `departemen_ibfk_1` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `kas`
+-- Constraints for table `kas`
 --
 ALTER TABLE `kas`
   ADD CONSTRAINT `fk_idOrganisasii` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `kegiatan`
+-- Constraints for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
   ADD CONSTRAINT `kegiatan_ibfk_1` FOREIGN KEY (`id_programkerja`) REFERENCES `programkerja` (`id_programkerja`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `lpj`
+-- Constraints for table `lpj`
 --
 ALTER TABLE `lpj`
   ADD CONSTRAINT `lpj_ibfk_1` FOREIGN KEY (`id_kegiatan`) REFERENCES `kegiatan` (`id_kegiatan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `pengurus`
+-- Constraints for table `pengurus`
 --
 ALTER TABLE `pengurus`
   ADD CONSTRAINT `fk_organisasi` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
@@ -713,33 +729,34 @@ ALTER TABLE `pengurus`
   ADD CONSTRAINT `pengurus_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`);
 
 --
--- Ketidakleluasaan untuk tabel `presensi`
+-- Constraints for table `presensi`
 --
 ALTER TABLE `presensi`
   ADD CONSTRAINT `fk_mahasiswa` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`),
   ADD CONSTRAINT `presensi_ibfk_2` FOREIGN KEY (`id_kegiatan`) REFERENCES `kegiatan` (`id_kegiatan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `programkerja`
+-- Constraints for table `programkerja`
 --
 ALTER TABLE `programkerja`
   ADD CONSTRAINT `pk` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `rapat`
+-- Constraints for table `rapat`
 --
 ALTER TABLE `rapat`
-  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rapat_idOrganisasi` FOREIGN KEY (`id_organisasi`) REFERENCES `organisasi` (`idOrganisasi`);
 
 --
--- Ketidakleluasaan untuk tabel `suratkeluar`
+-- Constraints for table `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
   ADD CONSTRAINT `fk_idorganisasi3` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
   ADD CONSTRAINT `suratkeluar_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tiket`
+-- Constraints for table `tiket`
 --
 ALTER TABLE `tiket`
   ADD CONSTRAINT `tiket_ibfk_1` FOREIGN KEY (`id_kegiatan`) REFERENCES `kegiatan` (`id_kegiatan`) ON DELETE CASCADE ON UPDATE CASCADE;
