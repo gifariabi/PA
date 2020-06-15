@@ -82,6 +82,10 @@
                 $this->load->view('display_tiket',$data);
             }
         }
+		public function view_tiket($where){
+			$data['data'] = $this->Tiket_model->tampil_req2($where)->result();
+            $this->load->view('display_tiket2',$data);
+		}
         public function hapus($id){
             $where = array('no_tiket'=>$id);
             $this->Tiket_model->hapus_data($where,'tiket');
@@ -127,7 +131,7 @@
     
         public function update_status_admin($no_tiket){
             $this->Tiket_model->update_status($no_tiket);
-            redirect('tiket/status_tiket_admin/'.$this->session->nim);  
+            redirect('tiket/status_tiket_admin/'.$this->session->idOrganisasi);  
         }
 
         public function update_status(){
@@ -156,7 +160,7 @@
         }
         public function status_tiket_admin(){
                 $data['data']=$this->Tiket_model->tampil()->result();
-                $this->load->view('display_tiket',$data);
+                $this->load->view('display_tiket2',$data);
         }
 
     }

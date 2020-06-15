@@ -51,7 +51,7 @@
         <div id="collapseSeven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Event:</h6>
-            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaykegiatan/'.$this->session->userdata('nim').'/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Kegiatan</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/kegiatan/displaykegiatan3/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Kegiatan</a>
             <a class="collapse-item" href="<?php echo base_url('index.php/rapat/displayrapat/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Rapat</a>
             </a>
           </div>
@@ -101,3 +101,6 @@
           </div>
         </div>
       </li>
+	  
+	  
+	 

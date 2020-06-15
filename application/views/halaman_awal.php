@@ -35,6 +35,9 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="<?php echo base_url('index.php/kegiatan/displaykegiatan/'.$this->session->userdata('nim')); ?>" >Jadwal Kegiatan  |</a>
+		  </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('Organisasi/tampilDaftar/'.$this->session->nim)?>">Cari Organisasi |</a>
           </li>

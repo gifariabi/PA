@@ -23,6 +23,15 @@
                 return $query;
             // }
         }
+		function tampil_by_id($where){
+			$this->db->select('k.id_kegiatan, k.nama_kegiatan, k.waktu, k.tempat, FORMAT(k.harga,0) AS harga, k.qr_code,k.foto, p.departemen');
+            $this->db->from('kegiatan k');
+            $this->db->join('programkerja p','p.id_programkerja = k.id_programkerja');
+			$this->db->join('organisasi o','o.idOrganisasi = p.idOrganisasi');
+			$this->db->where('o.idOrganisasi', $where);
+			$query = $this->db->get();
+			return $query;
+		}
         function tampil_date(){
             $this->db->select('k.id_kegiatan, k.nama_kegiatan, k.waktu, k.tempat, FORMAT(k.harga,0) AS harga, k.qr_code,k.foto, p.departemen');
             $this->db->from('kegiatan k');

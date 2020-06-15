@@ -143,6 +143,13 @@ class Kegiatan extends CI_Controller{
             $this->load->view('display_kegiatan2',$data);
             
         }
+		public function displaykegiatan3($where){
+			
+            $data['data']=$this->Kegiatan_model->tampil_by_id($where)->result();
+            // print_r($data);
+            $this->load->view('display_kegiatan3',$data);
+            
+        }
 
         public function displaykegiatan2($where){
             $newdata = $this->session->userdata('jabatan');

@@ -78,10 +78,22 @@
             return $query;
         }
         function tampil_req(){
-            $query = $this->db->query("SELECT t.no_tiket, t.nim, t.nama,t.jurusan, t.email, k.nama_kegiatan,FORMAT(total,0) AS total, metode_pembayaran, status FROM tiket t JOIN kegiatan k ON t.id_kegiatan = k.id_kegiatan");
+            $query = $this->db->query("SELECT t.no_tiket, t.nim, t.nama,t.jurusan, t.email, k.nama_kegiatan,FORMAT(total,0) AS total, metode_pembayaran, status FROM tiket t JOIN kegiatan k ON t.id_kegiatan = k.id_kegiatan 
+			JOIN programkerja p ON k.id_programkerja = p.id_programkerja JOIN organisasi o ON o.idOrganisasi = p.idOrganisasi WHERE o.idOrganisasi = ");
             //$this->db->where('namaLengkap',$nama);
             return $query->result();
         }
+		function tampil_req2($where){
+			$this->db->select('t.no_tiket,t.nama, t.nim, t.jurusan, t.email, k.nama_kegiatan, FORMAT(total,0) as total, t.metode_pembayaran, t.status');
+			$this->db->from('tiket t');
+			$this->db->join('kegiatan k','k.id_kegiatan = t.id_kegiatan');
+			$this->db->join('programkerja p','p.id_programkerja = k.id_programkerja');
+			$this->db->join('organisasi o', 'o.idOrganisasi = p.idOrganisasi');
+			$this->db->where('o.idOrganisasi',$where);
+			
+			$query = $this->db->get();
+			return $query;
+		}
         function cekTiket($nim, $idKegiatan){
             $sql = "SELECT EXISTS(SELECT * FROM tiket WHERE nim = '$nim' AND id_kegiatan = $idKegiatan) as cekTiket";
 

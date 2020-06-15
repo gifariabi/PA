@@ -70,7 +70,8 @@
                         'tanggal' => $tanggal,
                         'waktu' => $waktu,
                         'kategori' => $kategori,
-                        'nim' => $this->session->userdata('nim')
+                        'nim' => $this->session->userdata('nim'),
+						'idOrganisasi' => $this->session->userdata('idOrganisasi')
                     );
                 }
                 $this->rapat_model->data($data,'rapat');
