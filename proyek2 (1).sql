@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jun 2020 pada 10.07
--- Versi server: 10.1.31-MariaDB
--- Versi PHP: 7.2.3
+-- Waktu pembuatan: 15 Jun 2020 pada 12.30
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.3.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -65,9 +64,9 @@ INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
 CREATE TABLE `berita` (
   `id_berita` int(11) NOT NULL,
   `judul` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `isi` text COLLATE utf8_bin,
+  `isi` text COLLATE utf8_bin DEFAULT NULL,
   `gambar` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -165,7 +164,7 @@ CREATE TABLE `kegiatan` (
   `qr_code` varchar(255) COLLATE utf8_bin NOT NULL,
   `foto` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_programkerja` int(10) NOT NULL,
-  `upload_lpj` tinyint(255) DEFAULT '0' COMMENT '1 = sudah upload , 0 belum upload'
+  `upload_lpj` tinyint(255) DEFAULT 0 COMMENT '1 = sudah upload , 0 belum upload'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -181,7 +180,7 @@ INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `harg
 (21, 'Badminton Competition', '2020-05-14', 'Aula Fakultas Ilmu Terapan', '20000', 'Badminton Competition.png', '', 7, 0),
 (22, 'Seminar UX ', '2020-08-07', 'Aula Fakultas Ilmu Terapan', 'Free', 'Seminar UX .png', '', 7, 0),
 (23, 'Seminar Pembangunan', '2020-09-02', 'Aula Fakultas Ilmu Terapan', '20000', 'Seminar Pembangunan.png', '', 5, 0),
-(24, 'COVID 19', '2020-08-01', 'Lapangan FIT', 'Free', 'COVID 19.png', '', 5, 0),
+(24, 'COVID 19', '2020-08-01', 'Lapangan FIT', 'Free', 'COVID 19.png', '107928881-profile-head-shot-from-red-blotched-tabby-american-curl-cat-kitten-looking-at-the-side-isolated-on-w.jpg', 5, 0),
 (25, 'Seminar Kotlin', '2020-07-01', 'Aula Fakultas Ilmu Terapan', '10000', 'Seminar Kotlin.png', '', 10, 0),
 (26, 'Bantuan Panti Asuhan', '2020-08-01', 'Lapangan FIT', '20000', 'Bantuan Panti Asuhan.png', '', 11, 0),
 (27, 'Ping pong', '2020-08-01', 'Batununggal Sport Center', '10000', 'Ping pong.png', '', 7, 0),
@@ -304,7 +303,7 @@ CREATE TABLE `pengurus` (
 INSERT INTO `pengurus` (`nim`, `id`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`) VALUES
 (670117403, 1, 'Gifari Abi Waqqash', 'Kepala Divisi Luar Negeri', 5, 1),
 (670117455, 2, 'Eko Adinata', 'Sekertaris', 5, 1),
-(670117410, 4, 'Muhammad Luqman', '', 5, 1),
+(670117410, 4, 'Muhammad Luqman', 'Sekretaris', 5, 1),
 (670117403, 5, 'Gifari Abi Waqqash', '', 1, 1),
 (670117410, 6, 'Muhammad Luqman', 'Sekretaris', 1, 1),
 (670117400, 7, 'Yusril Wahyuda', '', 1, 1),
@@ -318,7 +317,7 @@ INSERT INTO `pengurus` (`nim`, `id`, `nama`, `jabatan`, `idOrganisasi`, `id_thnA
 
 CREATE TABLE `presensi` (
   `id_presensi` int(5) NOT NULL,
-  `waktu_submit` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `waktu_submit` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` varchar(255) COLLATE utf8_bin NOT NULL,
   `nim` int(10) NOT NULL,
   `id_kegiatan` int(10) NOT NULL
@@ -330,7 +329,11 @@ CREATE TABLE `presensi` (
 
 INSERT INTO `presensi` (`id_presensi`, `waktu_submit`, `status`, `nim`, `id_kegiatan`) VALUES
 (1, '2020-06-05 05:44:44', 'Hadir', 670606006, 14),
-(2, '2020-06-05 05:44:44', 'Hadir', 670117400, 19);
+(2, '2020-06-05 05:44:44', 'Hadir', 670117400, 19),
+(3, '2020-06-11 17:09:32', 'Hadir', 670117410, 14),
+(5, '2020-06-11 17:17:22', 'Hadir', 670117400, 14),
+(8, '2020-06-14 05:24:37', 'Hadir', 670117403, 24),
+(9, '2020-06-14 17:22:06', 'Hadir', 670117410, 24);
 
 -- --------------------------------------------------------
 
@@ -369,15 +372,19 @@ CREATE TABLE `rapat` (
   `tanggal` varchar(255) COLLATE utf8_bin NOT NULL,
   `waktu` varchar(255) COLLATE utf8_bin NOT NULL,
   `kategori` varchar(255) COLLATE utf8_bin NOT NULL,
-  `nim` int(10) NOT NULL
+  `nim` int(10) NOT NULL,
+  `idOrganisasi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data untuk tabel `rapat`
 --
 
-INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `waktu`, `kategori`, `nim`) VALUES
-(1, 'Rapat Rutin', 'Ruang G6 FIT', '2020-10-02', '19:00', 'Pengurus', 670117410);
+INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `waktu`, `kategori`, `nim`, `idOrganisasi`) VALUES
+(1, 'Rapat Rutin', 'Ruang G6 FIT', '2020-10-02', '19:00', 'Pengurus', 670117410, 1),
+(2, 'Coba 1', 'Telkom', '2020-05-16', '1700', 'Pengurus', 670117410, 2),
+(4, 'Dies Natalis', 'Aula FIT', '2020-07-05', '19:00', 'Pengurus', 670117410, 1),
+(5, 'Coba 2', 'Ruangan G5 Lantai 1 FIT', '2020-08-08', '19:00', 'Pengurus dan Anggota', 670117410, 1);
 
 -- --------------------------------------------------------
 
@@ -445,13 +452,23 @@ INSERT INTO `tiket` (`no_tiket`, `nama`, `nimAkun`, `nim`, `jurusan`, `email`, `
 (13, 'GIfari Abi Waqqash', 0, '6701174033', 'D3 Sistem Informasi', 'gifariabi75@gmail.com', '40000', 'Cash', 'Accepted', 14),
 (14, 'Eko', 0, '6701174033', 'SI Teknik Informatika', 'gifariabi75@gmail.com', '40000', 'Transfer', 'Accepted', 14),
 (15, 'Eko', 0, '6701174033', 'D3 Sistem Informasi', 'gifariabi9@gmail.com', '0', 'Transfer', 'Menunggu', 22),
-(16, 'Yulia', 0, '6701174022', 'D3 Seni Budaya', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Menunggu', 20),
-(17, 'Anton', 0, '6701175533', 'D3 Sepakbola', 'anton@gmail.com', '20000', 'Transfer', 'Menunggu', 19),
-(18, 'GIfari Abi Waqqash', 0, '6701174233', 'SI Teknik Informatika', 'gifariabi75@gmail.com', '20000', 'Transfer', 'Menunggu', 15),
+(16, 'Yulia', 0, '6701174022', 'D3 Seni Budaya', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Accepted', 20),
+(17, 'Anton', 0, '6701175533', 'D3 Sepakbola', 'anton@gmail.com', '20000', 'Transfer', 'Accepted', 19),
+(18, 'GIfari Abi Waqqash', 0, '6701174233', 'SI Teknik Informatika', 'gifariabi75@gmail.com', '20000', 'Transfer', 'Accepted', 15),
 (19, 'Sherli Y', 0, '6701174033', 'D3 Sistem Informasi', 'sherliyualinda@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
 (20, 'Sherla Y', 0, '670117406', 'D3 Sistem Informasi', 'sherlayualinda@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
 (21, 'Luqm', 0, '670117410', 'D3 Sistem Informasi', 'luqman@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
-(22, 'Sem', 670117410, '6701174033', 'D3 Sistem Informasi', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Menunggu', 15);
+(22, 'Sem', 670117410, '6701174033', 'D3 Sistem Informasi', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Accepted', 15),
+(23, 'fajarrr', 670117410, 'fajarrr', 'fajarrr', 'emluqman194@gmail.com', '20,000', 'Transfer', 'Menunggu', 16),
+(24, 'fajarrr', 670117410, 'fajarrr', 'fajarrr', 'emluqman194@gmail.com', '20,000', 'Transfer', 'Menunggu', 16),
+(25, 'luwmann', 670117410, 'luwmnann', 'bfbebe', 'hbeve@gmail.com', '20,000', 'Transfer', 'Menunggu', 16),
+(26, 'gitari', 670117403, '505050', 'gitari', 'gitari@gmail.com', '0', 'Transfer', 'Menunggu', 24),
+(27, 'gifari abi', 670117403, '670117403', 'd3 si', 'gifari@gmail.com', '0', 'Transfer', 'Menunggu', 24),
+(28, 'gifari', 670117403, '670117403', 'd3 si', 'emluqman194@gmail.com', '20,000', 'Cash', 'Menunggu', 23),
+(29, 'gifari', 670117403, '670771584', 'D3 SI', 'gipati@gmail.com', '20,000', 'Transfer', 'Menunggu', 23),
+(30, 'gipari', 670117403, '670014789', 'd3 telco', 'gipari@gmail.com', '0', 'Transfer', 'Menunggu', 24),
+(31, 'luqman', 670117410, '670117410', 'desi', 'emluqman194@gmail.com', '0', 'Transfer', 'Accepted', 24),
+(32, 'Gifari abi waqqash', 670117403, '6701174033', 'D3 Sistem Informasi', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Accepted', 23);
 
 -- --------------------------------------------------------
 
@@ -470,7 +487,7 @@ CREATE TABLE `view_total_kas` (
 --
 DROP TABLE IF EXISTS `view_total_kas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_total_kas`  AS  select (sum(`kas`.`pemasukan_kas`) - sum(`kas`.`pengeluaran_kas`)) AS `Total Kas` from `kas` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_total_kas`  AS  select sum(`kas`.`pemasukan_kas`) - sum(`kas`.`pengeluaran_kas`) AS `Total Kas` from `kas` ;
 
 --
 -- Indexes for dumped tables
@@ -564,7 +581,8 @@ ALTER TABLE `programkerja`
 --
 ALTER TABLE `rapat`
   ADD PRIMARY KEY (`id_rapat`),
-  ADD KEY `nim` (`nim`);
+  ADD KEY `nim` (`nim`),
+  ADD KEY `rapat_idOrganisasi` (`idOrganisasi`);
 
 --
 -- Indeks untuk tabel `suratkeluar`
@@ -637,7 +655,7 @@ ALTER TABLE `pengurus`
 -- AUTO_INCREMENT untuk tabel `presensi`
 --
 ALTER TABLE `presensi`
-  MODIFY `id_presensi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_presensi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `programkerja`
@@ -649,7 +667,7 @@ ALTER TABLE `programkerja`
 -- AUTO_INCREMENT untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_rapat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `suratkeluar`
@@ -667,7 +685,7 @@ ALTER TABLE `tahun_ajaran`
 -- AUTO_INCREMENT untuk tabel `tiket`
 --
 ALTER TABLE `tiket`
-  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `no_tiket` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -729,7 +747,8 @@ ALTER TABLE `programkerja`
 -- Ketidakleluasaan untuk tabel `rapat`
 --
 ALTER TABLE `rapat`
-  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rapat_ibfk_1` FOREIGN KEY (`nim`) REFERENCES `pengurus` (`nim`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rapat_idOrganisasi` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`);
 
 --
 -- Ketidakleluasaan untuk tabel `suratkeluar`
