@@ -22,10 +22,9 @@
             return $this->db->get_where($table,$where);
         }
         function tampil_data($where){
-            $this->db->select('p.nim , o.idOrganisasi,r.perihal, r.tempat, r.tanggal, r.waktu');
+            $this->db->select(' o.idOrganisasi,r.perihal, r.tempat, r.tanggal, r.waktu');
             $this->db->from('rapat r');
-            $this->db->join('pengurus p','r.nim = p.nim');
-            $this->db->join('organisasi o','p.idOrganisasi = o.idOrganisasi');
+            $this->db->join('organisasi o','r.idOrganisasi = o.idOrganisasi');
             // $this->db->join('anggota a','an.nim =  a.nim');
             $this->db->where('o.idOrganisasi', $where);
 
@@ -38,6 +37,18 @@
         function update_data($where,$data,$table){
             $this->db->where($where);
             $this->db->update($table,$data);
+        }
+		function getRapatOrganisasi($where){
+            // FROM organisasi JOIN rapat ON organisasi.idOrganisasi = rapat.id_organisasi
+            $this->db->select('rapat.id_organisasi, organisasi.namaOrganisasi, rapat.id_rapat, rapat.perihal, rapat.tempat, rapat.tanggal, rapat.waktu, rapat.kategori,');
+            $this->db->from('organisasi');
+            $this->db->join('rapat', 'organisasi.idOrganisasi = rapat.id_organisasi');
+            $this->db->where_in('organisasi.idOrganisasi', $where);
+            $this->db->order_by("rapat.tanggal", "asc");
+
+            $query = $this->db->get();
+
+            return $query;
         }
     }
 ?>

@@ -78,8 +78,7 @@
             return $query;
         }
         function tampil_req(){
-            $query = $this->db->query("SELECT t.no_tiket, t.nim, t.nama,t.jurusan, t.email, k.nama_kegiatan,FORMAT(total,0) AS total, metode_pembayaran, status FROM tiket t JOIN kegiatan k ON t.id_kegiatan = k.id_kegiatan 
-			JOIN programkerja p ON k.id_programkerja = p.id_programkerja JOIN organisasi o ON o.idOrganisasi = p.idOrganisasi WHERE o.idOrganisasi = ");
+            $query = $this->db->query("SELECT t.no_tiket, t.nim, t.nama,t.jurusan, t.email, k.nama_kegiatan,FORMAT(total,0) AS total, metode_pembayaran, status FROM tiket t JOIN kegiatan k ON t.id_kegiatan = k.id_kegiatan ");
             //$this->db->where('namaLengkap',$nama);
             return $query->result();
         }

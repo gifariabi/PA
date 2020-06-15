@@ -272,7 +272,7 @@
 </head>
 <body>
 	<?php if ($this->session->username) { ?>
-	<h4>Selamat Datang, <?= $this->session->namaLengkap ?></h4>
+	<h4>Hanya dapat di akses oleh sekretaris</h4>
 	<?php } else { redirect('Admin/login'); } ?>
   <!-- <div class="alert alert-primary" role="alert"> -->
     <?php echo  $this->session->flashdata('pesan');?>

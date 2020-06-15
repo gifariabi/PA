@@ -72,19 +72,19 @@
             }
         }
         public function displaydata($where){
-            // $newdata = $this->session->userdata('jabatan');
-            if ($this->session->userdata('jabatan') == 'Sekretaris') {
-                $data['data'] = $this->Tiket_model->tampil_req();
-                $this->load->view('display_tiket',$data);
-            }else{
+          
                 $data['data']=$this->Tiket_model->tampil_tiket($where)->result();
                 // print_r($data);
                 $this->load->view('display_tiket',$data);
-            }
+            
         }
 		public function view_tiket($where){
-			$data['data'] = $this->Tiket_model->tampil_req2($where)->result();
-            $this->load->view('display_tiket2',$data);
+			if ($this->session->userdata('jabatan') == 'Sekretaris') {
+				$data['data'] = $this->Tiket_model->tampil_req2($where)->result();
+				$this->load->view('display_tiket2',$data);
+			}else{
+				redirect('Tiket');
+			}
 		}
         public function hapus($id){
             $where = array('no_tiket'=>$id);
