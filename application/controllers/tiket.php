@@ -17,7 +17,7 @@
                 // $where2 = array('nim');
                 $data['data'] = $this->Kegiatan_model->edit_data($where,'kegiatan')->result();
                 // print_r($data);
-                $this->load->view('input_tiket',$data);
+                $this->load->view('input_tiket2',$data);
             
         }
         public function simpan($id_kegiatan){
