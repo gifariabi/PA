@@ -23,8 +23,11 @@
 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-<b><?php echo date('d-F-Y'); ?></b>
+<?php
+setlocale(LC_ALL, 'id-ID', 'id_ID');
+echo strftime("%A, %d %B %Y");
+// Hasil: Selasa, 04 April 2020
+?>
 <h1 style="background-color: #98FB98"> Laporan Kas </h1>
 <table>
 	<?php foreach ($total_laporan1 as $key) { ?>
@@ -57,6 +60,7 @@
         <tr style="background-color: #E0FFFF">
             <th>No</th>
             <th>Tanggal</th>
+            <th>Keterangan</th>
             <th>Pemasukan Kas</th>
         </tr>
         <?php
@@ -66,6 +70,7 @@
         <tr>
             <td><?php echo $i; ?></td>
             <td><?php echo $data1->tanggal; ?></td>
+            <td><?php echo $data1->keterangan; ?></td>
             <td>Rp <?php echo $data1->pemasukan_kas; ?></td>
         </tr>
         <?php $i++; }?>

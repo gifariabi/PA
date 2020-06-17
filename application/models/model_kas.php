@@ -14,7 +14,7 @@ class Model_kas extends CI_Model{
    	}
 
     public function getKas1($where){
-        $this->db->select('id_kas, FORMAT(pemasukan_kas,0) AS pemasukan_kas,tanggal, idOrganisasi');
+        $this->db->select('id_kas,keterangan, FORMAT(pemasukan_kas,0) AS pemasukan_kas,tanggal, idOrganisasi');
         $this->db->from('kas');
         $this->db->where('idOrganisasi',$where);
         $this->db->WHERE('FORMAT(pemasukan_kas,0) > 0');

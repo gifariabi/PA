@@ -278,6 +278,14 @@
     <span class="focus-input100-2"></span>
     </div>
 	</tr>
+  <tr>
+    <div class="wrap-input100 validate-input" data-validate = "Keterangan is required">
+    <td>Keterangan</td>
+    <td><input type="text" name="keterangan"></td>
+    <span class="focus-input100-1"></span>
+    <span class="focus-input100-2"></span>
+    </div>
+  </tr>
 	<tr>
     <div class="wrap-input100 validate-input" data-validate = "Tanggal is required">
 		<td>Tanggal</td>

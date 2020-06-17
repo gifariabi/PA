@@ -265,7 +265,7 @@
         <div class="container-fluid">
 
 <center>
-<h1><b>Data Kas</b></h1>
+<h1><b>Pengeluaran Kas</b></h1>
 </center>
 <hr>
 <hr>

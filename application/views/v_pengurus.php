@@ -289,6 +289,7 @@
             <th>Nim</th>
             <th>Nama</th>
             <th>Jabatan</th>
+            <th>Periode</th>
             <th colspan="2">Kelola</th>
         </tr>
         <?php
@@ -301,6 +302,7 @@
             <td><?php echo $data->nim; ?></td>
             <td><?php echo $data->nama; ?></td>
             <td><?php echo $data->jabatan; ?></td>
+            <td><?php echo $data->tahunAjaran; ?></td>
             <td><a href="<?= base_url().'/Ormawa/editPengurus/'.$data->nim.'/'.$data->id.'/'.$this->session->idOrganisasi.'/'.$data->id_thnAjaran;?>" class="btn btn-primary">Edit</a></td>
             <td><a href="<?= base_url().'/Ormawa/hapus_pengurus/'.$data->nim.'/'.$data->id.'/'.$this->session->idOrganisasi.'/'.$data->id_thnAjaran;?>" onclick="return confirm('Anda Yakin Menghapus Pengurus ?')" class="btn btn-danger">Hapus</a></td>
         </tr>

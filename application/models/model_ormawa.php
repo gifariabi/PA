@@ -45,9 +45,10 @@ class Model_ormawa extends CI_Model{
     	}
 
         public function getPengurus($where){
-            $this->db->select('p.id,a.foto, p.nim, p.nama, p.jabatan, o.idOrganisasi, id_thnAjaran');
+            $this->db->select('p.id,a.foto, p.nim, p.nama, p.jabatan, o.idOrganisasi, t.tahunAjaran,p.id_thnAjaran');
             $this->db->from('organisasi o');
             $this->db->join('pengurus p','o.idOrganisasi =  p.idOrganisasi');
+            $this->db->join('tahun_ajaran t', 'p.id_thnAjaran = t.id_thnAjaran');
             $this->db->join('mahasiswa a','p.nim =  a.nim');
             $this->db->where('p.id_thnAjaran', 1);
             $this->db->where('o.idOrganisasi', $where);
@@ -57,30 +58,33 @@ class Model_ormawa extends CI_Model{
         }
 
         public function getPengurus1($where){
-            $this->db->select('id,nim, nama, jabatan,id_thnAjaran');
-            $this->db->from('pengurus');
+            $this->db->select('id,nim, nama, jabatan,p.id_thnAjaran,t.tahunAjaran');
+            $this->db->from('pengurus p');
+            $this->db->join('tahun_ajaran t', 'p.id_thnAjaran = t.id_thnAjaran');
             $this->db->where('idOrganisasi',$where);
-            $this->db->where('id_thnAjaran',1);
+            $this->db->where('p.id_thnAjaran',1);
         
             $query = $this->db->get();
             return $query->result();
         }
 
         public function getPengurus2($where){
-            $this->db->select('id,nim, nama, jabatan,id_thnAjaran');
-            $this->db->from('pengurus');
+            $this->db->select('id,nim, nama, jabatan,p.id_thnAjaran,t.tahunAjaran');
+            $this->db->from('pengurus p');
+            $this->db->join('tahun_ajaran t', 'p.id_thnAjaran = t.id_thnAjaran');
             $this->db->where('idOrganisasi',$where);
-            $this->db->where('id_thnAjaran',2);
+            $this->db->where('p.id_thnAjaran',2);
         
             $query = $this->db->get();
             return $query->result();
         }
 
         public function getPengurus3($where){
-            $this->db->select('id,nim, nama, jabatan,id_thnAjaran');
-            $this->db->from('pengurus');
+            $this->db->select('id,nim, nama, jabatan,p.id_thnAjaran,t.tahunAjaran');
+            $this->db->from('pengurus p');
+            $this->db->join('tahun_ajaran t', 'p.id_thnAjaran = t.id_thnAjaran');
             $this->db->where('idOrganisasi',$where);
-            $this->db->where('id_thnAjaran',3);
+            $this->db->where('p.id_thnAjaran',3);
         
             $query = $this->db->get();
             return $query->result();

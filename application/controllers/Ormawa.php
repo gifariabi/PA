@@ -97,11 +97,12 @@ class Ormawa extends CI_Controller {
             $this->load->view('v_pemasukan_kas');
         }
         else{
-
+        $keterangan = $this->input->post('keterangan');
         $pemasukan_kas = $this->input->post('pemasukan_kas');
         $tanggal = $this->input->post('tanggal');
         
         $data   = array('pemasukan_kas' => $pemasukan_kas,
+                    'keterangan' => $keterangan,
                     'tanggal' => $tanggal,
                     'idOrganisasi' => $this->session->userdata('idOrganisasi')
                     );
@@ -274,7 +275,7 @@ class Ormawa extends CI_Controller {
     public function v_kasMasuk($where){
         $data['data1'] = $this->Model_kas->getTotalKas($where)->result();
         $data['data'] = $this->Model_kas->get_kasMasuk($where)->result();
-        $this->load->view('v_kas',$data);
+        $this->load->view('v_pemasukan_kass',$data);
     }  
 
     public function v_kasKeluar($where){
