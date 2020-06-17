@@ -64,6 +64,11 @@
                     $this->model_lpj->update_data(array('id_kegiatan'=>$id_kegiatan),array('upload_lpj'=> 1),'kegiatan');
                     $this->model_lpj->update_data(array('id_kegiatan'=>$id_kegiatan),$data,'lpj');
                 }
+				$this->session->set_flashdata('msg',
+                '<div class="alert alert-success">
+                <h4>Berhasil</h4>
+                <p> Anda berhasil input Laporan Pertanggung Jawaban</p>
+                </div>');
                 redirect('Lpj/lpj/'.$id_kegiatan);
             }
         }

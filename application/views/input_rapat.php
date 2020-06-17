@@ -270,7 +270,7 @@
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <h1>Pengajuan Rapat</h1>
     <table class="table">
-    <!-- <div id="notifications"><?php echo $this->session->flashdata('msg'); ?></div> -->
+    <div id="notifications"><?php echo $this->session->flashdata('msg'); ?></div>
         <tr>
             <td>Keperluan</td>
             <td>:</td>

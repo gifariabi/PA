@@ -276,11 +276,13 @@ foreach($data as $key){
               </div>
   <?php } ?>
 <?php echo form_open_multipart('Lpj/do_upload'); ?>
+
     <center>
+	
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->
     <div class="text-center">
         <h1 class="h4 text-gray-900 mb-4">Upload lpj file</h1>
-        
+        <div id="notifications"><?php echo $this->session->flashdata('msg'); ?></div>
     </div>
     <input type="hidden" name="id_kegiatan" value="<?php echo $key->id_kegiatan; ?>">
     <!-- <input type="hidden" name="harga" value="<?php echo $key->harga; ?>"> -->
@@ -300,6 +302,9 @@ foreach($data as $key){
 	    } ?>
     </font> -->
     </center>
+	<script>
+    $('#notifications').slideDown('slow').delay(3000).slideUp('slow');
+</script>
 <?php echo form_close(); ?>
     <?php } }?>
 <!-- Footer -->

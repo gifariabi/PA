@@ -41,34 +41,30 @@ class Sekertaris2 extends CI_Controller{
         $this->form_validation->set_rules('no_suratkeluar', 'no_suratkeluar', 'required');
         $this->form_validation->set_rules('penerima', 'Penerima', 'required');
         $this->form_validation->set_rules('perihal', 'Perihal', 'required');
+		$this->form_validation->set_rules('waktu', 'Waktu', 'required');
         $this->form_validation->set_rules('nim', 'nim', 'required');
 
-        if ($this->form_validation->run() == FALSE){
-			$this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
-			redirect('Sekertaris/suratkeluar/'.$this->session->userdata('idOrganisasi').'/'.$this->session->userdata('nim'));
-        }
-        else{
+        
+			$no_suratkeluar = $this->input->post('no_suratkeluar');
+			$penerima = $this->input->post('penerima');
+			$tanggalkeluar = $this->input->post('tanggalkeluar');
+			$waktu = $this->input->post('waktu');
+			$perihal = $this->input->post('perihal');
+			$idOrganisasi = $this->input->post('idOrganisasi');
 
-        $no_suratkeluar = $this->input->post('no_suratkeluar');
-        $penerima = $this->input->post('penerima');
-        $tanggalkeluar = $this->input->post('tanggalkeluar');
-        $waktu = $this->input->post('waktu');
-        $perihal = $this->input->post('perihal');
-        $idOrganisasi = $this->input->post('idOrganisasi');
-
-        $data = array(
-            'no_suratkeluar' => $no_suratkeluar,
-            'penerima' => $penerima,
-            'tanggalkeluar' => $tanggalkeluar,
-            'waktu' => $waktu,
-            'perihal' => $perihal,
-            'idOrganisasi' => $idOrganisasi,
-            'nim' => $this->session->userdata('nim')
-        );
+			$data = array(
+				'no_suratkeluar' => $no_suratkeluar,
+				'penerima' => $penerima,
+				'tanggalkeluar' => $tanggalkeluar,
+				'waktu' => $waktu,
+				'perihal' => $perihal,
+				'idOrganisasi' => $idOrganisasi,
+				'nim' => $this->session->userdata('nim')
+			);
             
-        $this->model_suratkeluar->data($data,'suratkeluar');
-        redirect('sekertaris2/inputan/'.$this->session->userdata('idOrganisasi').'/'.$this->session->userdata('nim'));
-        }
+			$this->model_suratkeluar->data($data,'suratkeluar');
+			redirect('sekertaris2/inputan/'.$this->session->userdata('idOrganisasi').'/'.$this->session->userdata('nim'));
+        
     }
     public function inputan($where){
         $data['data']=$this->model_suratkeluar->tampil($where);
