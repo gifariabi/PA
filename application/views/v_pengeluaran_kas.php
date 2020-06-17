@@ -271,7 +271,7 @@
 	<table>
 	<tr>
 		<td>Pengeluaran Kas</td>
-		<td><input type="text" name="pengeluaran_kas"></td>
+		<td><input type="number" name="pengeluaran_kas"></td>
 	</tr>
   <tr>
     <td>Keterangan</td>

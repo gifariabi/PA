@@ -272,12 +272,12 @@
 				<td>Pemasukan Kas</td>
 				<td>
 				<input type="hidden" name="id_kas" value="<?php echo $u->id_kas ?>">
-				<input type="text" name="pemasukan_kas" value="<?php echo $u->pemasukan_kas ?>">
+				<input type="number" name="pemasukan_kas" value="<?php echo $u->pemasukan_kas ?>">
 				</td>
 			</tr>
       <tr>
         <td>Pengeluaran Kas</td>
-        <td><input type="text" name="pengeluaran_kas" value="<?php echo $u->pengeluaran_kas ?>"></td>
+        <td><input type="number" name="pengeluaran_kas" value="<?php echo $u->pengeluaran_kas ?>"></td>
       </tr>
 			<tr>
 				<td>Keterangan Kas</td>

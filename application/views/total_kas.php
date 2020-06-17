@@ -303,7 +303,7 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Username is required">
-						<td><h2 align="Center"><b> Rp <?php echo $key->total_kas ?></b></h2></td>
+						<td><h2 align="Center"><b> Rp <?php echo number_format($key->total_kas,0,',','.') ?></b></h2></td>
 						
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>

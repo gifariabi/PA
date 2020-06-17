@@ -35,13 +35,13 @@ echo strftime("%A, %d %B %Y");
 		<tr style="background-color: #E0FFFF;">
 			<th>Total Pemasukan</th> 
             <td width="100">(+)</td>
-            <td><b> Rp <?php echo number_format($key->total_masuk) ?></b></td>
+            <td><b> Rp <?php echo number_format($key->total_masuk,0,',','.') ?></b></td>
             
         </tr>
         <tr style="background-color: #FFB6C1;">
             <th>Total Pengeluaran</th>
             <td width="100">(-)</td>
-            <td><b> Rp <?php echo number_format($key->total_keluar) ?></b></td>
+            <td><b> Rp <?php echo number_format($key->total_keluar,0,',','.') ?></b></td>
         </tr>
 </table>
 
@@ -50,7 +50,7 @@ echo strftime("%A, %d %B %Y");
          <tr style="background-color: #98FB98;">
             <th>Total Kas</th>
             <td width="170"></td>
-            <td><b> Rp <?php echo $key->total_kas ?></b></td>
+            <td><b> Rp <?php echo number_format($key->total_kas,0,',','.') ?></b></td>
 		</tr>	
  </table> <br><br>
  <hr>
@@ -71,7 +71,7 @@ echo strftime("%A, %d %B %Y");
             <td><?php echo $i; ?></td>
             <td><?php echo $data1->tanggal; ?></td>
             <td><?php echo $data1->keterangan; ?></td>
-            <td>Rp <?php echo $data1->pemasukan_kas; ?></td>
+            <td>Rp <?php echo number_format($data1->pemasukan_kas,0,',','.') ?></td>
         </tr>
         <?php $i++; }?>
     </table>
@@ -91,7 +91,7 @@ echo strftime("%A, %d %B %Y");
             <td><?php echo $i; ?></td>
             <td><?php echo $data->tanggal; ?></td>
             <td><?php echo $data->keterangan; ?></td>
-            <td>Rp <?php echo $data->pengeluaran_kas; ?></td>
+            <td>Rp <?php echo number_format($data->pengeluaran_kas,0,',','.') ?></td>
         </tr>
         <?php $i++; }?>
     </table>

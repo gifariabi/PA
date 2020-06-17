@@ -317,13 +317,13 @@ echo strftime("%A, %d %B %Y"); ?></b>
 					<tr bgcolor="E0FFFF">
 						<th>Total Pemasukan</th> 
             <td width="100">(+)</td>
-            <td><b> Rp <?php echo number_format($key->total_masuk) ?></b></td>
+            <td><b> Rp <?php echo number_format($key->total_masuk,0,',','.') ?></b></td>
             
           </tr>
           <tr bgcolor="FFB6C1">
             <th>Total Pengeluaran</th>
             <td width="100">(-)</td>
-            <td><b> Rp <?php echo number_format($key->total_keluar) ?></b></td>
+            <td><b> Rp <?php echo number_format($key->total_keluar,0,',','.') ?></b></td>
           </tr>
 </table>
 
@@ -332,7 +332,7 @@ echo strftime("%A, %d %B %Y"); ?></b>
           <tr bgcolor="98FB98">
             <th>Total Kas</th>
             <td width="170"></td>
-            <td><b> Rp <?php echo $key->total_kas ?></b></td>
+            <td><b> Rp <?php echo number_format($key->total_kas,0,',','.') ?></b></td>
 					</tr>	
  </table> <br>
 <br>

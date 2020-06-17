@@ -273,7 +273,7 @@
 	<tr>
     <div class="wrap-input100 validate-input" data-validate = "Pemasukan is required">
 		<td>Pemasukan Kas</td>
-		<td><input type="text" name="pemasukan_kas"></td>
+		<td><input type="number" name="pemasukan_kas"></td>
     <span class="focus-input100-1"></span>
     <span class="focus-input100-2"></span>
     </div>

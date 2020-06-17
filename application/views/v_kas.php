@@ -271,7 +271,7 @@
 <hr>
 <?php foreach ($data1 as $key1) { ?>
 <p align="right" style="font-family:verdana;"> <b>Saldo</b> </p>
-  <h3><p align="right" style="font-family:verdana;"><b>RP <?php echo $key1->total_kas;?></b></p></h3>
+  <h3><p align="right" style="font-family:verdana;"><b>RP <?php echo number_format($key1->total_kas,0,',','.') ?></b></p></h3>
 <?php } ?>
 <center>
 <table>
@@ -329,8 +329,8 @@
         <tr>
             <td><?php echo $i; ?></td>
             <td><?php echo $data->tanggal; ?></td>
-            <td>Rp <?php echo $data->pemasukan_kas; ?></td>
-            <td>Rp <?php echo $data->pengeluaran_kas; ?></td>
+            <td>Rp <?php echo number_format($data->pemasukan_kas,0,',','.') ?></td>
+            <td>Rp <?php echo number_format($data->pengeluaran_kas,0,',','.') ?></td>
             <td><a href="<?= base_url().'/Ormawa/editKas/'.$data->id_kas;?>" class="btn btn-primary">Edit</a></td>
             <td><a href="<?= base_url().'/Ormawa/hapus_kas/'.$data->id_kas;?>" onclick="return confirm('Anda Yakin Menghapus Kas ?')" class="btn btn-danger">Hapus</a></td>
         </tr>
