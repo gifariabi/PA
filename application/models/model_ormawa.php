@@ -44,6 +44,18 @@ class Model_ormawa extends CI_Model{
 		  return $query->result();
     	}
 
+        public function getHistori($where){
+            $this->db->distinct();
+            $this->db->select('nim, nama, jabatan,p.id_thnAjaran,t.tahunAjaran');
+            $this->db->from('histori_pengurus p');
+            $this->db->join('tahun_ajaran t', 'p.id_thnAjaran = t.id_thnAjaran');
+            $this->db->where('idOrganisasi',$where);
+            //$this->db->where('p.id_thnAjaran',1);
+        
+            $query = $this->db->get();
+            return $query->result();
+        }
+
         public function getPengurus($where){
             $this->db->select('p.id,a.foto, p.nim, p.nama, p.jabatan, o.idOrganisasi, t.tahunAjaran,p.id_thnAjaran');
             $this->db->from('organisasi o');

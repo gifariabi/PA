@@ -342,6 +342,8 @@ class Ormawa extends CI_Controller {
         );
  
         $this->Model_ormawa->update_pengurus($where,$data,'pengurus');
+        //$this->Model_ormawa->update_pengurus($where2,$data,'histori_pengurus');
+
         redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
     }
 
@@ -351,6 +353,8 @@ class Ormawa extends CI_Controller {
                         'idOrganisasi' => $idOrganisasi,
                         'id_thnAjaran' => $id_thnAjaran);
         $this->Model_ormawa->hapus_pengurus($where,'pengurus');
+        //$this->Model_daftar->insert($where,'histori_pengurus');
+
         redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
     }
 
@@ -467,8 +471,14 @@ class Ormawa extends CI_Controller {
                         'id_thnAjaran' => $id_thnAjaran,
                         'idOrganisasi' => $this->session->userdata('idOrganisasi') 
                     );
+        $data3   = array('nim' => $nim,
+                        'nama' => $nama,
+                        'id_thnAjaran' => $id_thnAjaran,
+                        'idOrganisasi' => $this->session->userdata('idOrganisasi') 
+                    ); 
 
         $this->Model_daftar->insert($data2,"pengurus");
+        $this->Model_daftar->insert($data3,"histori_pengurus");
         redirect('Ormawa/tampil_pengurus/'.$this->session->userdata('idOrganisasi'));
 
             //$this->Model_daftar->insert($data2,"pengurus");
@@ -491,11 +501,12 @@ class Ormawa extends CI_Controller {
         $data2   = array('nim' => $nim,
                         'nama' => $nama,
                         'jabatan' => 'Ketua',
+                        'id_thnAjaran' => $id_thnAjaran,
                         'idOrganisasi' => $idOrganisasi
                     );
 
         $this->Model_daftar->insert($data,"pengurus");
-        //$this->Model_daftar->insert($data2,"ang_organisasi");
+        $this->Model_daftar->insert($data2,"histori_pengurus");
         redirect('Organisasi/halaman_daftar/'.$idOrganisasi);
         echo "<p> Berhasil Menambahkan </p>";
         
@@ -533,6 +544,11 @@ class Ormawa extends CI_Controller {
         $search = $this->input->post('search');
         $data['data'] = $this->Model_daftar->searchAnggota($search);
         $this->load->view('v_anggotabaru',$data);
+    }
+
+    public function histori($where){
+        $data['data'] = $this->Model_ormawa->getHistori($where);
+        $this->load->view('v_histori_pengurus', $data);
     }
 
 
