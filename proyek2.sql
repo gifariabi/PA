@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jun 2020 pada 12.30
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.3.18
+-- Waktu pembuatan: 18 Jun 2020 pada 09.07
+-- Versi server: 10.1.31-MariaDB
+-- Versi PHP: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -46,15 +47,6 @@ CREATE TABLE `ang_organisasi` (
   `jabatan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
---
--- Dumping data untuk tabel `ang_organisasi`
---
-
-INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
-(670117400, 'Yusril Wahyuda', 1, 'Anggota Divisi Sosial'),
-(670117403, 'Gifari Abi Waqqash', 1, 'Anggota Devisi Olahraga'),
-(670117406, 'Sherli Yualinda', 1, 'Anggota Divisi Sosial');
-
 -- --------------------------------------------------------
 
 --
@@ -64,9 +56,9 @@ INSERT INTO `ang_organisasi` (`nim`, `nama`, `idOrganisasi`, `jabatan`) VALUES
 CREATE TABLE `berita` (
   `id_berita` int(11) NOT NULL,
   `judul` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `isi` text COLLATE utf8_bin DEFAULT NULL,
+  `isi` text COLLATE utf8_bin,
   `gambar` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT current_timestamp()
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -114,12 +106,28 @@ CREATE TABLE `departemen` (
   `idOrganisasi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `departemen`
+-- Struktur dari tabel `histori_pengurus`
 --
 
-INSERT INTO `departemen` (`idDept`, `namaDepartemen`, `idOrganisasi`) VALUES
-(1, 'Departemen Olahraga', 1);
+CREATE TABLE `histori_pengurus` (
+  `nim` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `jabatan` varchar(255) NOT NULL,
+  `idOrganisasi` int(11) NOT NULL,
+  `id_thnAjaran` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `histori_pengurus`
+--
+
+INSERT INTO `histori_pengurus` (`nim`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`) VALUES
+(670117455, 'Eko Adinata', '', 8, 3),
+(670117410, 'Muhammad Luqman', '', 8, 1),
+(670117400, 'Yusril Wahyuda', 'Ketua', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -136,19 +144,6 @@ CREATE TABLE `kas` (
   `idOrganisasi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=armscii8;
 
---
--- Dumping data untuk tabel `kas`
---
-
-INSERT INTO `kas` (`id_kas`, `pemasukan_kas`, `pengeluaran_kas`, `keterangan`, `tanggal`, `idOrganisasi`) VALUES
-(12, 1200000, 0, '', '2020-03-24', 1),
-(14, 0, 50000, 'Beli Kain Hitam', '2020-03-25', 1),
-(15, 0, 500, 'Print Proposal', '2020-03-25', 1),
-(17, 0, 500, 'Beli Pulpen', '2020-03-30', 1),
-(18, 0, 10000, 'Print Proposal', '2020-03-30', 5),
-(20, 100000, 0, '', '2020-03-30', 5),
-(21, 0, 50000, 'Sewa Kain Hitam', '2020-03-30', 5);
-
 -- --------------------------------------------------------
 
 --
@@ -164,29 +159,8 @@ CREATE TABLE `kegiatan` (
   `qr_code` varchar(255) COLLATE utf8_bin NOT NULL,
   `foto` varchar(255) COLLATE utf8_bin NOT NULL,
   `id_programkerja` int(10) NOT NULL,
-  `upload_lpj` tinyint(255) DEFAULT 0 COMMENT '1 = sudah upload , 0 belum upload'
+  `upload_lpj` tinyint(255) DEFAULT '0' COMMENT '1 = sudah upload , 0 belum upload'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data untuk tabel `kegiatan`
---
-
-INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `waktu`, `tempat`, `harga`, `qr_code`, `foto`, `id_programkerja`, `upload_lpj`) VALUES
-(14, 'Seminar Android', '2020-05-05', 'Aula Fakultas Ilmu Terapan', '20000', 'Seminar UX .png', 'index1.png', 10, 1),
-(15, 'Bakti Sosial COVID 19', '2020-05-05', 'Telkom University', '20000', 'Bakti Sosial COVID 19.png', '', 11, 0),
-(16, 'Voli Competition', '2020-06-07', 'Batununggal Sport Center', '20000', 'Voli Competition.png', '', 5, 1),
-(19, 'Sepak Bola Bersama', '2020-07-08', 'Batununggal Sport Center', '10000', 'Sepak Bola Bersama.png', '', 7, 1),
-(20, 'MANIAC 2021', '2021-08-08', 'Batununggal Sport Center', '20000', 'MANIAC 2021.png', '', 7, 0),
-(21, 'Badminton Competition', '2020-05-14', 'Aula Fakultas Ilmu Terapan', '20000', 'Badminton Competition.png', '', 7, 0),
-(22, 'Seminar UX ', '2020-08-07', 'Aula Fakultas Ilmu Terapan', 'Free', 'Seminar UX .png', '', 7, 0),
-(23, 'Seminar Pembangunan', '2020-09-02', 'Aula Fakultas Ilmu Terapan', '20000', 'Seminar Pembangunan.png', '', 5, 0),
-(24, 'COVID 19', '2020-08-01', 'Lapangan FIT', 'Free', 'COVID 19.png', '107928881-profile-head-shot-from-red-blotched-tabby-american-curl-cat-kitten-looking-at-the-side-isolated-on-w.jpg', 5, 0),
-(25, 'Seminar Kotlin', '2020-07-01', 'Aula Fakultas Ilmu Terapan', '10000', 'Seminar Kotlin.png', '', 10, 0),
-(26, 'Bantuan Panti Asuhan', '2020-08-01', 'Lapangan FIT', '20000', 'Bantuan Panti Asuhan.png', '', 11, 0),
-(27, 'Ping pong', '2020-08-01', 'Batununggal Sport Center', '10000', 'Ping pong.png', '', 7, 0),
-(28, 'Badminton Competition', '2020-07-01', 'Batununggal Sport Center', '20000', '.png', '', 5, 0),
-(29, 'Tenis Lapangan', '2020-08-01', 'Batununggal Sport Center', '20000', '.png', '', 7, 0),
-(30, 'Archery', '2020-08-01', 'Batununggal Sport Center', '20000', 'Archery.png', '', 7, 0);
 
 -- --------------------------------------------------------
 
@@ -217,15 +191,6 @@ CREATE TABLE `lpj` (
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dumping data untuk tabel `lpj`
---
-
-INSERT INTO `lpj` (`id_lpj`, `file`, `id_kegiatan`) VALUES
-(3, '9586_TP32.pdf', 16),
-(4, '6701174033_Registrasi___Telkom_University1.pdf', 19),
-(5, '5__LEMBAR_AKTIVITAS_HARIAN_MAGANG_Gifari.pdf', 14);
-
 -- --------------------------------------------------------
 
 --
@@ -233,7 +198,7 @@ INSERT INTO `lpj` (`id_lpj`, `file`, `id_kegiatan`) VALUES
 --
 
 CREATE TABLE `mahasiswa` (
-  `nim` int(10) NOT NULL,
+  `nim` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
@@ -276,10 +241,9 @@ CREATE TABLE `organisasi` (
 --
 
 INSERT INTO `organisasi` (`idOrganisasi`, `namaOrganisasi`, `deskripsi`, `logo`, `ketua`) VALUES
-(1, 'HMDSI', 'HMDSI adalah Himpunan Mahasiswa D3 Sistem Informasi, Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik', '5d458932f2c4f50297475fe9aa1c2d36.png', 'kelvin'),
-(2, 'SAMALOWA', 'UKM Lombok Sumbawa, Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik', '0b9b5daa9df9de0b50cef003221ffb5b.jpg', 'Esa'),
-(4, 'PERMALA', 'Mahasiswa Lampung, Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik', '811539bf69c57ce8660fce77201a6a31.jpg', 'Deva'),
-(5, 'SEARCH', 'Search adalah ukm lomba dan Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik', '201a283dc472a6733bc943460775c71f.jpg', 'riko');
+(6, 'SAMALOWA', 'Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik, juga tempat belajar bagaimana mengasah potensi non-akademik yang ada pada diri kita.Aplikasi ini diharapkan mampu untuk membantu organisasi mahasiswa dalam menjalankan kepengurusan organisasi', 'f24cb5dc09d7de843e7d91f4d6df9f06.jpg', ''),
+(7, 'SEARCH', 'Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik, juga tempat belajar bagaimana mengasah potensi non-akademik yang ada pada diri kita.Aplikasi ini diharapkan mampu untuk membantu organisasi mahasiswa dalam menjalankan kepengurusan organisasi', '572e0d07a16c914e4ba0f5f3fda0b8fa.jpg', ''),
+(8, 'HMDSI', 'Organisasi Mahasiswa adalah wadah untuk penyaluran bakat buat KEMA untuk menyalurkan potensi-potensi yang ada pada diri kita. Selain potensi dalam akademik, juga tempat belajar bagaimana mengasah potensi non-akademik yang ada pada diri kita.Aplikasi ini diharapkan mampu untuk membantu organisasi mahasiswa dalam menjalankan kepengurusan organisasi', 'bd3575bbab7f44877aeabca6d01c3c54.png', '');
 
 -- --------------------------------------------------------
 
@@ -288,7 +252,7 @@ INSERT INTO `organisasi` (`idOrganisasi`, `namaOrganisasi`, `deskripsi`, `logo`,
 --
 
 CREATE TABLE `pengurus` (
-  `nim` int(10) NOT NULL,
+  `nim` int(11) NOT NULL,
   `id` int(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `jabatan` varchar(255) NOT NULL,
@@ -301,13 +265,8 @@ CREATE TABLE `pengurus` (
 --
 
 INSERT INTO `pengurus` (`nim`, `id`, `nama`, `jabatan`, `idOrganisasi`, `id_thnAjaran`) VALUES
-(670117403, 1, 'Gifari Abi Waqqash', 'Kepala Divisi Luar Negeri', 5, 1),
-(670117455, 2, 'Eko Adinata', 'Sekertaris', 5, 1),
-(670117410, 4, 'Muhammad Luqman', 'Sekretaris', 5, 1),
-(670117403, 5, 'Gifari Abi Waqqash', '', 1, 1),
-(670117410, 6, 'Muhammad Luqman', 'Sekretaris', 1, 1),
-(670117400, 7, 'Yusril Wahyuda', '', 1, 1),
-(670117406, 10, 'Sherli Yualinda', '', 1, 1);
+(670117410, 20, 'Muhammad Luqman', 'Sekretaris', 8, 1),
+(670117400, 21, 'Yusril Wahyuda', 'Ketua', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -317,23 +276,11 @@ INSERT INTO `pengurus` (`nim`, `id`, `nama`, `jabatan`, `idOrganisasi`, `id_thnA
 
 CREATE TABLE `presensi` (
   `id_presensi` int(5) NOT NULL,
-  `waktu_submit` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `waktu_submit` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` varchar(255) COLLATE utf8_bin NOT NULL,
   `nim` int(10) NOT NULL,
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data untuk tabel `presensi`
---
-
-INSERT INTO `presensi` (`id_presensi`, `waktu_submit`, `status`, `nim`, `id_kegiatan`) VALUES
-(1, '2020-06-05 05:44:44', 'Hadir', 670606006, 14),
-(2, '2020-06-05 05:44:44', 'Hadir', 670117400, 19),
-(3, '2020-06-11 17:09:32', 'Hadir', 670117410, 14),
-(5, '2020-06-11 17:17:22', 'Hadir', 670117400, 14),
-(8, '2020-06-14 05:24:37', 'Hadir', 670117403, 24),
-(9, '2020-06-14 17:22:06', 'Hadir', 670117410, 24);
 
 -- --------------------------------------------------------
 
@@ -348,16 +295,6 @@ CREATE TABLE `programkerja` (
   `departemen` varchar(255) COLLATE utf8_bin NOT NULL,
   `idOrganisasi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data untuk tabel `programkerja`
---
-
-INSERT INTO `programkerja` (`id_programkerja`, `nama_programkerja`, `waktu_pelaksanaan`, `departemen`, `idOrganisasi`) VALUES
-(5, 'Bakti Sosial Panti Asuhan', '2020-03-02', 'Sosial', 1),
-(7, 'Olahraga Sehat', '2020-12-03', 'Olahraga', 1),
-(10, 'Study Group', '2020-04-02', 'Minat dan Bakat', 1),
-(11, 'Sosial Indonesia Maju', '2020-03-04', 'Sosial', 1);
 
 -- --------------------------------------------------------
 
@@ -375,16 +312,6 @@ CREATE TABLE `rapat` (
   `nim` int(10) NOT NULL,
   `idOrganisasi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data untuk tabel `rapat`
---
-
-INSERT INTO `rapat` (`id_rapat`, `perihal`, `tempat`, `tanggal`, `waktu`, `kategori`, `nim`, `idOrganisasi`) VALUES
-(1, 'Rapat Rutin', 'Ruang G6 FIT', '2020-10-02', '19:00', 'Pengurus', 670117410, 1),
-(2, 'Coba 1', 'Telkom', '2020-05-16', '1700', 'Pengurus', 670117410, 2),
-(4, 'Dies Natalis', 'Aula FIT', '2020-07-05', '19:00', 'Pengurus', 670117410, 1),
-(5, 'Coba 2', 'Ruangan G5 Lantai 1 FIT', '2020-08-08', '19:00', 'Pengurus dan Anggota', 670117410, 1);
 
 -- --------------------------------------------------------
 
@@ -443,33 +370,6 @@ CREATE TABLE `tiket` (
   `id_kegiatan` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dumping data untuk tabel `tiket`
---
-
-INSERT INTO `tiket` (`no_tiket`, `nama`, `nimAkun`, `nim`, `jurusan`, `email`, `total`, `metode_pembayaran`, `status`, `id_kegiatan`) VALUES
-(12, 'Shinta Fitria', 0, '6701174233', 'D3 Sistem Informasi', 'shintafitria2@gmail.com', '40000', 'Transfer', 'Accepted', 14),
-(13, 'GIfari Abi Waqqash', 0, '6701174033', 'D3 Sistem Informasi', 'gifariabi75@gmail.com', '40000', 'Cash', 'Accepted', 14),
-(14, 'Eko', 0, '6701174033', 'SI Teknik Informatika', 'gifariabi75@gmail.com', '40000', 'Transfer', 'Accepted', 14),
-(15, 'Eko', 0, '6701174033', 'D3 Sistem Informasi', 'gifariabi9@gmail.com', '0', 'Transfer', 'Menunggu', 22),
-(16, 'Yulia', 0, '6701174022', 'D3 Seni Budaya', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Accepted', 20),
-(17, 'Anton', 0, '6701175533', 'D3 Sepakbola', 'anton@gmail.com', '20000', 'Transfer', 'Accepted', 19),
-(18, 'GIfari Abi Waqqash', 0, '6701174233', 'SI Teknik Informatika', 'gifariabi75@gmail.com', '20000', 'Transfer', 'Accepted', 15),
-(19, 'Sherli Y', 0, '6701174033', 'D3 Sistem Informasi', 'sherliyualinda@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
-(20, 'Sherla Y', 0, '670117406', 'D3 Sistem Informasi', 'sherlayualinda@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
-(21, 'Luqm', 0, '670117410', 'D3 Sistem Informasi', 'luqman@gmail.com', '20000', 'Transfer', 'Menunggu', 16),
-(22, 'Sem', 670117410, '6701174033', 'D3 Sistem Informasi', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Accepted', 15),
-(23, 'fajarrr', 670117410, 'fajarrr', 'fajarrr', 'emluqman194@gmail.com', '20,000', 'Transfer', 'Menunggu', 16),
-(24, 'fajarrr', 670117410, 'fajarrr', 'fajarrr', 'emluqman194@gmail.com', '20,000', 'Transfer', 'Menunggu', 16),
-(25, 'luwmann', 670117410, 'luwmnann', 'bfbebe', 'hbeve@gmail.com', '20,000', 'Transfer', 'Menunggu', 16),
-(26, 'gitari', 670117403, '505050', 'gitari', 'gitari@gmail.com', '0', 'Transfer', 'Menunggu', 24),
-(27, 'gifari abi', 670117403, '670117403', 'd3 si', 'gifari@gmail.com', '0', 'Transfer', 'Menunggu', 24),
-(28, 'gifari', 670117403, '670117403', 'd3 si', 'emluqman194@gmail.com', '20,000', 'Cash', 'Menunggu', 23),
-(29, 'gifari', 670117403, '670771584', 'D3 SI', 'gipati@gmail.com', '20,000', 'Transfer', 'Menunggu', 23),
-(30, 'gipari', 670117403, '670014789', 'd3 telco', 'gipari@gmail.com', '0', 'Transfer', 'Menunggu', 24),
-(31, 'luqman', 670117410, '670117410', 'desi', 'emluqman194@gmail.com', '0', 'Transfer', 'Accepted', 24),
-(32, 'Gifari abi waqqash', 670117403, '6701174033', 'D3 Sistem Informasi', 'gifariabi9@gmail.com', '20000', 'Transfer', 'Accepted', 23);
-
 -- --------------------------------------------------------
 
 --
@@ -487,7 +387,7 @@ CREATE TABLE `view_total_kas` (
 --
 DROP TABLE IF EXISTS `view_total_kas`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_total_kas`  AS  select sum(`kas`.`pemasukan_kas`) - sum(`kas`.`pengeluaran_kas`) AS `Total Kas` from `kas` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_total_kas`  AS  select (sum(`kas`.`pemasukan_kas`) - sum(`kas`.`pengeluaran_kas`)) AS `Total Kas` from `kas` ;
 
 --
 -- Indexes for dumped tables
@@ -518,6 +418,14 @@ ALTER TABLE `datauser`
 ALTER TABLE `departemen`
   ADD PRIMARY KEY (`idDept`),
   ADD UNIQUE KEY `idOrganisasi` (`idOrganisasi`);
+
+--
+-- Indeks untuk tabel `histori_pengurus`
+--
+ALTER TABLE `histori_pengurus`
+  ADD KEY `fk_nimn` (`nim`),
+  ADD KEY `fk_idAjaran` (`id_thnAjaran`),
+  ADD KEY `fk_idOrganisasi5` (`idOrganisasi`);
 
 --
 -- Indeks untuk tabel `kas`
@@ -625,7 +533,7 @@ ALTER TABLE `departemen`
 -- AUTO_INCREMENT untuk tabel `kas`
 --
 ALTER TABLE `kas`
-  MODIFY `id_kas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_kas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `kegiatan`
@@ -643,13 +551,13 @@ ALTER TABLE `lpj`
 -- AUTO_INCREMENT untuk tabel `organisasi`
 --
 ALTER TABLE `organisasi`
-  MODIFY `idOrganisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idOrganisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `presensi`
@@ -673,7 +581,7 @@ ALTER TABLE `rapat`
 -- AUTO_INCREMENT untuk tabel `suratkeluar`
 --
 ALTER TABLE `suratkeluar`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tahun_ajaran`
@@ -703,6 +611,14 @@ ALTER TABLE `ang_organisasi`
 --
 ALTER TABLE `departemen`
   ADD CONSTRAINT `departemen_ibfk_1` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `histori_pengurus`
+--
+ALTER TABLE `histori_pengurus`
+  ADD CONSTRAINT `fk_idAjaran` FOREIGN KEY (`id_thnAjaran`) REFERENCES `tahun_ajaran` (`id_thnAjaran`),
+  ADD CONSTRAINT `fk_idOrganisasi5` FOREIGN KEY (`idOrganisasi`) REFERENCES `organisasi` (`idOrganisasi`),
+  ADD CONSTRAINT `fk_nimn` FOREIGN KEY (`nim`) REFERENCES `mahasiswa` (`nim`);
 
 --
 -- Ketidakleluasaan untuk tabel `kas`

@@ -1,4 +1,4 @@
-  <DOCTYPE html>
+     <!DOCTYPE html>
 <html>
 <head>
 </head>
@@ -56,6 +56,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <?php include('sidebar.php');?>
+
       <!-- Divider -->
       <hr class="sidebar-divider">
 
@@ -262,62 +263,49 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head> -->
-<body>
+
 <center>
-<h3>Kehadiran Peserta <?php foreach ($data as $data2) {
-          ?> <?php echo $data2->nama_kegiatan; } ?></h3>
+<h1><b>Histori Pengurus</b></h1>
+<hr>
+   
+    <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%" >
+
+
+        <tr>
+            <th>No</th>
+            <th>Nim</th>
+            <th>Nama</th>
+            
+            <th>Periode</th>
+            
+        </tr>
+        <?php
+            $i=1;
+            //$i = $this->uri->segment('3') + 1;
+            foreach ($data as $data) {
+        ?>
+        <tr>
+            <td><?php echo $i; ?></td>
+            <td><?php echo $data->nim; ?></td>
+            <td><?php echo $data->nama; ?></td>
+            
+            <td><?php echo $data->tahunAjaran; ?></td>
+            
+        </tr>
+        <?php $i++; }?>
+    </table>
+        <br/>
+        <a href="<?= base_url().'/Export/export/'.$this->session->idOrganisasi?>" class="btn btn-success" >Export Data Pengurus</a>
+        <a href="<?= base_url().'/Ormawa/tambah_pengurus/'?>" class="btn btn-success">Tambah Pengurus</a>
+        <a href="<?= base_url().'/Ormawa/histori/'?>" class="btn btn-success">Histori Pengurus</a>
+        <br>
+        <br>
 </center>
-<hr>
-<hr>
-    <div class="card-body">
-      <div class="table-responsive">
-      <p style="text-align: right;"><a href="<?= base_url().'/Export/export_kehadiran/'.$this->session->userdata('id_kegiatan')?>" class="btn btn-success">Unduh Kehadiran</a></p><br/>
-      <center>
-        <table id="demo-dt-basic" class="table table-striped table-bordered" width="100%" cellspacing="0">
-          <tr>
-              <th>No</th>
-              <th>Nama</th>
-              <th>NIM</th>
-              <th>Prodi</th>
-              
-              <th>Waktu Datang</th>
-              <th>Tempat Pelaksanaan</th>
-             
-          </tr>
-          <?php
-              $i=1;
-              foreach ($data as $key) {
-          ?>
-          <tr>
-              <td><?php echo $i; ?></td>
-              <td><?php echo $key->nama; ?></td>
-              <td><?php echo $key->nim; ?></td>
-              <td><?php echo $key->prodi; ?></td>
-              
-              <td><?php echo $key->waktu_submit; ?></td>
-              <td><?php echo $key->tempat; ?></td>
-              
-          </tr>
-          
-          <?php $i++; }?>
-        </table>
-      </div>  
-    </div>    
-<!-- Footer -->
+
 <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; HMDSI 2019</span>
+            <span>Copyright &copy;</span>
           </div>
         </div>
       </footer>
@@ -354,20 +342,20 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url().'asset/vendor/jquery/jquery.min.js'?>"></script>
-  <script src="<?php echo base_url().'asset/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/vendor/jquery/jquery.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url().'asset/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/vendor/jquery-easing/jquery.easing.min.js'?>"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url().'asset/js/sb-admin-2.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/js/sb-admin-2.min.js'?>"></script>
 
   <!-- Page level plugins -->
-  <script src="<?php echo base_url().'asset/chartjs/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/chartjs/Chart.min.js'?>"></script>
 
   <!-- Page level custom scripts -->
-  <script src="<?php echo base_url().'asset/js/demo/chart-area-demo.js'?>"></script>
-  <script src="<?php echo base_url().'asset/js/demo/chart-pie-demo.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-area-demo.js'?>"></script>
+  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-pie-demo.js'?>"></script>
 </body>
 </html>

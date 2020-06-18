@@ -53,7 +53,7 @@
                         'nama_programkerja' => $nama, 
                         'waktu_pelaksanaan' => $waktu,
                         'departemen' => $tempat,
-                        'idOrganisasi' => $idOrganisasi,
+                        'idOrganisasi' => $this->session->userdata('idOrganisasi'),
                     );
                 }
                 $this->Proker_model->data($data,'programkerja');

@@ -311,6 +311,7 @@
         <br/>
         <a href="<?= base_url().'/Export/export/'.$this->session->idOrganisasi?>" class="btn btn-success" >Export Data Pengurus</a>
         <a href="<?= base_url().'/Ormawa/tambah_pengurus/'?>" class="btn btn-success">Tambah Pengurus</a>
+        <a href="<?= base_url().'/Ormawa/histori/'.$this->session->idOrganisasi?>?>" class="btn btn-success">Histori Pengurus</a>
         <br>
         <br>
 </center>
