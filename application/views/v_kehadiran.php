@@ -274,7 +274,8 @@
 </head> -->
 <body>
 <center>
-<h3>Kehadiran Peserta</h3>
+<h3>Kehadiran Peserta <?php foreach ($data as $data2) {
+          ?> <?php echo $data2->nama_kegiatan; } ?></h3>
 </center>
 <hr>
 <hr>
@@ -288,10 +289,10 @@
               <th>Nama</th>
               <th>NIM</th>
               <th>Prodi</th>
-              <th>Nama Kegiatan</th>
+              
               <th>Waktu Datang</th>
               <th>Tempat Pelaksanaan</th>
-              <th>status</th>
+             
           </tr>
           <?php
               $i=1;
@@ -302,10 +303,10 @@
               <td><?php echo $key->nama; ?></td>
               <td><?php echo $key->nim; ?></td>
               <td><?php echo $key->prodi; ?></td>
-              <td><?php echo $key->nama_kegiatan; ?></td>
+              
               <td><?php echo $key->waktu_submit; ?></td>
               <td><?php echo $key->tempat; ?></td>
-              <td><?php echo $key->status; ?></td>
+              
           </tr>
           
           <?php $i++; }?>
