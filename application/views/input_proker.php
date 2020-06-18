@@ -267,7 +267,7 @@
 <body>
 
 
-<form class="user" action="<?php echo base_url().'Programkerja/simpan';?>" method="post">
+<form class="user" action="<?php echo base_url().'Programkerja/simpan/'.$this->session->userdata('idOrganisasi');?>" method="post">
 
 <center>
     <!-- <a href="<?= base_url(); ?>index.php/inventaris/displaydata">lihat data</a> -->

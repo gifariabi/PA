@@ -42,6 +42,9 @@
             <a class="nav-link" href="<?= base_url('Organisasi/tampilDaftar/'.$this->session->nim)?>">Cari Organisasi |</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('Ormawa/tampilHistori/'.$this->session->nim)?>">Histori Organisasi |</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="<?= site_url('Login/logout') ?>">Logout</a>
           </li>
         </div>

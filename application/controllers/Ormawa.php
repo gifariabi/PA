@@ -551,5 +551,10 @@ class Ormawa extends CI_Controller {
         $this->load->view('v_histori_pengurus', $data);
     }
 
+    public function tampilHistori($where){
+        $data['data'] = $this->Model_ormawa->getHistori2($where);
+        $this->load->view('v_histori_organisasi', $data);
+    }
+
 
 }
