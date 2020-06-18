@@ -273,21 +273,25 @@
     </div>
     <div id="notifications" ><?php echo $this->session->flashdata('msg'); ?></div>
     <!-- <div id="notifications" ><?php echo $this->session->flashdata('error'); ?></div> -->
-    </center>
+  
     <!-- <input type="hidden" name="id_programkerja" value=""> -->
     <div class="form-group">
-      <input type="text" name="nama_kegiatan" class="form-control-user" placeholder="Nama Kegiatan" style="width : 540px; height : 70px">
+      <input type="text" name="nama_kegiatan" class="form-control" placeholder="Nama Kegiatan" style="width : 540px; height : 40px">
     </div>
     <div class="form-group">
-      <input type="date" name="waktu" class=" form-control-user" placeholder="Waktu Pelaksanaan" style="width : 540px; height : 70px">
+      <input type="date" name="waktu" class=" form-control" placeholder="Waktu Pelaksanaan" style="width : 540px; height : 40px" >
       <div id="notifications" ><?php echo $this->session->flashdata('tgl'); ?></div>
     </div>
     
     <div class="form-group">
-      <input type="text" name="tempat" class=" form-control-user" placeholder="Tempat Pelaksanaan" style="width : 540px; height : 70px"></td>
+      <input type="text" name="tempat" class=" form-control" placeholder="Tempat Pelaksanaan" style="width : 540px; height : 40px"></td>
     </div>
     <div class="form-group">
-      <input type="text" name="harga" class=" form-control-user" placeholder="Harga" style="width : 540px; height : 70px">
+      <input type="text" name="harga" class=" form-control" placeholder="Harga" style="width : 540px; height : 40px">
+      <p>Jika gratis Ketik "Free", Jika berbayar Tulis harga dengan format "Rp. 10.000"</p>
+    </div>
+    <div class="form-group">
+      <input type="text" name="deskripsi" class=" form-control" placeholder="Deskripsi Kegiatan" style="width : 540px; height : 40px">
       <p>Jika gratis Ketik "Free", Jika berbayar Tulis harga dengan format "Rp. 10.000"</p>
     </div>
     
@@ -298,7 +302,7 @@ if(is_array($data) || is_object($data)){
       <input type="hidden" name="id_programkerja" class="form-control form-control-user" value="<?= $data->id_programkerja ?>">
     </div>  
 
-        <input type="submit" name="submit" value="Input" class="btn btn-success btn-user" placeholder="input">
+        <input type="submit" name="submit" value="Input" class="btn btn-success" placeholder="input">
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
     <script>

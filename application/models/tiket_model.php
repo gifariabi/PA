@@ -88,7 +88,8 @@
 			$this->db->join('kegiatan k','k.id_kegiatan = t.id_kegiatan');
 			$this->db->join('programkerja p','p.id_programkerja = k.id_programkerja');
 			$this->db->join('organisasi o', 'o.idOrganisasi = p.idOrganisasi');
-			$this->db->where('o.idOrganisasi',$where);
+            $this->db->where('o.idOrganisasi',$where);
+            $this->db->order_by('t.waktu DESC');
 			
 			$query = $this->db->get();
 			return $query;

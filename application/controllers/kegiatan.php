@@ -69,6 +69,7 @@ class Kegiatan extends CI_Controller{
                 $date2 = new DateTime($waktu);
                 $tempat = $this->input->post('tempat');
                 $harga = $this->input->post('harga');
+                $deskripsi = $this->input->post('deskripsi');
                 $id_programkerja = $this->input->post('id_programkerja');
 
                 $this->load->library('ciqrcode');
@@ -113,6 +114,7 @@ class Kegiatan extends CI_Controller{
                         'tempat' => $tempat,
                         'harga' => $harga,
                         'qr_code' => $image_name,
+                        'deskripsi' =>$deskripsi,
                         'id_programkerja' => $id_programkerja
                     );
                     $this->Kegiatan_model->data($data,'kegiatan');

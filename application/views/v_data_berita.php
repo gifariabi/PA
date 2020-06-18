@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 </head>
@@ -55,7 +55,7 @@
         <!-- Interface -->
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
+      <!-- Nav Item - Pages Collapse  Menu -->
       <?php include('sidebar.php');?>
 
       <!-- Divider -->
@@ -261,7 +261,6 @@
 
         </nav>
         <!-- End of Topbar -->
-
         <!-- Begin Page Content -->
         <div class="container-fluid">
 <!-- <!DOCTYPE html>
@@ -276,63 +275,44 @@
 </head> -->
 <body>
 <center>
-<h3>Jadwal Kegiatan</h3>
+<h3>Kelola Berita</h3>
+</center>
+
     <!-- <?php echo anchor('inventaris/inventaris/','Tambah Data'); ?> -->
-    <a href="<?php echo site_url('Tiket/view_tiket/'.$this->session->idOrganisasi); ?>" class="btn btn-success">History Pesanan</a>
+    <a class="btn btn-success" href="<?php echo base_url().'Organisasi/berita/'.$this->session->userdata('idOrganisasi') ?>" style="text-decoration: none">Post Berita</a>
+    <!-- <a class="btn btn-success" href="<?php echo base_url('index.php/kegiatan/displaydata/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Jadwal Kegiatan</a> -->
     <div class="card-body">
-    <div class="row text-center">
-      <?php foreach($data as $key) { ?>
-      <div class="col-lg-3 col-md-4 mb-3">
-        <div class="card h-100">
-          <img class="card-img-top" src="<?= base_url('asset/images/').$key->foto; ?>" alt="">
-          <div class="card-body">
-            <h4 class="card-title"><?= $key->nama_kegiatan ?></h4>
-            <p class="card-text">Waktu : <?= $key->waktu ?></p>
-            <p class="card-text">Tempat : <?= $key->tempat ?></p>
-            <p class="card-text">Harga : Rp. <?= $key->harga ?></p>
-            <p class="card-text">Departemen : <?= $key->departemen ?></p>
-            <p class="card-text">Deskripsi Kegiatan : <?php $key->deskripsi ?></p>
-          </div>
-          <div class="card-footer">
-          <a href="<?php echo site_url('Tiket/tiket/'.$key->id_kegiatan); ?>" class="btn btn-primary">Book</a>
-          </div>
-        </div>
-      </div>
-      <?php } ?>
-    </div>
       <div class="table-responsive">
-        <!-- <a href="<?php echo site_url('Tiket/displaydata'); ?>">Keranjang</a> -->
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <!-- <tr>
+        <table class="table table-striped table-bordered table-hover table-condensed" id="dataTable" width="100%" cellspacing="0">
+          <tr>
               <th>No</th>
-              <th>Nama Kegiatan</th>
-              <th>Waktu Pelaksanaan</th>
-              <th>Tempat Pelaksanaan</th>
-              <th>Harga</th>
-              <th>Departemen</th>
+              <th>Judul Berita</th>
+              <th>Isi Berita</th>
+              <th>Foto</th>
+              <th>Tanggal</th>
+              <th>Status</th>
               <th>Aksi</th>
-          </tr> -->
+          </tr>
           <?php
+          if(is_array($data) || is_object($data)){
               $i=1;
-              // foreach ($data as $key) {
+              foreach ($data as $data) {
           ?>
           <tr>
-              <!-- <td><?php echo $i; ?></td> -->
-              <!-- <td><?php echo $key->nama_kegiatan; ?></td> -->
-              <!-- <td><?php echo $key->waktu; ?></td> -->
-              <!-- <td><?php echo $key->tempat; ?></td> -->
-              <!-- <td><?php echo $key->harga; ?></td> -->
-              <!-- <td><?php echo $key->departemen; ?></td> -->
+              <td><?php echo $i; ?></td>
+              <td><?php echo $data->judul; ?></td>
+              <td><?php echo $data->isi; ?></td>
+              <td><img src="<?php echo base_url().'asset/images/'.$data->gambar; ?>" style="width: 90px" alt=""></td>
+              <td><?php echo $data->tanggal;?></td>
+              <td><?php echo $data->status; ?></td>
               <td>
-              <!-- <a href="<?php echo site_url('kegiatan/edit/'.$key->id_kegiatan); ?>" class="btn btn-primary">Edit</a>
-              <a href="<?php echo site_url('kegiatan/hapus/'.$key->id_kegiatan); ?>" class="btn btn-primary">Hapus</a> -->
-                  
+              <?= anchor('Post_berita/update_status_admin/'.$data->id_berita,'Publish') ?>
+              <?= anchor('Post_berita/update_status_admin2/'.$data->id_berita,'Unpublish') ?>  
+              <!-- <a href="<?= base_url().'/Kegiatan/kegiatan/'.$data->id_berita;?>" class="btn btn-primary btn-sm" style="height: 30px; width: 110px">Input Kegiatan</a>    -->
                 
               </td>
           </tr>
-          <?php 
-          // $i++; }
-          ?>
+          <?php $i++; }}?>
         </table>
       </div>  
     </div>    

@@ -287,12 +287,12 @@ foreach($data as $key){
     <input type="hidden" name="id_kegiatan" value="<?php echo $key->id_kegiatan; ?>">
     <!-- <input type="hidden" name="harga" value="<?php echo $key->harga; ?>"> -->
     <div class="form-group">
-      <input type="file" name="lpjfile" class="form-control form-control-sm" placeholder="Upload LPJ" >
+      <input type="file" name="lpjfile" class="form-control form-control-sm" placeholder="Upload LPJ" style="width: 240px; height: 40px">
       <!-- <?php echo form_error('nama');?> -->
     </div>
     
     <div class="form-group">
-        <input type="submit" name="submit" value="Input" class="btn  btn-user btn-block btn-success" placeholder="input">
+        <input type="submit" name="submit" value="Input" class="btn btn-user btn-success" placeholder="input">
     </div>
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->

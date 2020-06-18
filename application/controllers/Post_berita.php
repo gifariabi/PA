@@ -57,6 +57,23 @@
             $x['data'] = $this->Model_berita->get_berita_by_kode($kode);
             $this->load->view('v_post_view',$x);
         }
+        function data_berita(){
+            $x['data'] = $this->Model_berita->data()->result();
+            // print_r($x);
+            $this->load->view('v_data_berita',$x);
+        }
+        public function update_status_admin($id_berita){
+            $this->Model_berita->update_status($id_berita);
+            redirect('Post_berita/status_tiket_admin/'.$this->session->idOrganisasi);  
+        }
+        public function update_status_admin2($id_berita){
+            $this->Model_berita->update_status2($id_berita);
+            redirect('Post_berita/status_tiket_admin/'.$this->session->idOrganisasi);  
+        }
+        public function status_tiket_admin(){
+            $data['data']=$this->Model_berita->data()->result();
+            $this->load->view('v_data_berita',$data);
+    }
     }
 
 ?>

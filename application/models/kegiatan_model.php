@@ -14,9 +14,11 @@
         function tampil(){
             // $query = $this->db->query("SELECT * FROM kelas");
             // return $query->result();
-            $this->db->select('k.id_kegiatan, k.nama_kegiatan, k.waktu, k.tempat, FORMAT(k.harga,0) AS harga, k.qr_code,k.foto, p.departemen');
+            $this->db->select('k.id_kegiatan, k.nama_kegiatan, DATE_FORMAT(k.waktu,"%d %M %Y") AS waktu, k.tempat, FORMAT(k.harga,0) AS harga, k.qr_code,k.foto,k.deskripsi, p.departemen');
             $this->db->from('kegiatan k');
             $this->db->join('programkerja p','p.id_programkerja = k.id_programkerja');
+            $this->db->where('k.waktu >= CURDATE()');
+            $this->db->order_by('k.waktu');
             
             $query = $this->db->get();
             // if($query->num_rows() > 0) {
@@ -24,11 +26,15 @@
             // }
         }
 		function tampil_by_id($where){
-			$this->db->select('k.id_kegiatan, k.nama_kegiatan, k.waktu, k.tempat, FORMAT(k.harga,0) AS harga, k.qr_code,k.foto, p.departemen');
+			$this->db->select('k.id_kegiatan, k.nama_kegiatan, DATE_FORMAT(k.waktu,"%d %M %Y") AS waktu, k.tempat, FORMAT(k.harga,0) AS harga,k.deskripsi, k.qr_code,k.foto, p.departemen');
             $this->db->from('kegiatan k');
             $this->db->join('programkerja p','p.id_programkerja = k.id_programkerja');
 			$this->db->join('organisasi o','o.idOrganisasi = p.idOrganisasi');
-			$this->db->where('o.idOrganisasi', $where);
+            $this->db->where('o.idOrganisasi', $where);
+            $this->db->where('k.waktu >= CURRENT_DATE()');
+            $this->db->order_by('k.waktu ASC');
+
+
 			$query = $this->db->get();
 			return $query;
 		}

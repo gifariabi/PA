@@ -95,7 +95,7 @@
         </a>
         <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="<?php echo base_url('index.php/Organisasi/berita/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Berita</a>
+          <a class="collapse-item" href="<?php echo base_url('index.php/Post_berita/data_berita/'.$this->session->idOrganisasi); ?>" style="text-decoration: none">Berita</a>
             <a class="collapse-item" href="http://localhost/PA/index.php/Organisasi/tampilan_organisasi" style="text-decoration: none">Organisasi</a>
             <a class="collapse-item" href="<?= base_url() ?>index.php/Organisasi/lihat_akun" style="text-decoration: none">Lihat Akun</a>
           </div>
