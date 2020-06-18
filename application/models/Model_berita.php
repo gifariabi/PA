@@ -9,7 +9,7 @@
             return $query;
         }
         function get_all_berita(){
-            $query = $this->db->query("SELECT * FROM berita WHERE status = 'Publish' ORDER BY id_berita DESC");
+            $query = $this->db->query("SELECT id_berita, judul, isi, gambar, DATE_FORMAT(tanggal,'%d %M %Y') AS tanggal FROM berita WHERE status = 'Publish' ORDER BY id_berita DESC");
             return $query;
         }
         function data(){

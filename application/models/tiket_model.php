@@ -25,9 +25,9 @@
             //}
         }
         public function tampil_tiket($where){
-            $this->db->select('no_tiket, nama, nimAkun, nim, jurusan, email, FORMAT(total,0) AS total, metode_pembayaran, status');
-            $this->db->from('tiket ');
-            // $this->db->join('kegiatan k','t.id_kegiatan = k.id_kegiatan');
+            $this->db->select('t.no_tiket,k.nama_kegiatan, t.nama, t.nimAkun, t.nim, t.jurusan, t.email, FORMAT(t.total,0) AS total, t.metode_pembayaran, t.status');
+            $this->db->from('tiket t');
+            $this->db->join('kegiatan k','t.id_kegiatan = k.id_kegiatan');
             // $this->db->join('programkerja p','k.id_programkerja = p.id_programkerja');
             // $this->db->join('organisasi o','o.idOrganisasi = p.idOrganisasi');
             // $this->db->join('ang_organisasi a','a.idOrganisasi = o.idOrganisasi');

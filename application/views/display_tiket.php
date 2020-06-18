@@ -62,6 +62,7 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <tr>
               <th>No</th>
+              <th>Nama Kegiatan</th>
               <th>Nama</th>
               <th>NIM</th>
               <th>Jurusan</th>
@@ -78,6 +79,7 @@
           ?>
           <tr>
               <td><?php echo $i; ?></td>
+              <td><?php echo $key->nama_kegiatan; ?></td>
               <td><?php echo $key->nama; ?></td>
               <td><?php echo $key->nim; ?></td>
               <td><?php echo $key->jurusan; ?></td>

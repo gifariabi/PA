@@ -291,7 +291,7 @@
             <p class="card-text">Tempat : <?= $key->tempat ?></p>
             <p class="card-text">Harga : Rp. <?= $key->harga ?></p>
             <p class="card-text">Departemen : <?= $key->departemen ?></p>
-            <p class="card-text">Deskripsi Kegiatan : <?php $key->deskripsi ?></p>
+            <p class="card-text">Deskripsi Kegiatan : <?php echo $key->deskripsi ?></p>
           </div>
           <div class="card-footer">
           <a href="<?php echo site_url('Tiket/tiket/'.$key->id_kegiatan); ?>" class="btn btn-primary">Book</a>

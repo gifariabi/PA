@@ -405,7 +405,9 @@
                     $id=$i['id_berita'];
                     $judul=$i['judul'];
                     $image=$i['gambar'];
+                    $tanggal = $i['tanggal'];
                     $isi=$i['isi'];
+                    
                 ?>
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary"><?php echo $judul;?></h6>
@@ -415,6 +417,7 @@
                 <div class="text">
                   <div class="text">
                     <center><img src="<?php echo base_url().'asset/images/'.$image;?>" width="200" height="200"></center><br>
+                    <p><?php echo $tanggal; ?></p>
                     <p align="justify"><?php echo limit_words($isi,30);?><a href="<?php echo base_url().'index.php/post_berita/view/'.$id;?>"> Selengkapnya ></a></p>
                   </div>
                 </div>
