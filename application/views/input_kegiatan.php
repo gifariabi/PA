@@ -302,7 +302,7 @@ if(is_array($data) || is_object($data)){
       <input type="hidden" name="id_programkerja" class="form-control form-control-user" value="<?= $data->id_programkerja ?>">
     </div>  
 
-        <input type="submit" name="submit" value="Input" class="btn btn-success" placeholder="input">
+        <input type="submit" name="submit" value="Simpan" class="btn btn-success" placeholder="Simpan">
     <!-- <a href="<?= base_url(); ?>index.php/admin/">Kembali ke Menu</a>    -->
     <!-- <a href="<?= site_url('Admin/logout') ?>">Logout</a> -->
     <script>

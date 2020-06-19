@@ -158,8 +158,8 @@
             $this->Tiket_model->update_status($nama,$nim,$jurusan,$email,$jumlah,$metode,$status);
             redirect('tiket/status_tiket_admin');
         }
-        public function status_tiket_admin(){
-                $data['data']=$this->Tiket_model->tampil()->result();
+        public function status_tiket_admin($where){
+                $data['data']=$this->Tiket_model->tampil_req2($where)->result();
                 $this->load->view('display_tiket2',$data);
         }
 

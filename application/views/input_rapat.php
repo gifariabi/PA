@@ -309,7 +309,7 @@
         <tr>
             <td></td>
             <td></td>
-            <td><input type="submit" name="submit" value="Simpan" class="btn btn-success btn-user btn-block "></td>
+            <td><input type="submit" name="submit" value="Simpan" class="btn btn-success btn-user "></td>
         </tr>
     </table>
     <script>
