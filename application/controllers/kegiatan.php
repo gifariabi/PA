@@ -223,7 +223,8 @@ class Kegiatan extends CI_Controller{
             $where2 = array('id_kegiatan'=>$id_kegiatan);
             $org=$this->Login_model->view_where('kegiatan',$where2)->result();
             $this->session->set_userdata('id_kegiatan',$org[0]->id_kegiatan);
-            redirect('Kegiatan/show2/'.$this->session->id_kegiatan);      
+            $this->session->set_userdata('nama_kegiatan',$org[0]->nama_kegiatan);
+            redirect('Kegiatan/show2/'.$this->session->id_kegiatan.'/'.$this->session->nama_kegiatan);      
         }
 
         public function show2($where){

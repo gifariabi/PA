@@ -274,8 +274,7 @@
 </head> -->
 <body>
 <center>
-<h3>Kehadiran Peserta <?php foreach ($data as $data2) {
-          ?> <?php echo $data2->nama_kegiatan; } ?></h3>
+<h3>Kehadiran Peserta <?php echo $this->session->userdata('nama_kegiatan'); ?></h3>
 </center>
 <hr>
 <hr>
