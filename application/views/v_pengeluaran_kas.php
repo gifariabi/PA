@@ -263,6 +263,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+
 	<center>
 	<h1><b>Pengeluaran Kas</b></h1>
 	<hr>
@@ -271,15 +272,15 @@
 	<table>
 	<tr>
 		<td>Pengeluaran Kas</td>
-		<td><input type="number" name="pengeluaran_kas"></td>
+		<td><input type="number" name="pengeluaran_kas"><td><?php echo $this->session->flashdata('pesan'); ?></td></td>
 	</tr>
   <tr>
     <td>Keterangan</td>
-    <td><input type="text" name="keterangan"></td>
+    <td><input type="text" name="keterangan"><td><?php echo $this->session->flashdata('pesan'); ?></td></td>
   </tr>
 	<tr>
 		<td>Tanggal</td>
-		<td><input type="date" name="tanggal" style="width: 100%"></td>
+		<td><input type="date" name="tanggal" style="width: 100%"><td><?php echo $this->session->flashdata('pesan'); ?></td></td>
 	</tr>
 	<tr>
 		<td></td>
@@ -289,9 +290,7 @@
 	</tr>	
 	</table>
 	</form>
-  <?php
-      echo $this->session->flashdata('pesan');
-  ?>
+
 	</center>
 
 	<footer class="sticky-footer bg-white">

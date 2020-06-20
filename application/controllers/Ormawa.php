@@ -93,7 +93,8 @@ class Ormawa extends CI_Controller {
         $this->form_validation->set_rules('pemasukan_kas', 'Pemasukan Kas','trim|required|max_length[255]|numeric');
 
         if ($this->form_validation->run() == FALSE){
-            $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong dan Form Pemasukan Harus Angka</font>');
+            $this->session->set_flashdata('nominal','<font color=red>Harus Menggunakan Angka</font>');
+            $this->session->set_flashdata('kolom','<font color=red>Form Tidak Boleh Kosong</font>');
             $this->load->view('v_pemasukan_kas');
         }
         else{
@@ -118,7 +119,7 @@ class Ormawa extends CI_Controller {
         $this->form_validation->set_rules('pengeluaran_kas', 'Pengeluaran Kas','trim|required|max_length[255]|numeric');
 
         if ($this->form_validation->run() == FALSE){
-            $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong dan Form Pengeluaran Harus Angka</font>');
+            $this->session->set_flashdata('pesan','<font color=red>Form Tidak Boleh Kosong</font>');
             $this->load->view('v_pengeluaran_kas');
             
         }

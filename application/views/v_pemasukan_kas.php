@@ -12,6 +12,7 @@
   <title></title>
 
   <!-- Custom fonts for this template-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <link href="<?php echo base_url().'asset/masuk/vendor/fontawesome-free/css/all.min.css'?>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -273,7 +274,7 @@
 	<tr>
     <div class="wrap-input100 validate-input" data-validate = "Pemasukan is required">
 		<td>Pemasukan Kas</td>
-		<td><input type="number" name="pemasukan_kas"></td>
+		<td><input type="number" name="pemasukan_kas"><td><?php echo $this->session->flashdata('kolom'); ?></td></td>
     <span class="focus-input100-1"></span>
     <span class="focus-input100-2"></span>
     </div>
@@ -281,7 +282,7 @@
   <tr>
     <div class="wrap-input100 validate-input" data-validate = "Keterangan is required">
     <td>Keterangan</td>
-    <td><input type="text" name="keterangan"></td>
+    <td><input type="text" name="keterangan"><td><?php echo $this->session->flashdata('kolom'); ?></td></td>
     <span class="focus-input100-1"></span>
     <span class="focus-input100-2"></span>
     </div>
@@ -289,11 +290,14 @@
 	<tr>
     <div class="wrap-input100 validate-input" data-validate = "Tanggal is required">
 		<td>Tanggal</td>
-		<td><input type="date" name="tanggal" style="width: 100%"></td>
+		<td><input type="date" name="tanggal" style="width: 100%"><td><?php echo $this->session->flashdata('kolom'); ?></td></td>
     <span class="focus-input100-1"></span>
     <span class="focus-input100-2"></span>
     </div>
 	</tr>
+  <tr><td></td>
+    <td>Harus Mengisi Tanggal</td>
+  </tr>
 	<tr>
 	<td></td>
 		<td align="center">
