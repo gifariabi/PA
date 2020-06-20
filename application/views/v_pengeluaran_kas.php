@@ -13,6 +13,7 @@
   <title></title>
 
   <!-- Custom fonts for this template-->
+  <link href="<?php echo base_url().'js/cssvalidasi.css'?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url().'asset/masuk/vendor/fontawesome-free/css/all.min.css'?>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -262,6 +263,33 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->  
+  <link rel="icon" type="izmage/png" href="<?php echo base_url().'asset/login/images/icons/favicon.ico'?>"/>
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/bootstrap/css/bootstrap.min.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/animate/animate.css'?>">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/css-hamburgers/hamburgers.min.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/animsition/css/animsition.min.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/select2/select2.min.css'?>">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/daterangepicker/daterangepicker.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/css/util.css'?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/css/main.css'?>">
+<!--===============================================================================================-->
+<div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
 
 
 	<center>
@@ -270,28 +298,53 @@
 	<hr>
 	<form action="<?= base_url() ?>index.php/Ormawa/simpan_kas_keluar" method="POST" enctype="multipart/form-data" class="validate">
 	<table>
+  <div class="form-group">
 	<tr>
 		<td>Pengeluaran Kas</td>
-		<td><input type="number" name="pengeluaran_kas" required></td>
+		<td><input type="number" name="pengeluaran_kas" class="form-control form-control-user" required></td>
 	</tr>
+  </div>
+  <div class="form-group">
   <tr>
     <td>Keterangan</td>
-    <td><input type="text" name="keterangan" required></td>
+    <td><input type="text" name="keterangan" class="form-control form-control-user" required></td>
   </tr>
+  </div>
+  <div class="form-group">
 	<tr>
 		<td>Tanggal</td>
-		<td><input type="date" name="tanggal" required></td>
+		<td><input type="date" name="tanggal" class="form-control form-control-user" required required=""></td>
 	</tr>
+  </div>
 	<tr>
 		<td></td>
 		<td align="center">
-			<input type="submit" name="submit" value="Tambah" style="width: 100%">
+			<input type="submit" name="submit" value="Tambah" style="width: 100%" class="btn btn-success btn-user btn-block">
 		</td>
 	</tr>	
 	</table>
 	</form>
 
 	</center>
+  </div>
+  </div>
+  </div>
+  <!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/jquery/jquery-3.2.1.min.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/animsition/js/animsition.min.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/bootstrap/js/popper.js'?>"></script>
+  <script src="<?php echo base_url().'asset/login/vendor/bootstrap/js/bootstrap.min.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/select2/select2.min.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/daterangepicker/moment.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/login/vendor/daterangepicker/daterangepicker.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/countdowntime/countdowntime.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/js/main.js'?>"></script>
 
 	<footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -304,6 +357,7 @@
 
     </div>
     <!-- End of Content Wrapper -->
+
 
   </div>
   <!-- End of Page Wrapper -->

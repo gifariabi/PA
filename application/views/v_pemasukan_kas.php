@@ -18,9 +18,10 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="<?php echo base_url().'asset/masuk/css/sb-admin-2.min.css" rel="stylesheet'?>">
-
+  
 </head>
+<link href="<?php echo base_url().'asset/masuk/css/sb-admin-2.min.css'?>" rel="stylesheet" type="text/css">
+
 
 <body id="page-top">
 
@@ -263,6 +264,33 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+        <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->  
+  <link rel="icon" type="izmage/png" href="<?php echo base_url().'asset/login/images/icons/favicon.ico'?>"/>
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/bootstrap/css/bootstrap.min.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/animate/animate.css'?>">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/css-hamburgers/hamburgers.min.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/animsition/css/animsition.min.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/select2/select2.min.css'?>">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/vendor/daterangepicker/daterangepicker.css'?>">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/css/util.css'?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url().'asset/login/css/main.css'?>">
+<!--===============================================================================================-->
+<div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
 
 	<center>
 	<h1><b>Pemasukan Kas</b></h1>
@@ -285,13 +313,13 @@
   <div class="form-group">
 	<tr>
 		<td>Tanggal</td>
-		<td><input type="date" name="tanggal" class="form-control form-control-user" style="width: 100%"><td><?php echo $this->session->flashdata('kolom'); ?></td></td>
+		<td><input type="date" name="tanggal" class="form-control form-control-user" required=""><td><?php echo $this->session->flashdata('kolom'); ?></td></td>
 	</tr>
   <div class="form-group">
 	<tr>
 	<td></td>
 		<td align="center">
-			<input type="submit" name="submit" value="Tambah" style="width: 100%">
+			<input type="submit" name="submit" value="Tambah" style="width: 100%" class="btn btn-success btn-user btn-block">
 		</td>
 	</tr>	
 	</table>
@@ -302,6 +330,25 @@
         echo $this->session->flashdata('pesan');
   ?>
 	</center>
+  </div>
+  </div>
+  </div>
+  <!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/jquery/jquery-3.2.1.min.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/animsition/js/animsition.min.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/bootstrap/js/popper.js'?>"></script>
+  <script src="<?php echo base_url().'asset/login/vendor/bootstrap/js/bootstrap.min.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/select2/select2.min.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/daterangepicker/moment.min.js'?>"></script>
+  <script src="<?php echo base_url().'asset/login/vendor/daterangepicker/daterangepicker.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/vendor/countdowntime/countdowntime.js'?>"></script>
+<!--===============================================================================================-->
+  <script src="<?php echo base_url().'asset/login/js/main.js'?>"></script>
 
 	<footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -356,8 +403,6 @@
   <script src="<?php echo base_url().'asset/masuk/chartjs/Chart.min.js'?>"></script>
   <script src="<?php echo base_url().'js/jspemasukan.js'?>"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-area-demo.js'?>"></script>
-  <script src="<?php echo base_url().'asset/masuk/js/demo/chart-pie-demo.js'?>"></script>
+
 </body>
 </html>

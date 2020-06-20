@@ -293,7 +293,7 @@
 <center><h1>Edit Akun</h1>
 <hr><hr>
 </center>
-	<form class="login100-form" action="<?= base_url() ?>Organisasi/update" method="POST">
+	<form action="<?= base_url() ?>Organisasi/update" method="POST" class="validate">
 	<table style="margin: 20px auto;">
 		<body>
 			<tr>
@@ -312,19 +312,19 @@
 			<tr>
 				<td>Nama Lengkap</td>
         <div class="form-group">
-				<td><input type="text" name="nama" class="form-control" value="<?= $nama ?>"></td>
+				<td><input type="text" name="nama" class="form-control" value="<?= $nama ?>" required></td>
        </div>
 			</tr>
 			<tr>
 				<td>NO WA</td>
         <div class="form-group">
-				<td><input type="text" name="noWA" class="form-control" value="<?= $noWA ?>"></td>
+				<td><input type="number" name="noWA" class="form-control" value="<?= $noWA ?>"></td>
         </div>
 			</tr>
 			<tr>
 				<td>No Hp</td>
         <div class="form-group">
-				<td><input type="text" name="noHP" class="form-control" value="<?= $noHP ?>"></td>
+				<td><input type="number" name="noHP" class="form-control" value="<?= $noHP ?>"></td>
         </div>
 			</tr>
 			<tr>
@@ -419,6 +419,7 @@
 
   <!-- Page level plugins -->
   <script src="<?php echo base_url().'asset/masuk/chartjs/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'js/jspemasukan.js'?>"></script>
 
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url().'asset/masuk/js/demo/chart-area-demo.js'?>"></script>
