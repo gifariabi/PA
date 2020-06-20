@@ -13,6 +13,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="<?php echo base_url().'asset/vendor/bootstrap/css/bootstrap.min.css'?>" rel="stylesheet">
+  <link href="<?php echo base_url().'js/cssvalidasi.css'?>" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template -->
   <link href="<?php echo base_url().'asset/css/heroic-features.css'?>" rel="stylesheet">
@@ -44,30 +45,30 @@
 	<h1>Buat Organisasi</h1>
 	<hr>
 	<hr>
-	<form action="<?= base_url() ?>index.php/Ormawa/simpan_ormawa" method="POST" enctype="multipart/form-data">
+	<form action="<?= base_url() ?>index.php/Ormawa/simpan_ormawa" method="POST" enctype="multipart/form-data" class="validate">
 	<table>
   <div class="form-group">
 	<tr>
 		<td>Nama Organisasi</td>
-		<td><input type="text" name="namaOrganisasi" class="form-control form-control-user"></td>
+		<td><input type="text" name="namaOrganisasi" class="form-control form-control-user" required=""></td>
 	</tr>
   </div>
   <div class="form-group">
 	<tr>
 		<td>Deskripsi</td> 
-		<td><textarea name="deskripsi" cols="40" rows="10" class="form-control form-control-user"></textarea></td>
+		<td><textarea name="deskripsi" cols="40" rows="10" class="form-control form-control-user" required=""></textarea></td>
 	</tr>
   </div>
   <div class="form-group">
 	<tr>
 		<td>Logo</td>
-		<td><input type="file" name="logo" class="form-control form-control-user"></td>
+		<td><input type="file" name="logo" class="form-control form-control-user" required=""></td>
 	</tr>
   </div>
   <div class="form-group">
 	<tr>
 		<td>Ketua Organisasi</td>
-		<td><input type="text" name="ketua" class="form-control form-control-user"></td>
+		<td><input type="text" name="ketua" class="form-control form-control-user" required=""></td>
 	</tr>
   </div>
 	<tr><td></td>
@@ -100,6 +101,7 @@
 
   <!-- Bootstrap core JavaScript -->
   <script src="<?php echo base_url().'asset/vendor/jquery/jquery.min.js'?>"></script>
+  <script src="<?php echo base_url().'js/jspemasukan.js'?>"></script>
   <script src="<?php echo base_url().'asset/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
 
 </body>

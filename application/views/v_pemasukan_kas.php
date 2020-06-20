@@ -12,7 +12,8 @@
   <title></title>
 
   <!-- Custom fonts for this template-->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link href="<?php echo base_url().'js/cssvalidasi.css'?>" rel="stylesheet" type="text/css">
   <link href="<?php echo base_url().'asset/masuk/vendor/fontawesome-free/css/all.min.css'?>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -267,37 +268,26 @@
 	<h1><b>Pemasukan Kas</b></h1>
 	<hr>
 	<hr>
-  <div class="container-login100">
-  <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-	<form action="<?= base_url() ?>index.php/Ormawa/simpan_kas_masuk" method="POST" enctype="multipart/form-data" class="login100-form validate-form">
+	<form action="<?= base_url() ?>index.php/Ormawa/simpan_kas_masuk" method="POST" enctype="multipart/form-data" class="validate">
 	<table>
+  <div class="form-group">
 	<tr>
-    <div class="wrap-input100 validate-input" data-validate = "Pemasukan is required">
 		<td>Pemasukan Kas</td>
-		<td><input type="number" name="pemasukan_kas"><td><?php echo $this->session->flashdata('kolom'); ?></td></td>
-    <span class="focus-input100-1"></span>
-    <span class="focus-input100-2"></span>
-    </div>
+		<td><input type="number" name="pemasukan_kas" class="form-control form-control-user" required=""></td>
 	</tr>
+  </div>
+  <div class="form-group">
   <tr>
-    <div class="wrap-input100 validate-input" data-validate = "Keterangan is required">
     <td>Keterangan</td>
-    <td><input type="text" name="keterangan"><td><?php echo $this->session->flashdata('kolom'); ?></td></td>
-    <span class="focus-input100-1"></span>
-    <span class="focus-input100-2"></span>
-    </div>
+    <td><input type="text" name="keterangan" class="form-control form-control-user" required></td>
   </tr>
+  </div>
+  <div class="form-group">
 	<tr>
-    <div class="wrap-input100 validate-input" data-validate = "Tanggal is required">
 		<td>Tanggal</td>
-		<td><input type="date" name="tanggal" style="width: 100%"><td><?php echo $this->session->flashdata('kolom'); ?></td></td>
-    <span class="focus-input100-1"></span>
-    <span class="focus-input100-2"></span>
-    </div>
+		<td><input type="date" name="tanggal" class="form-control form-control-user" style="width: 100%"><td><?php echo $this->session->flashdata('kolom'); ?></td></td>
 	</tr>
-  <tr><td></td>
-    <td>Harus Mengisi Tanggal</td>
-  </tr>
+  <div class="form-group">
 	<tr>
 	<td></td>
 		<td align="center">
@@ -364,6 +354,7 @@
 
   <!-- Page level plugins -->
   <script src="<?php echo base_url().'asset/masuk/chartjs/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'js/jspemasukan.js'?>"></script>
 
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url().'asset/masuk/js/demo/chart-area-demo.js'?>"></script>

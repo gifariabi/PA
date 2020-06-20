@@ -268,19 +268,19 @@
 	<h1><b>Pengeluaran Kas</b></h1>
 	<hr>
 	<hr>
-	<form action="<?= base_url() ?>index.php/Ormawa/simpan_kas_keluar" method="POST" enctype="multipart/form-data">
+	<form action="<?= base_url() ?>index.php/Ormawa/simpan_kas_keluar" method="POST" enctype="multipart/form-data" class="validate">
 	<table>
 	<tr>
 		<td>Pengeluaran Kas</td>
-		<td><input type="number" name="pengeluaran_kas"><td><?php echo $this->session->flashdata('pesan'); ?></td></td>
+		<td><input type="number" name="pengeluaran_kas" required></td>
 	</tr>
   <tr>
     <td>Keterangan</td>
-    <td><input type="text" name="keterangan"><td><?php echo $this->session->flashdata('pesan'); ?></td></td>
+    <td><input type="text" name="keterangan" required></td>
   </tr>
 	<tr>
 		<td>Tanggal</td>
-		<td><input type="date" name="tanggal" style="width: 100%"><td><?php echo $this->session->flashdata('pesan'); ?></td></td>
+		<td><input type="date" name="tanggal" required></td>
 	</tr>
 	<tr>
 		<td></td>
@@ -344,6 +344,7 @@
 
   <!-- Page level plugins -->
   <script src="<?php echo base_url().'asset/masuk/chartjs/Chart.min.js'?>"></script>
+  <script src="<?php echo base_url().'js/jspemasukan.js'?>"></script>
 
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url().'asset/masuk/js/demo/chart-area-demo.js'?>"></script>
