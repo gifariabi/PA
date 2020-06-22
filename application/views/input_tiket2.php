@@ -15,6 +15,7 @@
 
   <!-- Custom styles for this template -->
   <link href="<?php echo base_url().'asset/css/heroic-features.css'?>" rel="stylesheet">
+  <link href="<?php echo base_url().'asset/masuk/css/sb-admin-2.css" rel="stylesheet'?>">
 
 </head>
 

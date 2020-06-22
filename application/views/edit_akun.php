@@ -18,6 +18,7 @@
 
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url().'asset/masuk/css/sb-admin-2.min.css" rel="stylesheet'?>">
+  <link href="<?php echo base_url().'asset/masuk/css/sb-admin-2.css" rel="stylesheet'?>">
 
 </head>
 
@@ -419,7 +420,7 @@
 
   <!-- Page level plugins -->
   <script src="<?php echo base_url().'asset/masuk/chartjs/Chart.min.js'?>"></script>
-  <script src="<?php echo base_url().'js/jspemasukan.js'?>"></script>
+  <script src="<?php echo base_url().'asset/validasi/jspemasukan.js'?>"></script>
 
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url().'asset/masuk/js/demo/chart-area-demo.js'?>"></script>

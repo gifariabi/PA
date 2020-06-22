@@ -13,7 +13,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="<?php echo base_url().'asset/vendor/bootstrap/css/bootstrap.min.css'?>" rel="stylesheet">
-  <link href="<?php echo base_url().'js/cssvalidasi.css'?>" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url().'asset/validasi/cssvalidasi.css'?>" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template -->
   <link href="<?php echo base_url().'asset/css/heroic-features.css'?>" rel="stylesheet">
@@ -101,7 +101,7 @@
 
   <!-- Bootstrap core JavaScript -->
   <script src="<?php echo base_url().'asset/vendor/jquery/jquery.min.js'?>"></script>
-  <script src="<?php echo base_url().'js/jspemasukan.js'?>"></script>
+  <script src="<?php echo base_url().'asset/validasi/jspemasukan.js'?>"></script>
   <script src="<?php echo base_url().'asset/vendor/bootstrap/js/bootstrap.bundle.min.js'?>"></script>
 
 </body>
