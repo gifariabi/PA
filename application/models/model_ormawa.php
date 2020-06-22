@@ -58,7 +58,7 @@ class Model_ormawa extends CI_Model{
 
         public function getHistori2($where){
             $this->db->distinct();
-            $this->db->select('nim, nama, jabatan,p.idOrganisasi,t.tahunAjaran,o.namaOrganisasi');
+            $this->db->select('nim, nama, jabatan,p.idOrganisasi,t.tahunAjaran,o.namaOrganisasi,o.logo');
             $this->db->from('histori_pengurus p');
             $this->db->join('tahun_ajaran t', 'p.id_thnAjaran = t.id_thnAjaran');
             $this->db->join('organisasi o', 'p.idOrganisasi = o.idOrganisasi');

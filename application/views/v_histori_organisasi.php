@@ -31,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home |
+            <a class="nav-link" href="<?= base_url() ?>Organisasi/tampilan_awal/<?=$this->session->nim;?>">Home |
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -42,7 +42,7 @@
             <a class="nav-link" href="<?= base_url('Organisasi/tampilDaftar/'.$this->session->nim)?>">Cari Organisasi |</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('Organisasi/tampilHistori/'.$this->session->nim)?>">Histori Organisasi |</a>
+            <a class="nav-link" href="<?= base_url('Ormawa/tampilHistori/'.$this->session->nim)?>">Histori Organisasi |</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= site_url('Login/logout') ?>">Logout</a>
@@ -58,17 +58,16 @@
 
     <!-- Page Features -->
   <center>
-<h1><b>Histori Pengurus</b></h1>
+<h1><b>Histori Organisasi <?= $this->session->nama ?></b></h1>
 <hr>
    
-    <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%" >
+    <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" style="width: 70%">
 
 
         <tr>
             <th>No</th>
-            <th>Nim</th>
-            <th>Nama</th>
             <th>Organisasi</th>
+            <th>Logo</th>
             <th>Periode</th>
             
         </tr>
@@ -79,9 +78,8 @@
         ?>
         <tr>
             <td><?php echo $i; ?></td>
-            <td><?php echo $data->nim; ?></td>
-            <td><?php echo $data->nama; ?></td>
             <td><?php echo $data->namaOrganisasi; ?></td>
+            <td><img src="<?= base_url('asset/images/ormawa/').$data->logo?>" width="60" height="60"></td>
             <td><?php echo $data->tahunAjaran; ?></td>
             
         </tr>
