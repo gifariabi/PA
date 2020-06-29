@@ -71,7 +71,6 @@ class Model_kas extends CI_Model{
 //Bulan Untuk Kas
     public function get_januari($where){
         $this->db->select('id_kas, pemasukan_kas AS pemasukan_kas, pengeluaran_kas as pengeluaran_kas, keterangan, DATE_FORMAT(tanggal,"%d %M %Y") tanggal, idOrganisasi');
-
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 01');
         $this->db->WHERE('idOrganisasi',$where);
@@ -161,7 +160,7 @@ class Model_kas extends CI_Model{
     }
 
     public function get_november($where){
-        $this->db->select('id_kas, pemasukan_kas, AS pemasukan_kas, pengeluaran_kas as pengeluaran_kas, keterangan, DATE_FORMAT(tanggal,"%d %M %Y") tanggal, idOrganisasi');
+        $this->db->select('id_kas, pemasukan_kas AS pemasukan_kas, pengeluaran_kas as pengeluaran_kas, keterangan, DATE_FORMAT(tanggal,"%d %M %Y") tanggal, idOrganisasi');
         $this->db->from('kas');
         $this->db->where('MONTH(tanggal) = 11');
         $this->db->WHERE('idOrganisasi',$where);
